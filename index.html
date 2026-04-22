@@ -21,6 +21,28 @@
 
 <h1>Welcome to My AI Tools Aggregate App</h1>
 <p>This app provides quick access to popular AI tools and resources in one place.</p>
+<h2>✨ AI Prompt Generator</h2>
+
+<input type="text" id="topic" placeholder="Enter topic (example: cat, logo, car)">
+<br><br>
+
+<button onclick="generatePrompt()">Generate Prompt</button>
+
+<p id="result"></p>
+
+<script>
+function generatePrompt() {
+  var topic = document.getElementById("topic").value;
+
+  var prompt =
+  "Create a high quality realistic image of " +
+  topic +
+  " with cinematic lighting, ultra detailed, 4K resolution.";
+
+  document.getElementById("result").innerText = prompt;
+}
+</script>
+  
 <h2>AI Tools</h2>
 
 <div class="tool-card">
