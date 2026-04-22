@@ -96,6 +96,7 @@ function generatePrompt() {
 <h3>⭐ My Favorite Tools</h3>
 <ul id="favorites"></ul>
 <script>
+
 function saveFav(tool, btn){
 
   let favs = JSON.parse(localStorage.getItem("favorites")) || [];
@@ -112,6 +113,8 @@ function saveFav(tool, btn){
   showFavs();
 }
 
+
+// ⭐ Show Favorite List
 function showFavs(){
   let favs = JSON.parse(localStorage.getItem("favorites")) || [];
   let list = document.getElementById("favorites");
@@ -120,9 +123,30 @@ function showFavs(){
   favs.forEach(f=>{
     list.innerHTML += "<li>⭐ "+f+"</li>";
   });
+
+  restoreStars();
+}
+
+
+// ⭐ Restore star colors after reload
+function restoreStars(){
+
+  let favs = JSON.parse(localStorage.getItem("favorites")) || [];
+  let buttons = document.querySelectorAll(".fav-btn");
+
+  buttons.forEach(btn=>{
+      let tool = btn.getAttribute("data-tool");
+
+      if(favs.includes(tool)){
+          btn.style.color = "gold";
+      } else {
+          btn.style.color = "gray";
+      }
+  });
 }
 
 showFavs();
+
 </script>
  <p style="font-size:14px;color:#666;">
 Tools open in secure external pages. Login may be required.
