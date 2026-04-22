@@ -118,6 +118,16 @@ function restoreStars(){
    }
  });
 }
+  function removeFav(tool){
+ let favs = JSON.parse(localStorage.getItem("favorites")) || [];
+
+ favs = favs.filter(f => f !== tool);
+
+ localStorage.setItem("favorites", JSON.stringify(favs));
+
+ showFavs();
+ restoreStars();
+}
 
 /* ⭐ LOAD WHEN PAGE OPENS */
 window.onload=function(){
