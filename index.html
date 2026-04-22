@@ -63,6 +63,30 @@ h2{
     color:white;
     transform:scale(1.05);
 }
+
+.dark-mode{
+    background:#121212;
+    color:#ffffff;
+}
+
+.dark-mode a{
+    color:#8ab4f8;
+}
+
+.dark-mode .header{
+    background:#1f1f1f;
+}
+
+.dark-mode .section{
+    background:#1e1e1e;
+}
+
+.dark-mode button{
+    background:#2c2c2c;
+    color:white;
+    border:1px solid #444;
+}
+
 </style>
 <base target="_blank">
 
@@ -74,7 +98,10 @@ h2{
 </head>
 
 <body>
-
+<div class="header">
+AI Tools Hub
+<button onclick="toggleDarkMode()">🌙</button>
+</div>
 <h1>Welcome to My AI Tools Aggregate App</h1>
 <p>This app provides quick access to popular AI tools and resources in one place.</p>
 <h2>✨ AI Prompt Generator</h2>
