@@ -318,12 +318,15 @@ function saveFav(tool, btn){
 
     let favs = JSON.parse(localStorage.getItem("favorites")) || [];
 
-    // REMOVE if already exists
-    if(favs.includes(tool)){
-        favs = favs.filter(f => f !== tool);
+    // check if already favorite
+    let index = favs.indexOf(tool);
+
+    if(index > -1){
+        // REMOVE
+        favs.splice(index,1);
         btn.innerText = "⭐";
-    }
-    else{
+    } else {
+        // ADD
         favs.push(tool);
         btn.innerText = "Saved ✅";
     }
@@ -346,18 +349,17 @@ function showFavs(){
         return;
     }
 
-    // ⭐ Prevent duplicates visually
-    let uniqueFavs = [...new Set(favs)];
-
-    uniqueFavs.forEach(tool=>{
+    favs.forEach(tool=>{
         let item = document.createElement("p");
         item.innerText = "⭐ " + tool;
         favBox.appendChild(item);
     });
+
 }
 
-// load on page start
-showFavs();
+
+// ⭐ Load favorites when page opens
+window.onload = showFavs;
 
 </script>
  <p style="font-size:14px;color:#666;">
