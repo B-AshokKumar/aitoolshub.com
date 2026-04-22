@@ -318,24 +318,19 @@ function saveFav(tool, btn){
 
     let favs = JSON.parse(localStorage.getItem("favorites")) || [];
 
-    // check if already favorite
     let index = favs.indexOf(tool);
 
     if(index > -1){
-        // REMOVE
         favs.splice(index,1);
         btn.innerText = "⭐";
     } else {
-        // ADD
         favs.push(tool);
         btn.innerText = "Saved ✅";
     }
 
     localStorage.setItem("favorites", JSON.stringify(favs));
-
     showFavs();
 }
-
 
 function showFavs(){
 
@@ -350,15 +345,12 @@ function showFavs(){
     }
 
     favs.forEach(tool=>{
-        let item = document.createElement("p");
+        let item = document.createElement("li");
         item.innerText = "⭐ " + tool;
         favBox.appendChild(item);
     });
-
 }
 
-
-// ⭐ Load favorites when page opens
 window.onload = showFavs;
 
 </script>
