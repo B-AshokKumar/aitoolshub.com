@@ -107,7 +107,23 @@ function showFavs(){
   });
 }
 
-showFavs();
+function restoreStars(){
+ let favs = JSON.parse(localStorage.getItem("favorites")) || [];
+
+ document.querySelectorAll("button").forEach(btn=>{
+   let tool = btn.getAttribute("onclick")?.match(/'(.*?)'/);
+
+   if(tool && favs.includes(tool[1])){
+      btn.style.color="gold";
+   }
+ });
+}
+
+/* ⭐ LOAD WHEN PAGE OPENS */
+window.onload=function(){
+ showFavs();
+ restoreStars();
+};
 
 </script>
  <p style="font-size:14px;color:#666;">
