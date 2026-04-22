@@ -147,6 +147,14 @@ function generatePrompt() {
 <li>Describe lighting and mood.</li>
 <li>Experiment with variations.</li>
 </ul>
+<h2>⭐ My Favorite Tools</h2>
+
+<div id="favorites">
+    <p>No favorites added yet.</p>
+</div>
+
+<h3>Explore Popular AI Platforms</h3>
+<h2>AI Tools</h2>
 <h3>Explore Popular AI Platforms</h3>
 <h2>AI Tools</h2>
 
@@ -386,5 +394,24 @@ We are not affiliated with third-party services.
   <a href="README.md">About Us</a>
 </footer>
 
+    <script>
+function saveFav(tool, btn) {
+
+    let favBox = document.getElementById("favorites");
+
+    // remove default message
+    if (favBox.innerHTML.includes("No favorites")) {
+        favBox.innerHTML = "";
+    }
+
+    // create favorite item
+    let item = document.createElement("p");
+    item.innerText = "⭐ " + tool;
+
+    favBox.appendChild(item);
+
+    btn.innerText = "Saved ✅";
+}
+</script>
 </body>
 </html>
