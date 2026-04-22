@@ -116,28 +116,10 @@ function saveFav(tool, btn){
 function showFavs(){
   let favs = JSON.parse(localStorage.getItem("favorites")) || [];
   let list = document.getElementById("favorites");
-
   list.innerHTML = "";
 
   favs.forEach(f=>{
-    list.innerHTML += "<li>⭐ " + f + "</li>";
-  });
-
-  restoreStars();
-}
-
-function restoreStars(){
-  let favs = JSON.parse(localStorage.getItem("favorites")) || [];
-  let buttons = document.querySelectorAll(".fav-btn");
-
-  buttons.forEach(btn=>{
-      let tool = btn.getAttribute("data-tool");
-
-      if(favs.includes(tool)){
-          btn.style.color = "gold";
-      } else {
-          btn.style.color = "gray";
-      }
+    list.innerHTML += "<li>⭐ "+f+"</li>";
   });
 }
 
