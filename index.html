@@ -395,25 +395,51 @@ We are not affiliated with third-party services.
   <a href="README.md">About Us</a>
 </footer>
 
-    <script>
-function saveFav(tool, btn) {
+    
+<script>
 
-    let favBox = document.getElementById("favorites");
+function saveFav(tool, btn){
 
-    // remove default message
-    if (favBox.innerHTML.includes("No favorites")) {
-        favBox.innerHTML = "";
+    let favs = JSON.parse(localStorage.getItem("favorites")) || [];
+
+    let index = favs.indexOf(tool);
+
+    // REMOVE favorite
+    if(index > -1){
+        favs.splice(index,1);
+        btn.innerText = "⭐";
+    }
+    // ADD favorite
+    else{
+        favs.push(tool);
+        btn.innerText = "Saved ✅";
     }
 
-    // create favorite item
-    let item = document.createElement("p");
-    item.innerText = "⭐ " + tool;
-
-    favBox.appendChild(item);
-
-    btn.innerText = "Saved ✅";
+    localStorage.setItem("favorites", JSON.stringify(favs));
+    showFavs();
 }
-</script>
 
+function showFavs(){
+
+    let favBox = document.getElementById("favorites");
+    let favs = JSON.parse(localStorage.getItem("favorites")) || [];
+
+    favBox.innerHTML = "";
+
+    if(favs.length === 0){
+        favBox.innerHTML = "<p>No favorites added yet.</p>";
+        return;
+    }
+
+    favs.forEach(tool=>{
+        let li = document.createElement("li");
+        li.innerText = "⭐ " + tool;
+        favBox.appendChild(li);
+    });
+}
+
+window.onload = showFavs;
+
+</script>
 </body>
 </html>
