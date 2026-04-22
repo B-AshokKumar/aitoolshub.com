@@ -104,7 +104,7 @@ function saveFav(tool, btn){
   if(favs.includes(tool)){
       favs = favs.filter(f => f !== tool);
       btn.style.color = "gray";
-  }else{
+  } else {
       favs.push(tool);
       btn.style.color = "gold";
   }
