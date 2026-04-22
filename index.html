@@ -113,24 +113,20 @@ function saveFav(tool, btn){
   showFavs();
 }
 
-
-// ⭐ Show Favorite List
 function showFavs(){
   let favs = JSON.parse(localStorage.getItem("favorites")) || [];
   let list = document.getElementById("favorites");
+
   list.innerHTML = "";
 
   favs.forEach(f=>{
-    list.innerHTML += "<li>⭐ "+f+"</li>";
+    list.innerHTML += "<li>⭐ " + f + "</li>";
   });
 
   restoreStars();
 }
 
-
-// ⭐ Restore star colors after reload
 function restoreStars(){
-
   let favs = JSON.parse(localStorage.getItem("favorites")) || [];
   let buttons = document.querySelectorAll(".fav-btn");
 
