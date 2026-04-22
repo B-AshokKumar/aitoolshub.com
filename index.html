@@ -126,10 +126,13 @@ function showFavs(){
       list.innerHTML += "<li>⭐ "+f+"</li>";
   });
 
-  // Update star colors on load
+  // Restore star color after refresh
   document.querySelectorAll("button").forEach(btn=>{
-      let tool = btn.getAttribute("onclick")?.match(/'(.*?)'/)?.[1];
-      if(tool && favs.includes(tool)){
+      let text = btn.getAttribute("onclick");
+      if(!text) return;
+
+      let match = text.match(/'(.*?)'/);
+      if(match && favs.includes(match[1])){
           btn.style.color = "gold";
       }
   });
