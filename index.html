@@ -318,12 +318,16 @@ function saveFav(tool, btn){
 
     let favs = JSON.parse(localStorage.getItem("favorites")) || [];
 
-    let index = favs.indexOf(tool);
+    // CHECK if already exists
+    if(favs.includes(tool)){
 
-    if(index > -1){
-        favs.splice(index,1);
+        // REMOVE
+        favs = favs.filter(f => f !== tool);
         btn.innerText = "⭐";
+
     } else {
+
+        // ADD
         favs.push(tool);
         btn.innerText = "Saved ✅";
     }
@@ -345,9 +349,27 @@ function showFavs(){
     }
 
     favs.forEach(tool=>{
-        let item = document.createElement("li");
-        item.innerText = "⭐ " + tool;
-        favBox.appendChild(item);
+        let li = document.createElement("li");
+        li.innerText = "⭐ " + tool;
+        favBox.appendChild(li);
+    });
+
+    updateButtons();
+}
+
+function updateButtons(){
+
+    let favs = JSON.parse(localStorage.getItem("favorites")) || [];
+    let buttons = document.querySelectorAll("button[data-tool]");
+
+    buttons.forEach(btn=>{
+        let tool = btn.getAttribute("data-tool");
+
+        if(favs.includes(tool)){
+            btn.innerText = "Saved ✅";
+        } else {
+            btn.innerText = "⭐";
+        }
     });
 }
 
