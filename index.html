@@ -192,18 +192,27 @@ display:grid;
 grid-template-columns:repeat(2,1fr);
 gap:20px;
 }
-
 .category-card{
 background:#cfd6e6;
-padding:35px 20px;
+padding:18px 12px;   /* smaller padding */
 border-radius:20px;
 text-align:center;
-font-size:22px;
+font-size:18px;      /* smaller text */
 font-weight:600;
 cursor:pointer;
 transition:0.3s;
+
+height:130px;        /* fixed small height */
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 }
 
+.category-card span{
+font-size:28px;
+margin-bottom:6px;
+}
 .category-card:hover{
 transform:scale(1.05);
 background:#bfc7db;
