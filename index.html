@@ -281,178 +281,233 @@ Generate ready-to-use AI prompts instantly.
 <!-- FAVORITE TOOLS -->
 
 <div class="section">
-<h2>⭐ My Favorite Tools</h2>
+  
+<h3>⭐ My Favorite Tools</h3>
+<ul id="favorites"></ul>
+<h3>Explore Popular AI Platforms</h3>
+<h2>AI Tools</h2>
 
-<div class="tool">
-<a href="#">ChatGPT Assistant</a>
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
+<a href="https://chat.openai.com" target="_blank">
+🤖 ChatGPT Assistant
+</a>
+<button onclick="saveFav('ChatGPT Assistant', this)">⭐</button>
+<br><br>
 
-<div class="tool">
-<a href="#">AI Image Generator</a>
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
+<a href="https://gemini.google.com" target="_blank">
+✨ Google Gemini
+</a>
+<button onclick="saveFav('Google Gemini', this)">⭐</button>
+<br><br>
 
-<div class="tool">
-<a href="#">AI Video Generator</a>
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
+<a href="https://www.canva.com/ai-image-generator/" target="_blank">
+🎨 AI Image Generator
+</a>
+<button onclick="saveFav('AI Image Generator', this)">⭐</button>
+<br><br>
 
-</div>
-
-<!-- AI CATEGORIES -->
-
-<!-- AI TOOLS CATEGORIES -->
-
-<div class="category-container">
-
-<h2 class="category-title">
-🧠 AI Tools Categories
-</h2>
-
-<div class="category-grid">
-
-<div class="category-card">
-🤖 AI Tools
-</div>
-
-<div class="category-card">
-💻 Coding AI Tools
-</div>
-
-<div class="category-card">
-📈 Marketing AI Tools
-</div>
-
-<div class="category-card">
-🎙 Voice AI Tools
-</div>
-
-<div class="category-card">
-🎬 Video AI Tools
-</div>
-
-</div>
-
-</div>
-</div>
-</div>
-
-</div>
-
-<!-- AI TOOLS -->
-
-<div class="section">
-<h2>🤖 AI Tools</h2>
-
-<div class="tool">
-<a href="https://chat.openai.com" target="_blank">ChatGPT</a>
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
-
-<div class="tool">
-<a href="https://gemini.google.com" target="_blank">Google Gemini</a>
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
-
-<div class="tool">
-<a href="https://www.canva.com/ai-image-generator" target="_blank">Canva AI</a>
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
-</div>
-<!-- CODING TOOLS -->
-
-<div class="section">
-
+<a href="https://runwayml.com" target="_blank">
+🎬 AI Video Generator
+</a>
+<button onclick="saveFav('AI Video Generator', this)">⭐</button>
+<br><br>
 <h2>💻 Coding AI Tools</h2>
 
-<div class="tool">
-<a href="https://github.com/features/copilot" target="_blank">GitHub Copilot</a>
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
+<a href="https://chat.openai.com" target="_blank">
+🤖 ChatGPT Coding Assistant
+</a>
+<button onclick="saveFav('ChatGPT Coding Assistant', this)">⭐</button>
+<br><br>
 
-<div class="tool">
-<a href="https://replit.com" target="_blank">Replit AI</a>
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
+<a href="https://github.com/features/copilot" target="_blank">
+💻 GitHub Copilot
+</a>
+<button onclick="saveFav('GitHub Copilot', this)">⭐</button>
+<br><br>
 
-<div class="tool">
-<a href="https://codeium.com" target="_blank">Codeium</a>
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
+<a href="https://replit.com" target="_blank">
+⚡ Replit AI
+</a>
+<button onclick="saveFav('Replit AI', this)">⭐</button>
+<br><br>
 
-</div>
-<!-- MARKETING AI -->
+<a href="https://www.tabnine.com" target="_blank">
+🧠 Tabnine AI
+</a>
+<button onclick="saveFav('Tabnine AI', this)">⭐</button>
+<br><br>
 
-<div class="section">
+<a href="https://codeium.com" target="_blank">
+🚀 Codeium AI
+</a>
+<button onclick="saveFav('Codeium AI', this)">⭐</button>
+<br><br>
 <h2>📈 Marketing AI Tools</h2>
 
-<div class="tool">
-<a href="https://writesonic.com" target="_blank">Writesonic</a>
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
+<a href="https://copy.ai" target="_blank">
+✍️ Copy.ai
+</a>
+<button onclick="saveFav('Copy.ai', this)">⭐</button>
+<br><br>
 
-<div class="tool">
-<a href="https://surferseo.com" target="_blank">Surfer SEO</a>
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
+<a href="https://www.jasper.ai" target="_blank">
+🧠 Jasper AI
+</a>
+<button onclick="saveFav('Jasper AI', this)">⭐</button>
+<br><br>
 
-<div class="tool">
-<a href="https://www.canva.com/magic-write/" target="_blank">Canva Magic Write</a>
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
+<a href="https://writesonic.com" target="_blank">
+⚡ Writesonic
+</a>
+<button onclick="saveFav('Writesonic', this)">⭐</button>
+<br><br>
 
-</div>
+<a href="https://surferseo.com" target="_blank">
+📊 Surfer SEO
+</a>
+<button onclick="saveFav('Surfer SEO', this)">⭐</button>
+<br><br>
 
-<!-- VOICE AI -->
-
-<div class="section">
+<a href="https://www.canva.com" target="_blank">
+🎨 Canva Magic Write
+</a>
+<button onclick="saveFav('Canva Magic Write', this)">⭐</button>
+<br><br>
 <h2>🎙 Voice AI Tools</h2>
 
-<div class="tool">
-<a href="https://murf.ai" target="_blank">Murf AI</a>
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
+<a href="https://elevenlabs.io" target="_blank">
+🎤 ElevenLabs Voice AI
+</a>
+<button onclick="saveFav('ElevenLabs Voice AI', this)">⭐</button>
+<br><br>
 
-<div class="tool">
-<a href="https://play.ht" target="_blank">PlayHT</a>
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
+<a href="https://murf.ai" target="_blank">
+🗣 Murf AI
+</a>
+<button onclick="saveFav('Murf AI', this)">⭐</button>
+<br><br>
 
-<div class="tool">
-<a href="https://speechify.com" target="_blank">Speechify</a>
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
+<a href="https://play.ht" target="_blank">
+🔊 PlayHT
+</a>
+<button onclick="saveFav('PlayHT', this)">⭐</button>
+<br><br>
 
-<div class="tool">
-<a href="https://www.descript.com" target="_blank">Descript</a>
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
+<a href="https://speechify.com" target="_blank">
+📢 Speechify
+</a>
+<button onclick="saveFav('Speechify', this)">⭐</button>
+<br><br>
 
-<!-- VIDEO AI -->
-
-<div class="section">
+<a href="https://descript.com" target="_blank">
+🎬 Descript
+</a>
+<button onclick="saveFav('Descript', this)">⭐</button>
+<br><br>
 <h2>🎬 Video AI Tools</h2>
 
-<div class="tool">
 <a href="https://pictory.ai" target="_blank">Pictory AI</a>
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
+<button onclick="saveFav('Pictory AI', this)">⭐</button>
+<br><br>
 
-<div class="tool">
+<a href="https://runwayml.com" target="_blank">Runway ML</a>
+<button onclick="saveFav('Runway ML', this)">⭐</button>
+<br><br>
+
 <a href="https://invideo.io" target="_blank">InVideo AI</a>
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
+<button onclick="saveFav('InVideo AI', this)">⭐</button>
+<br><br>
 
-<div class="tool">
 <a href="https://lumen5.com" target="_blank">Lumen5</a>
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
+<button onclick="saveFav('Lumen5', this)">⭐</button>
+<br><br>
 
-<div class="tool">
 <a href="https://www.synthesia.io" target="_blank">Synthesia AI</a>
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
+<button onclick="saveFav('Synthesia AI', this)">⭐</button>
+<br><br>
+<h2>🔥 Trending AI Tools</h2>
+
+<a href="https://chat.openai.com" target="_blank">ChatGPT</a>
+<button onclick="saveFav('ChatGPT', this)">⭐</button>
+<br><br>
+
+<a href="https://claude.ai" target="_blank">Claude AI</a>
+<button onclick="saveFav('Claude AI', this)">⭐</button>
+<br><br>
+
+<a href="https://gemini.google.com" target="_blank">Google Gemini</a>
+<button onclick="saveFav('Google Gemini', this)">⭐</button>
+<br><br>
+
+<a href="https://perplexity.ai" target="_blank">Perplexity AI</a>
+<button onclick="saveFav('Perplexity AI', this)">⭐</button>
+<br><br>
+
+<a href="https://midjourney.com" target="_blank">Midjourney AI</a>
+<button onclick="saveFav('Midjourney AI', this)">⭐</button>
+<br><br>
+
+<script>
+
+function saveFav(tool, btn){
+
+    let favs = JSON.parse(localStorage.getItem("favorites")) || [];
+
+    // CHECK if already exists
+    if(favs.includes(tool)){
+
+        // REMOVE
+        favs = favs.filter(f => f !== tool);
+        btn.innerText = "⭐";
+
+    } else {
+
+        // ADD
+        favs.push(tool);
+        btn.innerText = "Saved ✅";
+    }
+
+    localStorage.setItem("favorites", JSON.stringify(favs));
+    showFavs();
+}
+
+function showFavs(){
+
+    let favBox = document.getElementById("favorites");
+    let favs = JSON.parse(localStorage.getItem("favorites")) || [];
+
+    favBox.innerHTML = "";
+
+    if(favs.length === 0){
+        favBox.innerHTML = "<p>No favorites added yet.</p>";
+        return;
+    }
+
+    favs.forEach(tool=>{
+        let li = document.createElement("li");
+        li.innerText = "⭐ " + tool;
+        favBox.appendChild(li);
+    });
+
+    updateButtons();
+}
+
+function updateButtons(){
+
+    let favs = JSON.parse(localStorage.getItem("favorites")) || [];
+    let buttons = document.querySelectorAll("button[data-tool]");
+
+    buttons.forEach(btn=>{
+        let tool = btn.getAttribute("data-tool");
+
+        if(favs.includes(tool)){
+            btn.innerText = "Saved ✅";
+        } else {
+            btn.innerText = "⭐";
+        }
+    });
+}
+
+window.onload = showFavs;9
 
 </div>
 <!-- LEGAL INFO -->
@@ -503,6 +558,51 @@ document.getElementById("result").innerText=
 " with professional lighting, realistic textures, 4K quality.";
 }
 
+<script>
+
+function saveFav(tool, btn){
+
+    let favs = JSON.parse(localStorage.getItem("favorites")) || [];
+
+    let index = favs.indexOf(tool);
+
+    // REMOVE favorite
+    if(index > -1){
+        favs.splice(index,1);
+        btn.innerText = "⭐";
+    }
+    // ADD favorite
+    else{
+        favs.push(tool);
+        btn.innerText = "Saved ✅";
+    }
+
+    localStorage.setItem("favorites", JSON.stringify(favs));
+    showFavs();
+}
+
+function showFavs(){
+
+    let favBox = document.getElementById("favorites");
+    let favs = JSON.parse(localStorage.getItem("favorites")) || [];
+
+    favBox.innerHTML = "";
+
+    if(favs.length === 0){
+        favBox.innerHTML = "<p>No favorites added yet.</p>";
+        return;
+    }
+
+    favs.forEach(tool=>{
+        let li = document.createElement("li");
+        li.innerText = "⭐ " + tool;
+        favBox.appendChild(li);
+    });
+}
+
+window.onload = showFavs;
+
+</script>
 </script>
 
 </body>
