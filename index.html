@@ -1,445 +1,509 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<style>
-/* 🌈 APP BACKGROUND */
-body{
-    margin:0;
-    padding:16px;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background:#f1f3f4;
-    color:#202124;
-}
-
-/* 🔝 APP HEADER */
-.header{
-    background:#ffffff;
-    padding:15px;
-    text-align:center;
-    font-size:22px;
-    font-weight:bold;
-    box-shadow:0 2px 6px rgba(0,0,0,0.1);
-    position:sticky;
-    top:0;
-}
-
-/* 📦 SECTION CARD */
-.section{
-    background:white;
-    margin:15px;
-    padding:15px;
-    border-radius:12px;
-    box-shadow:0 3px 8px rgba(0,0,0,0.1);
-}
-
-/* 🧠 SECTION TITLE */
-h2{
-    margin-top:0;
-    color:#1a73e8;
-}
-
-/* 🔘 TOOL BUTTON GRID */
-.tool-buttons{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
-}
-
-/* 🚀 PLAY STORE STYLE BUTTON */
-.btn{
-    display:block;
-    text-align:center;
-    padding:12px;
-    background:#e8f0fe;
-    color:#1a73e8;
-    border-radius:10px;
-    font-weight:600;
-    text-decoration:none;
-    transition:0.3s;
-}
-
-.btn:hover{
-    background:#1a73e8;
-    color:white;
-    transform:scale(1.05);
-}
-
-.dark-mode{
-    background:#121212;
-    color:#ffffff;
-}
-
-.dark-mode a{
-    color:#8ab4f8;
-}
-
-.dark-mode .header{
-    background:#1f1f1f;
-}
-
-.dark-mode .section{
-    background:#1e1e1e;
-}
-
-.dark-mode button{
-    background:#2c2c2c;
-    color:white;
-    border:1px solid #444;
-}
-
-</style>
-<base target="_blank">
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>AI Tools Hub</title>
-<base href="https://b-ashokkumar.github.io/aitoolshub.com/">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:Poppins;
+background:#f2f4f7;
+transition:0.4s;
+}
+
+/* HEADER */
+
+.header{
+background:#111;
+color:white;
+padding:18px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:22px;
+font-weight:600;
+}
+
+.dark-btn{
+background:#222;
+color:white;
+border:none;
+padding:8px 12px;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* TITLE */
+
+.title-card{
+background:white;
+margin:20px;
+padding:18px;
+text-align:center;
+border-radius:14px;
+box-shadow:0 5px 12px rgba(0,0,0,0.1);
+font-size:26px;
+font-weight:600;
+}
+
+/* SECTION */
+
+.section{
+background:white;
+margin:20px;
+padding:20px;
+border-radius:16px;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.section h2{
+color:#2d74d7;
+margin-bottom:15px;
+}
+
+/* TOOL BUTTON */
+
+.tool{
+background:#e7edf7;
+padding:15px;
+margin:12px 0;
+border-radius:12px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+transition:0.3s;
+cursor:pointer;
+}
+
+.tool:hover{
+transform:scale(1.02);
+background:#d9e5f9;
+}
+
+.tool a{
+text-decoration:none;
+color:#2d74d7;
+font-size:18px;
+font-weight:600;
+}
+
+/* CATEGORY GRID */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+gap:15px;
+}
+
+.category{
+background:#e8efff;
+padding:18px;
+text-align:center;
+border-radius:12px;
+font-weight:600;
+cursor:pointer;
+}
+
+.category:hover{
+background:#d2e1ff;
+}
+
+/* STAR */
+
+.star{
+font-size:22px;
+cursor:pointer;
+}
+
+/* FOOTER */
+.footer{
+text-align:center;
+padding:20px;
+color:#777;
+}
+
+/* ---------- PROMPT HEADER ---------- */
+
+.prompt-header{
+background:white;
+margin:20px;
+padding:25px;
+border-radius:16px;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+text-align:center;
+}
+
+.prompt-title{
+font-size:32px;
+font-weight:700;
+color:#2d74d7;
+margin-bottom:10px;
+}
+
+.prompt-sub{
+font-size:18px;
+color:#666;
+}
+
+/* DARK MODE */
+.dark{
+background:#121212;
+color:white;
+}
+.dark .section,
+.dark .title-card{
+background:#1e1e1e;
+}
+
+.dark .tool{
+background:#2b2b2b;
+}
+/* ---------- CATEGORY GRID ---------- */
+
+/* ---------- AI TOOLS CATEGORIES ---------- */
+
+.category-container{
+background:#f5f6f8;
+margin:20px;
+padding:30px;
+border-radius:20px;
+}
+
+.category-title{
+text-align:center;
+font-size:32px;
+font-weight:700;
+color:#2d74d7;
+margin-bottom:30px;
+}
+
+.category-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:20px;
+}
+
+.category-card{
+background:#cfd6e6;
+padding:35px 20px;
+border-radius:20px;
+text-align:center;
+font-size:22px;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+}
+
+.category-card:hover{
+transform:scale(1.05);
+background:#bfc7db;
+}
+
+</style>
+
 </head>
 
-<script>
-function toggleDarkMode(){
-    document.body.classList.toggle("dark-mode");
-}
-</script>
 <body>
+
 <div class="header">
 AI Tools Hub
-<button onclick="toggleDarkMode()">🌙</button>
+<button class="dark-btn" onclick="toggleDark()">🌙</button>
 </div>
-<h1>Welcome to My AI Tools Aggregate App</h1>
+
+<div class="title-card">
+AI Tools Hub
+</div>
+
+<!-- HOME -->
+
+<div class="section">
+<h2>Welcome to My AI Tools Aggregate App</h2>
+
 <p>This app provides quick access to popular AI tools and resources in one place.</p>
-<h2>✨ AI Prompt Generator</h2>
 
-<p style="color:#555; margin-bottom:10px;
-font-size:14px;">
+<h3>✨ AI Prompt Generator</h3>
+
+<div class="prompt-header">
+
+<div class="prompt-title">
+✨ AI Prompt Generator
+</div>
+
+<div class="prompt-sub">
 Generate ready-to-use AI prompts instantly.
-</p>
-<input type="text" id="topic" placeholder="Enter topic (example: cat, logo, car)">
-<br><br>
+</div>
 
+</div>
+<input id="topic" placeholder="Enter topic (example: logo, cat)">
+<br><br>
 <button onclick="generatePrompt()">Generate Prompt</button>
 
-<p id="result" style="
-background:#f3f3f3;
-padding:10px;
-border-radius:8px;
-margin-top:10px;
-font-weight:bold;">
-</p>
+<p id="result"></p>
 
-<script>
-function generatePrompt() {
-  var topic = document.getElementById("topic").value;
-
-  var prompt =
-  "Create a high quality realistic image of " +
-  topic +
-  " with cinematic lighting, ultra detailed, 4K resolution.";
-
-  document.getElementById("result").innerText = prompt;
-}
-</script>
-<h2>🧠 AI Tips</h2>
+<h3>🧠 AI Tips</h3>
 <ul>
-<li>Use detailed prompts.</li>
-<li>Add style like cinematic or realistic.</li>
-<li>Describe lighting and mood.</li>
-<li>Experiment with variations.</li>
+<li>Use detailed prompts</li>
+<li>Add cinematic or realistic style</li>
+<li>Describe lighting & mood</li>
+<li>Experiment variations</li>
 </ul>
+</div>
 
-<h3>⭐ My Favorite Tools</h3>
-<ul id="favorites"></ul>
-<h3>Explore Popular AI Platforms</h3>
-<h2>AI Tools</h2>
+<!-- TRENDING TOOLS -->
 
-<a href="https://chat.openai.com" target="_blank">
-🤖 ChatGPT Assistant
-</a>
-<button onclick="saveFav('ChatGPT Assistant', this)">⭐</button>
-<br><br>
-
-<a href="https://gemini.google.com" target="_blank">
-✨ Google Gemini
-</a>
-<button onclick="saveFav('Google Gemini', this)">⭐</button>
-<br><br>
-
-<a href="https://www.canva.com/ai-image-generator/" target="_blank">
-🎨 AI Image Generator
-</a>
-<button onclick="saveFav('AI Image Generator', this)">⭐</button>
-<br><br>
-
-<a href="https://runwayml.com" target="_blank">
-🎬 AI Video Generator
-</a>
-<button onclick="saveFav('AI Video Generator', this)">⭐</button>
-<br><br>
-<h2>💻 Coding AI Tools</h2>
-
-<a href="https://chat.openai.com" target="_blank">
-🤖 ChatGPT Coding Assistant
-</a>
-<button onclick="saveFav('ChatGPT Coding Assistant', this)">⭐</button>
-<br><br>
-
-<a href="https://github.com/features/copilot" target="_blank">
-💻 GitHub Copilot
-</a>
-<button onclick="saveFav('GitHub Copilot', this)">⭐</button>
-<br><br>
-
-<a href="https://replit.com" target="_blank">
-⚡ Replit AI
-</a>
-<button onclick="saveFav('Replit AI', this)">⭐</button>
-<br><br>
-
-<a href="https://www.tabnine.com" target="_blank">
-🧠 Tabnine AI
-</a>
-<button onclick="saveFav('Tabnine AI', this)">⭐</button>
-<br><br>
-
-<a href="https://codeium.com" target="_blank">
-🚀 Codeium AI
-</a>
-<button onclick="saveFav('Codeium AI', this)">⭐</button>
-<br><br>
-<h2>📈 Marketing AI Tools</h2>
-
-<a href="https://copy.ai" target="_blank">
-✍️ Copy.ai
-</a>
-<button onclick="saveFav('Copy.ai', this)">⭐</button>
-<br><br>
-
-<a href="https://www.jasper.ai" target="_blank">
-🧠 Jasper AI
-</a>
-<button onclick="saveFav('Jasper AI', this)">⭐</button>
-<br><br>
-
-<a href="https://writesonic.com" target="_blank">
-⚡ Writesonic
-</a>
-<button onclick="saveFav('Writesonic', this)">⭐</button>
-<br><br>
-
-<a href="https://surferseo.com" target="_blank">
-📊 Surfer SEO
-</a>
-<button onclick="saveFav('Surfer SEO', this)">⭐</button>
-<br><br>
-
-<a href="https://www.canva.com" target="_blank">
-🎨 Canva Magic Write
-</a>
-<button onclick="saveFav('Canva Magic Write', this)">⭐</button>
-<br><br>
-<h2>🎙 Voice AI Tools</h2>
-
-<a href="https://elevenlabs.io" target="_blank">
-🎤 ElevenLabs Voice AI
-</a>
-<button onclick="saveFav('ElevenLabs Voice AI', this)">⭐</button>
-<br><br>
-
-<a href="https://murf.ai" target="_blank">
-🗣 Murf AI
-</a>
-<button onclick="saveFav('Murf AI', this)">⭐</button>
-<br><br>
-
-<a href="https://play.ht" target="_blank">
-🔊 PlayHT
-</a>
-<button onclick="saveFav('PlayHT', this)">⭐</button>
-<br><br>
-
-<a href="https://speechify.com" target="_blank">
-📢 Speechify
-</a>
-<button onclick="saveFav('Speechify', this)">⭐</button>
-<br><br>
-
-<a href="https://descript.com" target="_blank">
-🎬 Descript
-</a>
-<button onclick="saveFav('Descript', this)">⭐</button>
-<br><br>
-<h2>🎬 Video AI Tools</h2>
-
-<a href="https://pictory.ai" target="_blank">Pictory AI</a>
-<button onclick="saveFav('Pictory AI', this)">⭐</button>
-<br><br>
-
-<a href="https://runwayml.com" target="_blank">Runway ML</a>
-<button onclick="saveFav('Runway ML', this)">⭐</button>
-<br><br>
-
-<a href="https://invideo.io" target="_blank">InVideo AI</a>
-<button onclick="saveFav('InVideo AI', this)">⭐</button>
-<br><br>
-
-<a href="https://lumen5.com" target="_blank">Lumen5</a>
-<button onclick="saveFav('Lumen5', this)">⭐</button>
-<br><br>
-
-<a href="https://www.synthesia.io" target="_blank">Synthesia AI</a>
-<button onclick="saveFav('Synthesia AI', this)">⭐</button>
-<br><br>
+<div class="section">
 <h2>🔥 Trending AI Tools</h2>
 
+<div class="tool">
 <a href="https://chat.openai.com" target="_blank">ChatGPT</a>
-<button onclick="saveFav('ChatGPT', this)">⭐</button>
-<br><br>
+<span class="star" onclick="fav(this)">⭐</span>
+</div>
 
-<a href="https://claude.ai" target="_blank">Claude AI</a>
-<button onclick="saveFav('Claude AI', this)">⭐</button>
-<br><br>
-
+<div class="tool">
 <a href="https://gemini.google.com" target="_blank">Google Gemini</a>
-<button onclick="saveFav('Google Gemini', this)">⭐</button>
-<br><br>
+<span class="star" onclick="fav(this)">⭐</span>
+</div>
 
-<a href="https://perplexity.ai" target="_blank">Perplexity AI</a>
-<button onclick="saveFav('Perplexity AI', this)">⭐</button>
-<br><br>
+<div class="tool">
+<a href="https://runwayml.com" target="_blank">Runway ML</a>
+<span class="star" onclick="fav(this)">⭐</span>
+</div>
 
-<a href="https://midjourney.com" target="_blank">Midjourney AI</a>
-<button onclick="saveFav('Midjourney AI', this)">⭐</button>
-<br><br>
+</div>
 
-<script>
+<!-- FAVORITE TOOLS -->
 
-function saveFav(tool, btn){
+<div class="section">
+<h2>⭐ My Favorite Tools</h2>
 
-    let favs = JSON.parse(localStorage.getItem("favorites")) || [];
+<div class="tool">
+<a href="#">ChatGPT Assistant</a>
+<span class="star" onclick="fav(this)">⭐</span>
+</div>
 
-    // CHECK if already exists
-    if(favs.includes(tool)){
+<div class="tool">
+<a href="#">AI Image Generator</a>
+<span class="star" onclick="fav(this)">⭐</span>
+</div>
 
-        // REMOVE
-        favs = favs.filter(f => f !== tool);
-        btn.innerText = "⭐";
+<div class="tool">
+<a href="#">AI Video Generator</a>
+<span class="star" onclick="fav(this)">⭐</span>
+</div>
 
-    } else {
+</div>
 
-        // ADD
-        favs.push(tool);
-        btn.innerText = "Saved ✅";
-    }
+<!-- AI CATEGORIES -->
 
-    localStorage.setItem("favorites", JSON.stringify(favs));
-    showFavs();
-}
+<!-- AI TOOLS CATEGORIES -->
 
-function showFavs(){
+<div class="category-container">
 
-    let favBox = document.getElementById("favorites");
-    let favs = JSON.parse(localStorage.getItem("favorites")) || [];
+<h2 class="category-title">
+🧠 AI Tools Categories
+</h2>
 
-    favBox.innerHTML = "";
+<div class="category-grid">
 
-    if(favs.length === 0){
-        favBox.innerHTML = "<p>No favorites added yet.</p>";
-        return;
-    }
+<div class="category-card">
+🤖 AI Tools
+</div>
 
-    favs.forEach(tool=>{
-        let li = document.createElement("li");
-        li.innerText = "⭐ " + tool;
-        favBox.appendChild(li);
-    });
+<div class="category-card">
+💻 Coding AI Tools
+</div>
 
-    updateButtons();
-}
+<div class="category-card">
+📈 Marketing AI Tools
+</div>
 
-function updateButtons(){
+<div class="category-card">
+🎙 Voice AI Tools
+</div>
 
-    let favs = JSON.parse(localStorage.getItem("favorites")) || [];
-    let buttons = document.querySelectorAll("button[data-tool]");
+<div class="category-card">
+🎬 Video AI Tools
+</div>
 
-    buttons.forEach(btn=>{
-        let tool = btn.getAttribute("data-tool");
+</div>
 
-        if(favs.includes(tool)){
-            btn.innerText = "Saved ✅";
-        } else {
-            btn.innerText = "⭐";
-        }
-    });
-}
+</div>
+</div>
+</div>
 
-window.onload = showFavs;
+</div>
 
-</script>
- <p style="font-size:14px;color:#666;">
+<!-- AI TOOLS -->
+
+<div class="section">
+<h2>🤖 AI Tools</h2>
+
+<div class="tool">
+<a href="https://chat.openai.com" target="_blank">ChatGPT</a>
+<span class="star" onclick="fav(this)">⭐</span>
+</div>
+
+<div class="tool">
+<a href="https://gemini.google.com" target="_blank">Google Gemini</a>
+<span class="star" onclick="fav(this)">⭐</span>
+</div>
+
+<div class="tool">
+<a href="https://www.canva.com/ai-image-generator" target="_blank">Canva AI</a>
+<span class="star" onclick="fav(this)">⭐</span>
+</div>
+</div>
+<!-- CODING TOOLS -->
+
+<div class="section">
+
+<h2>💻 Coding AI Tools</h2>
+
+<div class="tool">
+<a href="https://github.com/features/copilot" target="_blank">GitHub Copilot</a>
+<span class="star" onclick="fav(this)">⭐</span>
+</div>
+
+<div class="tool">
+<a href="https://replit.com" target="_blank">Replit AI</a>
+<span class="star" onclick="fav(this)">⭐</span>
+</div>
+
+<div class="tool">
+<a href="https://codeium.com" target="_blank">Codeium</a>
+<span class="star" onclick="fav(this)">⭐</span>
+</div>
+
+</div>
+<!-- MARKETING AI -->
+
+<div class="section">
+<h2>📈 Marketing AI Tools</h2>
+
+<div class="tool">
+<a href="https://writesonic.com" target="_blank">Writesonic</a>
+<span class="star" onclick="fav(this)">⭐</span>
+</div>
+
+<div class="tool">
+<a href="https://surferseo.com" target="_blank">Surfer SEO</a>
+<span class="star" onclick="fav(this)">⭐</span>
+</div>
+
+<div class="tool">
+<a href="https://www.canva.com/magic-write/" target="_blank">Canva Magic Write</a>
+<span class="star" onclick="fav(this)">⭐</span>
+</div>
+
+</div>
+
+<!-- VOICE AI -->
+
+<div class="section">
+<h2>🎙 Voice AI Tools</h2>
+
+<div class="tool">
+<a href="https://murf.ai" target="_blank">Murf AI</a>
+<span class="star" onclick="fav(this)">⭐</span>
+</div>
+
+<div class="tool">
+<a href="https://play.ht" target="_blank">PlayHT</a>
+<span class="star" onclick="fav(this)">⭐</span>
+</div>
+
+<div class="tool">
+<a href="https://speechify.com" target="_blank">Speechify</a>
+<span class="star" onclick="fav(this)">⭐</span>
+</div>
+
+<div class="tool">
+<a href="https://www.descript.com" target="_blank">Descript</a>
+<span class="star" onclick="fav(this)">⭐</span>
+</div>
+
+<!-- VIDEO AI -->
+
+<div class="section">
+<h2>🎬 Video AI Tools</h2>
+
+<div class="tool">
+<a href="https://pictory.ai" target="_blank">Pictory AI</a>
+<span class="star" onclick="fav(this)">⭐</span>
+</div>
+
+<div class="tool">
+<a href="https://invideo.io" target="_blank">InVideo AI</a>
+<span class="star" onclick="fav(this)">⭐</span>
+</div>
+
+<div class="tool">
+<a href="https://lumen5.com" target="_blank">Lumen5</a>
+<span class="star" onclick="fav(this)">⭐</span>
+</div>
+
+<div class="tool">
+<a href="https://www.synthesia.io" target="_blank">Synthesia AI</a>
+<span class="star" onclick="fav(this)">⭐</span>
+</div>
+
+</div>
+<!-- LEGAL INFO -->
+
+<div class="section" style="text-align:center">
+
+<p style="color:#666;font-size:16px">
 Tools open in secure external pages. Login may be required.
 </p>
-  
-</div>
-</div>
 
-<hr>
-<p style="font-size:12px;text-align:center;">
-This app aggregates publicly available AI tools. 
+<hr style="margin:25px 0">
+
+<p style="max-width:600px;margin:auto;color:#666">
+This app aggregates publicly available AI tools.
 We are not affiliated with third-party services.
 </p>
-<footer style="text-align:center; margin-top:40px; padding:20px; background:#f2f2f2;">
-  <a href="privacy-policy.html">Privacy Policy</a> |
-  <a href="terms.html">Terms & Conditions</a> |
-  <a href="disclaimer.html">Disclaimer</a> |
-  <a href="README.md">About Us</a>
-</footer>
 
-    
+<br><br>
+
+<div style="font-size:18px;font-weight:600">
+
+<a href="#">Privacy Policy</a> |
+<a href="#">Terms & Conditions</a> |
+<a href="#">Disclaimer</a> |
+<a href="#">About Us</a>
+
+</div>
+
+</div>
+<div class="footer">
+AI Tools Hub © 2026 Public AI tools aggregator
+</div>
+
 <script>
 
-function saveFav(tool, btn){
-
-    let favs = JSON.parse(localStorage.getItem("favorites")) || [];
-
-    let index = favs.indexOf(tool);
-
-    // REMOVE favorite
-    if(index > -1){
-        favs.splice(index,1);
-        btn.innerText = "⭐";
-    }
-    // ADD favorite
-    else{
-        favs.push(tool);
-        btn.innerText = "Saved ✅";
-    }
-
-    localStorage.setItem("favorites", JSON.stringify(favs));
-    showFavs();
+function toggleDark(){
+document.body.classList.toggle("dark");
 }
 
-function showFavs(){
-
-    let favBox = document.getElementById("favorites");
-    let favs = JSON.parse(localStorage.getItem("favorites")) || [];
-
-    favBox.innerHTML = "";
-
-    if(favs.length === 0){
-        favBox.innerHTML = "<p>No favorites added yet.</p>";
-        return;
-    }
-
-    favs.forEach(tool=>{
-        let li = document.createElement("li");
-        li.innerText = "⭐ " + tool;
-        favBox.appendChild(li);
-    });
+function fav(el){
+el.innerHTML = el.innerHTML=="⭐" ? "🌟":"⭐";
 }
 
-window.onload = showFavs;
+function generatePrompt(){
+let topic=document.getElementById("topic").value;
+document.getElementById("result").innerText=
+"Create a highly detailed cinematic "+topic+
+" with professional lighting, realistic textures, 4K quality.";
+}
 
 </script>
+
 </body>
 </html>
