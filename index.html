@@ -280,8 +280,7 @@ Generate ready-to-use AI prompts instantly.
 
 <!-- FAVORITE TOOLS -->
 
-<div class="section">
-<div class="section">
+<div class="section"
 <h2>⭐ My Favorite Tools</h2>
 
 <div id="favoritesList"></div>
@@ -508,16 +507,14 @@ document.getElementById("result").innerText=
 </script>
 <script>
 
-function toggleDark(){
-document.body.classList.toggle("dark");
-}
+
 
 /* FAVORITES SYSTEM */
 
 function fav(el){
 
 let tool = el.parentElement;
-let name = tool.dataset.name;
+let name = tool.dataset.name || tool.querySelector("a").innerText;
 let link = tool.querySelector("a").href;
 let favorites = document.getElementById("favoritesList");
 
@@ -525,9 +522,7 @@ let favorites = document.getElementById("favoritesList");
 if(el.innerHTML=="🌟"){
 el.innerHTML="⭐";
 
-let items = favorites.querySelectorAll(".tool");
-
-items.forEach(item=>{
+favorites.querySelectorAll(".tool").forEach(item=>{
 if(item.dataset.name==name){
 item.remove();
 }
@@ -539,10 +534,9 @@ return;
 /* ADD FAVORITE */
 el.innerHTML="🌟";
 
-/* prevent duplicate */
 if(favorites.querySelector(`[data-name="${name}"]`)) return;
 
-let favTool = document.createElement("div");
+let favTool=document.createElement("div");
 favTool.className="tool";
 favTool.dataset.name=name;
 
@@ -554,29 +548,6 @@ favTool.innerHTML=`
 favorites.appendChild(favTool);
 }
 
-/* REMOVE FROM FAVORITE SECTION */
-
-function removeFavorite(el){
-
-let tool = el.parentElement;
-let name = tool.dataset.name;
-
-/* reset original star */
-document.querySelectorAll(".tool").forEach(t=>{
-if(t.dataset.name==name){
-let star=t.querySelector(".star");
-if(star) star.innerHTML="⭐";
-});
-
-tool.remove();
-}
-
-function generatePrompt(){
-let topic=document.getElementById("topic").value;
-document.getElementById("result").innerText=
-"Create a highly detailed cinematic "+topic+
-" with professional lighting, realistic textures, 4K quality.";
-}
 
 </script>
 </body>
