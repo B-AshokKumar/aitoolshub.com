@@ -585,16 +585,18 @@ favTool.innerHTML=`
 
 favorites.appendChild(favTool);
 
-addToFavorites(name);
+addToFavorites(name, link);
 }
 
-function addToFavorites(toolName){
+function addToFavorites(name, link){
 
 let favorites =
 JSON.parse(localStorage.getItem("favorites")) || [];
 
-if(!favorites.includes(toolName)){
-    favorites.push(toolName);
+let exists = favorites.find(tool => tool.name === name);
+
+if(!exists){
+    favorites.push({name:name, link:link});
 }
 
 localStorage.setItem("favorites", JSON.stringify(favorites));
@@ -612,14 +614,14 @@ document.getElementById("favorites");
 
 favoritesContainer.innerHTML = "";
 
-favorites.forEach(name => {
+favorites.forEach(tool => {
 
 let favTool = document.createElement("div");
 favTool.className = "tool";
-favTool.dataset.name = name;
+favTool.dataset.name = tool.name;
 
 favTool.innerHTML = `
-<a href="#">${name}</a>
+<a href="${tool.link}" target="_blank">${tool.name}</a>
 <span class="star">🌟</span>
 `;
 
