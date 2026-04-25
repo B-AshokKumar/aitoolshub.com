@@ -584,9 +584,54 @@ favTool.innerHTML=`
 `;
 
 favorites.appendChild(favTool);
+
+addToFavorites(name);
 }
 
+function addToFavorites(toolName){
 
+let favorites =
+JSON.parse(localStorage.getItem("favorites")) || [];
+
+if(!favorites.includes(toolName)){
+    favorites.push(toolName);
+}
+
+localStorage.setItem("favorites", JSON.stringify(favorites));
+
+showFavorites();
+}
+
+  function showFavorites(){
+
+let favorites =
+JSON.parse(localStorage.getItem("favorites")) || [];
+
+let favoritesContainer =
+document.getElementById("favorites");
+
+favoritesContainer.innerHTML = "";
+
+favorites.forEach(name => {
+
+let favTool = document.createElement("div");
+favTool.className = "tool";
+favTool.dataset.name = name;
+
+favTool.innerHTML = `
+<a href="#">${name}</a>
+<span class="star">🌟</span>
+`;
+
+favoritesContainer.appendChild(favTool);
+
+});
+
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    showFavorites();
+});
 </script>
 </body>
 </html>
