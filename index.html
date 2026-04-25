@@ -583,15 +583,14 @@ localStorage.setItem("favorites",JSON.stringify(favorites));
 showFavorites();
 }
 
-
 function showFavorites(){
 
-let container=document.getElementById("favoritesList");
+let container = document.getElementById("favoritesList");
 if(!container) return;
+
 let favorites =
 JSON.parse(localStorage.getItem("favorites")) || [];
 
-let container=document.getElementById("favoritesList");
 container.innerHTML="";
 
 favorites.forEach(tool=>{
@@ -609,7 +608,6 @@ container.appendChild(div);
 });
 
 /* Update stars everywhere */
-
 document.querySelectorAll(".tool").forEach(t=>{
 let star=t.querySelector(".star");
 if(!star) return;
@@ -617,8 +615,8 @@ if(!star) return;
 let exists=favorites.find(f=>f.name===t.dataset.name);
 star.innerHTML = exists ? "🌟" : "⭐";
 });
-}
 
+}
 
 function removeFavorite(el){
 
