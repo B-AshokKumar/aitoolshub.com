@@ -288,17 +288,17 @@ Generate ready-to-use AI prompts instantly.
 <div class="section">
 <h2>🔥 Trending AI Tools</h2>
 
-<div class="tool">
+<div class="tool" data-name="ChatGPT">
 <a href="https://chat.openai.com" target="_blank">ChatGPT</a>
 <span class="star" onclick="fav(this)">⭐</span>
 </div>
 
-<div class="tool">
+<div class="tool" data-name="Google Gemini">
 <a href="https://gemini.google.com" target="_blank">Google Gemini</a>
 <span class="star" onclick="fav(this)">⭐</span>
 </div>
 
-<div class="tool">
+<div class="tool" data-name="Runway ML">
 <a href="https://runwayml.com" target="_blank">Runway ML</a>
 <span class="star" onclick="fav(this)">⭐</span>
 </div>
@@ -547,6 +547,8 @@ document.getElementById("result").innerText=
 
 
 
+
+
 /* FAVORITES SYSTEM */
 
 function fav(el){
@@ -554,121 +556,87 @@ function fav(el){
 let tool = el.parentElement;
 let name = tool.dataset.name || tool.querySelector("a").innerText;
 let link = tool.querySelector("a").href;
-let favorites = document.getElementById("favoritesList");
+
+let favorites =
+JSON.parse(localStorage.getItem("favorites")) || [];
 
 /* REMOVE FAVORITE */
 if(el.innerHTML=="🌟"){
+
 el.innerHTML="⭐";
 
-favorites.querySelectorAll(".tool").forEach(item=>{
-if(item.dataset.name==name){
-item.remove();
-}
-});
+favorites = favorites.filter(t=>t.name!==name);
+localStorage.setItem("favorites",JSON.stringify(favorites));
 
+showFavorites();
 return;
 }
 
 /* ADD FAVORITE */
 el.innerHTML="🌟";
 
-if(favorites.querySelector(`[data-name="${name}"]`)) return;
-
-let favTool=document.createElement("div");
-favTool.className="tool";
-favTool.dataset.name=name;
-
-favTool.innerHTML=`
-<a href="${link}" target="_blank">${name}</a>
-<span class="star" onclick="removeFavorite(this)">🌟</span>
-`;
-
-favorites.appendChild(favTool);
-
-addToFavorites(name, link);
+if(!favorites.find(t=>t.name===name)){
+favorites.push({name,link});
+localStorage.setItem("favorites",JSON.stringify(favorites));
 }
-
-function addToFavorites(name, link){
-
-let favorites =
-JSON.parse(localStorage.getItem("favorites")) || [];
-
-let exists = favorites.find(tool => tool.name === name);
-
-if(!exists){
-    favorites.push({name:name, link:link});
-}
-
-localStorage.setItem("favorites", JSON.stringify(favorites));
 
 showFavorites();
 }
 
-  function showFavorites(){
+
+function showFavorites(){
 
 let favorites =
 JSON.parse(localStorage.getItem("favorites")) || [];
 
-let favoritesContainer =
-document.getElementById("favoritesList");
+let container=document.getElementById("favoritesList");
+container.innerHTML="";
 
-favoritesContainer.innerHTML = "";
+favorites.forEach(tool=>{
 
-favorites.forEach(tool => {
+let div=document.createElement("div");
+div.className="tool";
+div.dataset.name=tool.name;
 
-let favTool = document.createElement("div");
-favTool.className = "tool";
-favTool.dataset.name = tool.name;
-
-favTool.innerHTML = `
+div.innerHTML=`
 <a href="${tool.link}" target="_blank">${tool.name}</a>
-
 <span class="star" onclick="removeFavorite(this)">🌟</span>
 `;
 
-favoritesContainer.appendChild(favTool);
-  
-document.querySelectorAll(".tool").forEach(t=>{
-if(t.dataset.name === tool.name){
-let star=t.querySelector(".star");
-if(star) star.innerHTML="🌟";
-}
-});
+container.appendChild(div);
 });
 
+/* Update stars everywhere */
+
+document.querySelectorAll(".tool").forEach(t=>{
+let star=t.querySelector(".star");
+if(!star) return;
+
+let exists=favorites.find(f=>f.name===t.dataset.name);
+star.innerHTML = exists ? "🌟" : "⭐";
+});
 }
+
 
 function removeFavorite(el){
 
-let tool = el.parentElement;
-let name = tool.dataset.name;
-
-tool.remove();
-
-/* REMOVE FROM LOCALSTORAGE */
+let name=el.parentElement.dataset.name;
 
 let favorites =
 JSON.parse(localStorage.getItem("favorites")) || [];
 
-favorites = favorites.filter(t => t.name !== name);
+favorites=favorites.filter(t=>t.name!==name);
 
-localStorage.setItem("favorites", JSON.stringify(favorites));
+localStorage.setItem("favorites",JSON.stringify(favorites));
 
-/* change star back */
-document.querySelectorAll(".tool").forEach(t=>{
-if(t.dataset.name === name){
-let star=t.querySelector(".star");
-if(star) star.innerHTML="⭐";
-}
-});
-
+showFavorites();
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    showFavorites();
+
+document.addEventListener("DOMContentLoaded",showFavorites);
 });
 
-localStorage.removeItem("favorites");
+
 </script>
 </body>
 </html>
