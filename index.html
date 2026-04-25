@@ -265,6 +265,25 @@ white-space:nowrap;
 line-height:1.6;
 }
 
+/* PROMPT BUTTON */
+
+.prompt-btn{
+background:linear-gradient(135deg,#2d74d7,#5a9cff);
+color:white;
+border:none;
+padding:14px 24px;
+font-size:16px;
+font-weight:600;
+border-radius:10px;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+
+.prompt-btn:hover{
+transform:translateY(-2px);
+box-shadow:0 6px 14px rgba(0,0,0,0.2);
+}
 </style>
 
 </head>
@@ -302,8 +321,10 @@ Generate ready-to-use AI prompts instantly.
 </div>
 <input id="topic" placeholder="Enter topic (example: logo, cat)">
 <br><br>
-<button onclick="generatePrompt()">Generate Prompt</button>
 
+<button class="prompt-btn" onclick="generatePrompt()">
+✨ Generate Prompt
+</button>
 <p id="result"></p>
 
 <h3>🧠 AI Tips</h3>
