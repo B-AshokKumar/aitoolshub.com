@@ -311,6 +311,29 @@ background:#2b2b2b;
 color:white;
 border:2px solid #444;
 }
+
+/* PROMPT RESULT CARD */
+
+.prompt-result{
+margin-top:20px;
+padding:18px;
+border-radius:12px;
+background:#f4f7ff;
+border-left:5px solid #2d74d7;
+font-size:16px;
+line-height:1.6;
+color:#333;
+box-shadow:0 4px 10px rgba(0,0,0,0.08);
+min-height:40px;
+word-wrap:break-word;
+}
+
+/* dark mode */
+.dark .prompt-result{
+background:#1f1f1f;
+color:#fff;
+border-left:5px solid #4da3ff;
+}
 </style>
 
 </head>
@@ -354,8 +377,8 @@ placeholder="✨ Enter topic (Example: logo, cat)">
 <button class="prompt-btn" onclick="generatePrompt()">
 ✨ Generate Prompt
 </button>
-<p id="result"></p>
 
+<div id="result" class="prompt-result"></div>
 <h3>🧠 AI Tips</h3>
 <ul>
 <li>Use detailed prompts</li>
