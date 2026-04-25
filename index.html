@@ -586,6 +586,8 @@ showFavorites();
 
 function showFavorites(){
 
+let container=document.getElementById("favoritesList");
+if(!container) return;
 let favorites =
 JSON.parse(localStorage.getItem("favorites")) || [];
 
@@ -634,7 +636,6 @@ showFavorites();
 
 
 document.addEventListener("DOMContentLoaded",showFavorites);
-});
 
 
 </script>
