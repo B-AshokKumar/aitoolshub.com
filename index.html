@@ -673,16 +673,22 @@ document.body.classList.add("dark");
 
 function generatePrompt(){
 
-let topic=document.getElementById("topic").value;
+let topic=document.getElementById("topic").value.trim();
+
+if(topic===""){
+document.getElementById("result").innerText =
+"⚠ Please enter a topic first.";
+return;
+}
 
 document.getElementById("result").innerText =
-"Create a highly detailed cinematic "+topic+
-" with professional lighting, realistic textures, 4K quality.";
+"✨ Professional AI Prompt:\n\nCreate a highly detailed cinematic "+topic+
+" with professional lighting, realistic textures, ultra-realistic style, depth of field, dramatic composition, and 4K quality rendering.";
 
 }
 
 </script>
-<script>
+
 
 
 
