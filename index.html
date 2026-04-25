@@ -622,7 +622,8 @@ favTool.dataset.name = tool.name;
 
 favTool.innerHTML = `
 <a href="${tool.link}" target="_blank">${tool.name}</a>
-<span class="star">🌟</span>
+
+<span class="star" onclick="removeFavorite(this)">🌟</span>
 `;
 
 favoritesContainer.appendChild(favTool);
@@ -644,12 +645,22 @@ let name = tool.dataset.name;
 
 tool.remove();
 
+/* REMOVE FROM LOCALSTORAGE */
+
 let favorites =
 JSON.parse(localStorage.getItem("favorites")) || [];
 
-favorites = favorites.filter(item => item.name !== name);
+favorites = favorites.filter(t => t.name !== name);
 
 localStorage.setItem("favorites", JSON.stringify(favorites));
+
+/* change star back */
+document.querySelectorAll(".tool").forEach(t=>{
+if(t.dataset.name === name){
+let star=t.querySelector(".star");
+if(star) star.innerHTML="⭐";
+}
+});
 
 }
 
