@@ -941,32 +941,32 @@ behavior:"smooth"
 </script>
 
 <script>
-
-/* PROFESSIONAL BACK BUTTON HANDLER */
+let lastBackPress = 0;
 
 document.addEventListener("backbutton", function () {
 
-    // Close popup/modal if open
+    // Close popup if open
     const modal = document.querySelector(".modal, .popup, .overlay");
-
     if (modal && modal.style.display !== "none") {
         modal.style.display = "none";
         return;
     }
 
-    // Navigate back
+    // Go back in history
     if (window.history.length > 1) {
         window.history.back();
         return;
     }
 
-    // Exit Android App
-    if (navigator.app && navigator.app.exitApp) {
-        navigator.app.exitApp();
+    // Double press to exit (Play Store friendly)
+    if (Date.now() - lastBackPress < 2000) {
+        window.close(); // best allowed action in FREE version
+    } else {
+        alert("Press back again to exit");
+        lastBackPress = Date.now();
     }
 
 }, false);
-
 </script>
 </body>
 </html>
