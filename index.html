@@ -939,5 +939,23 @@ behavior:"smooth"
 });
 }
 </script>
+
+<script>
+function exitApp(){
+
+if(confirm("Exit AI Tools Hub?")){
+
+if(navigator.app && navigator.app.exitApp){
+navigator.app.exitApp();
+}else{
+window.history.back();
+}
+
+}
+
+}
+
+document.addEventListener("backbutton", exitApp, false);
+</script>
 </body>
 </html>
