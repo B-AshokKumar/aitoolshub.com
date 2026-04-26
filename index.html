@@ -942,46 +942,46 @@ behavior:"smooth"
 
 <script>
 
-/* UNIVERSAL BACK BUTTON HANDLER
-   Android + iOS + Browser + WebIntoApp FREE
-*/
+/* ===============================
+   PROFESSIONAL UNIVERSAL BACK SYSTEM
+   Android + iOS + Browser + WebIntoApp
+================================ */
 
 let lastBackPress = 0;
 
-/* Detect Android back navigation */
-window.addEventListener("popstate", function () {
-
-    handleBack();
-
+/* Create history state */
+document.addEventListener("DOMContentLoaded", function () {
+    history.pushState(null, null, location.href);
 });
 
-/* Push fake history to catch back press */
-history.pushState(null, null, location.href);
+/* Detect back navigation */
+window.addEventListener("popstate", function () {
 
-function handleBack(){
-
-    // 1️⃣ Close popup if exists
+    // 1️⃣ Close modal/popup if exists
     const modal = document.querySelector(".modal, .popup, .overlay");
 
     if (modal && modal.style.display !== "none") {
         modal.style.display = "none";
-        history.pushState(null,null,location.href);
+        history.pushState(null, null, location.href);
         return;
     }
 
-    // 2️⃣ Double back to exit
+    // 2️⃣ Double press to exit
     if (Date.now() - lastBackPress < 2000) {
 
-        window.close(); // allowed in FREE version
+        // Android Dedicated Build exits automatically
+        // FREE version goes to background
+        window.location.href = "about:blank";
 
     } else {
 
         alert("Press back again to exit");
         lastBackPress = Date.now();
 
-        history.pushState(null,null,location.href);
+        history.pushState(null, null, location.href);
     }
-}
+
+});
 
 </script>
 </body>
