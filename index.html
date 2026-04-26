@@ -778,7 +778,12 @@ showFavorites();
 
 document.addEventListener("DOMContentLoaded",showFavorites);
 
-
+function goTo(sectionId){
+document.getElementById(sectionId)
+.scrollIntoView({
+behavior:"smooth"
+});
+}
 </script>
 </body>
 </html>
