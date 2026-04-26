@@ -944,23 +944,23 @@ behavior:"smooth"
 
 /* PROFESSIONAL BACK BUTTON HANDLER */
 
-document.addEventListener("backbutton", function (e) {
+document.addEventListener("backbutton", function () {
 
-    // 1️⃣ If popup/modal is open → close it
-    const modal = document.querySelector(".modal, .popup, .webintoapp-modal");
+    // Close popup/modal if open
+    const modal = document.querySelector(".modal, .popup, .overlay");
 
     if (modal && modal.style.display !== "none") {
         modal.style.display = "none";
         return;
     }
 
-    // 2️⃣ If page has history → go back
+    // Navigate back
     if (window.history.length > 1) {
         window.history.back();
         return;
     }
 
-    // 3️⃣ Exit App (Android)
+    // Exit Android App
     if (navigator.app && navigator.app.exitApp) {
         navigator.app.exitApp();
     }
