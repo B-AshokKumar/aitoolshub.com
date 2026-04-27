@@ -941,36 +941,6 @@ behavior:"smooth"
 }
 </script>
 
-<script>
-
-let lastBackPress = 0;
-
-document.addEventListener("DOMContentLoaded", function () {
-    history.pushState(null, null, location.href);
-});
-
-window.addEventListener("popstate", function () {
-
-    if (Date.now() - lastBackPress < 2000) {
-
-        // SAFE EXIT FOR ANDROID WEBVIEW
-        if (navigator.app) {
-            navigator.app.exitApp();
-        } else {
-            window.close();
-        }
-
-    } else {
-
-        alert("Press back again to exit");
-        lastBackPress = Date.now();
-
-        history.pushState(null, null, location.href);
-    }
-
-});
-
-</script>
 
   <script>
 
@@ -981,6 +951,24 @@ window.addEventListener("popstate", function () {
 window.addEventListener("online", function () {
     window.location.replace("index.html");
 }); 
+</script>
+
+  <script>
+let lastBackPress = 0;
+
+window.addEventListener("popstate", function () {
+
+    if (Date.now() - lastBackPress < 2000) {
+        window.history.back();
+    } else {
+        alert("Press back again to exit");
+        lastBackPress = Date.now();
+        history.pushState(null, null, location.href);
+    }
+
+});
+
+history.pushState(null, null, location.href);
 </script>
 </body>
 </html>
