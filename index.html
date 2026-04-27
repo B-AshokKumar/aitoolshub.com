@@ -1007,24 +1007,47 @@ history.pushState(null, null, location.href);
 <script>
 function searchTools(){
 
-let input = document
-.getElementById("searchInput")
-.value
-.toLowerCase();
+let input =
+document.getElementById("searchInput")
+.value.toLowerCase();
 
-let tools = document.querySelectorAll(".tool");
+let tools =
+document.querySelectorAll(".tool");
 
-tools.forEach(tool => {
+let sections =
+document.querySelectorAll(".section");
 
-let name = tool.innerText.toLowerCase();
+/* hide all sections first */
+sections.forEach(sec=>{
+sec.style.display="none";
+});
+
+let found=false;
+
+tools.forEach(tool=>{
+
+let name =
+tool.innerText.toLowerCase();
 
 if(name.includes(input)){
-tool.style.display = "flex";
+tool.style.display="flex";
+tool.closest(".section").style.display="block";
+found=true;
 }else{
-tool.style.display = "none";
+tool.style.display="none";
 }
 
 });
+
+/* show all again if search empty */
+if(input===""){
+sections.forEach(sec=>{
+sec.style.display="block";
+});
+tools.forEach(tool=>{
+tool.style.display="flex";
+});
+}
 
 }
 </script>
