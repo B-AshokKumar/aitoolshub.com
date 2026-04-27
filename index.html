@@ -973,9 +973,14 @@ window.addEventListener("popstate", function () {
 </script>
 
   <script>
-window.addEventListener("offline", function () {
-    window.location.href = "offline.html";
+
+   window.addEventListener("offline", function () {
+    window.location.replace("offline.html");
 });
+
+window.addEventListener("online", function () {
+    window.location.replace("index.html");
+}); 
 </script>
 </body>
 </html>
