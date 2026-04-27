@@ -1007,18 +1007,23 @@ history.pushState(null, null, location.href);
 <script>
 function searchTools(){
 
-let input = document.getElementById("searchInput").value.toLowerCase();
+let input =
+document.getElementById("searchInput")
+.value.toLowerCase();
 
-let tools = document.querySelectorAll(".tool");
+let tools =
+document.querySelectorAll(".tool");
 
 tools.forEach(function(tool){
 
-let name = tool.getAttribute("data-name").toLowerCase();
+let name =
+(tool.dataset.name || tool.innerText)
+.toLowerCase();
 
 if(name.includes(input)){
-tool.style.display="block";
+tool.style.display = "flex";
 }else{
-tool.style.display="none";
+tool.style.display = "none";
 }
 
 });
