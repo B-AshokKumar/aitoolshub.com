@@ -492,6 +492,8 @@ rel="noopener noreferrer" >Runway ML</a>
 placeholder="🔍 Search AI tools..."
 onkeyup="searchTools()">
 </div>
+
+<div id="searchResults"></div>
 <div class="category-container">
 
 <h2 class="category-title">
@@ -1011,18 +1013,18 @@ let input =
 document.getElementById("searchInput")
 .value.toLowerCase();
 
+let results =
+document.getElementById("searchResults");
+
+results.innerHTML="";
+
+if(input===""){
+results.innerHTML="";
+return;
+}
+
 let tools =
 document.querySelectorAll(".tool");
-
-let sections =
-document.querySelectorAll(".section");
-
-/* hide all sections first */
-sections.forEach(sec=>{
-sec.style.display="none";
-});
-
-let found=false;
 
 tools.forEach(tool=>{
 
@@ -1030,24 +1032,13 @@ let name =
 tool.innerText.toLowerCase();
 
 if(name.includes(input)){
-tool.style.display="flex";
-tool.closest(".section").style.display="block";
-found=true;
-}else{
-tool.style.display="none";
+
+let clone = tool.cloneNode(true);
+results.appendChild(clone);
+
 }
 
 });
-
-/* show all again if search empty */
-if(input===""){
-sections.forEach(sec=>{
-sec.style.display="block";
-});
-tools.forEach(tool=>{
-tool.style.display="flex";
-});
-}
 
 }
 </script>
