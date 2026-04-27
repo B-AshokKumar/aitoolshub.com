@@ -1007,18 +1007,16 @@ history.pushState(null, null, location.href);
 <script>
 function searchTools(){
 
-let input =
-document.getElementById("searchInput")
-.value.toLowerCase();
-
-let tools =
-document.querySelectorAll(".tool");
-
-tools.forEach(function(tool){
-
-let name =
-(tool.dataset.name || tool.innerText)
+let input = document
+.getElementById("searchInput")
+.value
 .toLowerCase();
+
+let tools = document.querySelectorAll(".tool");
+
+tools.forEach(tool => {
+
+let name = tool.innerText.toLowerCase();
 
 if(name.includes(input)){
 tool.style.display = "flex";
