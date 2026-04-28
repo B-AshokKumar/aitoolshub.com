@@ -1064,22 +1064,23 @@ if(Date.now()-lastBackPress<2000){
 </script>
 
 <script>
+let offlineShown=false;
+
 function checkConnection(){
-   if(!navigator.onLine){
-      alert("No Internet Connection");
-   }
+ if(!navigator.onLine && !offlineShown){
+   alert("No Internet Connection");
+   offlineShown=true;
+ }
 }
 
 window.addEventListener("load",checkConnection);
 
-window.addEventListener("offline",function(){
-   alert("No Internet Connection");
-});
+window.addEventListener("offline",checkConnection);
 
-window.addEventListener("online",function(){
-   setTimeout(()=>location.reload(),1500);
+window.addEventListener("online",()=>{
+ offlineShown=false;
+ location.reload();
 });
-
-</script>  
+</script>
 </body>  
 </html> 
