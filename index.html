@@ -384,7 +384,29 @@ color:#7b1fa2;   /* change FREE+PRO text color here */
 background:#fff1f1;  
 color:#d32f2f;   /* change PAID text color here */  
 }  
-  
+
+  .footer-links{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:12px;
+font-size:18px;
+font-weight:600;
+}
+
+.footer-links a{
+text-decoration:none;
+color:#6a1b9a;
+}
+
+.footer-links a::after{
+content:"|";
+margin-left:12px;
+}
+
+.footer-links a:last-child::after{
+content:"";
+}
 </style>  
   
 </head>  
