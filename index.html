@@ -980,18 +980,13 @@ behavior:"smooth"
 <script>
 
 // CHECK INTERNET WHEN APP STARTS
-if (!navigator.onLine) {
-    window.location.replace("offline.html");
-}
-
-// WHEN INTERNET LOST
+// CHECK CONNECTION
 window.addEventListener("offline", function () {
-    window.location.replace("offline.html");
+   alert("No Internet Connection");
 });
 
-// WHEN INTERNET RETURNS
 window.addEventListener("online", function () {
-    window.location.replace("index.html");
+   location.reload();
 });
 
 </script>
