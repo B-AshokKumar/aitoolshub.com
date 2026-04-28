@@ -1044,24 +1044,24 @@ window.addEventListener("popstate", function () {
   
 history.pushState(null, null, location.href);  
 </script>  
-  
 
-function checkConnection(){  
-   if(!navigator.onLine){  
-      alert("No Internet Connection");  
-   }  
-}  
-  
-window.addEventListener("load",checkConnection);  
-  
-window.addEventListener("offline",function(){  
-   alert("No Internet Connection");  
-});  
-  
-window.addEventListener("online",function(){  
-   setTimeout(()=>location.reload(),1500);  
-});  
+<script>
+function checkConnection(){
+   if(!navigator.onLine){
+      alert("No Internet Connection");
+   }
+}
 
+window.addEventListener("load",checkConnection);
+
+window.addEventListener("offline",function(){
+   alert("No Internet Connection");
+});
+
+window.addEventListener("online",function(){
+   setTimeout(()=>location.reload(),1500);
+});
+</script>
 </script>  
 </body>  
 </html> 
