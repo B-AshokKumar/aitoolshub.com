@@ -1020,23 +1020,30 @@ results.appendChild(clone);
 }
 </script>
   
-<script>  
-let lastBackPress = 0;  
-  
-window.addEventListener("popstate", function () {  
-  
-    if (Date.now() - lastBackPress < 2000) {  
-        window.history.back();  
-    } else {  
-        alert("Press back again to exit");  
-        lastBackPress = Date.now();  
-        history.pushState(null, null, location.href);  
-    }  
-  
-});  
-  
-history.pushState(null, null, location.href);  
-</script>  
+<script>
+let lastBackPress = 0;
+
+history.pushState(null, null, location.href);
+
+window.addEventListener("popstate", function () {
+
+if (Date.now() - lastBackPress < 2000) {
+
+    // Android APK exit
+    if (navigator.app && navigator.app.exitApp) {
+        navigator.app.exitApp();
+    } else {
+        window.close(); // fallback for browser/iOS
+    }
+
+} else {
+    alert("Press back again to exit");
+    lastBackPress = Date.now();
+    history.pushState(null, null, location.href);
+}
+
+});
+</script>
 
 <script>
 function checkConnection(){
