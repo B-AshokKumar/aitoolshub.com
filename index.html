@@ -1,1014 +1,981 @@
-<!DOCTYPE html>
-<!-- Version 1 -->
-<html lang="en">
-<head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta http-equiv="Pragma" content="no-cache">
-<meta http-equiv="Expires" content="0">
-
-
-<title>AI Tools Hub</title>
+<!DOCTYPE html>  
+<!-- Version 1 -->  
+<html lang="en">  
+<head>  
   
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
-<style>
-
-body{
-margin:0;
-font-family:Poppins;
-background:#f2f4f7;
-transition:0.4s;
-}
-
-/* HEADER */
-
-.header{
-background:#111;
-color:white;
-padding:18px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-font-size:22px;
-font-weight:600;
-}
-
-.dark-btn{
-background:#e7edf7;      /* light blue card */
-color:#2d74d7;           /* app theme blue text */
-border:none;
-padding:8px 14px;
-border-radius:10px;
-cursor:pointer;
-font-size:15px;
-font-weight:600;         /* bold text */
-box-shadow:0 3px 8px rgba(0,0,0,0.1);
-transition:0.3s;
-}
-
-.dark .dark-btn{
-background:#2b2b2b;
-color:#4da3ff;
-font-weight:600;
-}
-/* TITLE */
-
-.title-card{
-background:white;
-margin:20px;
-padding:18px;
-text-align:center;
-border-radius:14px;
-box-shadow:0 5px 12px rgba(0,0,0,0.1);
-font-size:26px;
-font-weight:600;
-}
-
-/* SECTION */
-
-.section{
-background:white;
-margin:20px;
-padding:20px;
-border-radius:16px;
-box-shadow:0 4px 12px rgba(0,0,0,0.08);
-}
-
-.section h2{
-color:#2d74d7;
-margin-bottom:15px;
-}
-
-/* TOOL BUTTON */
-
-.tool{
-background:#e7edf7;
-padding:15px;
-margin:12px 0;
-border-radius:12px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-transition:0.3s;
-cursor:pointer;
-}
-
-.tool:hover{
-transform:scale(1.02);
-background:#d9e5f9;
-}
-
-.tool a{
-text-decoration:none;
-color:#2d74d7;
-font-size:18px;
-font-weight:600;
-}
-
-/* CATEGORY GRID */
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-gap:15px;
-}
-
-.category{
-background:#e8efff;
-padding:18px;
-text-align:center;
-border-radius:12px;
-font-weight:600;
-cursor:pointer;
-}
-
-.category:hover{
-background:#d2e1ff;
-}
-
-/* STAR */
-
-.star{
-font-size:22px;
-cursor:pointer;
-}
-
-/* FOOTER */
-.footer{
-text-align:center;
-padding:20px;
-color:#777;
-}
-
-/* ---------- PROMPT HEADER ---------- */
-
-.prompt-header{
-background:white;
-margin:20px;
-padding:25px;
-border-radius:16px;
-box-shadow:0 4px 12px rgba(0,0,0,0.08);
-text-align:center;
-}
-
-.prompt-title{
-font-size:32px;
-font-weight:700;
-color:#2d74d7;
-margin-bottom:10px;
-}
-
-.prompt-sub{
-font-size:18px;
-color:#666;
-}
-
-/* DARK MODE */
-.dark{
-background:#121212;
-color:white;
-}
-.dark .section,
-.dark .title-card{
-background:#1e1e1e;
-}
-
-.dark .tool{
-background:#2b2b2b;
-}
-/* ---------- CATEGORY GRID ---------- */
-
-/* ---------- AI TOOLS CATEGORIES ---------- */
-  /* SEARCH BAR */
-.search-box{
-padding:15px;
-text-align:center;
-}
-
-.search-box input{
-width:90%;
-padding:12px;
-font-size:16px;
-border-radius:10px;
-border:1px solid #ccc;
-outline:none;
-box-shadow:0 2px 6px rgba(0,0,0,0.1);
-}
-
-.category-container{
-background:#f5f6f8;
-margin:20px;
-padding:30px;
-border-radius:20px;
-}
-
-.category-title{
-text-align:center;
-font-size:32px;
-font-weight:700;
-color:#2d74d7;
-margin-bottom:30px;
-}
-
-.tool{
-cursor:pointer;
-}
-
-.category-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:20px;
-}
-.category-card{
-background:#cfd6e6;
-padding:18px 12px;   /* smaller padding */
-border-radius:20px;
-text-align:center;
-font-size:15px;      /* smaller text */
-font-weight:600;
-cursor:pointer;
-transition:0.3s;
-
-height:130px;        /* fixed small height */
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-}
-
-.category-card span{
-font-size:22px;
-margin-bottom:6px;
-}
-
-.category-card p{
-font-size:15px;
-line-height:1.2;
-display:-webkit-box;
--webkit-line-clamp:2;
--webkit-box-orient:vertical;
-overflow:hidden;
-}
-.category-card:hover{
-transform:scale(1.05);
-background:#bfc7db;
-}
-
-.tool{
-width:100%;
-box-sizing:border-box;
-}
-
-.tool{
-display:flex;
-justify-content:space-between;
-align-items:center;
-cursor:default;   /* CHANGE THIS */
-}
-
-.tool a{
-pointer-events:auto;
-}
-
-
-/* your existing CSS code */
-
-/* Footer links small size */
-.section a{
-font-size:14px;
-display:inline-block;
-margin:4px 6px;
-white-space:nowrap;
-}
-
-.section div{
-line-height:1.6;
-}
-
-/* PROMPT BUTTON */
-
-.prompt-btn{
-background:linear-gradient(135deg,#2d74d7,#5a9cff);
-color:white;
-border:none;
-padding:14px 24px;
-font-size:16px;
-font-weight:600;
-border-radius:10px;
-cursor:pointer;
-transition:0.3s;
-box-shadow:0 4px 10px rgba(0,0,0,0.15);
-}
-
-.prompt-btn:hover{
-transform:translateY(-2px);
-box-shadow:0 6px 14px rgba(0,0,0,0.2);
-}
-
-/* PROMPT INPUT STYLE */
-
-.prompt-input{
-width:80%;
-max-width:420px;
-padding:14px 16px;
-border-radius:10px;
-border:2px solid #dce3f0;
-font-size:16px;
-outline:none;
-transition:0.3s;
-margin-top:10px;
-}
-
-/* focus effect */
-.prompt-input:focus{
-border-color:#2d74d7;
-box-shadow:0 0 8px rgba(45,116,215,0.3);
-}
-
-/* dark mode support */
-.dark .prompt-input{
-background:#2b2b2b;
-color:white;
-border:2px solid #444;
-}
-
-/* PROMPT RESULT CARD */
-
-.prompt-result{
-margin-top:20px;
-padding:18px;
-border-radius:12px;
-background:#f4f7ff;
-border-left:5px solid #2d74d7;
-font-size:16px;
-line-height:1.6;
-color:#333;
-box-shadow:0 4px 10px rgba(0,0,0,0.08);
-min-height:40px;
-word-wrap:break-word;
-}
-
-/* dark mode */
-.dark .prompt-result{
-background:#1f1f1f;
-color:#fff;
-border-left:5px solid #4da3ff;
-}
-.badge{
-font-size:12px;
-padding:4px 10px;
-border-radius:20px;
-margin-left:8px;
-font-weight:600;
-}
-
-/* FREE */
-.free{
-background:#e8f5ff;
-color:#1e88e5;   /* change FREE text color here */
-}
-
-/* FREE + PRO */
-.pro{
-background:#f3f0ff;
-color:#7b1fa2;   /* change FREE+PRO text color here */
-}
-
-/* PAID */
-.paid{
-background:#fff1f1;
-color:#d32f2f;   /* change PAID text color here */
-}
-
-</style>
-
-</head>
-
-<body>
-
-<div class="header">
-AI Tools Hub 
-<button class="dark-btn" onclick="toggleDark()">
-<span>Dark Mode</span> 🌙
-</button>
-</div>
-
-<div class="title-card">
-AI Tools Hub
-</div>
-
-<!-- HOME -->
-
-<div class="section">
-<h2>Welcome to My AI Tools Aggregate App</h2>
-
-<p>This app provides quick access to popular AI tools and resources in one place.</p>
-
-<h3>✨ AI Prompt Generator</h3>
-
-<div class="prompt-header">
-
-<div class="prompt-title">
-✨ AI Prompt Generator
-</div>
-
-<div class="prompt-sub">
-Generate ready-to-use AI prompts instantly.
-</div>
-
-</div>
-
-<input id="topic" class="prompt-input"
-placeholder="✨ Enter topic (Example: logo, cat)">
-<br><br>
-
-<button class="prompt-btn" onclick="generatePrompt()">
-✨ Generate Prompt
-</button>
-
-<div id="result" class="prompt-result"></div>
-<h3>🧠 AI Tips</h3>
-<ul>
-<li>Use detailed prompts</li>
-<li>Add cinematic or realistic style</li>
-<li>Describe lighting & mood</li>
-<li>Experiment variations</li>
-</ul>
-</div>
-
-<!-- TRENDING TOOLS -->
-
-<div class="section">
-<h2>🔥 Trending AI Tools</h2>
-
-<div class="tool" data-name="ChatGPT">
-<a href="https://chat.openai.com" target="_blank"
-rel="noopener noreferrer" >ChatGPT</a>
-<span class="badge pro">FREE + PRO</span>
-
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
-
-<div class="tool" data-name="Google Gemini">
-<a href="https://gemini.google.com" target="_blank"
-rel="noopener noreferrer" >Google Gemini</a>
-  <span class="badge pro">FREE + PRO</span>
-
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
-
-<div class="tool" data-name="Runway ML">
-<a href="https://runwayml.com" target="_blank"
-rel="noopener noreferrer" >Runway ML</a>
-  <span class="badge pro">FREE + PRO</span>
-
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
-
-</div>
-
-<!-- FAVORITE TOOLS -->
-
-<div class="section">
-<h2>⭐ My Favorite Tools</h2>
-
-<div id="favoritesList"></div>
-
-</div>
-
-
-<!-- AI CATEGORIES -->
-
-<!-- AI TOOLS CATEGORIES -->
-
-<!-- SEARCH BAR -->
-<div class="search-box">
-<input type="text" id="searchInput"
-placeholder="🔍 Search AI tools..."
-onkeyup="searchTools()">
-</div>
-
-<div id="searchResults"></div>
-<div class="category-container">
-
-<h2 class="category-title">
-🧠 AI Tools Categories
-</h2>
-
-<div class="category-grid">
-
-<div class="category-card" onclick="goTo('ai-tools')">
-  <span>🤖</span>
-  <p>AI Tools</p>
-</div>
-
-<div class="category-card" onclick="goTo('coding-tools')">
-  <span>💻</span>
-  <p>Coding AI Tools</p>
-</div>
-
-<div class="category-card" onclick="goTo('marketing-tools')">
-  <span>📈</span>
-  <p> Marketing AI Tools</p>
-</div>
-
-<div class="category-card" onclick="goTo('voice-tools')">
-  <span>🎙</span>
-  <p>Voice AI Tools</p>
-</div>
-
-<div class="category-card" onclick="goTo('video-tools')">
-  <span>🎬</span>
-  <p>Video AI Tools</p>
-</div>
-<!-- NEW CATEGORY -->
-<div class="category-card" onclick="goTo('music-tools')">
-<span>🎵</span>
-<p>Music AI Tools</p>
-</div>
-
-<!-- NEW CATEGORY -->
-<div class="category-card" onclick="goTo('gaming-tools')">
-<span>🎮</span>
-<p>Gaming AI Tools</p>
-</div>
-
-</div>
-</div>
-<!-- AI TOOLS -->
-
-<div class="section" id="ai-tools">
-<h2>🤖 AI Tools</h2>
-
-<div class="tool" data-name="ChatGPT">
-
-<a href="https://chat.openai.com" target="_blank"
-rel="noopener noreferrer">ChatGPT</a>
+<meta charset="UTF-8">  
   
-<span class="badge pro">FREE + PRO</span>
-
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
-
-<div class="tool" data-name="Google Gemini">
-
-<a href="https://gemini.google.com" target="_blank"
-rel="noopener noreferrer">Google Gemini</a>
-  <span class="badge pro">FREE + PRO</span>
-
-
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
-
-<div class="tool" data-name="Canva AI">
-
-<a href="https://www.canva.com/ai-image-generator" target="_blank"
-rel="noopener noreferrer"  >Canva AI</a>
-  <span class="badge pro">FREE + PRO</span>
-
-
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
-</div>
-<!-- CODING TOOLS -->
-
-<div class="section" id="coding-tools">
-<h2>💻 Coding AI Tools</h2>
-
-<div class="tool" data-name="GitHub Copilot">
-
-<a href="https://github.com/features/copilot" target="_blank"
-rel="noopener noreferrer" >GitHub Copilot</a>
-  <span class="badge pro">FREE + PRO</span>
-
-
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
-
-<div class="tool" data-name="Replit AI">
-
-<a href="https://replit.com" target="_blank"
-rel="noopener noreferrer"  >Replit AI</a>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<!-- 
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">  
+<meta http-equiv="Pragma" content="no-cache">  
+<meta http-equiv="Expires" content="0">  
+-->
+<meta name="theme-color" content="#111">  
+<title>AI Tools Hub</title>  
+    
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">  
   
-<span class="badge pro">FREE + PRO</span>
-
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
-
-<div class="tool" data-name="Codeium">
-
-<a href="https://codeium.com" target="_blank"
-rel="noopener noreferrer" >Codeium</a>
+<style>  
   
-<span class="badge pro">FREE + PRO</span>
-
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
-
-</div>
-<!-- MARKETING AI -->
-
-<div class="section" id="marketing-tools">
-<h2>📈 Marketing AI Tools</h2>
-
-<div class="tool" data-name="Writesonic">
-
-<a href="https://writesonic.com" target="_blank"
-rel="noopener noreferrer"  >Writesonic</a>
+body{  
+margin:0;  
+font-family:Poppins;  
+background:#f2f4f7;  
+transition:0.4s;  
+}  
   
-<span class="badge pro">FREE + PRO</span>
-
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
-
-<div class="tool" data-name="Surfer SEO">
-
-<a href="https://surferseo.com" target="_blank"
-rel="noopener noreferrer" >Surfer SEO</a>
-  <span class="badge paid">PAID</span>
-
-
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
-
-<div class="tool" data-name="Canva Magic Write">
-
-<a href="https://www.canva.com/magic-write/" target="_blank"
-rel="noopener noreferrer"  >Canva Magic Write</a>
-
+/* HEADER */  
   
-<span class="badge pro">FREE + PRO</span>
-
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
-
-</div>
-
-<!-- VOICE AI -->
-
-<div class="section" id="voice-tools">
-<h2>🎙 Voice AI Tools</h2>
-
-<div class="tool" data-name="Murf AI">
-
-<a href="https://murf.ai" target="_blank"
-rel="noopener noreferrer"  >Murf AI</a>
-  <span class="badge pro">FREE + PRO</span>
-
-
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
-
-<div class="tool" data-name="ElevenLabs">
+.header{  
+background:#111;  
+color:white;  
+padding:18px;  
+display:flex;  
+justify-content:space-between;  
+align-items:center;  
+font-size:22px;  
+font-weight:600;  
+}  
   
-<a href="https://elevenlabs.io" target="_blank"
-rel="noopener noreferrer" >ElevenLabs</a>
+.dark-btn{  
+background:#e7edf7;      /* light blue card */  
+color:#2d74d7;           /* app theme blue text */  
+border:none;  
+padding:8px 14px;  
+border-radius:10px;  
+cursor:pointer;  
+font-size:15px;  
+font-weight:600;         /* bold text */  
+box-shadow:0 3px 8px rgba(0,0,0,0.1);  
+transition:0.3s;  
+}  
   
-  <span class="badge pro">FREE + PRO</span>
-
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
-
-<div class="tool" data-name="Speechify">
-
-<a href="https://speechify.com" target="_blank"
-rel="noopener noreferrer"  >Speechify</a>
+.dark .dark-btn{  
+background:#2b2b2b;  
+color:#4da3ff;  
+font-weight:600;  
+}  
+/* TITLE */  
   
-<span class="badge pro">FREE + PRO</span>
-
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
-
-<div class="tool" data-name="Descript">
-
-<a href="https://www.descript.com" target="_blank"
- rel="noopener noreferrer" >Descript</a>
-  <span class="badge pro">FREE + PRO</span>
-
-
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
-</div>
-<!-- VIDEO AI -->
-
-<div class="section" id="video-tools">
-<h2>🎬 Video AI Tools</h2>
-
-<div class="tool" data-name="Pictory AI">
-
-<a href="https://pictory.ai" target="_blank"
- rel="noopener noreferrer" >Pictory AI</a>
+.title-card{  
+background:white;  
+margin:20px;  
+padding:18px;  
+text-align:center;  
+border-radius:14px;  
+box-shadow:0 5px 12px rgba(0,0,0,0.1);  
+font-size:26px;  
+font-weight:600;  
+}  
   
-<span class="badge pro">FREE + PRO</span>
-
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
-
-<div class="tool" data-name="InVideo AI">
-
-<a href="https://invideo.io" target="_blank"
- rel="noopener noreferrer" >InVideo AI</a>
+/* SECTION */  
   
-<span class="badge pro">FREE + PRO</span>
-
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
-
-<div class="tool" data-name="Lumen5">
-
-<a href="https://lumen5.com" target="_blank"
- rel="noopener noreferrer" >Lumen5</a>
+.section{  
+background:white;  
+margin:20px;  
+padding:20px;  
+border-radius:16px;  
+box-shadow:0 4px 12px rgba(0,0,0,0.08);  
+}  
   
-<span class="badge pro">FREE + PRO</span>
-
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
-
-<div class="tool" data-name="Synthesia AI">
-
-<a href="https://www.synthesia.io" target="_blank"
-rel="noopener noreferrer"  >Synthesia AI</a>
+.section h2{  
+color:#2d74d7;  
+margin-bottom:15px;  
+}  
   
-<span class="badge pro">FREE + PRO</span>
-
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
-
-</div>
-
-<!-- MUSIC AI TOOLS -->
-
-<div class="section" id="music-tools">
-<h2>🎵 Music AI Tools</h2>
-
-<div class="tool" data-name="AIVA">
-<a href="https://www.aiva.ai" target="_blank">AIVA</a>
-
-<span class="badge pro">FREE + PRO</span>
-
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
-
-<div class="tool" data-name="Udio">
-<a href="https://udio.com" target="_blank">Udio</a>
-  <span class="badge pro">FREE + PRO</span>
-
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
-
-<div class="tool" data-name="Soundraw">
-<a href="https://soundraw.io" target="_blank">Soundraw</a>
-  <span class="badge paid">PAID</span>
-
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
-
-</div>
-<!-- GAMING AI TOOLS -->
-
-<div class="section" id="gaming-tools">
-<h2>🎮 Gaming AI Tools</h2>
-
-<div class="tool" data-name="Scenario AI">
-<a href="https://scenario.gg" target="_blank">Scenario AI</a>
-  <span class="badge pro">FREE + PRO</span>
-
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
-
-<div class="tool" data-name="Ludo AI">
-<a href="https://ludo.ai" target="_blank">Ludo AI</a>
-  <span class="badge pro">FREE + PRO</span>
-
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
-
-<div class="tool" data-name="Inworld AI">
-<a href="https://inworld.ai" target="_blank">Inworld AI</a>
-  <span class="badge pro">FREE + PRO</span>
-
-<span class="star" onclick="fav(this)">⭐</span>
-</div>
-
-</div>
-<!-- LEGAL INFO -->
-
-<div class="section" style="text-align:center">
-
-<p style="color:#666;font-size:16px">
-Tools open in secure external pages. Login may be required.
-</p>
-
-<p style="color:#999;font-size:14px;margin-top:10px">
-⚠ Some AI tools may take a few seconds to load depending on internet speed and server response.
-</p>
-
-<hr style="margin:25px 0">
-
-<p style="max-width:600px;margin:auto;color:#666">
-This app aggregates publicly available AI tools.
-We are not affiliated with third-party services.
-</p>
-
-<br><br>
-
-<div style="font-size:18px;font-weight:600">
-
-
-<a href="privacy-policy.html" target="_blank">Privacy Policy</a> |
-<a href="terms.html" target="_blank">Terms & Conditions</a> |
-<a href="disclaimer.html" target="_blank">Disclaimer</a> |
-<a href="about.html" target="_blank">About Us</a>
-</div>
-
-</div>
-<div class="footer">
-AI Tools Hub © 2026 Public AI tools aggregator
-</div>
-
-<script>
-
-/* =========================
-   DARK MODE SYSTEM
-========================= */
-
-function toggleDark(){
-
-document.body.classList.toggle("dark");
-
-/* SAVE THEME */
-if(document.body.classList.contains("dark")){
-localStorage.setItem("theme","dark");
-}else{
-localStorage.setItem("theme","light");
-}
-
-}
-
-/* LOAD SAVED THEME AFTER REFRESH */
-document.addEventListener("DOMContentLoaded",function(){
-
-if(localStorage.getItem("theme")==="dark"){
-document.body.classList.add("dark");
-}
-
-});
-
-
-/* =========================
-   PROMPT GENERATOR
-========================= */
-
-function generatePrompt(){
-
-let topic=document.getElementById("topic").value.trim();
-
-if(topic===""){
-document.getElementById("result").innerText =
-"⚠ Please enter a topic first.";
-return;
-}
-
-document.getElementById("result").innerText =
-"✨ Professional AI Prompt:\n\nCreate a highly detailed cinematic "+topic+
-" with professional lighting, realistic textures, ultra-realistic style, depth of field, dramatic composition, and 4K quality rendering.";
-
-}
-
-
-
-/* FAVORITES SYSTEM */
-
-function fav(el){
-
-let tool = el.parentElement;
-let name = tool.dataset.name || tool.querySelector("a").innerText;
-let link = tool.querySelector("a").href;
-
-let favorites =
-JSON.parse(localStorage.getItem("favorites")) || [];
-
-/* REMOVE FAVORITE */
-if(el.innerHTML=="🌟"){
-
-el.innerHTML="⭐";
-
-favorites = favorites.filter(t=>t.name!==name);
-localStorage.setItem("favorites",JSON.stringify(favorites));
-
-showFavorites();
-return;
-}
-
-/* ADD FAVORITE */
-el.innerHTML="🌟";
-
-if(!favorites.find(t=>t.name===name)){
-favorites.push({name,link});
-localStorage.setItem("favorites",JSON.stringify(favorites));
-}
-
-showFavorites();
-}
-
-function showFavorites(){
-
-let container = document.getElementById("favoritesList");
-if(!container) return;
-
-let favorites =
-JSON.parse(localStorage.getItem("favorites")) || [];
-
-container.innerHTML="";
-
-favorites.forEach(tool=>{
-
-let div=document.createElement("div");
-div.className="tool";
-div.dataset.name=tool.name;
-
-div.innerHTML=`
-<a href="${tool.link}" target="_blank">${tool.name}</a>
-<span class="star" onclick="removeFavorite(this)">🌟</span>
-`;
-
-container.appendChild(div);
-});
-
-/* Update stars everywhere */
-document.querySelectorAll(".tool").forEach(t=>{
-let star=t.querySelector(".star");
-if(!star) return;
-
-let exists=favorites.find(f=>f.name===t.dataset.name);
-star.innerHTML = exists ? "🌟" : "⭐";
-});
-
-}
-
-function removeFavorite(el){
-
-let name=el.parentElement.dataset.name;
-
-let favorites =
-JSON.parse(localStorage.getItem("favorites")) || [];
-
-favorites=favorites.filter(t=>t.name!==name);
-
-localStorage.setItem("favorites",JSON.stringify(favorites));
-
-showFavorites();
-}
-
-
-document.addEventListener("DOMContentLoaded",showFavorites);
-
-function goTo(sectionId){
-document.getElementById(sectionId)
-.scrollIntoView({
-behavior:"smooth"
-});
-}
-</script>
-
-
-<script>
-
-// CHECK INTERNET WHEN APP STARTS
-// CHECK CONNECTION
-window.addEventListener("offline", function () {
-   alert("No Internet Connection");
-});
-
-window.addEventListener("online", function () {
-   location.reload();
-});
-
-</script>
-
-  <script>
-let lastBackPress = 0;
-
-window.addEventListener("popstate", function () {
-
-    if (Date.now() - lastBackPress < 2000) {
-        window.history.back();
-    } else {
-        alert("Press back again to exit");
-        lastBackPress = Date.now();
-        history.pushState(null, null, location.href);
-    }
-
-});
-
-history.pushState(null, null, location.href);
-</script>
-
+/* TOOL BUTTON */  
+  
+.tool{  
+background:#e7edf7;  
+padding:15px;  
+margin:12px 0;  
+border-radius:12px;  
+display:flex;  
+justify-content:space-between;  
+align-items:center;  
+transition:0.3s;  
+cursor:pointer;  
+}  
+  
+.tool:hover{  
+transform:scale(1.02);  
+background:#d9e5f9;  
+}  
+  
+.tool a{  
+text-decoration:none;  
+color:#2d74d7;  
+font-size:18px;  
+font-weight:600;  
+}  
+  
+/* CATEGORY GRID */  
+  
+.grid{  
+display:grid;  
+grid-template-columns:repeat(auto-fit,minmax(140px,1fr));  
+gap:15px;  
+}  
+  
+.category{  
+background:#e8efff;  
+padding:18px;  
+text-align:center;  
+border-radius:12px;  
+font-weight:600;  
+cursor:pointer;  
+}  
+  
+.category:hover{  
+background:#d2e1ff;  
+}  
+  
+/* STAR */  
+  
+.star{  
+font-size:22px;  
+cursor:pointer;  
+}  
+  
+/* FOOTER */  
+.footer{  
+text-align:center;  
+padding:20px;  
+color:#777;  
+}  
+  
+/* ---------- PROMPT HEADER ---------- */  
+  
+.prompt-header{  
+background:white;  
+margin:20px;  
+padding:25px;  
+border-radius:16px;  
+box-shadow:0 4px 12px rgba(0,0,0,0.08);  
+text-align:center;  
+}  
+  
+.prompt-title{  
+font-size:32px;  
+font-weight:700;  
+color:#2d74d7;  
+margin-bottom:10px;  
+}  
+  
+.prompt-sub{  
+font-size:18px;  
+color:#666;  
+}  
+  
+/* DARK MODE */  
+.dark{  
+background:#121212;  
+color:white;  
+}  
+.dark .section,  
+.dark .title-card{  
+background:#1e1e1e;  
+}  
+  
+.dark .tool{  
+background:#2b2b2b;  
+}  
+/* ---------- CATEGORY GRID ---------- */  
+  
+/* ---------- AI TOOLS CATEGORIES ---------- */  
+  /* SEARCH BAR */  
+.search-box{  
+padding:15px;  
+text-align:center;  
+}  
+  
+.search-box input{  
+width:90%;  
+padding:12px;  
+font-size:16px;  
+border-radius:10px;  
+border:1px solid #ccc;  
+outline:none;  
+box-shadow:0 2px 6px rgba(0,0,0,0.1);  
+}  
+  
+.category-container{  
+background:#f5f6f8;  
+margin:20px;  
+padding:30px;  
+border-radius:20px;  
+}  
+  
+.category-title{  
+text-align:center;  
+font-size:32px;  
+font-weight:700;  
+color:#2d74d7;  
+margin-bottom:30px;  
+}  
+  
+.tool{  
+cursor:pointer;  
+}  
+  
+.category-grid{  
+display:grid;  
+grid-template-columns:repeat(2,1fr);  
+gap:20px;  
+}  
+.category-card{  
+background:#cfd6e6;  
+padding:18px 12px;   /* smaller padding */  
+border-radius:20px;  
+text-align:center;  
+font-size:15px;      /* smaller text */  
+font-weight:600;  
+cursor:pointer;  
+transition:0.3s;  
+  
+height:130px;        /* fixed small height */  
+display:flex;  
+flex-direction:column;  
+justify-content:center;  
+align-items:center;  
+}  
+  
+.category-card span{  
+font-size:22px;  
+margin-bottom:6px;  
+}  
+  
+.category-card p{  
+font-size:15px;  
+line-height:1.2;  
+display:-webkit-box;  
+-webkit-line-clamp:2;  
+-webkit-box-orient:vertical;  
+overflow:hidden;  
+}  
+.category-card:hover{  
+transform:scale(1.05);  
+background:#bfc7db;  
+}  
+  
+.tool{  
+width:100%;  
+box-sizing:border-box;  
+}  
+  
+.tool{  
+display:flex;  
+justify-content:space-between;  
+align-items:center;  
+cursor:default;   /* CHANGE THIS */  
+}  
+  
+.tool a{  
+pointer-events:auto;  
+}  
+  
+  
+/* your existing CSS code */  
+  
+/* Footer links small size */  
+.section a{  
+font-size:14px;  
+display:inline-block;  
+margin:4px 6px;  
+white-space:nowrap;  
+}  
+  
+.section div{  
+line-height:1.6;  
+}  
+  
+/* PROMPT BUTTON */  
+  
+.prompt-btn{  
+background:linear-gradient(135deg,#2d74d7,#5a9cff);  
+color:white;  
+border:none;  
+padding:14px 24px;  
+font-size:16px;  
+font-weight:600;  
+border-radius:10px;  
+cursor:pointer;  
+transition:0.3s;  
+box-shadow:0 4px 10px rgba(0,0,0,0.15);  
+}  
+  
+.prompt-btn:hover{  
+transform:translateY(-2px);  
+box-shadow:0 6px 14px rgba(0,0,0,0.2);  
+}  
+  
+/* PROMPT INPUT STYLE */  
+  
+.prompt-input{  
+width:80%;  
+max-width:420px;  
+padding:14px 16px;  
+border-radius:10px;  
+border:2px solid #dce3f0;  
+font-size:16px;  
+outline:none;  
+transition:0.3s;  
+margin-top:10px;  
+}  
+  
+/* focus effect */  
+.prompt-input:focus{  
+border-color:#2d74d7;  
+box-shadow:0 0 8px rgba(45,116,215,0.3);  
+}  
+  
+/* dark mode support */  
+.dark .prompt-input{  
+background:#2b2b2b;  
+color:white;  
+border:2px solid #444;  
+}  
+  
+/* PROMPT RESULT CARD */  
+  
+.prompt-result{  
+margin-top:20px;  
+padding:18px;  
+border-radius:12px;  
+background:#f4f7ff;  
+border-left:5px solid #2d74d7;  
+font-size:16px;  
+line-height:1.6;  
+color:#333;  
+box-shadow:0 4px 10px rgba(0,0,0,0.08);  
+min-height:40px;  
+word-wrap:break-word;  
+}  
+  
+/* dark mode */  
+.dark .prompt-result{  
+background:#1f1f1f;  
+color:#fff;  
+border-left:5px solid #4da3ff;  
+}  
+.badge{  
+font-size:12px;  
+padding:4px 10px;  
+border-radius:20px;  
+margin-left:8px;  
+font-weight:600;  
+}  
+  
+/* FREE */  
+.free{  
+background:#e8f5ff;  
+color:#1e88e5;   /* change FREE text color here */  
+}  
+  
+/* FREE + PRO */  
+.pro{  
+background:#f3f0ff;  
+color:#7b1fa2;   /* change FREE+PRO text color here */  
+}  
+  
+/* PAID */  
+.paid{  
+background:#fff1f1;  
+color:#d32f2f;   /* change PAID text color here */  
+}  
+  
+</style>  
+  
+</head>  
+  
+<body>  
+  
+<div class="header">  
+AI Tools Hub   
+<button class="dark-btn" onclick="toggleDark()">  
+<span>Dark Mode</span> 🌙  
+</button>  
+</div>  
+  
+<div class="title-card">  
+AI Tools Hub  
+</div>  
+  
+<!-- HOME -->  
+  
+<div class="section">  
+<h2>Welcome to My AI Tools Aggregate App</h2>  
+  
+<p>This app provides quick access to popular AI tools and resources in one place.</p>  
+  
+<h3>✨ AI Prompt Generator</h3>  
+  
+<div class="prompt-header">  
+  
+<div class="prompt-title">  
+✨ AI Prompt Generator  
+</div>  
+  
+<div class="prompt-sub">  
+Generate ready-to-use AI prompts instantly.  
+</div>  
+  
+</div>  
+  
+<input id="topic" class="prompt-input"  
+placeholder="✨ Enter topic (Example: logo, cat)">  
+<br><br>  
+  
+<button class="prompt-btn" onclick="generatePrompt()">  
+✨ Generate Prompt  
+</button>  
+  
+<div id="result" class="prompt-result"></div>  
+<h3>🧠 AI Tips</h3>  
+<ul>  
+<li>Use detailed prompts</li>  
+<li>Add cinematic or realistic style</li>  
+<li>Describe lighting & mood</li>  
+<li>Experiment variations</li>  
+</ul>  
+</div>  
+  
+<!-- TRENDING TOOLS -->  
+  
+<div class="section">  
+<h2>🔥 Trending AI Tools</h2>  
+  
+<div class="tool" data-name="ChatGPT">  
+<a href="https://chat.openai.com" target="_blank"  
+rel="noopener noreferrer" >ChatGPT</a>  
+<span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Google Gemini">  
+<a href="https://gemini.google.com" target="_blank"  
+rel="noopener noreferrer" >Google Gemini</a>  
+  <span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Runway ML">  
+<a href="https://runwayml.com" target="_blank"  
+rel="noopener noreferrer" >Runway ML</a>  
+  <span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+</div>  
+  
+<!-- FAVORITE TOOLS -->  
+  
+<div class="section">  
+<h2>⭐ My Favorite Tools</h2>  
+  
+<div id="favoritesList"></div>  
+  
+</div>  
+  
+  
+<!-- AI CATEGORIES -->  
+  
+<!-- AI TOOLS CATEGORIES -->  
+  
+<!-- SEARCH BAR -->  
+<div class="search-box">  
+<input type="text" id="searchInput"  
+placeholder="🔍 Search AI tools..."  
+onkeyup="searchTools()">  
+</div>  
+  
+<div id="searchResults"></div>  
+<div class="category-container">  
+  
+<h2 class="category-title">  
+🧠 AI Tools Categories  
+</h2>  
+  
+<div class="category-grid">  
+  
+<div class="category-card" onclick="goTo('ai-tools')">  
+  <span>🤖</span>  
+  <p>AI Tools</p>  
+</div>  
+  
+<div class="category-card" onclick="goTo('coding-tools')">  
+  <span>💻</span>  
+  <p>Coding AI Tools</p>  
+</div>  
+  
+<div class="category-card" onclick="goTo('marketing-tools')">  
+  <span>📈</span>  
+  <p> Marketing AI Tools</p>  
+</div>  
+  
+<div class="category-card" onclick="goTo('voice-tools')">  
+  <span>🎙</span>  
+  <p>Voice AI Tools</p>  
+</div>  
+  
+<div class="category-card" onclick="goTo('video-tools')">  
+  <span>🎬</span>  
+  <p>Video AI Tools</p>  
+</div>  
+<!-- NEW CATEGORY -->  
+<div class="category-card" onclick="goTo('music-tools')">  
+<span>🎵</span>  
+<p>Music AI Tools</p>  
+</div>  
+  
+<!-- NEW CATEGORY -->  
+<div class="category-card" onclick="goTo('gaming-tools')">  
+<span>🎮</span>  
+<p>Gaming AI Tools</p>  
+</div>  
+  
+</div>  
+</div>  
+<!-- AI TOOLS -->  
+  
+<div class="section" id="ai-tools">  
+<h2>🤖 AI Tools</h2>  
+  
+<div class="tool" data-name="ChatGPT">  
+  
+<a href="https://chat.openai.com" target="_blank"  
+rel="noopener noreferrer">ChatGPT</a>  
+    
+<span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Google Gemini">  
+  
+<a href="https://gemini.google.com" target="_blank"  
+rel="noopener noreferrer">Google Gemini</a>  
+  <span class="badge pro">FREE + PRO</span>  
+  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Canva AI">  
+  
+<a href="https://www.canva.com/ai-image-generator" target="_blank"  
+rel="noopener noreferrer"  >Canva AI</a>  
+  <span class="badge pro">FREE + PRO</span>  
+  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+</div>  
+<!-- CODING TOOLS -->  
+  
+<div class="section" id="coding-tools">  
+<h2>💻 Coding AI Tools</h2>  
+  
+<div class="tool" data-name="GitHub Copilot">  
+  
+<a href="https://github.com/features/copilot" target="_blank"  
+rel="noopener noreferrer" >GitHub Copilot</a>  
+  <span class="badge pro">FREE + PRO</span>  
+  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Replit AI">  
+  
+<a href="https://replit.com" target="_blank"  
+rel="noopener noreferrer"  >Replit AI</a>  
+    
+<span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Codeium">  
+  
+<a href="https://codeium.com" target="_blank"  
+rel="noopener noreferrer" >Codeium</a>  
+    
+<span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+</div>  
+<!-- MARKETING AI -->  
+  
+<div class="section" id="marketing-tools">  
+<h2>📈 Marketing AI Tools</h2>  
+  
+<div class="tool" data-name="Writesonic">  
+  
+<a href="https://writesonic.com" target="_blank"  
+rel="noopener noreferrer"  >Writesonic</a>  
+    
+<span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Surfer SEO">  
+  
+<a href="https://surferseo.com" target="_blank"  
+rel="noopener noreferrer" >Surfer SEO</a>  
+  <span class="badge paid">PAID</span>  
+  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Canva Magic Write">  
+  
+<a href="https://www.canva.com/magic-write/" target="_blank"  
+rel="noopener noreferrer"  >Canva Magic Write</a>  
+  
+    
+<span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+</div>  
+  
+<!-- VOICE AI -->  
+  
+<div class="section" id="voice-tools">  
+<h2>🎙 Voice AI Tools</h2>  
+  
+<div class="tool" data-name="Murf AI">  
+  
+<a href="https://murf.ai" target="_blank"  
+rel="noopener noreferrer"  >Murf AI</a>  
+  <span class="badge pro">FREE + PRO</span>  
+  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="ElevenLabs">  
+    
+<a href="https://elevenlabs.io" target="_blank"  
+rel="noopener noreferrer" >ElevenLabs</a>  
+    
+  <span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Speechify">  
+  
+<a href="https://speechify.com" target="_blank"  
+rel="noopener noreferrer"  >Speechify</a>  
+    
+<span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Descript">  
+  
+<a href="https://www.descript.com" target="_blank"  
+ rel="noopener noreferrer" >Descript</a>  
+  <span class="badge pro">FREE + PRO</span>  
+  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+</div>  
+<!-- VIDEO AI -->  
+  
+<div class="section" id="video-tools">  
+<h2>🎬 Video AI Tools</h2>  
+  
+<div class="tool" data-name="Pictory AI">  
+  
+<a href="https://pictory.ai" target="_blank"  
+ rel="noopener noreferrer" >Pictory AI</a>  
+    
+<span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="InVideo AI">  
+  
+<a href="https://invideo.io" target="_blank"  
+ rel="noopener noreferrer" >InVideo AI</a>  
+    
+<span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Lumen5">  
+  
+<a href="https://lumen5.com" target="_blank"  
+ rel="noopener noreferrer" >Lumen5</a>  
+    
+<span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Synthesia AI">  
+  
+<a href="https://www.synthesia.io" target="_blank"  
+rel="noopener noreferrer"  >Synthesia AI</a>  
+    
+<span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+</div>  
+  
+<!-- MUSIC AI TOOLS -->  
+  
+<div class="section" id="music-tools">  
+<h2>🎵 Music AI Tools</h2>  
+  
+<div class="tool" data-name="AIVA">  
+<a href="https://www.aiva.ai" target="_blank">AIVA</a>  
+  
+<span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Udio">  
+<a href="https://udio.com" target="_blank">Udio</a>  
+  <span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Soundraw">  
+<a href="https://soundraw.io" target="_blank">Soundraw</a>  
+  <span class="badge paid">PAID</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+</div>  
+<!-- GAMING AI TOOLS -->  
+  
+<div class="section" id="gaming-tools">  
+<h2>🎮 Gaming AI Tools</h2>  
+  
+<div class="tool" data-name="Scenario AI">  
+<a href="https://scenario.gg" target="_blank">Scenario AI</a>  
+  <span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Ludo AI">  
+<a href="https://ludo.ai" target="_blank">Ludo AI</a>  
+  <span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Inworld AI">  
+<a href="https://inworld.ai" target="_blank">Inworld AI</a>  
+  <span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+</div>  
+<!-- LEGAL INFO -->  
+  
+<div class="section" style="text-align:center">  
+  
+<p style="color:#666;font-size:16px">  
+Tools open in secure external pages. Login may be required.  
+</p>  
+  
+<p style="color:#999;font-size:14px;margin-top:10px">  
+⚠ Some AI tools may take a few seconds to load depending on internet speed and server response.  
+</p>  
+  
+<hr style="margin:25px 0">  
+  
+<p style="max-width:600px;margin:auto;color:#666">  
+This app aggregates publicly available AI tools.  
+We are not affiliated with third-party services.  
+</p>  
+  
+<br><br>  
+  
+<div style="font-size:18px;font-weight:600">  
+  
+  
+<a href="privacy-policy.html" target="_blank">Privacy Policy</a> |  
+<a href="terms.html" target="_blank">Terms & Conditions</a> |  
+<a href="disclaimer.html" target="_blank">Disclaimer</a> |  
+<a href="about.html" target="_blank">About Us</a>  
+</div>  
+  
+</div>  
+<div class="footer">  
+AI Tools Hub © 2026 Public AI tools aggregator  
+</div>  
+  
+<script>  
+  
+/* =========================  
+   DARK MODE SYSTEM  
+========================= */  
+  
+function toggleDark(){  
+  
+document.body.classList.toggle("dark");  
+  
+/* SAVE THEME */  
+if(document.body.classList.contains("dark")){  
+localStorage.setItem("theme","dark");  
+}else{  
+localStorage.setItem("theme","light");  
+}  
+  
+}  
+  
+/* LOAD SAVED THEME AFTER REFRESH */  
+document.addEventListener("DOMContentLoaded",function(){  
+  
+if(localStorage.getItem("theme")==="dark"){  
+document.body.classList.add("dark");  
+}  
+  
+});  
+  
+  
+/* =========================  
+   PROMPT GENERATOR  
+========================= */  
+  
+function generatePrompt(){  
+  
+let topic=document.getElementById("topic").value.trim();  
+  
+if(topic===""){  
+document.getElementById("result").innerText =  
+"⚠ Please enter a topic first.";  
+return;  
+}  
+  
+document.getElementById("result").innerText =  
+"✨ Professional AI Prompt:\n\nCreate a highly detailed cinematic "+topic+  
+" with professional lighting, realistic textures, ultra-realistic style, depth of field, dramatic composition, and 4K quality rendering.";  
+  
+}  
+  
+  
+  
+/* FAVORITES SYSTEM */  
+  
+function fav(el){  
+  
+let tool = el.parentElement;  
+let name = tool.dataset.name || tool.querySelector("a").innerText;  
+let link = tool.querySelector("a").href;  
+  
+let favorites =  
+JSON.parse(localStorage.getItem("favorites")) || [];  
+  
+/* REMOVE FAVORITE */  
+if(el.innerHTML=="🌟"){  
+  
+el.innerHTML="⭐";  
+  
+favorites = favorites.filter(t=>t.name!==name);  
+localStorage.setItem("favorites",JSON.stringify(favorites));  
+  
+showFavorites();  
+return;  
+}  
+  
+/* ADD FAVORITE */  
+el.innerHTML="🌟";  
+  
+if(!favorites.find(t=>t.name===name)){  
+favorites.push({name,link});  
+localStorage.setItem("favorites",JSON.stringify(favorites));  
+}  
+  
+showFavorites();  
+}  
+  
+function showFavorites(){  
+  
+let container = document.getElementById("favoritesList");  
+if(!container) return;  
+  
+let favorites =  
+JSON.parse(localStorage.getItem("favorites")) || [];  
+  
+container.innerHTML="";  
+  
+favorites.forEach(tool=>{  
+  
+let div=document.createElement("div");  
+div.className="tool";  
+div.dataset.name=tool.name;  
+  
+div.innerHTML=`  
+<a href="${tool.link}" target="_blank">${tool.name}</a>  
+<span class="star" onclick="removeFavorite(this)">🌟</span>  
+`;  
+  
+container.appendChild(div);  
+});  
+  
+/* Update stars everywhere */  
+document.querySelectorAll(".tool").forEach(t=>{  
+let star=t.querySelector(".star");  
+if(!star) return;  
+  
+let exists=favorites.find(f=>f.name===t.dataset.name);  
+star.innerHTML = exists ? "🌟" : "⭐";  
+});  
+  
+}  
+  
+function removeFavorite(el){  
+  
+let name=el.parentElement.dataset.name;  
+  
+let favorites =  
+JSON.parse(localStorage.getItem("favorites")) || [];  
+  
+favorites=favorites.filter(t=>t.name!==name);  
+  
+localStorage.setItem("favorites",JSON.stringify(favorites));  
+  
+showFavorites();  
+}  
+  
+  
+document.addEventListener("DOMContentLoaded",showFavorites);  
+  
+function goTo(sectionId){  
+document.getElementById(sectionId)  
+.scrollIntoView({  
+behavior:"smooth"  
+});  
+}  
+</script>  
+  
 <script>
 function searchTools(){
 
@@ -1037,6 +1004,7 @@ tool.innerText.toLowerCase();
 if(name.includes(input)){
 
 let clone = tool.cloneNode(true);
+clone.querySelector(".star")?.setAttribute("onclick","fav(this)");
 results.appendChild(clone);
 
 }
@@ -1045,5 +1013,55 @@ results.appendChild(clone);
 
 }
 </script>
-</body>
-</html>
+<script>  
+  
+// CHECK INTERNET WHEN APP STARTS  
+// CHECK CONNECTION  
+window.addEventListener("offline", function () {  
+   alert("No Internet Connection");  
+});  
+  
+window.addEventListener("online", function () {  
+   location.reload();  
+});  
+  
+</script>  
+  
+  <script>  
+let lastBackPress = 0;  
+  
+window.addEventListener("popstate", function () {  
+  
+    if (Date.now() - lastBackPress < 2000) {  
+        window.history.back();  
+    } else {  
+        alert("Press back again to exit");  
+        lastBackPress = Date.now();  
+        history.pushState(null, null, location.href);  
+    }  
+  
+});  
+  
+history.pushState(null, null, location.href);  
+</script>  
+  
+
+function checkConnection(){  
+   if(!navigator.onLine){  
+      alert("No Internet Connection");  
+   }  
+}  
+  
+window.addEventListener("load",checkConnection);  
+  
+window.addEventListener("offline",function(){  
+   alert("No Internet Connection");  
+});  
+  
+window.addEventListener("online",function(){  
+   setTimeout(()=>location.reload(),1500);  
+});  
+
+</script>  
+</body>  
+</html> 
