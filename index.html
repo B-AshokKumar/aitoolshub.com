@@ -977,15 +977,23 @@ behavior:"smooth"
 </script>
 
 
-  <script>
+<script>
 
-   window.addEventListener("offline", function () {
+// CHECK INTERNET WHEN APP STARTS
+if (!navigator.onLine) {
+    window.location.replace("offline.html");
+}
+
+// WHEN INTERNET LOST
+window.addEventListener("offline", function () {
     window.location.replace("offline.html");
 });
 
+// WHEN INTERNET RETURNS
 window.addEventListener("online", function () {
     window.location.replace("index.html");
-}); 
+});
+
 </script>
 
   <script>
