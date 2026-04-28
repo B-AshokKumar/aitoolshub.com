@@ -1044,23 +1044,20 @@ results.appendChild(clone);
 <script>
 let lastBackPress = 0;
 
-history.pushState(null, null, location.href);
+history.pushState(null,null,location.href);
 
-window.addEventListener("popstate", function () {
+window.addEventListener("popstate",function(){
 
-if (Date.now() - lastBackPress < 2000) {
+if(Date.now()-lastBackPress<2000){
 
-    // Android APK exit
-    if (navigator.app && navigator.app.exitApp) {
-        navigator.app.exitApp();
-    } else {
-        window.close(); // fallback for browser/iOS
-    }
+   if(window.navigator.app){
+      navigator.app.exitApp(); // Android APK
+   }
 
-} else {
-    alert("Press back again to exit");
-    lastBackPress = Date.now();
-    history.pushState(null, null, location.href);
+}else{
+   alert("Press back again to exit");
+   lastBackPress=Date.now();
+   history.pushState(null,null,location.href);
 }
 
 });
