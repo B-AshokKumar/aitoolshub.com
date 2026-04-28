@@ -999,9 +999,9 @@ results.innerHTML="";
 return;
 }
 
-let tools =
-document.querySelectorAll(".tool");
 
+let tools =
+document.querySelectorAll(".section .tool");
 tools.forEach(tool=>{
 
 let name =
@@ -1019,19 +1019,9 @@ results.appendChild(clone);
 
 }
 </script>
-<script>  
   
 // CHECK INTERNET WHEN APP STARTS  
 // CHECK CONNECTION  
-window.addEventListener("offline", function () {  
-   alert("No Internet Connection");  
-});  
-  
-window.addEventListener("online", function () {  
-   location.reload();  
-});  
-  
-</script>  
   
   <script>  
 let lastBackPress = 0;  
@@ -1067,7 +1057,7 @@ window.addEventListener("offline",function(){
 window.addEventListener("online",function(){
    setTimeout(()=>location.reload(),1500);
 });
-</script>
+
 </script>  
 </body>  
 </html> 
