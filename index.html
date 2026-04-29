@@ -25,6 +25,7 @@ margin:0;
 font-family:'Poppins', sans-serif;
 background:#f2f4f7;  
 transition:0.4s;  
+padding-bottom:80px;
 }  
   
 /* HEADER */  
@@ -409,6 +410,26 @@ margin-left:12px;
 .footer-links a:last-child::after{
 content:"";
 }
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:#ffffff;
+  display:flex;
+  justify-content:space-around;
+  padding:10px 0;
+  box-shadow:0 -2px 8px rgba(0,0,0,0.1);
+  z-index:1000;
+}
+
+.bottom-nav a{
+  text-decoration:none;
+  color:#6a1b9a;
+  font-size:14px;
+  font-weight:600;
+}
+
 </style>  
   
 </head>  
@@ -1084,5 +1105,12 @@ window.addEventListener("online",()=>{
  location.reload();
 });
 </script>
+
+<div class="bottom-nav">
+  <a href="#top">🏠 Home</a>
+  <a href="#searchInput">🔎 Search</a>
+  <a href="#favoritesList">⭐ Favorites</a>
+  <a href="about.html">⚙️ Settings</a>
+</div>
 </body>  
 </html> 
