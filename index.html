@@ -437,8 +437,8 @@ content:"";
   
 </head>  
   
-<body id="home">
-  
+
+<a href="#top">🏠 Home</a>
 <div class="header">  
 AI Tools Hub   
 <button class="dark-btn" onclick="toggleDark()">  
@@ -1084,19 +1084,27 @@ results.appendChild(clone);
 <script>
 let lastBackPress = 0;
 
+/* Push initial state */
 history.pushState(null,null,location.href);
 
-window.addEventListener("popstate",function(){
+window.addEventListener("popstate",function(e){
 
-if(Date.now()-lastBackPress<2000){
+/* IGNORE hash navigation (#home #search etc.) */
+if(location.hash){
+   history.pushState(null,null,location.href);
+   return;
+}
+
+/* DOUBLE BACK TO EXIT */
+if(Date.now() - lastBackPress < 2000){
 
    if(window.navigator.app){
-      navigator.app.exitApp(); // Android APK
+      navigator.app.exitApp();
    }
 
 }else{
    alert("Press back again to exit");
-   lastBackPress=Date.now();
+   lastBackPress = Date.now();
    history.pushState(null,null,location.href);
 }
 
