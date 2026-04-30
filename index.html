@@ -1110,22 +1110,21 @@ if(Date.now() - lastBackPress < 2000){
 </script>
 
 <script>
-let offlineShown=false;
+let offlineShown = false;
 
 function checkConnection(){
  if(!navigator.onLine && !offlineShown){
-   alert("No Internet Connection");
-   offlineShown=true;
+   alert("No Internet Connection ❌");
+   offlineShown = true;
  }
 }
 
-window.addEventListener("load",checkConnection);
+window.addEventListener("load", checkConnection);
+window.addEventListener("offline", checkConnection);
 
-window.addEventListener("offline",checkConnection);
-
-window.addEventListener("online",()=>{
- offlineShown=false;
- location.reload();
+window.addEventListener("online", () => {
+ offlineShown = false;
+ alert("Back Online ✅");
 });
 </script>
 
