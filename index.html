@@ -1124,7 +1124,14 @@ window.addEventListener("offline", checkConnection);
 
 window.addEventListener("online", () => {
  offlineShown = false;
- alert("Back Online ✅");
+
+ // wait for stable internet
+ setTimeout(()=>{
+   alert("Back Online ✅");
+
+   // reload safely
+   window.location.href = window.location.href;
+ },2000);   // waits 2 seconds
 });
 </script>
 
