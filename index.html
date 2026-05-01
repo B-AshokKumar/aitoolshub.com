@@ -970,8 +970,8 @@ document.getElementById("result").innerText =
   
 }  
 
-
-  const tips = [
+<script>
+const tips = [
  "Use detailed prompts",
  "Add lighting & mood",
  "Use 4K keyword",
@@ -982,24 +982,33 @@ document.getElementById("result").innerText =
 function showDailyTip(){
 
   let today = new Date().toDateString();
-  let lastShown = localStorage.getItem("lastTipDate");
-  let lastIndex = localStorage.getItem("lastTipIndex");
 
-  if(lastShown !== today){
+  let savedDate = localStorage.getItem("tipDate");
+  let savedTip = localStorage.getItem("tipText");
 
-    let newIndex;
+  // 👉 If new day OR no tip saved
+  if(savedDate !== today || !savedTip){
 
-    do{
-      newIndex = Math.floor(Math.random() * tips.length);
-    } while(newIndex == lastIndex); // avoid same tip
+    let randomTip = tips[Math.floor(Math.random()*tips.length)];
 
-    alert("💡 AI Tip: " + tips[newIndex]);
+    localStorage.setItem("tipDate", today);
+    localStorage.setItem("tipText", randomTip);
 
-    localStorage.setItem("lastTipDate", today);
-    localStorage.setItem("lastTipIndex", newIndex);
+    savedTip = randomTip;
   }
-}
 
+  // 👉 Show same tip every time
+  let box = document.getElementById("tipBox");
+  if(!box) return;
+
+  box.innerText = "💡 " + savedTip;
+  box.classList.add("show");
+
+  setTimeout(()=>{
+    box.classList.remove("show");
+  },4000);
+}
+</script>
   
 /* FAVORITES SYSTEM */  
   
