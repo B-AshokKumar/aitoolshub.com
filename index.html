@@ -102,8 +102,6 @@ justify-content:space-between;
 align-items:center;  
 transition:0.3s;  
 cursor:pointer;  
-width:100%;
-box-sizing:border-box;
 }  
   
 .tool:hover{  
@@ -222,7 +220,10 @@ font-weight:700;
 color:#2d74d7;  
 margin-bottom:30px;  
 }  
-
+  
+.tool{  
+cursor:pointer;  
+}  
   
 .category-grid{  
 display:grid;  
@@ -263,7 +264,18 @@ overflow:hidden;
 transform:scale(1.05);  
 background:#bfc7db;  
 }  
-
+  
+.tool{  
+width:100%;  
+box-sizing:border-box;  
+}  
+  
+.tool{  
+display:flex;  
+justify-content:space-between;  
+align-items:center;  
+cursor:default;   /* CHANGE THIS */  
+}  
   
 .tool a{  
 pointer-events:auto;  
@@ -1083,41 +1095,44 @@ behavior:"smooth"
 });  
 }  
 </script>  
-
-</script>
-
-let allTools = [];
-
-document.addEventListener("DOMContentLoaded", () => {
-  allTools = document.querySelectorAll(".section .tool");
-});
   
-
+<script>
 function searchTools(){
 
-  let input = document.getElementById("searchInput").value.toLowerCase();
-  let results = document.getElementById("searchResults");
+let input =
+document.getElementById("searchInput")
+.value.toLowerCase();
 
-  results.innerHTML = "";
+let results =
+document.getElementById("searchResults");
 
-  if(input === "") return;
+results.innerHTML="";
 
-  allTools.forEach(tool => {
+if(input===""){
+results.innerHTML="";
+return;
+}
 
-    let name = tool.innerText.toLowerCase();
 
-    if(name.includes(input)){
+let tools =
+document.querySelectorAll(".section .tool");
+tools.forEach(tool=>{
 
-      let clone = tool.cloneNode(true);
-      clone.querySelector(".star")?.setAttribute("onclick","fav(this)");
-      results.appendChild(clone);
+let name =
+tool.innerText.toLowerCase();
 
-    }
+if(name.includes(input)){
 
-  });
+let clone = tool.cloneNode(true);
+clone.querySelector(".star")?.setAttribute("onclick","fav(this)");
+results.appendChild(clone);
 
 }
-</script>
+
+});
+
+}
+
 
 let lastBackPress = 0;
 
