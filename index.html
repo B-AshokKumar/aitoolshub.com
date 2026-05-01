@@ -946,7 +946,6 @@ if(localStorage.getItem("theme")==="dark"){
 document.body.classList.add("dark");  
 }  
 
-showDailyTip();
 });  
   
   
@@ -970,45 +969,6 @@ document.getElementById("result").innerText =
   
 }  
 
-<script>
-const tips = [
- "Use detailed prompts",
- "Add lighting & mood",
- "Use 4K keyword",
- "Try different styles",
- "Use AI tools for automation"
-];
-
-function showDailyTip(){
-
-  let today = new Date().toDateString();
-
-  let savedDate = localStorage.getItem("tipDate");
-  let savedTip = localStorage.getItem("tipText");
-
-  // 👉 If new day OR no tip saved
-  if(savedDate !== today || !savedTip){
-
-    let randomTip = tips[Math.floor(Math.random()*tips.length)];
-
-    localStorage.setItem("tipDate", today);
-    localStorage.setItem("tipText", randomTip);
-
-    savedTip = randomTip;
-  }
-
-  // 👉 Show same tip every time
-  let box = document.getElementById("tipBox");
-  if(!box) return;
-
-  box.innerText = "💡 " + savedTip;
-  box.classList.add("show");
-
-  setTimeout(()=>{
-    box.classList.remove("show");
-  },4000);
-}
-</script>
   
 /* FAVORITES SYSTEM */  
   
@@ -1222,6 +1182,48 @@ if ("serviceWorker" in navigator) {
 
 <script>
 document.body.style.visibility="visible";
+</script>
+
+<script>
+const tips = [
+ "Use detailed prompts",
+ "Add lighting & mood",
+ "Use 4K keyword",
+ "Try different styles",
+ "Use AI tools for automation"
+];
+
+function showDailyTip(){
+
+  let today = new Date().toDateString();
+
+  let savedDate = localStorage.getItem("tipDate");
+  let savedTip = localStorage.getItem("tipText");
+
+  // New day → new tip
+  if(savedDate !== today || !savedTip){
+
+    let randomTip = tips[Math.floor(Math.random()*tips.length)];
+
+    localStorage.setItem("tipDate", today);
+    localStorage.setItem("tipText", randomTip);
+
+    savedTip = randomTip;
+  }
+
+  let box = document.getElementById("tipBox");
+  if(!box) return;
+
+  box.innerText = "💡 " + savedTip;
+  box.classList.add("show");
+
+  setTimeout(()=>{
+    box.classList.remove("show");
+  },4000);
+}
+
+// ✅ call after page loads
+window.addEventListener("load", showDailyTip);
 </script>
 </body>  
 </html> 
