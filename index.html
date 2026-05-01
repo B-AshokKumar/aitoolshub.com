@@ -1133,29 +1133,27 @@ results.appendChild(clone);
 
 }
 
-
 let lastBackPress = 0;
 
 window.addEventListener("popstate", function(){
 
-  if(Date.now() - lastBackPress < 2000){
+  if(window.scrollY > 50){
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    history.pushState({app:true}, "", "");
+    return;
+  }
 
+  if(Date.now() - lastBackPress < 2000){
     if(navigator.app && navigator.app.exitApp){
       navigator.app.exitApp();
     }
-
   } else {
-
     showExitToast();
-
     lastBackPress = Date.now();
-
-    // 🔁 push again so user can press back again
     history.pushState({app:true}, "", "");
   }
 
 });
-
 
 
 <script>
