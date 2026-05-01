@@ -457,6 +457,25 @@ content:"";
   top:40px;
 }
 
+.exit-toast{
+  position:fixed;
+  bottom:80px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#333;
+  color:white;
+  padding:10px 18px;
+  border-radius:20px;
+  font-size:14px;
+  opacity:0;
+  transition:0.3s;
+  z-index:3000;
+}
+
+.exit-toast.show{
+  opacity:1;
+}
+
 </style>  
   
 </head>  
@@ -969,6 +988,15 @@ document.getElementById("result").innerText =
   
 }  
 
+function showExitToast(){
+  let t = document.getElementById("exitToast");
+  t.classList.add("show");
+
+  setTimeout(()=>{
+    t.classList.remove("show");
+  },1500);
+}
+
   
 /* FAVORITES SYSTEM */  
   
@@ -1105,31 +1133,16 @@ results.appendChild(clone);
 <script>
 let lastBackPress = 0;
 
-/* Push initial state */
-history.pushState(null,null,location.href);
+window.addEventListener("popstate", function(){
 
-window.addEventListener("popstate",function(e){
-
-/* IGNORE hash navigation (#home #search etc.) */
-if(location.hash){
-   history.pushState(null,null,location.href);
-   return;
-}
-
-/* DOUBLE BACK TO EXIT */
-if(Date.now() - lastBackPress < 2000){
-
-   if(window.navigator.app){
-      (navigator.app && navigator.app.exitApp){
-   navigator.app.exitApp();
-}
-   }
-
-}else{
-   alert("Press back again to exit");
-   lastBackPress = Date.now();
-   history.pushState(null,null,location.href);
-}
+  if(Date.now() - lastBackPress < 2000){
+    if(navigator.app && navigator.app.exitApp){
+      navigator.app.exitApp();
+    }
+  } else {
+    showExitToast(); // better than alert
+    lastBackPress = Date.now();
+  }
 
 });
 </script>
@@ -1160,6 +1173,7 @@ window.addEventListener("online", () => {
 });
 </script>
 
+<div id="exitToast" class="exit-toast">Press back again to exit</div>
 <div id="tipBox" class="tip-box"></div>
 <div class="bottom-nav">
 
