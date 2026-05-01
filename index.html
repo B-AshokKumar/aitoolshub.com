@@ -944,8 +944,39 @@ document.getElementById("result").innerText =
 " with professional lighting, realistic textures, ultra-realistic style, depth of field, dramatic composition, and 4K quality rendering.";  
   
 }  
-  
-  
+
+
+  const tips = [
+ "Use detailed prompts",
+ "Add lighting & mood",
+ "Use 4K keyword",
+ "Try different styles",
+ "Use AI tools for automation"
+];
+
+function showDailyTip(){
+
+  let today = new Date().toDateString();
+  let lastShown = localStorage.getItem("lastTipDate");
+  let lastIndex = localStorage.getItem("lastTipIndex");
+
+  if(lastShown !== today){
+
+    let newIndex;
+
+    do{
+      newIndex = Math.floor(Math.random() * tips.length);
+    } while(newIndex == lastIndex); // avoid same tip
+
+    alert("💡 AI Tip: " + tips[newIndex]);
+
+    localStorage.setItem("lastTipDate", today);
+    localStorage.setItem("lastTipIndex", newIndex);
+  }
+}
+
+/* CALL FUNCTION */
+window.addEventListener("load", showDailyTip);
   
 /* FAVORITES SYSTEM */  
   
