@@ -1083,44 +1083,39 @@ behavior:"smooth"
 });  
 }  
 </script>  
+
+let allTools = [];
+
+document.addEventListener("DOMContentLoaded", () => {
+  allTools = document.querySelectorAll(".section .tool");
+});
   
 <script>
+
 function searchTools(){
 
-let input =
-document.getElementById("searchInput")
-.value.toLowerCase();
+  let input = document.getElementById("searchInput").value.toLowerCase();
+  let results = document.getElementById("searchResults");
 
-let results =
-document.getElementById("searchResults");
+  results.innerHTML = "";
 
-results.innerHTML="";
+  if(input === "") return;
 
-if(input===""){
-results.innerHTML="";
-return;
-}
+  allTools.forEach(tool => {
 
+    let name = tool.innerText.toLowerCase();
 
-let tools =
-document.querySelectorAll(".section .tool");
-tools.forEach(tool=>{
+    if(name.includes(input)){
 
-let name =
-tool.innerText.toLowerCase();
+      let clone = tool.cloneNode(true);
+      clone.querySelector(".star")?.setAttribute("onclick","fav(this)");
+      results.appendChild(clone);
 
-if(name.includes(input)){
+    }
 
-let clone = tool.cloneNode(true);
-clone.querySelector(".star")?.setAttribute("onclick","fav(this)");
-results.appendChild(clone);
+  });
 
 }
-
-});
-
-}
-
 
 let lastBackPress = 0;
 
