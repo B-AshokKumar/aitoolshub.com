@@ -1250,7 +1250,7 @@ function showDailyTip(){
   let box = document.getElementById("tipBox");
   if(!box) return;
 
-  box.innerText = "💡 Daily Tip:\n" + savedTip;
+  box.innerHTML = "💡 <b>Daily Tip:</b><br>" + savedTip;
   box.classList.add("show");
 
   setTimeout(()=>{
