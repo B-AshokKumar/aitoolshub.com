@@ -965,6 +965,8 @@ if(localStorage.getItem("theme")==="dark"){
 document.body.classList.add("dark");  
 }  
 
+history.pushState({app:true}, "", "");
+
 });  
   
   
@@ -1130,22 +1132,27 @@ results.appendChild(clone);
 }
 </script>
   
-<script>
 let lastBackPress = 0;
 
 window.addEventListener("popstate", function(){
 
   if(Date.now() - lastBackPress < 2000){
+
     if(navigator.app && navigator.app.exitApp){
       navigator.app.exitApp();
     }
+
   } else {
-    showExitToast(); // better than alert
+
+    showExitToast();
+
     lastBackPress = Date.now();
+
+    // 🔁 push again so user can press back again
+    history.pushState({app:true}, "", "");
   }
 
 });
-</script>
 
 <script>
 let offlineShown = false;
