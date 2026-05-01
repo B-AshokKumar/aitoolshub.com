@@ -2,10 +2,11 @@
 <!-- Version 1 -->  
 <html lang="en">  
 <head>  
-  
+
+<div class="header" id="top">
 <meta charset="UTF-8">  
   
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">  
 <meta name="description" content="AI Tools Hub - All AI tools in one place">
 <meta name="robots" content="index,follow">
 <!-- 
@@ -1097,7 +1098,9 @@ if(location.hash){
 if(Date.now() - lastBackPress < 2000){
 
    if(window.navigator.app){
-      navigator.app.exitApp();
+      (navigator.app && navigator.app.exitApp){
+   navigator.app.exitApp();
+}
    }
 
 }else{
@@ -1149,9 +1152,13 @@ window.addEventListener("online", () => {
 
 <script>
 if ("serviceWorker" in navigator) {
- navigator.serviceWorker.register("sw.js")
+ navigator.serviceWorker.register("./sw.js")
    .then(() => console.log("Offline App Ready ✅"));
 }
+</script>
+
+<script>
+document.body.style.visibility="visible";
 </script>
 </body>  
 </html> 
