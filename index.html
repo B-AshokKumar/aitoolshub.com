@@ -1106,7 +1106,7 @@ document.querySelectorAll(".section .tool");
 tools.forEach(tool=>{
 
 let name =
-tool.innerText.toLowerCase();
+tool.dataset.name.toLowerCase();
 
 if(name.includes(input)){
 
