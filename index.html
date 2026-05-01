@@ -1146,5 +1146,12 @@ window.addEventListener("online", () => {
 <a href="#settings">⚙️ Settings</a>
 
 </div>
+
+<script>
+if ("serviceWorker" in navigator) {
+ navigator.serviceWorker.register("sw.js")
+   .then(() => console.log("Offline App Ready ✅"));
+}
+</script>
 </body>  
 </html> 
