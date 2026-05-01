@@ -102,6 +102,8 @@ justify-content:space-between;
 align-items:center;  
 transition:0.3s;  
 cursor:pointer;  
+width:100%;
+box-sizing:border-box;
 }  
   
 .tool:hover{  
@@ -220,10 +222,7 @@ font-weight:700;
 color:#2d74d7;  
 margin-bottom:30px;  
 }  
-  
-.tool{  
-cursor:pointer;  
-}  
+
   
 .category-grid{  
 display:grid;  
@@ -264,18 +263,14 @@ overflow:hidden;
 transform:scale(1.05);  
 background:#bfc7db;  
 }  
-  
-.tool{  
-width:100%;  
-box-sizing:border-box;  
-}  
-  
+
+/* 
 .tool{  
 display:flex;  
 justify-content:space-between;  
 align-items:center;  
 cursor:default;   /* CHANGE THIS */  
-}  
+}  */
   
 .tool a{  
 pointer-events:auto;  
