@@ -1164,9 +1164,8 @@ window.addEventListener("online", () => {
  setTimeout(()=>{
    alert("Back Online ✅");
 
-   // reload safely
-   window.location.href = window.location.href;
- },2000);   // waits 2 seconds
+   location.reload();
+  },1500);
 });
 </script>
 
