@@ -1123,23 +1123,33 @@ results.appendChild(clone);
 
 
 let lastBackPress = 0;
+let isHandlingBack = false;
 
 window.addEventListener("popstate", function(){
 
+  if(isHandlingBack) return;
+  isHandlingBack = true;
+
+  setTimeout(()=> isHandlingBack = false, 300);
+
+  // Scroll to top instead of exiting
   if(window.scrollY > 50){
     window.scrollTo({ top: 0, behavior: "smooth" });
-    history.pushState({app:true}, "", "");
     return;
   }
 
+  // Double press to exit
   if(Date.now() - lastBackPress < 2000){
+
     if(navigator.app && navigator.app.exitApp){
       navigator.app.exitApp();
+    } else {
+      window.close(); // fallback
     }
+
   } else {
     showExitToast();
     lastBackPress = Date.now();
-    history.pushState({app:true}, "", "");
   }
 
 });
