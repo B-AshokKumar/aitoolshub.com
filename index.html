@@ -1268,7 +1268,15 @@ function showDailyTip(){
 }
 
 // ✅ call after page loads
-document.addEventListener("DOMContentLoaded", showDailyTip);
+
+document.addEventListener("DOMContentLoaded", function(){
+
+  if(!sessionStorage.getItem("tipShown")){
+    setTimeout(showDailyTip, 800);
+    sessionStorage.setItem("tipShown", "true");
+  }
+
+});
 </script>
 </body>  
 </html> 
