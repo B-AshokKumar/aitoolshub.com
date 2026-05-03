@@ -509,13 +509,8 @@ placeholder="✨ Enter topic (Example: logo, cat)">
   
 <div style="display:flex; gap:10px; justify-content:center;">
   <button class="prompt-btn" onclick="generatePrompt()">✨ Generate</button>
-  <button class="prompt-btn" onclick="copyPrompt()">📋 Copy</button>
 </div>
 
-  <div style="display:flex; gap:10px; justify-content:center; margin-top:10px;">
-  <button class="prompt-btn" onclick="openChatGPT()">💬 ChatGPT</button>
-  <button class="prompt-btn" onclick="openGemini()">🤖 Gemini</button>
-</div>
 <div id="result" class="prompt-result"></div>  
 
 <button class="prompt-btn" onclick="showDailyTip()">
@@ -977,36 +972,6 @@ document.getElementById("result").innerText =
 "✨ Professional AI Prompt:\n\nCreate a highly detailed cinematic "+topic+  
 " with professional lighting, realistic textures, ultra-realistic style, depth of field, dramatic composition, and 4K quality rendering.";  
 
-function copyPrompt(){
-
-  let text = document.getElementById("result").innerText;
-
-  if(!text || text.includes("Please enter")){
-    showExitToast("Generate prompt first");
-    return;
-  }
-
-  let textarea = document.createElement("textarea");
-  textarea.value = text;
-  document.body.appendChild(textarea);
-
-  textarea.select();
-  document.execCommand("copy");
-
-  document.body.removeChild(textarea);
-
-  showExitToast("Copied!");
-}
-
-function openChatGPT(){
-  copyPrompt();
-  window.open("https://chat.openai.com", "_blank");
-}
-
-function openGemini(){
-  copyPrompt();
-  window.open("https://gemini.google.com", "_blank");
-}
 }  
 
 function showExitToast(){
