@@ -978,7 +978,7 @@ function copyPrompt(){
   let text = document.getElementById("result").innerText;
 
   if(!text || text.includes("Please enter")){
-    alert("⚠ Generate a prompt first");
+    showExitToast("Generate prompt first");
     return;
   }
 
@@ -987,16 +987,11 @@ function copyPrompt(){
   document.body.appendChild(textarea);
 
   textarea.select();
-  textarea.setSelectionRange(0, 99999);
-
-  try{
-    document.execCommand("copy");
-    showExitToast("Copied!");
-  } catch(err){
-    alert("❌ Copy failed");
-  }
+  document.execCommand("copy");
 
   document.body.removeChild(textarea);
+
+  showExitToast("Copied!");
 }
 }  
 
