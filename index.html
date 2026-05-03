@@ -1123,21 +1123,10 @@ showFavorites();
 document.addEventListener("DOMContentLoaded",showFavorites);  
   
 function goTo(sectionId){
-
-  let el = document.getElementById(sectionId);
-  if(!el) return;
-
-  // temporarily disable clicks
-  document.body.style.pointerEvents = "none";
-
-  el.scrollIntoView({
+  document.getElementById(sectionId)
+  .scrollIntoView({
     behavior:"smooth"
   });
-
-  // re-enable after scroll
-  setTimeout(()=>{
-    document.body.style.pointerEvents = "auto";
-  }, 500);
 }
 </script>  
   
