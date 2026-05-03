@@ -485,38 +485,35 @@ AI Tools Hub
   
 <!-- HOME -->  
   
-<div class="section" id="home">
-<h2>Welcome to My AI Tools Aggregate App</h2>  
-  
-<p>This app provides quick access to popular AI tools and resources in one place.</p>  
-  
-<h3>✨ AI Prompt Generator</h3>  
-  
-<div class="prompt-header">  
-  
-<div class="prompt-title">  
-✨ AI Prompt Generator  
-</div>  
-  
-<div class="prompt-sub">  
-Generate ready-to-use AI prompts instantly.  
-</div>  
-  
-</div>  
-  
-<input id="topic" class="prompt-input"  
-placeholder="✨ Enter topic (Example: logo, cat)">  
-  
-<div style="display:flex; gap:10px; justify-content:center;">
-  <button class="prompt-btn" onclick="generatePrompt()">✨ Generate Prompt</button>
-</div>
+<div class="section prompt-section" id="home">
 
-<div id="result" class="prompt-result"></div>  
+  <h2 class="welcome-title">Welcome to AI Tools Hub</h2>
 
-<div style="text-align:center; margin-top:10px;">
-  <button class="prompt-btn" onclick="showDailyTip()">💡 Show Daily Tip</button>
+  <!-- ✅ ADD HERE -->
+  <p class="welcome-desc">
+    This app provides quick access to popular AI tools and resources in one place.
+  </p>
+
+  <p class="welcome-sub">Generate powerful AI prompts instantly</p>
+
+  <input id="topic" class="prompt-input"
+    placeholder="✨ Enter topic (Example: logo, cat)">
+
+  <div class="prompt-actions">
+    <button class="prompt-btn" onclick="generatePrompt()">
+      ✨ Generate Prompt
+    </button>
+  </div>
+
+  <div id="result" class="prompt-result"></div>
+
+  <div class="center-btn">
+    <button class="prompt-btn tip-btn" onclick="showDailyTip()">
+      💡 Show Daily Tip
+    </button>
+  </div>
+
 </div>
-</div>  
   
 <!-- TRENDING TOOLS -->  
   
