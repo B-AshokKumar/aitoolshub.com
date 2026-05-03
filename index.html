@@ -511,7 +511,11 @@ placeholder="✨ Enter topic (Example: logo, cat)">
   <button class="prompt-btn" onclick="generatePrompt()">✨ Generate</button>
   <button class="prompt-btn" onclick="copyPrompt()">📋 Copy</button>
 </div>
-  
+
+  <div style="display:flex; gap:10px; justify-content:center; margin-top:10px;">
+  <button class="prompt-btn" onclick="openChatGPT()">💬 ChatGPT</button>
+  <button class="prompt-btn" onclick="openGemini()">🤖 Gemini</button>
+</div>
 <div id="result" class="prompt-result"></div>  
 
 <button class="prompt-btn" onclick="showDailyTip()">
@@ -992,6 +996,16 @@ function copyPrompt(){
   document.body.removeChild(textarea);
 
   showExitToast("Copied!");
+}
+
+function openChatGPT(){
+  copyPrompt();
+  window.open("https://chat.openai.com", "_blank");
+}
+
+function openGemini(){
+  copyPrompt();
+  window.open("https://gemini.google.com", "_blank");
 }
 }  
 
