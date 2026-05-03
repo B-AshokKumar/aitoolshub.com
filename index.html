@@ -982,13 +982,21 @@ function copyPrompt(){
     return;
   }
 
-  navigator.clipboard.writeText(text)
-    .then(()=>{
-      alert("✅ Prompt copied!");
-    })
-    .catch(()=>{
-      alert("❌ Copy failed");
-    });
+  let textarea = document.createElement("textarea");
+  textarea.value = text;
+  document.body.appendChild(textarea);
+
+  textarea.select();
+  textarea.setSelectionRange(0, 99999);
+
+  try{
+    document.execCommand("copy");
+    showExitToast("Copied!");
+  } catch(err){
+    alert("❌ Copy failed");
+  }
+
+  document.body.removeChild(textarea);
 }
 }  
 
