@@ -1337,7 +1337,10 @@ function showDailyTip(){
 document.addEventListener("DOMContentLoaded", function(){
 
   if(!sessionStorage.getItem("tipShown")){
-    setTimeout(showDailyTip, 800);
+    setTimeout(()=>{
+  window.scrollBy(0, 40); // 🔥 small auto scroll
+  showDailyTip();
+}, 800);
     sessionStorage.setItem("tipShown", "true");
   }
 
