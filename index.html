@@ -483,6 +483,31 @@ content:"";
   font-weight:600;
 }
 
+.nav-link{
+  text-decoration:none;
+  color:#6a1b9a;
+  font-size:14px;
+  font-weight:600;
+  transition:0.3s;
+}
+
+/* 🔥 Active tab */
+.nav-link.active{
+  color:#2d74d7;
+  transform:scale(1.1);
+}
+
+/* Optional glow effect */
+.nav-link.active::after{
+  content:"";
+  display:block;
+  width:6px;
+  height:6px;
+  background:#2d74d7;
+  border-radius:50%;
+  margin:4px auto 0;
+}
+
 .tip-box{
   position:fixed;
   top:20px;
@@ -1238,12 +1263,13 @@ window.addEventListener("online", () => {
 
 <div id="exitToast" class="exit-toast">Press back again to exit</div>
 <div id="tipBox" class="tip-box"></div>
+
 <div class="bottom-nav">
 
-<a href="javascript:void(0)" onclick="goTo('home')">🏠 Home</a>
-<a href="javascript:void(0)" onclick="goTo('search')">🔎 Search</a>
-<a href="javascript:void(0)" onclick="goTo('favorites')">⭐ Favorites</a>
-<a href="javascript:void(0)" onclick="goTo('settings')">⚙️ Settings</a>
+<a href="#" class="nav-link active" data-target="home">🏠 Home</a>
+<a href="#" class="nav-link" data-target="search">🔎 Search</a>
+<a href="#" class="nav-link" data-target="favorites">⭐ Favorites</a>
+<a href="#" class="nav-link" data-target="settings">⚙️ Settings</a>
 
 </div>
 
@@ -1343,6 +1369,39 @@ document.addEventListener("DOMContentLoaded", function(){
 }, 800);
     sessionStorage.setItem("tipShown", "true");
   }
+
+});
+</script>
+
+<script>
+document.querySelectorAll(".nav-link").forEach(link => {
+
+  link.addEventListener("click", function(e){
+
+    e.preventDefault();
+
+    // remove active from all
+    document.querySelectorAll(".nav-link").forEach(l=>{
+      l.classList.remove("active");
+    });
+
+    // add active to clicked
+    this.classList.add("active");
+
+    // scroll
+    let target = this.getAttribute("data-target");
+    let el = document.getElementById(target);
+
+    if(el){
+      let y = el.getBoundingClientRect().top + window.pageYOffset;
+
+      window.scrollTo({
+        top: y - 50,
+        behavior: "smooth"
+      });
+    }
+
+  });
 
 });
 </script>
