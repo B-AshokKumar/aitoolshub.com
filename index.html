@@ -1123,9 +1123,19 @@ showFavorites();
 document.addEventListener("DOMContentLoaded",showFavorites);  
   
 function goTo(sectionId){
-  document.getElementById(sectionId)
-  .scrollIntoView({
-    behavior:"smooth"
+
+  let el = document.getElementById(sectionId);
+  if(!el) return;
+
+  // get position
+  let y = el.getBoundingClientRect().top + window.pageYOffset;
+
+  // 🔥 add small offset (this is the trick)
+  let offset = 30; // you can try 20–60
+
+  window.scrollTo({
+    top: y - offset,
+    behavior: "smooth"
   });
 }
 </script>  
