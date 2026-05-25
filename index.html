@@ -28,7 +28,7 @@ margin:0;
 font-family:'Poppins', sans-serif;
 background:#f2f4f7;  
 transition:0.4s;  
-padding-bottom:80px;
+padding-bottom:120px;
 }  
   
 /* HEADER */  
@@ -471,6 +471,7 @@ margin-left:12px;
 .footer-links a:last-child::after{
 content:"";
 }
+
 .bottom-nav{
   position:fixed;
   bottom:0;
@@ -479,11 +480,12 @@ content:"";
   background:#ffffff;
   display:flex;
   justify-content:space-around;
-  padding:10px 0;
+
+  padding:10px 0 calc(10px + env(safe-area-inset-bottom));
+
   box-shadow:0 -2px 8px rgba(0,0,0,0.1);
   z-index:1000;
 }
-
 .bottom-nav a{
   text-decoration:none;
   color:#6a1b9a;
