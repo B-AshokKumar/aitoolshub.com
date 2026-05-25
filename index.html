@@ -674,6 +674,10 @@ AI Tools Hub
   <input id="topic" class="prompt-input"
     placeholder="✨ Enter topic (Example: logo, cat)">
 
+  <button class="prompt-btn" onclick="startVoice()">
+🎤 Speak Prompt
+</button>
+
   <div class="prompt-actions">
     <button class="prompt-btn" onclick="generatePrompt()">
       ✨ Generate Prompt
@@ -1199,6 +1203,49 @@ async function generatePrompt(){
 
     " with professional lighting, realistic textures, ultra-realistic style, depth of field, dramatic composition, and 4K quality rendering.";
 
+}
+
+function startVoice(){
+
+  if(!('webkitSpeechRecognition' in window)){
+
+    alert("Voice recognition not supported");
+    return;
+  }
+
+  const recognition =
+    new webkitSpeechRecognition();
+
+  recognition.lang = "auto";
+
+  recognition.continuous = false;
+
+  recognition.interimResults = false;
+
+  recognition.start();
+
+  recognition.onstart = function(){
+
+    document.getElementById("result").innerText =
+      "🎤 Listening...";
+  };
+
+  recognition.onresult = function(event){
+
+    let voiceText =
+      event.results[0][0].transcript;
+
+    document.getElementById("topic").value =
+      voiceText;
+
+    generatePrompt();
+  };
+
+  recognition.onerror = function(){
+
+    document.getElementById("result").innerText =
+      "❌ Voice recognition failed";
+  };
 }
 
 
