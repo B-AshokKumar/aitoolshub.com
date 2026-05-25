@@ -1130,7 +1130,6 @@ history.pushState({page:"home"}, "", "#home");
    PROMPT GENERATOR  
 ========================= */  
   
-
 async function generatePrompt(){
 
   let topic =
@@ -1144,9 +1143,11 @@ async function generatePrompt(){
     return;
   }
 
+  let finalText = topic;
+
   try{
 
-    // Translate to English
+    // Try translation
     let response = await fetch(
       "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=en&dt=t&q="
       + encodeURIComponent(topic)
@@ -1154,26 +1155,28 @@ async function generatePrompt(){
 
     let data = await response.json();
 
-    let englishText = data[0][0][0];
-
-    // Final AI prompt
-    document.getElementById("result").innerText =
-      "✨ Professional AI Prompt:\n\n" +
-
-      "Create a highly detailed cinematic " +
-
-      englishText +
-
-      " with professional lighting, realistic textures, ultra-realistic style, depth of field, dramatic composition, and 4K quality rendering.";
+    if(data && data[0]){
+      finalText = data[0][0][0];
+    }
 
   }catch(err){
 
-    document.getElementById("result").innerText =
-      "❌ Translation failed. Check internet.";
-
+    console.log("Translation skipped");
   }
 
+  // Always generate prompt
+  document.getElementById("result").innerText =
+
+    "✨ Professional AI Prompt:\n\n" +
+
+    "Create a highly detailed cinematic " +
+
+    finalText +
+
+    " with professional lighting, realistic textures, ultra-realistic style, depth of field, dramatic composition, and 4K quality rendering.";
+
 }
+
 
 
 function showExitToast(){
