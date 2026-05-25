@@ -383,7 +383,7 @@ border:2px solid #444;
 }
 
 .dark .nav-link{
-  color:#bbb;
+  color:#e0e0e0;
 }
 
 .dark .nav-link.active{
@@ -495,9 +495,6 @@ content:"";
   z-index:1000;
 }
 
-body{
-  padding-bottom:110px;
-}
 
 @supports(padding:max(0px)){
   .bottom-nav{
@@ -1322,7 +1319,7 @@ div.className="tool";
 div.dataset.name=tool.name;  
   
 div.innerHTML=`  
-<a href="${tool.link}" target="_blank">${tool.name}</a>  
+<a href="${tool.link}" target="_blank" rel="noopener noreferrer">${tool.name}</a>  
 <span class="star" onclick="removeFavorite(this)">🌟</span>  
 `;  
   
