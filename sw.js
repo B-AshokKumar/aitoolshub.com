@@ -1,4 +1,4 @@
-const CACHE_NAME = "ai-tools-cache-v1";
+const CACHE_NAME = "ai-tools-cache-v2";
 
 const urlsToCache = [
   "/",
@@ -7,16 +7,31 @@ const urlsToCache = [
 
 // Install
 self.addEventListener("install", event => {
+
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => cache.addAll(urlsToCache))
   );
+
 });
 
 // Fetch
 self.addEventListener("fetch", event => {
+
   event.respondWith(
-    fetch(event.request)
-      .catch(() => caches.match(event.request))
+
+    caches.match(event.request)
+      .then(response => {
+
+        return response || fetch(event.request);
+
+      })
+      .catch(() => {
+
+        return caches.match("/index.html");
+
+      })
+
   );
+
 });
