@@ -1217,7 +1217,6 @@ function startVoice(){
   const recognition =
     new SpeechRecognition();
 
-  // Telugu + Indian support
   recognition.lang = "en-US";
 
   recognition.continuous = false;
@@ -1226,30 +1225,42 @@ function startVoice(){
 
   recognition.maxAlternatives = 1;
 
+  // Start listening
   recognition.start();
 
   document.getElementById("result").innerText =
     "🎤 Listening... Speak now";
 
+  // SUCCESS
   recognition.onresult = function(event){
 
-    let voiceText =
-      event.results[0][0].transcript;
+    try{
 
-    // Put text inside input
-    document.getElementById("topic").value =
-      voiceText;
+      let voiceText =
+        event.results[0][0].transcript;
 
-    // Generate prompt automatically
-    generatePrompt();
+      alert("You said: " + voiceText);
+
+      document.getElementById("topic").value =
+        voiceText;
+
+      generatePrompt();
+
+    }catch(err){
+
+      document.getElementById("result").innerText =
+        "❌ Could not detect voice";
+    }
   };
 
+  // ERROR
   recognition.onerror = function(event){
 
     document.getElementById("result").innerText =
       "❌ Voice Error: " + event.error;
   };
 
+  // END
   recognition.onend = function(){
 
     console.log("Voice recognition ended");
