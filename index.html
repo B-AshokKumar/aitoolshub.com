@@ -1207,44 +1207,55 @@ async function generatePrompt(){
 
 function startVoice(){
 
-  if(!('webkitSpeechRecognition' in window)){
+  const SpeechRecognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
+
+  if(!SpeechRecognition){
 
     alert("Voice recognition not supported");
     return;
   }
 
   const recognition =
-    new webkitSpeechRecognition();
+    new SpeechRecognition();
 
-  recognition.lang = "auto";
+  // Telugu + Indian support
+  recognition.lang = "te-IN";
 
   recognition.continuous = false;
 
   recognition.interimResults = false;
 
+  recognition.maxAlternatives = 1;
+
   recognition.start();
 
-  recognition.onstart = function(){
-
-    document.getElementById("result").innerText =
-      "🎤 Listening...";
-  };
+  document.getElementById("result").innerText =
+    "🎤 Listening... Speak now";
 
   recognition.onresult = function(event){
 
     let voiceText =
       event.results[0][0].transcript;
 
+    // Put text inside input
     document.getElementById("topic").value =
       voiceText;
 
+    // Generate prompt automatically
     generatePrompt();
   };
 
-  recognition.onerror = function(){
+  recognition.onerror = function(event){
 
     document.getElementById("result").innerText =
-      "❌ Voice recognition failed";
+      "❌ Voice Error: " + event.error;
+  };
+
+  recognition.onend = function(){
+
+    console.log("Voice recognition ended");
   };
 }
 
