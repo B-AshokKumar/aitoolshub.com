@@ -1130,21 +1130,51 @@ history.pushState({page:"home"}, "", "#home");
    PROMPT GENERATOR  
 ========================= */  
   
-function generatePrompt(){  
-  
-let topic=document.getElementById("topic").value.trim();  
-  
-if(topic===""){  
-document.getElementById("result").innerText =  
-"⚠ Please enter a topic first.";  
-return;  
-}  
-  
-document.getElementById("result").innerText =  
-"✨ Professional AI Prompt:\n\nCreate a highly detailed cinematic "+topic+  
-" with professional lighting, realistic textures, ultra-realistic style, depth of field, dramatic composition, and 4K quality rendering.";  
+<script>
+async function generatePrompt(){
 
-}  
+  let topic =
+    document.getElementById("topic").value.trim();
+
+  if(topic===""){
+
+    document.getElementById("result").innerText =
+      "⚠ Please enter a topic first.";
+
+    return;
+  }
+
+  try{
+
+    // Translate to English
+    let response = await fetch(
+      "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=en&dt=t&q="
+      + encodeURIComponent(topic)
+    );
+
+    let data = await response.json();
+
+    let englishText = data[0][0][0];
+
+    // Final AI prompt
+    document.getElementById("result").innerText =
+      "✨ Professional AI Prompt:\n\n" +
+
+      "Create a highly detailed cinematic " +
+
+      englishText +
+
+      " with professional lighting, realistic textures, ultra-realistic style, depth of field, dramatic composition, and 4K quality rendering.";
+
+  }catch(err){
+
+    document.getElementById("result").innerText =
+      "❌ Translation failed. Check internet.";
+
+  }
+
+}
+</script>
 
 function showExitToast(){
   let t = document.getElementById("exitToast");
