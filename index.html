@@ -579,10 +579,77 @@ body{
   opacity:1;
 }
 
+.offline-screen{
+  position:fixed;
+  inset:0;
+  background:#f2f4f7;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:99999;
+}
+
+.offline-box{
+  background:white;
+  padding:30px 25px;
+  border-radius:20px;
+  text-align:center;
+  width:85%;
+  max-width:320px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.12);
+}
+
+.offline-box h2{
+  color:#2d74d7;
+  margin-bottom:10px;
+}
+
+.offline-box p{
+  color:#666;
+  line-height:1.5;
+  margin-bottom:20px;
+}
+
+.offline-box button{
+  background:#2d74d7;
+  color:white;
+  border:none;
+  padding:12px 20px;
+  border-radius:10px;
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.dark .offline-screen{
+  background:#121212;
+}
+
+.dark .offline-box{
+  background:#1e1e1e;
+}
+
+.dark .offline-box p{
+  color:#ddd;
+}
 </style>  
   
 </head> 
 <body>
+<div id="offlineScreen" class="offline-screen">
+  <div class="offline-box">
+    <h2>📡 No Internet Connection</h2>
+
+    <p>
+      Please check your internet connection and try again.
+    </p>
+
+    <button onclick="retryConnection()">
+      🔄 Try Again
+    </button>
+  </div>
+</div>
+
 <div class="header" id="top">
 AI Tools Hub   
 <button class="dark-btn" onclick="toggleDark()">  
@@ -1263,28 +1330,48 @@ window.addEventListener("popstate", function(){
 </script>
 
 <script>
-let offlineShown = false;
+function updateConnectionStatus(){
 
-function checkConnection(){
- if(!navigator.onLine && !offlineShown){
-   alert("No Internet Connection ❌");
-   offlineShown = true;
- }
+  const offlineScreen =
+    document.getElementById("offlineScreen");
+
+  if(!navigator.onLine){
+
+    offlineScreen.style.display = "flex";
+
+  } else {
+
+    offlineScreen.style.display = "none";
+  }
 }
 
-window.addEventListener("load", checkConnection);
-window.addEventListener("offline", checkConnection);
+function retryConnection(){
 
-window.addEventListener("online", () => {
- offlineShown = false;
+  if(navigator.onLine){
 
- // wait for stable internet
- setTimeout(()=>{
-   alert("Back Online ✅");
+    location.reload();
 
-   location.reload();
-  },2000);
-});
+  } else {
+
+    alert("Still offline ❌");
+  }
+}
+
+window.addEventListener(
+  "load",
+  updateConnectionStatus
+);
+
+window.addEventListener(
+  "online",
+  updateConnectionStatus
+);
+
+window.addEventListener(
+  "offline",
+  updateConnectionStatus
+);
+
 </script>
 
 <div id="exitToast" class="exit-toast">Press back again to exit</div>
