@@ -474,17 +474,35 @@ content:"";
 
 .bottom-nav{
   position:fixed;
-  bottom:0;
-  left:0;
-  width:100%;
-  background:#ffffff;
+
+  left:12px;
+  right:12px;
+
+  bottom:max(14px, env(safe-area-inset-bottom));
+
+  background:#fff;
+
   display:flex;
   justify-content:space-around;
+  align-items:center;
 
-  padding:10px 0 calc(10px + env(safe-area-inset-bottom));
+  padding:12px 0;
 
-  box-shadow:0 -2px 8px rgba(0,0,0,0.1);
+  border-radius:18px;
+
+  box-shadow:0 -2px 10px rgba(0,0,0,0.12);
+
   z-index:1000;
+}
+
+body{
+  padding-bottom:110px;
+}
+
+@supports(padding:max(0px)){
+  .bottom-nav{
+    bottom:max(20px, env(safe-area-inset-bottom));
+  }
 }
 .bottom-nav a{
   text-decoration:none;
