@@ -8,7 +8,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">  
 <meta name="description" content="AI Tools Hub - All AI tools in one place">
 <meta name="robots" content="index,follow">
-<meta http-equiv="X-Content-Type-Options" content="nosniff">
 
 <meta name="theme-color" content="#111">  
 <title>AI Tools Hub</title>  
@@ -1674,6 +1673,28 @@ document.querySelectorAll(".nav-link").forEach(link => {
 
   });
 
+});
+</script>
+  <script>
+document.querySelectorAll('a[target="_blank"]').forEach(link => {
+
+  link.addEventListener('click', function(e){
+
+    const url = this.href;
+
+    window.open(url, '_blank');
+
+  });
+
+});
+</script>
+  <script>
+window.addEventListener("error", function(e){
+  console.log("App Error:", e.message);
+});
+
+window.addEventListener("unhandledrejection", function(e){
+  console.log("Promise Error:", e.reason);
 });
 </script>
 </body>  
