@@ -1534,19 +1534,21 @@ window.addEventListener(
 </div>
 
 <script>
+if (
+  "serviceWorker" in navigator &&
+  location.protocol === "https:"
+) {
 
-  if ("serviceWorker" in navigator) {
+  navigator.serviceWorker
+    .register("./sw.js")
 
- navigator.serviceWorker
-   .register("./sw.js")
+    .then(() => {
+      console.log("Offline App Ready ✅");
+    })
 
-   .then(() => {
-     console.log("Offline App Ready ✅");
-   })
-
-   .catch(err => {
-     console.log(err);
-   });
+    .catch(err => {
+      console.log(err);
+    });
 
 }
 </script>
