@@ -1241,6 +1241,9 @@ function startVoice(){
         event.results[0][0].transcript;
 
       alert("You said: " + voiceText);
+      
+      document.getElementById("result").innerText =
+          "🎤 You said: " + voiceText;
 
       document.getElementById("topic").value =
         voiceText;
