@@ -1211,7 +1211,8 @@ function startVoice(){
 
   if(!SpeechRecognition){
 
-    alert("Voice recognition not supported");
+    document.getElementById("result").innerText =
+"❌ Voice feature may not work on some app devices. Try using Chrome browser.";
     return;
   }
 
@@ -1261,7 +1262,7 @@ function startVoice(){
   recognition.onerror = function(event){
 
     document.getElementById("result").innerText =
-      "❌ Voice Error: " + event.error;
+      "❌ Voice input unavailable on this device/app";
   };
 
   // END
