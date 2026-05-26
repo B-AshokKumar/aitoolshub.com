@@ -1539,7 +1539,8 @@ window.addEventListener("unhandledrejection", function(e){
 });
 </script>
   <script>
-function copyPrompt(){
+
+   function copyPrompt(){
 
   let text =
     document.getElementById("result").innerText;
@@ -1553,21 +1554,30 @@ function copyPrompt(){
     return;
   }
 
-  navigator.clipboard.writeText(text)
+  // Fallback copy method
+  let textarea =
+    document.createElement("textarea");
 
-    .then(()=>{
+  textarea.value = text;
 
-      alert("Prompt copied ✅");
+  document.body.appendChild(textarea);
 
-    })
+  textarea.select();
 
-    .catch(()=>{
+  try{
 
-      alert("Copy failed ❌");
+    document.execCommand("copy");
 
-    });
+    alert("Prompt copied ✅");
 
-}
+  }catch(err){
+
+    alert("Copy failed ❌");
+
+  }
+
+  document.body.removeChild(textarea);
+} 
 </script>
 </body>  
 </html> 
