@@ -1233,6 +1233,19 @@ function startVoice(){
   document.getElementById("result").innerText =
     "🎤 Listening... Speak now";
 
+  setTimeout(()=>{
+
+  let resultBox =
+    document.getElementById("result");
+
+  if(resultBox.innerText ===
+     "🎤 Listening... Speak now"){
+
+    resultBox.innerHTML =
+'❌ Voice input may not work in this app.<br><br><a href="https://b-ashokkumar.github.io" target="_blank">🔗 Open in Chrome Browser</a>';
+  }
+
+},7000);
   // SUCCESS
   recognition.onresult = function(event){
 
