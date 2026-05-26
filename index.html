@@ -1163,16 +1163,16 @@ async function generatePrompt(){
 
   let finalText = topic;
 
-  document.getElementById("result").innerText =
+  let promptText =
 
-    "✨ Professional AI Prompt:\n\n" +
+  "Create a highly detailed cinematic " +
 
-    "Create a highly detailed cinematic " +
+  finalText +
 
-    finalText +
+  " with professional lighting, realistic textures, ultra-realistic style, depth of field, dramatic composition, and 4K quality rendering.";
 
-    " with professional lighting, realistic textures, ultra-realistic style, depth of field, dramatic composition, and 4K quality rendering.";
-
+document.getElementById("result").innerText =
+  promptText;
 }
 
 
