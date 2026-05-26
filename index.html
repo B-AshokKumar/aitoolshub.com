@@ -1211,8 +1211,8 @@ function startVoice(){
 
   if(!SpeechRecognition){
 
-    document.getElementById("result").innerText =
-"❌ Voice feature may not work on some app devices. Try using Chrome browser.";
+    document.getElementById("result").innerHTML =
+'❌ Voice input unavailable in this app.<br><br>Try in Chrome:<br><a href="https://b-ashokkumar.github.io" target="_blank">Open Website in Chrome</a>';
     return;
   }
 
@@ -1261,8 +1261,8 @@ function startVoice(){
   // ERROR
   recognition.onerror = function(event){
 
-    document.getElementById("result").innerText =
-      "❌ Voice input unavailable on this device/app";
+  document.getElementById("result").innerHTML =
+'❌ Voice input unavailable in this app.<br><br>Try in Chrome:<br><a href="https://b-ashokkumar.github.io" target="_blank">Open Website in Chrome</a>';
   };
 
   // END
