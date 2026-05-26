@@ -1583,5 +1583,39 @@ window.addEventListener("unhandledrejection", function(e){
   document.body.removeChild(textarea);
 } 
 </script>
+
+  <div id="toast"
+style="
+position:fixed;
+bottom:120px;
+left:50%;
+transform:translateX(-50%);
+background:#2d74d7;
+color:white;
+padding:12px 18px;
+border-radius:12px;
+font-size:14px;
+font-weight:600;
+display:none;
+z-index:99999;
+box-shadow:0 4px 12px rgba(0,0,0,0.2);
+">
+</div>
+
+<script>
+function showToast(message){
+
+  let toast =
+    document.getElementById("toast");
+
+  toast.innerText = message;
+
+  toast.style.display = "block";
+
+  setTimeout(()=>{
+    toast.style.display = "none";
+  },2000);
+}
+</script>
 </body>  
 </html> 
