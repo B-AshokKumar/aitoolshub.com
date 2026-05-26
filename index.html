@@ -684,18 +684,6 @@ content:"";
   <input id="topic" class="prompt-input"
     placeholder="✨ Enter topic (Example: logo, cat)">
 
-  <button
-  class="prompt-btn"
-  onclick="startVoice()"
-  aria-label="Speak Prompt">
-
-🎤 Speak Prompt
-
-</button>
-
-  <p style="font-size:12px;color:#777;">
-Voice input works best in Chrome browser
-</p>
 
   <div class="prompt-actions">
     <button class="prompt-btn" onclick="generatePrompt()">
@@ -1226,104 +1214,6 @@ const data = await response.json();
 
     " with professional lighting, realistic textures, ultra-realistic style, depth of field, dramatic composition, and 4K quality rendering.";
 
-}
-
-function startVoice(){
-  if(window.isListening) return;
-window.isListening = true;
-
-  const SpeechRecognition =
-    window.SpeechRecognition ||
-    window.webkitSpeechRecognition;
-
-  if(!SpeechRecognition){
-    
-window.isListening = false;
-    document.getElementById("result").innerHTML =
-'❌ Voice input is not supported in this browser.<br><br>For best experience, use Google Chrome:<br><a href="https://b-ashokkumar.github.io/aitoolshub.com/#home" target="_blank">Open Website in Chrome</a>';
-    return;
-  }
-
-  const recognition =
-    new SpeechRecognition();
-
-  recognition.lang = navigator.language || "en-US";
-
-  recognition.continuous = false;
-
-  recognition.interimResults = false;
-
-  recognition.maxAlternatives = 1;
-
-  // Start listening
-  try{
-  recognition.start();
-}catch(err){
-
-  window.isListening = false;
-
-  document.getElementById("result").innerText =
-    "❌ Could not start voice recognition";
-
-  return;
-}
-
-  document.getElementById("result").innerText =
-    "🎤 Listening... Speak now";
-
-  setTimeout(()=>{
-
-  let resultBox =
-    document.getElementById("result");
-
-  if(resultBox.innerText ===
-     "🎤 Listening... Speak now"){
-
-    resultBox.innerHTML =
-'❌ Voice input may not work in this app.<br><br><a href="https://b-ashokkumar.github.io/aitoolshub.com/#home" target="_blank">🔗 Open in Chrome Browser</a>';
-  }
-
-},7000);
-  // SUCCESS
-  recognition.onresult = function(event){
-
-    try{
-
-      let voiceText =
-        event.results[0][0].transcript;
-
-      
-      document.getElementById("topic").value =
-voiceText;
-
-document.getElementById("result").innerHTML =
-"🎤 You said: <b>" + voiceText + "</b><br><br>Generating prompt...";
-
-setTimeout(()=>{
-  generatePrompt();
-},1000);
-
-    }catch(err){
-
-      document.getElementById("result").innerText =
-        "❌ Could not detect voice";
-    }
-  };
-
-  // ERROR
-  recognition.onerror = function(event){
-    
-window.isListening = false;
-  document.getElementById("result").innerHTML =
-'❌ Voice input unavailable in this app.<br><br>Try in Chrome:<br><a href="https://b-ashokkumar.github.io/aitoolshub.com/#home" target="_blank">Open Website in Chrome</a>';
-  };
-
-  // END
-  recognition.onend = function(){
-    
-window.isListening = false;
-    console.log("Voice recognition ended");
-  };
 }
 
 
