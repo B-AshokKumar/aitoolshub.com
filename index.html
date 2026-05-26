@@ -1243,13 +1243,15 @@ function startVoice(){
 
       alert("You said: " + voiceText);
       
-      document.getElementById("result").innerText =
-          "🎤 You said: " + voiceText;
-
       document.getElementById("topic").value =
-        voiceText;
+voiceText;
 
-      generatePrompt();
+document.getElementById("result").innerHTML =
+"🎤 You said: <b>" + voiceText + "</b><br><br>Generating prompt...";
+
+setTimeout(()=>{
+  generatePrompt();
+},1000);
 
     }catch(err){
 
