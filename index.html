@@ -1231,7 +1231,7 @@ window.isListening = false;
   const recognition =
     new SpeechRecognition();
 
-  recognition.lang = "en-US";
+  recognition.lang = navigator.language || "en-US";
 
   recognition.continuous = false;
 
