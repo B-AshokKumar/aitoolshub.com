@@ -693,6 +693,12 @@ content:"";
 
   <div id="result" class="prompt-result"></div>
 
+<div class="center-btn">
+  <button class="prompt-btn tip-btn" onclick="copyPrompt()">
+    📋 Copy Prompt
+  </button>
+</div>
+
   <div class="center-btn">
     <button class="prompt-btn tip-btn" onclick="showDailyTip()">
       💡 Show Daily Tip
@@ -1531,6 +1537,37 @@ window.addEventListener("error", function(e){
 window.addEventListener("unhandledrejection", function(e){
   console.log("Promise Error:", e.reason);
 });
+</script>
+  <script>
+function copyPrompt(){
+
+  let text =
+    document.getElementById("result").innerText;
+
+  if(
+    text.trim()==="" ||
+    text.includes("Please enter")
+  ){
+
+    alert("No prompt to copy ❌");
+    return;
+  }
+
+  navigator.clipboard.writeText(text)
+
+    .then(()=>{
+
+      alert("Prompt copied ✅");
+
+    })
+
+    .catch(()=>{
+
+      alert("Copy failed ❌");
+
+    });
+
+}
 </script>
 </body>  
 </html> 
