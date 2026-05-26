@@ -1149,7 +1149,7 @@ document.addEventListener("DOMContentLoaded",function(){
 if(localStorage.getItem("theme")==="dark"){  
 document.body.classList.add("dark");  
 }  
-history.pushState({page:"home"}, "", "#home");
+
 });  
   
   
@@ -1328,15 +1328,6 @@ window.isListening = false;
 
 
 
-function showExitToast(){
-  let t = document.getElementById("exitToast");
-  t.classList.add("show");
-
-  setTimeout(()=>{
-    t.classList.remove("show");
-  },1500);
-}
-
   
 /* FAVORITES SYSTEM */  
   
@@ -1486,38 +1477,6 @@ results.appendChild(clone);
 
 }
 
-let lastBackPress = 0;
-
-window.addEventListener("popstate", function(){
-  
-// prevent toast when app not active
-  if(document.hidden) return;
-  // Scroll to top first
-  if(window.scrollY > 50){
-
-    window.scrollTo({
-      top:0,
-      behavior:"smooth"
-    });
-
-    history.pushState({page:"home"}, "", "#home");
-    return;
-  }
-
-  // Show exit message only
-  if(Date.now() - lastBackPress < 2000){
-
-    history.pushState({page:"home"}, "", "#home");
-
-  } else {
-
-    showExitToast();
-    lastBackPress = Date.now();
-
-    history.pushState({page:"home"}, "", "#home");
-  }
-
-});
 
 </script>
 
@@ -1566,7 +1525,7 @@ window.addEventListener(
 
 </script>
 
-<div id="exitToast" class="exit-toast">Press back again to exit</div>
+
 <div id="tipBox" class="tip-box"></div>
 
 <div class="bottom-nav">
