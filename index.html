@@ -1438,9 +1438,17 @@ results.innerHTML="";
 return;
 }
 
-
 let tools =
-document.querySelectorAll(".section .tool");
+document.querySelectorAll(
+"#ai-tools .tool, \
+#coding-tools .tool, \
+#marketing-tools .tool, \
+#voice-tools .tool, \
+#video-tools .tool, \
+#music-tools .tool, \
+#gaming-tools .tool"
+);
+
 tools.forEach(tool=>{
 
 let name = (tool.dataset.name || "").toLowerCase();
