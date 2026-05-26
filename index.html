@@ -1208,6 +1208,8 @@ async function generatePrompt(){
 }
 
 function startVoice(){
+  if(window.isListening) return;
+window.isListening = true;
 
   const SpeechRecognition =
     window.SpeechRecognition ||
@@ -1278,14 +1280,16 @@ setTimeout(()=>{
 
   // ERROR
   recognition.onerror = function(event){
-
+    
+window.isListening = false;
   document.getElementById("result").innerHTML =
 '❌ Voice input unavailable in this app.<br><br>Try in Chrome:<br><a href="https://b-ashokkumar.github.io/aitoolshub.com/#home" target="_blank">Open Website in Chrome</a>';
   };
 
   // END
   recognition.onend = function(){
-
+    
+window.isListening = false;
     console.log("Voice recognition ended");
   };
 }
