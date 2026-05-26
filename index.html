@@ -1216,7 +1216,8 @@ window.isListening = true;
     window.webkitSpeechRecognition;
 
   if(!SpeechRecognition){
-
+    
+window.isListening = false;
     document.getElementById("result").innerHTML =
 '❌ Voice input unavailable in this app.<br><br>Try in Chrome:<br><a href="https://b-ashokkumar.github.io" target="_blank">Open Website in Chrome</a>';
     return;
@@ -1234,7 +1235,17 @@ window.isListening = true;
   recognition.maxAlternatives = 1;
 
   // Start listening
+  try{
   recognition.start();
+}catch(err){
+
+  window.isListening = false;
+
+  document.getElementById("result").innerText =
+    "❌ Could not start voice recognition";
+
+  return;
+}
 
   document.getElementById("result").innerText =
     "🎤 Listening... Speak now";
