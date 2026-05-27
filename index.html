@@ -717,7 +717,7 @@ content:"";
 <div class="category-grid">
 
 <div class="category-card"
-onclick="setPrompt('software developer')"
+onclick="setPrompt('software developer','resume')"
 
 <span>📄</span>
 <p>Resume Prompt</p>
@@ -726,7 +726,7 @@ onclick="setPrompt('software developer')"
 
 
 <div class="category-card"
-onclick="setPrompt('artificial intelligence')"
+onclick="setPrompt('artificial intelligence','essay')"
   
 <span>📝</span>
 <p>Essay Prompt</p>
@@ -735,7 +735,7 @@ onclick="setPrompt('artificial intelligence')"
 
 
 <div class="category-card"
-onclick="setPrompt('AI tools tutorial')"
+onclick="setPrompt('AI tools tutorial','youtube')"
   
 <span>🎬</span>
 <p>YouTube Script</p>
@@ -744,7 +744,7 @@ onclick="setPrompt('AI tools tutorial')"
 
 
 <div class="category-card"
-onclick="setPrompt('Python chatbot')"
+onclick="setPrompt('Python chatbot','coding')"
 
 <span>💻</span>
 <p>Coding Prompt</p>
@@ -753,7 +753,7 @@ onclick="setPrompt('Python chatbot')"
 
 
 <div class="category-card"
-onclick="setPrompt('AI company logo')"
+onclick="setPrompt('AI company logo','logo')"
 
 <span>🎨</span>
 <p>Logo Prompt</p>
@@ -762,7 +762,7 @@ onclick="setPrompt('AI company logo')"
 
 
 <div class="category-card"
-onclick="setPrompt('employee salary report')"
+onclick="setPrompt('employee salary report','sql')"
   
 <span>🗄️</span>
 <p>SQL Prompt</p>
@@ -771,7 +771,7 @@ onclick="setPrompt('employee salary report')"
 
 
 <div class="category-card"
-onclick="setPrompt('artificial intelligence')"
+onclick="setPrompt('artificial intelligence','presentation')"
   
 <span>📊</span>
 <p>Presentation Prompt</p>
@@ -1308,119 +1308,88 @@ document.body.classList.add("dark");
 /* =========================  
    PROMPT GENERATOR  
 ========================= */  
-
-async function generatePrompt(){
+function generatePrompt(type){
 
   let topic =
-    document.getElementById("topic").value.trim();
-
-  let result =
-    document.getElementById("result");
-
-  if(topic === ""){
-
-    result.innerText =
-      "⚠ Please enter a topic first.";
-
-    return;
-  }
+    document.getElementById("topic").value;
 
   let promptText = "";
 
-  let lower = topic.toLowerCase();
-
-  // Resume Prompt
-  if(
-    lower.includes("resume") ||
-    lower.includes("cv")
-  ){
-
-  promptText =
-  "Create a modern professional resume for " +
-  topic +
-  " with skills, achievements, experience, projects, certifications, and strong summary.";
-
-  }
-
-  // Essay Prompt
-  else if(
-    lower.includes("essay")
-  ){
+  if(type === "resume"){
 
     promptText =
-  "Write a high-quality essay with introduction, key points, advantages, disadvantages, real-world examples, and conclusion about: " +
-  topic;
+      "Create a modern professional resume for " +
+      topic +
+      " with skills, achievements, experience, projects, certifications, and strong summary.";
 
   }
 
-    else if(
-  lower.includes("sql")
-){
-
-  promptText =
-    "Write an optimized SQL query for " +
-    topic +
-    " with proper joins, clean syntax, performance optimization, explanation, and best practices.";
-
-}
-
-  // Coding Prompt
-  else if(
-    lower.includes("code") ||
-    lower.includes("coding") ||
-    lower.includes("sql")
-  ){
+  else if(type === "essay"){
 
     promptText =
-  "Generate clean, optimized, and professional code with comments, explanation, best practices, and error handling for: " +
-  topic;
+      "Write a detailed essay about " +
+      topic +
+      " with introduction, main points, advantages, disadvantages, and conclusion.";
 
   }
 
-  // YouTube Prompt
-  else if(
-    lower.includes("youtube") ||
-    lower.includes("video")
-  ){
+  else if(type === "youtube"){
 
     promptText =
-  "Create an engaging YouTube video script with viral hook, intro, main content, storytelling, audience engagement, and strong call to action about: " +
-  topic;
+      "Create an engaging YouTube script about " +
+      topic +
+      " with hook, intro, main content, and call to action.";
 
   }
 
-    else if(
-  lower.includes("presentation")
-){
+  else if(type === "coding"){
 
-  promptText =
-    "Create a professional presentation about " +
-    topic +
-    " with title slide, introduction, key points, examples, summary, and visually engaging slide structure.";
+    promptText =
+      "Generate clean optimized code for " +
+      topic +
+      " with explanation, comments, and best practices.";
 
-}
+  }
 
-    else if(
-  lower.includes("logo")
-){
+  else if(type === "logo"){
 
-  promptText =
-    "Create a modern professional logo design with minimal style, clean typography, premium colors, vector design, brand identity, and high-quality details for: " +
-    topic;
+    promptText =
+      "Create a modern professional logo design for " +
+      topic +
+      " with minimal style, premium colors, clean typography, and creative branding.";
 
-}
+  }
 
-  // Default Image Prompt
+  else if(type === "sql"){
+
+    promptText =
+      "Write an optimized SQL query for " +
+      topic +
+      " with explanation, comments, joins, performance improvements, and best practices.";
+
+  }
+
+  else if(type === "presentation"){
+
+    promptText =
+      "Create a professional presentation about " +
+      topic +
+      " with slide titles, key points, summary, and engaging structure.";
+
+  }
+
   else{
 
     promptText =
-      "Create a highly detailed cinematic " +
+      "Create a professional AI prompt for " +
       topic +
-      " with professional lighting, ultra realistic textures, depth of field, vibrant colors, dramatic composition, and 4K quality.";
+      " with detailed explanation and high quality output.";
 
   }
 
-  result.innerText = promptText;
+  document.getElementById("result").innerText =
+    promptText;
+
 }
 
  /* =========================  
