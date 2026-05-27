@@ -717,7 +717,7 @@ content:"";
 <div class="category-grid">
 
 <div class="category-card"
-onclick="setPrompt('software developer','resume')"
+onclick="setPrompt('software developer','resume')">
 
 <span>📄</span>
 <p>Resume Prompt</p>
@@ -726,7 +726,7 @@ onclick="setPrompt('software developer','resume')"
 
 
 <div class="category-card"
-onclick="setPrompt('artificial intelligence','essay')"
+onclick="setPrompt('artificial intelligence','essay')">
   
 <span>📝</span>
 <p>Essay Prompt</p>
@@ -735,7 +735,7 @@ onclick="setPrompt('artificial intelligence','essay')"
 
 
 <div class="category-card"
-onclick="setPrompt('AI tools tutorial','youtube')"
+onclick="setPrompt('AI tools tutorial','youtube')">
   
 <span>🎬</span>
 <p>YouTube Script</p>
@@ -744,7 +744,7 @@ onclick="setPrompt('AI tools tutorial','youtube')"
 
 
 <div class="category-card"
-onclick="setPrompt('Python chatbot','coding')"
+onclick="setPrompt('Python chatbot','coding')">
 
 <span>💻</span>
 <p>Coding Prompt</p>
@@ -753,7 +753,7 @@ onclick="setPrompt('Python chatbot','coding')"
 
 
 <div class="category-card"
-onclick="setPrompt('AI company logo','logo')"
+onclick="setPrompt('AI company logo','logo')">
 
 <span>🎨</span>
 <p>Logo Prompt</p>
@@ -762,7 +762,7 @@ onclick="setPrompt('AI company logo','logo')"
 
 
 <div class="category-card"
-onclick="setPrompt('employee salary report','sql')"
+onclick="setPrompt('employee salary report','sql')">
   
 <span>🗄️</span>
 <p>SQL Prompt</p>
@@ -771,7 +771,7 @@ onclick="setPrompt('employee salary report','sql')"
 
 
 <div class="category-card"
-onclick="setPrompt('artificial intelligence','presentation')"
+onclick="setPrompt('artificial intelligence','presentation')">
   
 <span>📊</span>
 <p>Presentation Prompt</p>
@@ -1395,11 +1395,11 @@ function generatePrompt(type){
  /* =========================  
    PROMPT TEMPLATES
 ========================= */ 
-function setPrompt(text){
+function setPrompt(text,type){
 
   document.getElementById("topic").value = text;
 
-  generatePrompt();
+  generatePrompt(type);
 
   window.scrollTo({
     top:0,
