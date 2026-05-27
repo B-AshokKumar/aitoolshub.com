@@ -1314,135 +1314,84 @@ async function generatePrompt(){
   let topic =
     document.getElementById("topic").value.trim();
 
-  if(topic===""){
+  let result =
+    document.getElementById("result");
 
-    document.getElementById("result").innerText =
+  if(topic === ""){
+
+    result.innerText =
       "⚠ Please enter a topic first.";
 
     return;
   }
 
-  let lowerTopic = topic.toLowerCase();
-
   let promptText = "";
 
+  let lower = topic.toLowerCase();
 
-
-  /* =========================
-     RESUME PROMPTS
-  ========================= */
-
+  // Resume Prompt
   if(
-    lowerTopic.includes("resume") ||
-    lowerTopic.includes("cv")
+    lower.includes("resume") ||
+    lower.includes("cv")
   ){
 
     promptText =
-      "Write a professional ATS-friendly " +
+      "Write a professional modern resume for " +
       topic +
-      " with modern formatting, strong summary, technical skills, projects, achievements, and clean structure.";
+      " with skills, achievements, experience, projects, and strong summary.";
+
   }
 
-
-
-  /* =========================
-     ESSAY PROMPTS
-  ========================= */
-
+  // Essay Prompt
   else if(
-    lowerTopic.includes("essay")
+    lower.includes("essay")
   ){
 
     promptText =
-      "Write a detailed academic " +
+      "Write a detailed essay about " +
       topic +
-      " with introduction, key points, examples, advantages, disadvantages, and conclusion.";
+      " with introduction, main points, advantages, disadvantages, and conclusion.";
+
   }
 
-
-
-  /* =========================
-     CODING PROMPTS
-  ========================= */
-
+  // Coding Prompt
   else if(
-    lowerTopic.includes("code") ||
-    lowerTopic.includes("coding") ||
-    lowerTopic.includes("program") ||
-    lowerTopic.includes("sql")
+    lower.includes("code") ||
+    lower.includes("coding") ||
+    lower.includes("sql")
   ){
 
     promptText =
-      "Generate clean optimized " +
+      "Generate optimized " +
       topic +
-      " with comments, explanation, best practices, and efficient logic.";
+      " code with explanation, comments, and best practices.";
+
   }
 
-
-
-  /* =========================
-     YOUTUBE / VIDEO PROMPTS
-  ========================= */
-
+  // YouTube Prompt
   else if(
-    lowerTopic.includes("youtube") ||
-    lowerTopic.includes("video")
+    lower.includes("youtube") ||
+    lower.includes("video")
   ){
 
     promptText =
-      "Create an engaging " +
+      "Create an engaging YouTube script about " +
       topic +
-      " with strong hook, main content, storytelling, and call to action.";
+      " with hook, main content, and call to action.";
+
   }
 
-
-
-  /* =========================
-     LOGO / IMAGE PROMPTS
-  ========================= */
-
-  else if(
-    lowerTopic.includes("logo") ||
-    lowerTopic.includes("image") ||
-    lowerTopic.includes("art") ||
-    lowerTopic.includes("design")
-  ){
+  // Default Image Prompt
+  else{
 
     promptText =
       "Create a highly detailed cinematic " +
       topic +
-      " with professional lighting, realistic textures, ultra-realistic style, depth of field, dramatic composition, and 4K quality rendering.";
+      " with professional lighting, ultra realistic textures, depth of field, vibrant colors, dramatic composition, and 4K quality.";
+
   }
 
-
-
-  /* =========================
-     PRESENTATION PROMPTS
-  ========================= */
-
-  else if(
-    lowerTopic.includes("presentation") ||
-    lowerTopic.includes("ppt")
-  ){
-
-    promptText =
-      "Create a professional " +
-      topic +
-      " with structured slides, key points, engaging content, and modern presentation style.";
-  }
-
-
-
-  /* =========================
-     DEFAULT AI PROMPT
-  ========================= */
-
-else{
-
-  promptText =
-    "Create a highly detailed cinematic " +
-    topic +
-    " with professional lighting, ultra realistic textures, depth of field, vibrant colors, dramatic composition, and 4K quality.";
+  result.innerText = promptText;
 }
 
  /* =========================  
