@@ -1312,6 +1312,17 @@ function generatePrompt(type){
 
   let topic =
     document.getElementById("topic").value;
+  
+  let promptText = "";
+
+// check empty input
+if(topic.trim() === ""){
+
+  document.getElementById("result").innerText =
+    "Please enter a topic ❌";
+
+  return;
+}
 
   let promptText = "";
 
