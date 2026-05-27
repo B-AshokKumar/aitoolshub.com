@@ -1322,18 +1322,134 @@ async function generatePrompt(){
     return;
   }
 
-  let finalText = topic;
+  let lowerTopic = topic.toLowerCase();
 
-  let promptText =
+  let promptText = "";
 
-  "Create a highly detailed cinematic " +
 
-  finalText +
 
-  " with professional lighting, realistic textures, ultra-realistic style, depth of field, dramatic composition, and 4K quality rendering.";
+  /* =========================
+     RESUME PROMPTS
+  ========================= */
 
-document.getElementById("result").innerText =
-  promptText;
+  if(
+    lowerTopic.includes("resume") ||
+    lowerTopic.includes("cv")
+  ){
+
+    promptText =
+      "Write a professional ATS-friendly " +
+      topic +
+      " with modern formatting, strong summary, technical skills, projects, achievements, and clean structure.";
+  }
+
+
+
+  /* =========================
+     ESSAY PROMPTS
+  ========================= */
+
+  else if(
+    lowerTopic.includes("essay")
+  ){
+
+    promptText =
+      "Write a detailed academic " +
+      topic +
+      " with introduction, key points, examples, advantages, disadvantages, and conclusion.";
+  }
+
+
+
+  /* =========================
+     CODING PROMPTS
+  ========================= */
+
+  else if(
+    lowerTopic.includes("code") ||
+    lowerTopic.includes("coding") ||
+    lowerTopic.includes("program") ||
+    lowerTopic.includes("sql")
+  ){
+
+    promptText =
+      "Generate clean optimized " +
+      topic +
+      " with comments, explanation, best practices, and efficient logic.";
+  }
+
+
+
+  /* =========================
+     YOUTUBE / VIDEO PROMPTS
+  ========================= */
+
+  else if(
+    lowerTopic.includes("youtube") ||
+    lowerTopic.includes("video")
+  ){
+
+    promptText =
+      "Create an engaging " +
+      topic +
+      " with strong hook, main content, storytelling, and call to action.";
+  }
+
+
+
+  /* =========================
+     LOGO / IMAGE PROMPTS
+  ========================= */
+
+  else if(
+    lowerTopic.includes("logo") ||
+    lowerTopic.includes("image") ||
+    lowerTopic.includes("art") ||
+    lowerTopic.includes("design")
+  ){
+
+    promptText =
+      "Create a highly detailed cinematic " +
+      topic +
+      " with professional lighting, realistic textures, ultra-realistic style, depth of field, dramatic composition, and 4K quality rendering.";
+  }
+
+
+
+  /* =========================
+     PRESENTATION PROMPTS
+  ========================= */
+
+  else if(
+    lowerTopic.includes("presentation") ||
+    lowerTopic.includes("ppt")
+  ){
+
+    promptText =
+      "Create a professional " +
+      topic +
+      " with structured slides, key points, engaging content, and modern presentation style.";
+  }
+
+
+
+  /* =========================
+     DEFAULT AI PROMPT
+  ========================= */
+
+  else{
+
+    promptText =
+      "Create a professional AI prompt for " +
+      topic +
+      " with detailed explanation, high quality output, and modern style.";
+  }
+
+
+
+  document.getElementById("result").innerText =
+    promptText;
+
 }
 
  /* =========================  
