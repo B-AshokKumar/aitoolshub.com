@@ -707,6 +707,80 @@ content:"";
   </div>
 
 </div>
+
+<!-- AI PROMPT TEMPLATES -->
+
+<div class="section">
+
+<h2>✨ AI Prompt Templates</h2>
+
+<div class="category-grid">
+
+<div class="category-card"
+onclick="setPrompt('Write a professional resume for software developer with modern skills and achievements.')">
+
+<span>📄</span>
+<p>Resume Prompt</p>
+
+</div>
+
+
+<div class="category-card"
+onclick="setPrompt('Write a high-quality essay about artificial intelligence with introduction, advantages, disadvantages, and conclusion.')">
+
+<span>📝</span>
+<p>Essay Prompt</p>
+
+</div>
+
+
+<div class="category-card"
+onclick="setPrompt('Create a YouTube video script with engaging intro, main content, and call to action.')">
+
+<span>🎬</span>
+<p>YouTube Script</p>
+
+</div>
+
+
+<div class="category-card"
+onclick="setPrompt('Generate clean and optimized code with comments and explanation.')">
+
+<span>💻</span>
+<p>Coding Prompt</p>
+
+</div>
+
+
+<div class="category-card"
+onclick="setPrompt('Create a modern professional logo design with minimal style and premium colors.')">
+
+<span>🎨</span>
+<p>Logo Prompt</p>
+
+</div>
+
+
+<div class="category-card"
+onclick="setPrompt('Write an optimized SQL query with explanation and performance improvements.')">
+
+<span>🗄️</span>
+<p>SQL Prompt</p>
+
+</div>
+
+
+<div class="category-card"
+onclick="setPrompt('Create a professional presentation outline with key points and summary.')">
+
+<span>📊</span>
+<p>Presentation Prompt</p>
+
+</div>
+
+</div>
+
+</div>
   
 <!-- TRENDING TOOLS -->  
   
@@ -1262,7 +1336,18 @@ document.getElementById("result").innerText =
   promptText;
 }
 
+function setPrompt(text){
 
+  document.getElementById("topic").value = text;
+
+  generatePrompt();
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
   
 /* FAVORITES SYSTEM */  
   
