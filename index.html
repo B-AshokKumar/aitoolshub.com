@@ -1352,6 +1352,17 @@ async function generatePrompt(){
 
   }
 
+    else if(
+  lower.includes("sql")
+){
+
+  promptText =
+    "Write an optimized SQL query for " +
+    topic +
+    " with proper joins, clean syntax, performance optimization, explanation, and best practices.";
+
+}
+
   // Coding Prompt
   else if(
     lower.includes("code") ||
