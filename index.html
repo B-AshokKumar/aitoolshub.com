@@ -1411,6 +1411,9 @@ if(topic.trim() === ""){
 ========================= */ 
 function setPrompt(text,type){
 
+  // SAVE CURRENT TEMPLATE TYPE
+  currentPromptType = type;
+
   document.getElementById("topic").value = text;
 
   generatePrompt(type);
