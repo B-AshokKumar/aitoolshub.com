@@ -118,7 +118,23 @@ cursor:pointer;
 width:100%;
 box-sizing:border-box;
 }  
-  
+
+ .tool-left{
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+.info-icon{
+  cursor:pointer;
+  font-size:14px;
+  color:#2d74d7;
+  font-weight:bold;
+}
+
+.dark .info-icon{
+  color:#4da3ff;
+} 
 .tool:hover{  
 transform:scale(1.02);  
 background:#d9e5f9;  
@@ -2006,6 +2022,108 @@ function showToast(message){
   setTimeout(()=>{
     toast.style.display = "none";
   },2000);
+}
+</script>
+<script>
+function toolInfo(name){
+
+const descriptions = {
+
+"ChatGPT":
+"AI assistant for writing, coding, learning and productivity.",
+
+"Google Gemini":
+"Google AI assistant for search, writing, coding and research.",
+
+"Runway ML":
+"AI platform for video generation and editing.",
+
+"Canva AI":
+"AI-powered design tool for graphics, presentations and content.",
+
+"Perplexity AI":
+"AI search engine with source citations.",
+
+"Grammarly":
+"Writing assistant for grammar and clarity.",
+
+"Wolfram Alpha":
+"Computational engine for math, science and data.",
+
+"Notion AI":
+"AI assistant for notes, planning and productivity.",
+
+"Khan Academy + Khanmigo":
+"AI-powered educational tutor and learning assistant.",
+
+"Quizlet AI":
+"AI study tools, flashcards and quizzes.",
+
+"Duolingo Max AI":
+"AI-powered language learning assistant.",
+
+"GitHub Copilot":
+"AI coding assistant for developers.",
+
+"Replit AI":
+"AI coding assistant integrated into Replit.",
+
+"Codeium":
+"AI code completion and generation tool.",
+
+"Writesonic":
+"AI content and marketing copy generator.",
+
+"Surfer SEO":
+"SEO optimization platform.",
+
+"Canva Magic Write":
+"AI writing assistant inside Canva.",
+
+"Murf AI":
+"AI voice generation platform.",
+
+"ElevenLabs":
+"Advanced AI voice synthesis and cloning.",
+
+"Speechify":
+"Text-to-speech AI platform.",
+
+"Descript":
+"Audio and video editor with AI features.",
+
+"Pictory AI":
+"Creates videos from text and articles.",
+
+"InVideo AI":
+"AI-powered video creation platform.",
+
+"Lumen5":
+"Converts content into videos.",
+
+"Synthesia AI":
+"Creates AI avatar videos from text.",
+
+"AIVA":
+"AI music composer.",
+
+"Udio":
+"AI music generation platform.",
+
+"Soundraw":
+"AI music creation tool.",
+
+"Scenario AI":
+"Generates AI game assets.",
+
+"Ludo AI":
+"Game design and ideation assistant.",
+
+"Inworld AI":
+"Creates intelligent AI game characters."
+};
+
+showToast(descriptions[name] || "Tool description coming soon.");
 }
 </script>
 </body>  
