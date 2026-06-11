@@ -118,7 +118,28 @@ cursor:pointer;
 width:100%;
 box-sizing:border-box;
 }  
-  
+
+.tool-left{
+  display:flex;
+  align-items:center;
+  gap:4px;
+  flex:1;
+}
+.tool-left a{
+  white-space:normal;
+  line-height:1.3;
+}
+
+.info-icon{
+  cursor:pointer;
+  font-size:14px;
+  color:#2d74d7;
+  font-weight:bold;
+}
+
+.dark .info-icon{
+  color:#4da3ff;
+} 
 .tool:hover{  
 transform:scale(1.02);  
 background:#d9e5f9;  
@@ -154,10 +175,12 @@ background:#d2e1ff;
   
 /* STAR */  
   
-.star{  
-font-size:22px;  
-cursor:pointer;  
-}  
+.star{
+  font-size:22px;
+  cursor:pointer;
+  margin-left:6px;
+  flex-shrink:0;
+}
   
 /* FOOTER */  
 .footer{  
@@ -438,14 +461,17 @@ background:#1f1f1f;
 color:#fff;  
 border-left:5px solid #4da3ff;  
 }  
-.badge{  
-font-size:12px;  
-padding:4px 10px;  
-border-radius:20px;  
-margin-left:8px;  
-font-weight:600;  
-}  
-  
+ 
+ .badge{
+  font-size:11px;
+  padding:4px 8px;
+  border-radius:20px;
+  margin-left:8px;
+  margin-right:10px;
+  font-weight:600;
+  white-space:nowrap;
+  flex-shrink:0;
+} 
 /* FREE */  
 .free{  
 background:#e8f5ff;  
@@ -894,29 +920,47 @@ onkeyup="searchTools()">
 <h2>🤖 AI Tools</h2>  
   
 <div class="tool" data-name="ChatGPT">  
-  
+
+  <div class="tool-left">
 <a href="https://chat.openai.com"   target="_blank"
 rel="noopener noreferrer">ChatGPT</a>  
-    
+
+  <span class="info-icon"
+onclick="event.stopPropagation();toolInfo('ChatGPT')">
+ℹ️
+</span>
+  </div>
 <span class="badge pro">FREE + PRO</span>  
   
 <span class="star" onclick="fav(this)">⭐</span>  
 </div>  
   
 <div class="tool" data-name="Google Gemini">  
-  
+
+ <div class="tool-left"> 
 <a href="https://gemini.google.com"   target="_blank"
 rel="noopener noreferrer">Google Gemini</a>  
+ <span class="info-icon"
+onclick="event.stopPropagation();toolInfo('Google Gemini')">
+ℹ️
+</span>
+  </div>
   <span class="badge pro">FREE + PRO</span>  
   
   
 <span class="star" onclick="fav(this)">⭐</span>  
 </div>  
   
-<div class="tool" data-name="Canva AI">  
+<div class="tool" data-name="Canva AI"> 
+<div class="tool-left">
   
 <a href="https://www.canva.com/ai-image-generator"  target="_blank"
 rel="noopener noreferrer"  >Canva AI</a>  
+ <span class="info-icon"
+onclick="event.stopPropagation();toolInfo('Canva AI')">
+ℹ️
+</span>
+  </div>
   <span class="badge pro">FREE + PRO</span>  
   
   
@@ -930,10 +974,16 @@ rel="noopener noreferrer"  >Canva AI</a>
 <h2>📚 AI Study Tools</h2>  
 
 <div class="tool" data-name="Perplexity AI">  
+<div class="tool-left">
 
 <a href="https://www.perplexity.ai" target="_blank"
 rel="noopener noreferrer">Perplexity AI</a>  
 
+ <span class="info-icon"
+onclick="event.stopPropagation();toolInfo('Perplexity AI')">
+ℹ️
+</span>
+  </div>
 <span class="badge pro">FREE + PRO</span>  
 
 <span class="star" onclick="fav(this)">⭐</span>  
@@ -941,9 +991,15 @@ rel="noopener noreferrer">Perplexity AI</a>
 
 
 <div class="tool" data-name="Grammarly">  
+<div class="tool-left">
 
 <a href="https://www.grammarly.com" target="_blank"
 rel="noopener noreferrer">Grammarly</a>  
+ <span class="info-icon"
+onclick="event.stopPropagation();toolInfo('Grammarly')">
+ℹ️
+</span>
+  </div>
 
 <span class="badge pro">FREE + PRO</span>  
 
@@ -952,9 +1008,15 @@ rel="noopener noreferrer">Grammarly</a>
 
 
 <div class="tool" data-name="Wolfram Alpha">  
+<div class="tool-left">
 
 <a href="https://www.wolframalpha.com" target="_blank"
 rel="noopener noreferrer">Wolfram Alpha</a>  
+ <span class="info-icon"
+onclick="event.stopPropagation();toolInfo('Wolfram Alpha')">
+ℹ️
+</span>
+  </div>
 
 <span class="badge pro">FREE + PRO</span>  
 
@@ -963,9 +1025,15 @@ rel="noopener noreferrer">Wolfram Alpha</a>
 
 
 <div class="tool" data-name="Notion AI">  
+<div class="tool-left">
 
 <a href="https://www.notion.so/product/ai" target="_blank"
 rel="noopener noreferrer">Notion AI</a>  
+ <span class="info-icon"
+onclick="event.stopPropagation();toolInfo('Notion AI')">
+ℹ️
+</span>
+  </div>
 
 <span class="badge pro">FREE + PRO</span>  
 
@@ -973,10 +1041,16 @@ rel="noopener noreferrer">Notion AI</a>
 </div>  
 
 <div class="tool" data-name="Khan Academy + Khanmigo">  
+<div class="tool-left">
 
 <a href="https://www.khanacademy.org/khan-labs" target="_blank"
 rel="noopener noreferrer">Khan Academy +<br>Khanmigo</a>  
 
+ <span class="info-icon"
+onclick="event.stopPropagation();toolInfo('Khan Academy + Khanmigo')">
+ℹ️
+</span>
+  </div>
 <span class="badge pro">FREE + PRO</span>  
 
 <span class="star" onclick="fav(this)">⭐</span>  
@@ -984,9 +1058,15 @@ rel="noopener noreferrer">Khan Academy +<br>Khanmigo</a>
 
 
 <div class="tool" data-name="Quizlet AI">  
+<div class="tool-left">
 
 <a href="https://quizlet.com/features/magic-notes" target="_blank"
 rel="noopener noreferrer">Quizlet AI</a>  
+ <span class="info-icon"
+onclick="event.stopPropagation();toolInfo('Quizlet AI')">
+ℹ️
+</span>
+  </div>
 
 <span class="badge pro">FREE + PRO</span>  
 
@@ -995,9 +1075,15 @@ rel="noopener noreferrer">Quizlet AI</a>
 
 
 <div class="tool" data-name="Duolingo Max AI">  
+<div class="tool-left">
 
 <a href="https://www.duolingo.com" target="_blank"
 rel="noopener noreferrer">Duolingo Max AI</a>  
+ <span class="info-icon"
+onclick="event.stopPropagation();toolInfo('Duolingo Max AI')">
+ℹ️
+</span>
+  </div>
 
 <span class="badge pro">FREE + PRO</span>  
 
@@ -1012,9 +1098,15 @@ rel="noopener noreferrer">Duolingo Max AI</a>
 <h2>💻 Coding AI Tools</h2>  
   
 <div class="tool" data-name="GitHub Copilot">  
+<div class="tool-left">
   
 <a href="https://github.com/features/copilot"  target="_blank" 
 rel="noopener noreferrer" >GitHub Copilot</a>  
+ <span class="info-icon"
+onclick="event.stopPropagation();toolInfo('GitHub Copilot')">
+ℹ️
+</span>
+  </div>
   <span class="badge pro">FREE + PRO</span>  
   
   
@@ -1022,19 +1114,31 @@ rel="noopener noreferrer" >GitHub Copilot</a>
 </div>  
   
 <div class="tool" data-name="Replit AI">  
+<div class="tool-left">
   
 <a href="https://replit.com"  target="_blank"
 rel="noopener noreferrer"  >Replit AI</a>  
-    
+
+  <span class="info-icon"
+onclick="event.stopPropagation();toolInfo('Replit AI')">
+ℹ️
+</span>
+  </div>   
 <span class="badge pro">FREE + PRO</span>  
   
 <span class="star" onclick="fav(this)">⭐</span>  
 </div>  
   
 <div class="tool" data-name="Codeium">  
+<div class="tool-left">
   
 <a href="https://codeium.com"  target="_blank"
 rel="noopener noreferrer" >Codeium</a>  
+ <span class="info-icon"
+onclick="event.stopPropagation();toolInfo('Codeium')">
+ℹ️
+</span>
+  </div>
     
 <span class="badge pro">FREE + PRO</span>  
   
@@ -1048,9 +1152,15 @@ rel="noopener noreferrer" >Codeium</a>
 <h2>📈 Marketing AI Tools</h2>  
   
 <div class="tool" data-name="Writesonic">  
+<div class="tool-left">
   
 <a href="https://writesonic.com"  target="_blank"
 rel="noopener noreferrer"  >Writesonic</a>  
+ <span class="info-icon"
+onclick="event.stopPropagation();toolInfo('Writesonic')">
+ℹ️
+</span>
+  </div>
     
 <span class="badge pro">FREE + PRO</span>  
   
@@ -1058,9 +1168,15 @@ rel="noopener noreferrer"  >Writesonic</a>
 </div>  
   
 <div class="tool" data-name="Surfer SEO">  
+<div class="tool-left">
   
 <a href="https://surferseo.com"  target="_blank"
 rel="noopener noreferrer" >Surfer SEO</a>  
+ <span class="info-icon"
+onclick="event.stopPropagation();toolInfo('Surfer SEO')">
+ℹ️
+</span>
+  </div>
   <span class="badge pro">FREE + PRO</span>  
   
   
@@ -1068,10 +1184,16 @@ rel="noopener noreferrer" >Surfer SEO</a>
 </div>  
   
 <div class="tool" data-name="Canva Magic Write">  
-  
+
+  <div class="tool-left">
 <a href="https://www.canva.com/magic-write/"  target="_blank"
-rel="noopener noreferrer"  >Canva Magic Write</a>  
-  
+rel="noopener noreferrer"  >Canva Magic <br>Write</a>  
+
+   <span class="info-icon"
+onclick="event.stopPropagation();toolInfo('Canva Magic Write')">
+ℹ️
+</span>
+  </div>
     
 <span class="badge pro">FREE + PRO</span>  
   
@@ -1086,9 +1208,15 @@ rel="noopener noreferrer"  >Canva Magic Write</a>
 <h2>🎙 Voice AI Tools</h2>  
   
 <div class="tool" data-name="Murf AI">  
+<div class="tool-left">
   
 <a href="https://murf.ai" target="_blank"
-rel="noopener noreferrer"  >Murf AI</a>  
+rel="noopener noreferrer"  >Murf AI</a> 
+ <span class="info-icon"
+onclick="event.stopPropagation();toolInfo('Murf AI')">
+ℹ️
+</span>
+  </div>
   <span class="badge pro">FREE + PRO</span>  
   
   
@@ -1096,9 +1224,15 @@ rel="noopener noreferrer"  >Murf AI</a>
 </div>  
   
 <div class="tool" data-name="ElevenLabs">  
+<div class="tool-left">
     
 <a href="https://elevenlabs.io" target="_blank"
-rel="noopener noreferrer" >ElevenLabs</a>  
+rel="noopener noreferrer" >ElevenLabs</a> 
+ <span class="info-icon"
+onclick="event.stopPropagation();toolInfo('ElevenLabs')">
+ℹ️
+</span>
+  </div>
     
   <span class="badge pro">FREE + PRO</span>  
   
@@ -1106,9 +1240,15 @@ rel="noopener noreferrer" >ElevenLabs</a>
 </div>  
   
 <div class="tool" data-name="Speechify">  
+<div class="tool-left">
   
 <a href="https://speechify.com" target="_blank"
 rel="noopener noreferrer"  >Speechify</a>  
+ <span class="info-icon"
+onclick="event.stopPropagation();toolInfo('Speechify')">
+ℹ️
+</span>
+  </div>
     
 <span class="badge pro">FREE + PRO</span>  
   
@@ -1116,9 +1256,15 @@ rel="noopener noreferrer"  >Speechify</a>
 </div>  
   
 <div class="tool" data-name="Descript">  
+<div class="tool-left">
   
 <a href="https://www.descript.com"  target="_blank"
  rel="noopener noreferrer" >Descript</a>  
+ <span class="info-icon"
+onclick="event.stopPropagation();toolInfo('Descript')">
+ℹ️
+</span>
+  </div>
   <span class="badge pro">FREE + PRO</span>  
   
   
@@ -1131,9 +1277,15 @@ rel="noopener noreferrer"  >Speechify</a>
 <h2>🎬 Video AI Tools</h2>  
   
 <div class="tool" data-name="Pictory AI">  
-  
+
+  <div class="tool-left">
 <a href="https://pictory.ai" target="_blank"
  rel="noopener noreferrer" >Pictory AI</a>  
+ <span class="info-icon"
+onclick="event.stopPropagation();toolInfo('Pictory AI')">
+ℹ️
+</span>
+  </div>
     
 <span class="badge pro">FREE + PRO</span>  
   
@@ -1141,9 +1293,15 @@ rel="noopener noreferrer"  >Speechify</a>
 </div>  
   
 <div class="tool" data-name="InVideo AI">  
+<div class="tool-left">
   
 <a href="https://invideo.io" target="_blank"
  rel="noopener noreferrer" >InVideo AI</a>  
+ <span class="info-icon"
+onclick="event.stopPropagation();toolInfo('InVideo AI')">
+ℹ️
+</span>
+  </div>
     
 <span class="badge pro">FREE + PRO</span>  
   
@@ -1151,9 +1309,15 @@ rel="noopener noreferrer"  >Speechify</a>
 </div>  
   
 <div class="tool" data-name="Lumen5">  
+<div class="tool-left">
   
 <a href="https://lumen5.com" target="_blank"
  rel="noopener noreferrer" >Lumen5</a>  
+ <span class="info-icon"
+onclick="event.stopPropagation();toolInfo('Lumen5')">
+ℹ️
+</span>
+  </div>
     
 <span class="badge pro">FREE + PRO</span>  
   
@@ -1161,9 +1325,15 @@ rel="noopener noreferrer"  >Speechify</a>
 </div>  
   
 <div class="tool" data-name="Synthesia AI">  
+<div class="tool-left">
   
 <a href="https://www.synthesia.io"  target="_blank"
 rel="noopener noreferrer"  >Synthesia AI</a>  
+ <span class="info-icon"
+onclick="event.stopPropagation();toolInfo('Synthesia AI')">
+ℹ️
+</span>
+  </div>
     
 <span class="badge pro">FREE + PRO</span>  
   
@@ -1178,8 +1348,14 @@ rel="noopener noreferrer"  >Synthesia AI</a>
 <h2>🎵 Music AI Tools</h2>  
   
 <div class="tool" data-name="AIVA">  
+<div class="tool-left">
 <a href="https://www.aiva.ai" target="_blank"
   rel="noopener noreferrer" >AIVA</a>  
+ <span class="info-icon"
+onclick="event.stopPropagation();toolInfo('AIVA')">
+ℹ️
+</span>
+  </div>
   
 <span class="badge pro">FREE + PRO</span>  
   
@@ -1187,16 +1363,28 @@ rel="noopener noreferrer"  >Synthesia AI</a>
 </div>  
   
 <div class="tool" data-name="Udio">  
+<div class="tool-left">
 <a href="https://udio.com" target="_blank"
   rel="noopener noreferrer" >Udio</a>  
+ <span class="info-icon"
+onclick="event.stopPropagation();toolInfo('Udio')">
+ℹ️
+</span>
+  </div>
   <span class="badge pro">FREE + PRO</span>  
   
 <span class="star" onclick="fav(this)">⭐</span>  
 </div>  
   
 <div class="tool" data-name="Soundraw">  
+<div class="tool-left">
 <a href="https://soundraw.io" target="_blank"
  rel="noopener noreferrer" >Soundraw</a>  
+ <span class="info-icon"
+onclick="event.stopPropagation();toolInfo('Soundraw')">
+ℹ️
+</span>
+  </div>
   <span class="badge pro">FREE + PRO</span>  
   
 <span class="star" onclick="fav(this)">⭐</span>  
@@ -1209,24 +1397,42 @@ rel="noopener noreferrer"  >Synthesia AI</a>
 <h2>🎮 Gaming AI Tools</h2>  
   
 <div class="tool" data-name="Scenario AI">  
+<div class="tool-left">
 <a href="https://scenario.gg" target="_blank"
  rel="noopener noreferrer" >Scenario AI</a>  
+ <span class="info-icon"
+onclick="event.stopPropagation();toolInfo('Scenario AI')">
+ℹ️
+</span>
+  </div>
   <span class="badge pro">FREE + PRO</span>  
   
 <span class="star" onclick="fav(this)">⭐</span>  
 </div>  
   
 <div class="tool" data-name="Ludo AI">  
+<div class="tool-left">
 <a href="https://ludo.ai" target="_blank"
  rel="noopener noreferrer" >Ludo AI</a>  
+ <span class="info-icon"
+onclick="event.stopPropagation();toolInfo('Ludo AI')">
+ℹ️
+</span>
+  </div>
   <span class="badge pro">FREE + PRO</span>  
   
 <span class="star" onclick="fav(this)">⭐</span>  
 </div>  
   
 <div class="tool" data-name="Inworld AI">  
+<div class="tool-left">
 <a href="https://inworld.ai" target="_blank"
  rel="noopener noreferrer" >Inworld AI</a>  
+ <span class="info-icon"
+onclick="event.stopPropagation();toolInfo('Inworld AI')">
+ℹ️
+</span>
+  </div>
   <span class="badge pro">FREE + PRO</span>  
   
 <span class="star" onclick="fav(this)">⭐</span>  
@@ -2005,7 +2211,109 @@ function showToast(message){
 
   setTimeout(()=>{
     toast.style.display = "none";
-  },2000);
+  },3500);
+}
+</script>
+<script>
+function toolInfo(name){
+
+const descriptions = {
+
+"ChatGPT":
+"AI assistant for writing, coding, learning and productivity.",
+
+"Google Gemini":
+"Google AI assistant for search, writing, coding and research.",
+
+"Runway ML":
+"AI platform for video generation and editing.",
+
+"Canva AI":
+"AI-powered design tool for graphics, presentations and content.",
+
+"Perplexity AI":
+"AI search engine with source citations.",
+
+"Grammarly":
+"Writing assistant for grammar and clarity.",
+
+"Wolfram Alpha":
+"Computational engine for math, science and data.",
+
+"Notion AI":
+"AI assistant for notes, planning and productivity.",
+
+"Khan Academy + Khanmigo":
+"AI-powered educational tutor and learning assistant.",
+
+"Quizlet AI":
+"AI study tools, flashcards and quizzes.",
+
+"Duolingo Max AI":
+"AI-powered language learning assistant.",
+
+"GitHub Copilot":
+"AI coding assistant for developers.",
+
+"Replit AI":
+"AI coding assistant integrated into Replit.",
+
+"Codeium":
+"AI code completion and generation tool.",
+
+"Writesonic":
+"AI content and marketing copy generator.",
+
+"Surfer SEO":
+"SEO optimization platform.",
+
+"Canva Magic Write":
+"AI writing assistant inside Canva.",
+
+"Murf AI":
+"AI voice generation platform.",
+
+"ElevenLabs":
+"Advanced AI voice synthesis and cloning.",
+
+"Speechify":
+"Text-to-speech AI platform.",
+
+"Descript":
+"Audio and video editor with AI features.",
+
+"Pictory AI":
+"Creates videos from text and articles.",
+
+"InVideo AI":
+"AI-powered video creation platform.",
+
+"Lumen5":
+"Converts content into videos.",
+
+"Synthesia AI":
+"Creates AI avatar videos from text.",
+
+"AIVA":
+"AI music composer.",
+
+"Udio":
+"AI music generation platform.",
+
+"Soundraw":
+"AI music creation tool.",
+
+"Scenario AI":
+"Generates AI game assets.",
+
+"Ludo AI":
+"Game design and ideation assistant.",
+
+"Inworld AI":
+"Creates intelligent AI game characters."
+};
+
+showToast(descriptions[name] || "Tool description coming soon.");
 }
 </script>
 </body>  
