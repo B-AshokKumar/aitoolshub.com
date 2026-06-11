@@ -122,7 +122,7 @@ box-sizing:border-box;
  .tool-left{
   display:flex;
   align-items:center;
-  gap:0px;
+  gap:2px;
 }
 
 .info-icon{
@@ -910,14 +910,16 @@ onkeyup="searchTools()">
 <h2>🤖 AI Tools</h2>  
   
 <div class="tool" data-name="ChatGPT">  
-  
+
+  <div class="tool-left">
 <a href="https://chat.openai.com"   target="_blank"
 rel="noopener noreferrer">ChatGPT</a>  
 
   <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('ChatGPT')">
 ℹ️
-</span>  
+</span>
+  </div>
 <span class="badge pro">FREE + PRO</span>  
   
 <span class="star" onclick="fav(this)">⭐</span>  
