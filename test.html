@@ -1,0 +1,2012 @@
+<!DOCTYPE html>  
+<!-- Version 2 -->  
+<html lang="en">  
+<head>  
+
+<meta charset="UTF-8">  
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">  
+<meta name="description" content="AI Tools Hub - All AI tools in one place">
+<meta name="robots" content="index,follow">
+
+<meta name="theme-color" content="#111">  
+<link rel="manifest" href="manifest.json">
+<title>AI Tools Hub</title>  
+    
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">  
+  
+<style>  
+
+*{
+  -webkit-tap-highlight-color: transparent;
+}
+html{
+scroll-behavior:smooth;
+}
+body{  
+margin:0;  
+font-family:'Poppins', sans-serif;
+background:#f2f4f7;  
+transition:0.4s;  
+padding-bottom:120px;
+-webkit-font-smoothing:antialiased;
+visibility:hidden;
+}
+  
+/* HEADER */  
+  
+.header{
+  background:#111;
+  color:white;
+  padding:14px 16px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  gap:10px;
+
+  font-size:18px;
+  font-weight:600;
+   position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+  .header button{
+  flex-shrink:0;
+}
+.dark-btn{  
+background:#e7edf7;      /* light blue card */  
+color:#2d74d7;           /* app theme blue text */  
+border:none;  
+padding:8px 14px;  
+border-radius:10px;  
+cursor:pointer;  
+font-size:15px;  
+font-weight:600;         /* bold text */  
+box-shadow:0 3px 8px rgba(0,0,0,0.1);  
+transition:0.3s;  
+}  
+  
+.dark .dark-btn{  
+background:#2b2b2b;  
+color:#4da3ff;  
+font-weight:600;  
+}  
+/* TITLE */  
+  
+.title-card{  
+background:white;  
+margin:20px;  
+padding:18px;  
+text-align:center;  
+border-radius:14px;  
+box-shadow:0 5px 12px rgba(0,0,0,0.1);  
+font-size:26px;  
+font-weight:600;  
+}  
+  
+/* SECTION */  
+  
+.section{  
+background:white;  
+margin:20px;  
+padding:20px;  
+border-radius:16px;  
+box-shadow:0 4px 12px rgba(0,0,0,0.08);  
+}  
+  
+.section h2{  
+color:#2d74d7;  
+margin-bottom:15px;  
+}  
+  
+/* TOOL BUTTON */  
+  
+.tool{  
+background:#e7edf7;  
+padding:15px;  
+margin:12px 0;  
+border-radius:12px;  
+display:flex;  
+justify-content:space-between;  
+align-items:center;  
+transition:0.3s;  
+cursor:pointer;  
+width:100%;
+box-sizing:border-box;
+}  
+  
+.tool:hover{  
+transform:scale(1.02);  
+background:#d9e5f9;  
+}  
+  
+.tool a{  
+text-decoration:none;  
+color:#2d74d7;  
+font-size:18px;  
+font-weight:600;  
+}  
+  
+/* CATEGORY GRID */  
+  
+.grid{  
+display:grid;  
+grid-template-columns:repeat(auto-fit,minmax(140px,1fr));  
+gap:15px;  
+}  
+  
+.category{  
+background:#e8efff;  
+padding:18px;  
+text-align:center;  
+border-radius:12px;  
+font-weight:600;  
+cursor:pointer;  
+}  
+  
+.category:hover{  
+background:#d2e1ff;  
+}  
+  
+/* STAR */  
+  
+.star{  
+font-size:22px;  
+cursor:pointer;  
+}  
+  
+/* FOOTER */  
+.footer{  
+text-align:center;  
+padding:20px;  
+color:#777;  
+}  
+  
+/* ---------- PROMPT HEADER ---------- */  
+  
+.prompt-header{  
+background:white;  
+margin:20px;  
+padding:25px;  
+border-radius:16px;  
+box-shadow:0 4px 12px rgba(0,0,0,0.08);  
+text-align:center;  
+}  
+  
+.prompt-title{  
+font-size:32px;  
+font-weight:700;  
+color:#2d74d7;  
+margin-bottom:10px;  
+}  
+  
+.prompt-sub{  
+font-size:18px;  
+color:#666;  
+}  
+  
+/* DARK MODE */  
+.dark{  
+background:#121212;  
+color:white;  
+}  
+.dark .section,  
+.dark .title-card{  
+background:#1e1e1e;  
+}  
+  
+.dark .tool{  
+background:#2b2b2b;  
+}  
+/* ---------- CATEGORY GRID ---------- */  
+  
+/* ---------- AI TOOLS CATEGORIES ---------- */  
+  /* SEARCH BAR */  
+.search-box{  
+padding:15px;  
+text-align:center;  
+}  
+  
+.search-box input{  
+width:90%;  
+padding:12px;  
+font-size:16px;  
+border-radius:10px;  
+border:1px solid #ccc;  
+outline:none;  
+box-shadow:0 2px 6px rgba(0,0,0,0.1);  
+}  
+  
+.category-container{  
+background:#f5f6f8;  
+margin-top:10px;
+margin-left:20px;
+margin-right:20px;
+margin-bottom:20px;
+padding:30px;  
+border-radius:20px;  
+}  
+
+.category-title{
+  text-align:center;
+  font-size:20px;
+  font-weight:600;
+  color:#2d74d7;
+  margin-bottom:18px;
+  letter-spacing:0.5px;
+}
+  
+.category-grid{  
+display:grid;  
+grid-template-columns:repeat(2,1fr);  
+gap:15px;  
+}  
+
+.category-card{
+  background:#cfd6e6;
+  padding:12px 10px;   /* smaller padding */
+  border-radius:16px;  /* slightly smaller corners */
+  text-align:center;
+  font-size:14px;      /* slightly smaller text */
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+
+  height:100px;        /* reduced height */
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+  .category-card:active{
+  transform:scale(0.96);
+}
+.category-card span{  
+font-size:18px;  
+margin-bottom:6px;  
+}  
+  
+.category-card p{  
+font-size:15px;  
+line-height:1.2;  
+display:-webkit-box;  
+-webkit-line-clamp:2;  
+-webkit-box-orient:vertical;  
+overflow:hidden;  
+color:#444;
+}
+.category-card:hover{  
+transform:scale(1.05);  
+background:#bfc7db;  
+}  
+
+  
+.tool a{  
+pointer-events:auto;  
+}  
+  
+  
+/* your existing CSS code */  
+  
+/* Footer links small size */  
+.section a{  
+font-size:14px;  
+display:inline-block;  
+margin:4px 6px;  
+white-space:nowrap;  
+}  
+  
+.section div{  
+line-height:1.6;  
+}  
+  
+/* PROMPT BUTTON */  
+  
+.prompt-btn{  
+background:linear-gradient(135deg,#2d74d7,#5a9cff);  
+color:white;  
+border:none;  
+padding:14px 24px;  
+font-size:16px;  
+font-weight:600;  
+border-radius:10px;  
+cursor:pointer;  
+transition:0.3s;  
+box-shadow:0 4px 10px rgba(0,0,0,0.15); 
+ margin-top:15px;
+}  
+  
+.prompt-btn:hover{  
+transform:translateY(-2px);  
+box-shadow:0 6px 14px rgba(0,0,0,0.2);  
+}  
+  
+/* PROMPT INPUT STYLE */  
+  
+.prompt-input{  
+width:80%;  
+max-width:420px;  
+padding:14px 16px;  
+border-radius:10px;  
+border:2px solid #dce3f0;  
+font-size:16px;  
+outline:none;  
+transition:0.3s;  
+margin-top:10px;  
+}  
+
+.prompt-section{
+  text-align:center;
+}
+
+.welcome-title{
+  font-size:22px;
+  font-weight:700;
+  color:#2d74d7;
+  margin-bottom:5px;
+  line-height:1.3;
+}
+
+.welcome-sub{
+  font-size:14px;
+  color:#666;
+  margin-bottom:20px;
+}
+
+.welcome-desc{
+  font-size:13px;
+  color:#777;
+  max-width:320px;
+  margin:0 auto 15px auto;
+  line-height:1.4;
+}
+
+.prompt-actions{
+  display:flex;
+  justify-content:center;
+  margin:15px 0;
+}
+
+.center-btn{
+  text-align:center;
+  margin-top:20px;
+}
+
+  
+/* focus effect */  
+.prompt-input:focus{  
+border-color:#2d74d7;  
+box-shadow:0 0 8px rgba(45,116,215,0.3);  
+}  
+  
+/* dark mode support */  
+.dark .prompt-input{  
+background:#2b2b2b;  
+color:white;  
+border:2px solid #444;  
+}  
+
+  .dark .category-card{
+  background:#2b2b2b;
+}
+
+.dark .nav-link{
+  color:#e0e0e0;
+}
+
+.dark .nav-link.active{
+  color:#4da3ff;
+}
+
+.dark .category-card p{
+  color:#e0e0e0;
+}
+/* PROMPT RESULT CARD */  
+  
+.prompt-result{  
+margin-top:20px;  
+padding:18px;  
+border-radius:12px;  
+background:#f4f7ff;  
+border-left:5px solid #2d74d7;  
+font-size:16px;  
+line-height:1.6;  
+color:#333;  
+box-shadow:0 4px 10px rgba(0,0,0,0.08);  
+min-height:40px;  
+word-wrap:break-word;  
+overflow-wrap:anywhere;
+}  
+  .tip-btn{
+  padding:8px 14px;
+  font-size:14px;
+  border-radius:20px;
+}
+
+.prompt-result{
+  min-height:60px;
+}
+/* dark mode */  
+.dark .prompt-result{  
+background:#1f1f1f;  
+color:#fff;  
+border-left:5px solid #4da3ff;  
+}  
+.badge{  
+font-size:12px;  
+padding:4px 10px;  
+border-radius:20px;  
+margin-left:8px;  
+font-weight:600;  
+}  
+  
+/* FREE */  
+.free{  
+background:#e8f5ff;  
+color:#1e88e5;   /* change FREE text color here */  
+}  
+  
+/* FREE + PRO */  
+.pro{  
+background:#f3f0ff;  
+color:#7b1fa2;   /* change FREE+PRO text color here */  
+}  
+  
+/* PAID */  
+.paid{  
+background:#fff1f1;  
+color:#d32f2f;   /* change PAID text color here */  
+}  
+
+  .footer-links{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:12px;
+font-size:18px;
+font-weight:600;
+}
+
+.footer-links a{
+text-decoration:none;
+color:#6a1b9a;
+}
+
+.footer-links a::after{
+content:"|";
+margin-left:12px;
+}
+
+.footer-links a:last-child::after{
+content:"";
+}
+
+.bottom-nav{
+  position:fixed;
+
+  left:12px;
+  right:12px;
+
+  bottom:max(14px, env(safe-area-inset-bottom));
+
+  background:#fff;
+
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+
+  padding:12px 0;
+
+  border-radius:18px;
+
+  box-shadow:0 -2px 10px rgba(0,0,0,0.12);
+
+  z-index:1000;
+}
+
+
+@supports(padding:max(0px)){
+  .bottom-nav{
+    bottom:max(20px, env(safe-area-inset-bottom));
+  }
+}
+.bottom-nav a{
+  text-decoration:none;
+  color:#6a1b9a;
+  font-size:14px;
+  font-weight:600;
+}
+
+.nav-link{
+  text-decoration:none;
+  color:#6a1b9a;
+  font-size:14px;
+  font-weight:600;
+  transition:0.3s;
+}
+
+/* 🔥 Active tab */
+.nav-link.active{
+  color:#2d74d7;
+  transform:scale(1.1);
+}
+
+/* Optional glow effect */
+.nav-link.active::after{
+  content:"";
+  display:block;
+  width:6px;
+  height:6px;
+  background:#2d74d7;
+  border-radius:50%;
+  margin:4px auto 0;
+}
+
+.tip-box{
+  position:fixed;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#2d74d7;
+  color:white;
+  padding:14px 20px;
+  border-radius:12px;
+  box-shadow:0 6px 15px rgba(0,0,0,0.2);
+  font-size:14px;
+  font-weight:600;
+  z-index:2000;
+
+  opacity:0;
+  pointer-events:none;
+  transition:0.4s;
+}
+
+.tip-box.show{
+  opacity:1;
+  top:40px;
+}
+
+.exit-toast{
+  position:fixed;
+  bottom:80px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#333;
+  color:white;
+  padding:10px 18px;
+  border-radius:20px;
+  font-size:14px;
+  opacity:0;
+  transition:0.3s;
+  z-index:3000;
+}
+
+.exit-toast.show{
+  opacity:1;
+}
+
+.offline-screen{
+  position:fixed;
+  inset:0;
+  background:#f2f4f7;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:99999;
+}
+
+.offline-box{
+  background:white;
+  padding:30px 25px;
+  border-radius:20px;
+  text-align:center;
+  width:85%;
+  max-width:320px;
+  box-shadow:0 5px 20px rgba(0,0,0,0.12);
+}
+
+.offline-box h2{
+  color:#2d74d7;
+  margin-bottom:10px;
+}
+
+.offline-box p{
+  color:#666;
+  line-height:1.5;
+  margin-bottom:20px;
+}
+
+.offline-box button{
+  background:#2d74d7;
+  color:white;
+  border:none;
+  padding:12px 20px;
+  border-radius:10px;
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.dark .offline-screen{
+  background:#121212;
+}
+
+.dark .offline-box{
+  background:#1e1e1e;
+}
+
+.dark .offline-box p{
+  color:#ddd;
+}
+</style>  
+  
+</head> 
+<body>
+<div id="offlineScreen" class="offline-screen">
+  <div class="offline-box">
+    <h2>📡 No Internet Connection</h2>
+
+    <p>
+      Please check your internet connection and try again.
+    </p>
+
+    <button onclick="retryConnection()">
+      🔄 Try Again
+    </button>
+  </div>
+</div>
+
+<div class="header" id="top">
+<span style="font-size:16px;">AI Tools Hub</span>
+
+<button class="dark-btn" onclick="toggleDark()">  
+<span>Dark Mode</span> ☾
+</button>  
+</div>  
+
+  
+<!-- HOME -->  
+  
+<div class="section prompt-section" id="home">
+
+  <h2 class="welcome-title">Welcome to<br> AI Tools Hub</h2>
+
+  <!-- ✅ ADD HERE -->
+  <p class="welcome-desc">
+    This app provides quick access to popular AI tools and resources in one place.
+  </p>
+
+  <p class="welcome-sub">Generate powerful AI prompts instantly</p>
+
+  <input id="topic" class="prompt-input"
+    placeholder="✨ Enter topic (Example: logo, cat)">
+
+
+  <div class="prompt-actions">
+    <button class="prompt-btn" onclick="generatePrompt(currentPromptType)">
+      ✨ Generate Prompt
+    </button>
+  </div>
+
+  <div id="result" class="prompt-result"></div>
+
+<div class="center-btn">
+  <button class="prompt-btn tip-btn" onclick="copyPrompt()">
+    📋 Copy Prompt
+  </button>
+</div>
+
+  <div class="center-btn">
+    <button class="prompt-btn tip-btn" onclick="showDailyTip()">
+      💡 Show Daily Tip
+    </button>
+  </div>
+
+</div>
+
+<!-- AI PROMPT TEMPLATES -->
+
+<div class="section">
+
+<h2>✨ AI Prompt Templates</h2>
+
+<div class="category-grid">
+
+<div class="category-card"
+onclick="setPrompt('software developer','resume')">
+
+<span>📄</span>
+<p>Resume Prompt</p>
+
+</div>
+
+
+<div class="category-card"
+onclick="setPrompt('artificial intelligence','essay')">
+  
+<span>📝</span>
+<p>Essay Prompt</p>
+
+</div>
+
+
+<div class="category-card"
+onclick="setPrompt('AI tools tutorial','youtube')">
+  
+<span>🎬</span>
+<p>YouTube Script</p>
+
+</div>
+
+
+<div class="category-card"
+onclick="setPrompt('Python chatbot','coding')">
+
+<span>💻</span>
+<p>Coding Prompt</p>
+
+</div>
+
+
+<div class="category-card"
+onclick="setPrompt('AI company logo','logo')">
+
+<span>🎨</span>
+<p>Logo Prompt</p>
+
+</div>
+
+
+<div class="category-card"
+onclick="setPrompt('employee salary report','sql')">
+  
+<span>🗄️</span>
+<p>SQL Prompt</p>
+
+</div>
+
+
+<div class="category-card"
+onclick="setPrompt('artificial intelligence','presentation')">
+  
+<span>📊</span>
+<p>Presentation Prompt</p>
+
+</div>
+
+</div>
+
+</div>
+  
+<!-- TRENDING TOOLS -->  
+  
+<div class="section">  
+<h2>🔥 Trending AI Tools</h2>  
+  
+<div class="tool" data-name="ChatGPT">  
+<a href="https://chat.openai.com"  target="_blank" 
+rel="noopener noreferrer" >ChatGPT</a>  
+<span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Google Gemini">  
+<a href="https://gemini.google.com"  target="_blank"
+rel="noopener noreferrer" >Google Gemini</a>  
+  <span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Runway ML">  
+<a href="https://runwayml.com"  target="_blank"
+rel="noopener noreferrer" >Runway ML</a>  
+  <span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+</div>  
+  
+<!-- FAVORITE TOOLS -->  
+
+
+<div class="section" id="favorites">
+<h2>⭐ My Favorite Tools</h2>
+<div id="favoritesList"></div>  
+  
+</div>  
+  
+  
+<!-- AI CATEGORIES -->  
+  
+<!-- AI TOOLS CATEGORIES -->  
+  
+<!-- SEARCH BAR -->  
+
+<div class="search-box" id="search">
+<input type="text" id="searchInput"  
+placeholder="🔍 Search AI tools..."  
+onkeyup="searchTools()">  
+</div>  
+  
+<div id="searchResults"></div>  
+<div class="category-container">  
+  
+<h2 class="category-title">  
+ AI Tools Categories  
+</h2>  
+  
+<div class="category-grid">  
+  
+<div class="category-card" onclick="goTo('ai-tools')">  
+  <span>🤖</span>  
+  <p>AI Tools</p>  
+</div>  
+  <div class="category-card" onclick="goTo('study-tools')">  
+  <span>📚</span>  
+  <p>AI Study Tools</p>  
+</div>  
+  
+<div class="category-card" onclick="goTo('coding-tools')">  
+  <span>💻</span>  
+  <p>Coding AI Tools</p>  
+</div>  
+  
+<div class="category-card" onclick="goTo('marketing-tools')">  
+  <span>📈</span>  
+  <p> Marketing AI Tools</p>  
+</div>  
+  
+<div class="category-card" onclick="goTo('voice-tools')">  
+  <span>🎙</span>  
+  <p>Voice AI Tools</p>  
+</div>  
+  
+<div class="category-card" onclick="goTo('video-tools')">  
+  <span>🎬</span>  
+  <p>Video AI Tools</p>  
+</div>  
+<!-- NEW CATEGORY -->  
+<div class="category-card" onclick="goTo('music-tools')">  
+<span>🎵</span>  
+<p>Music AI Tools</p>  
+</div>  
+  
+<!-- NEW CATEGORY -->  
+<div class="category-card" onclick="goTo('gaming-tools')">  
+<span>🎮</span>  
+<p>Gaming AI Tools</p>  
+</div>  
+  
+</div>  
+</div>  
+<!-- AI TOOLS -->  
+  
+<div class="section" id="ai-tools">  
+<h2>🤖 AI Tools</h2>  
+  
+<div class="tool" data-name="ChatGPT">  
+  
+<a href="https://chat.openai.com"   target="_blank"
+rel="noopener noreferrer">ChatGPT</a>  
+    
+<span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Google Gemini">  
+  
+<a href="https://gemini.google.com"   target="_blank"
+rel="noopener noreferrer">Google Gemini</a>  
+  <span class="badge pro">FREE + PRO</span>  
+  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Canva AI">  
+  
+<a href="https://www.canva.com/ai-image-generator"  target="_blank"
+rel="noopener noreferrer"  >Canva AI</a>  
+  <span class="badge pro">FREE + PRO</span>  
+  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+</div>  
+
+<!-- AI STUDY TOOLS -->
+
+<div class="section" id="study-tools">  
+<h2>📚 AI Study Tools</h2>  
+
+<div class="tool" data-name="Perplexity AI">  
+
+<a href="https://www.perplexity.ai" target="_blank"
+rel="noopener noreferrer">Perplexity AI</a>  
+
+<span class="badge pro">FREE + PRO</span>  
+
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+
+
+<div class="tool" data-name="Grammarly">  
+
+<a href="https://www.grammarly.com" target="_blank"
+rel="noopener noreferrer">Grammarly</a>  
+
+<span class="badge pro">FREE + PRO</span>  
+
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+
+
+<div class="tool" data-name="Wolfram Alpha">  
+
+<a href="https://www.wolframalpha.com" target="_blank"
+rel="noopener noreferrer">Wolfram Alpha</a>  
+
+<span class="badge pro">FREE + PRO</span>  
+
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+
+
+<div class="tool" data-name="Notion AI">  
+
+<a href="https://www.notion.so/product/ai" target="_blank"
+rel="noopener noreferrer">Notion AI</a>  
+
+<span class="badge pro">FREE + PRO</span>  
+
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+
+<div class="tool" data-name="Khan Academy + Khanmigo">  
+
+<a href="https://www.khanacademy.org/khan-labs" target="_blank"
+rel="noopener noreferrer">Khan Academy +<br>Khanmigo</a>  
+
+<span class="badge pro">FREE + PRO</span>  
+
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>
+
+
+<div class="tool" data-name="Quizlet AI">  
+
+<a href="https://quizlet.com/features/magic-notes" target="_blank"
+rel="noopener noreferrer">Quizlet AI</a>  
+
+<span class="badge pro">FREE + PRO</span>  
+
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>
+
+
+<div class="tool" data-name="Duolingo Max AI">  
+
+<a href="https://www.duolingo.com" target="_blank"
+rel="noopener noreferrer">Duolingo Max AI</a>  
+
+<span class="badge pro">FREE + PRO</span>  
+
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>
+
+</div>
+
+<!-- CODING TOOLS -->  
+  
+<div class="section" id="coding-tools">  
+<h2>💻 Coding AI Tools</h2>  
+  
+<div class="tool" data-name="GitHub Copilot">  
+  
+<a href="https://github.com/features/copilot"  target="_blank" 
+rel="noopener noreferrer" >GitHub Copilot</a>  
+  <span class="badge pro">FREE + PRO</span>  
+  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Replit AI">  
+  
+<a href="https://replit.com"  target="_blank"
+rel="noopener noreferrer"  >Replit AI</a>  
+    
+<span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Codeium">  
+  
+<a href="https://codeium.com"  target="_blank"
+rel="noopener noreferrer" >Codeium</a>  
+    
+<span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+</div>  
+<!-- MARKETING AI -->  
+  
+<div class="section" id="marketing-tools">  
+<h2>📈 Marketing AI Tools</h2>  
+  
+<div class="tool" data-name="Writesonic">  
+  
+<a href="https://writesonic.com"  target="_blank"
+rel="noopener noreferrer"  >Writesonic</a>  
+    
+<span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Surfer SEO">  
+  
+<a href="https://surferseo.com"  target="_blank"
+rel="noopener noreferrer" >Surfer SEO</a>  
+  <span class="badge pro">FREE + PRO</span>  
+  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Canva Magic Write">  
+  
+<a href="https://www.canva.com/magic-write/"  target="_blank"
+rel="noopener noreferrer"  >Canva Magic Write</a>  
+  
+    
+<span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+</div>  
+  
+<!-- VOICE AI -->  
+  
+<div class="section" id="voice-tools">  
+<h2>🎙 Voice AI Tools</h2>  
+  
+<div class="tool" data-name="Murf AI">  
+  
+<a href="https://murf.ai" target="_blank"
+rel="noopener noreferrer"  >Murf AI</a>  
+  <span class="badge pro">FREE + PRO</span>  
+  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="ElevenLabs">  
+    
+<a href="https://elevenlabs.io" target="_blank"
+rel="noopener noreferrer" >ElevenLabs</a>  
+    
+  <span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Speechify">  
+  
+<a href="https://speechify.com" target="_blank"
+rel="noopener noreferrer"  >Speechify</a>  
+    
+<span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Descript">  
+  
+<a href="https://www.descript.com"  target="_blank"
+ rel="noopener noreferrer" >Descript</a>  
+  <span class="badge pro">FREE + PRO</span>  
+  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+</div>  
+<!-- VIDEO AI -->  
+  
+<div class="section" id="video-tools">  
+<h2>🎬 Video AI Tools</h2>  
+  
+<div class="tool" data-name="Pictory AI">  
+  
+<a href="https://pictory.ai" target="_blank"
+ rel="noopener noreferrer" >Pictory AI</a>  
+    
+<span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="InVideo AI">  
+  
+<a href="https://invideo.io" target="_blank"
+ rel="noopener noreferrer" >InVideo AI</a>  
+    
+<span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Lumen5">  
+  
+<a href="https://lumen5.com" target="_blank"
+ rel="noopener noreferrer" >Lumen5</a>  
+    
+<span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Synthesia AI">  
+  
+<a href="https://www.synthesia.io"  target="_blank"
+rel="noopener noreferrer"  >Synthesia AI</a>  
+    
+<span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+</div>  
+  
+<!-- MUSIC AI TOOLS -->  
+  
+<div class="section" id="music-tools">  
+<h2>🎵 Music AI Tools</h2>  
+  
+<div class="tool" data-name="AIVA">  
+<a href="https://www.aiva.ai" target="_blank"
+  rel="noopener noreferrer" >AIVA</a>  
+  
+<span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Udio">  
+<a href="https://udio.com" target="_blank"
+  rel="noopener noreferrer" >Udio</a>  
+  <span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Soundraw">  
+<a href="https://soundraw.io" target="_blank"
+ rel="noopener noreferrer" >Soundraw</a>  
+  <span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+</div>  
+<!-- GAMING AI TOOLS -->  
+  
+<div class="section" id="gaming-tools">  
+<h2>🎮 Gaming AI Tools</h2>  
+  
+<div class="tool" data-name="Scenario AI">  
+<a href="https://scenario.gg" target="_blank"
+ rel="noopener noreferrer" >Scenario AI</a>  
+  <span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Ludo AI">  
+<a href="https://ludo.ai" target="_blank"
+ rel="noopener noreferrer" >Ludo AI</a>  
+  <span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+<div class="tool" data-name="Inworld AI">  
+<a href="https://inworld.ai" target="_blank"
+ rel="noopener noreferrer" >Inworld AI</a>  
+  <span class="badge pro">FREE + PRO</span>  
+  
+<span class="star" onclick="fav(this)">⭐</span>  
+</div>  
+  
+</div>  
+<!-- LEGAL INFO -->  
+  
+<div class="section" style="text-align:center">  
+  
+<p style="color:#666;font-size:16px">  
+Tools open in secure external pages. Login may be required.  
+</p>  
+  
+<p style="color:#999;font-size:14px;margin-top:10px">  
+⚠ Some AI tools may take a few seconds to load depending on internet speed and server response.  
+</p>  
+  
+<hr style="margin:25px 0">  
+  
+<p style="max-width:600px;margin:auto;color:#666">  
+This app aggregates publicly available AI tools.  
+We are not affiliated with third-party services.  
+</p>  
+
+<div class="section" id="settings">
+
+<h2>⚙️ Settings</h2>
+
+<button onclick="toggleDark()" class="dark-btn">
+Toggle Dark Mode ☾
+</button>
+
+<p style="margin-top:10px;">
+App Preferences & Settings
+</p>
+
+</div>
+ <div class="footer-links">
+
+<a href="privacy-policy.html">Privacy Policy</a>
+<a href="terms.html">Terms & Conditions</a>
+<a href="disclaimer.html">Disclaimer</a>
+<a href="about.html">About Us</a>
+
+</div>
+</div>  
+<div class="footer">  
+AI Tools Hub © 2026 Public AI tools aggregator  
+</div>  
+  
+<script>  
+  
+/* =========================  
+   DARK MODE SYSTEM  
+========================= */  
+  
+function toggleDark(){  
+  
+document.body.classList.toggle("dark");  
+  
+/* SAVE THEME */  
+if(document.body.classList.contains("dark")){  
+localStorage.setItem("theme","dark");  
+}else{  
+localStorage.setItem("theme","light");  
+}  
+
+}  
+  
+/* LOAD SAVED THEME AFTER REFRESH */  
+document.addEventListener("DOMContentLoaded",function(){  
+  
+if(localStorage.getItem("theme")==="dark"){  
+document.body.classList.add("dark");  
+}  
+
+});  
+  
+  
+/* =========================  
+   PROMPT GENERATOR  
+========================= */  
+  
+  let currentPromptType = "";
+  
+function generatePrompt(type){
+
+  let topic =
+    document.getElementById("topic").value;
+  
+  let promptText = "";
+
+// check empty input
+if(topic.trim() === ""){
+
+  document.getElementById("result").innerText =
+    "Please enter a topic";
+
+  return;
+}
+
+
+
+  if(type === "resume"){
+
+    promptText =
+      "Create a modern professional resume for " +
+      topic +
+      " with skills, achievements, experience, projects, certifications, and strong summary.";
+
+  }
+
+  else if(type === "essay"){
+
+    promptText =
+      "Write a detailed essay about " +
+      topic +
+      " with introduction, main points, advantages, disadvantages, and conclusion.";
+
+  }
+
+  else if(type === "youtube"){
+
+    promptText =
+      "Create an engaging YouTube script about " +
+      topic +
+      " with hook, intro, main content, and call to action.";
+
+  }
+
+  else if(type === "coding"){
+
+    promptText =
+      "Generate clean optimized code for " +
+      topic +
+      " with explanation, comments, and best practices.";
+
+  }
+
+  else if(type === "logo"){
+
+    promptText =
+      "Create a modern professional logo design for " +
+      topic +
+      " with minimal style, premium colors, clean typography, and creative branding.";
+
+  }
+
+  else if(type === "sql"){
+
+    promptText =
+      "Write an optimized SQL query for " +
+      topic +
+      " with explanation, comments, joins, performance improvements, and best practices.";
+
+  }
+
+  else if(type === "presentation"){
+
+    promptText =
+      "Create a professional presentation about " +
+      topic +
+      " with slide titles, key points, summary, and engaging structure.";
+
+  }
+
+  else{
+
+    promptText =
+      "Create a professional AI prompt for " +
+      topic +
+      " with detailed explanation and high quality output.";
+
+  }
+
+  document.getElementById("result").innerText =
+    promptText;
+
+}
+
+ /* =========================  
+   PROMPT TEMPLATES
+========================= */ 
+function setPrompt(text,type){
+
+  // SAVE CURRENT TEMPLATE TYPE
+  currentPromptType = type;
+
+  document.getElementById("topic").value = text;
+
+  generatePrompt(type);
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+  
+/* FAVORITES SYSTEM */  
+  
+function fav(el){  
+  
+let tool = el.parentElement;  
+let name = tool.dataset.name || tool.querySelector("a").innerText;  
+let link = tool.querySelector("a").href;  
+  
+let favorites =  
+JSON.parse(localStorage.getItem("favorites")) || [];  
+  
+/* REMOVE FAVORITE */  
+if(el.innerHTML=="🌟"){  
+  
+el.innerHTML="⭐";  
+  
+favorites = favorites.filter(t=>t.name!==name);  
+localStorage.setItem("favorites",JSON.stringify(favorites));  
+  
+showFavorites();  
+return;  
+}  
+  
+/* ADD FAVORITE */  
+el.innerHTML="🌟";  
+  
+if(!favorites.find(t=>t.name===name)){  
+favorites.push({name,link});  
+localStorage.setItem("favorites",JSON.stringify(favorites));  
+}  
+  
+showFavorites();  
+}  
+  
+function showFavorites(){  
+  
+let container = document.getElementById("favoritesList");  
+if(!container) return;  
+  
+let favorites =  
+JSON.parse(localStorage.getItem("favorites")) || [];  
+  
+container.innerHTML="";  
+  
+favorites.forEach(tool=>{  
+  
+let div=document.createElement("div");  
+div.className="tool";  
+div.dataset.name=tool.name;  
+  
+div.innerHTML=`  
+<a href="${tool.link}" target="_blank" rel="noopener noreferrer">${tool.name}</a>  
+<span class="star" onclick="removeFavorite(this)">🌟</span>  
+`;  
+  
+container.appendChild(div);  
+});  
+  
+/* Update stars everywhere */  
+document.querySelectorAll(".tool").forEach(t=>{  
+let star=t.querySelector(".star");  
+if(!star) return;  
+  
+let exists=favorites.find(f=>f.name===t.dataset.name);  
+star.innerHTML = exists ? "🌟" : "⭐";  
+});  
+  
+}  
+  
+function removeFavorite(el){  
+  
+let name=el.parentElement.dataset.name;  
+  
+let favorites =  
+JSON.parse(localStorage.getItem("favorites")) || [];  
+  
+favorites=favorites.filter(t=>t.name!==name);  
+  
+localStorage.setItem("favorites",JSON.stringify(favorites));  
+  
+showFavorites();  
+}  
+  
+  
+document.addEventListener("DOMContentLoaded",showFavorites);  
+  
+function goTo(sectionId){
+
+  let el = document.getElementById(sectionId);
+  if(!el) return;
+
+  // get position
+  let y = el.getBoundingClientRect().top + window.pageYOffset;
+
+  // 🔥 add small offset (this is the trick)
+  let offset = 30; // you can try 20–60
+
+  window.scrollTo({
+    top: y - offset,
+    behavior: "smooth"
+  });
+}
+</script>  
+  
+<script>
+function searchTools(){
+
+let input =
+document.getElementById("searchInput")
+.value.toLowerCase();
+
+let results =
+document.getElementById("searchResults");
+
+results.innerHTML="";
+
+if(input===""){
+results.innerHTML="";
+return;
+}
+
+let tools =
+document.querySelectorAll(
+"#ai-tools .tool, \
+#study-tools .tool, \
+#coding-tools .tool, \
+#marketing-tools .tool, \
+#voice-tools .tool, \
+#video-tools .tool, \
+#music-tools .tool, \
+#gaming-tools .tool"
+);
+
+tools.forEach(tool=>{
+
+let name = (tool.dataset.name || "").toLowerCase();
+
+if(name.includes(input)){
+
+let clone = tool.cloneNode(true);
+clone.querySelector(".star")?.setAttribute("onclick","fav(this)");
+results.appendChild(clone);
+
+}
+
+});
+
+}
+
+
+</script>
+
+<script>
+function updateConnectionStatus(){
+
+  const offlineScreen =
+    document.getElementById("offlineScreen");
+
+  if(!navigator.onLine){
+
+    offlineScreen.style.display = "flex";
+
+  } else {
+
+    offlineScreen.style.display = "none";
+  }
+}
+
+function retryConnection(){
+
+  if(navigator.onLine){
+
+    location.reload();
+
+  } else {
+
+    alert("Still offline ❌");
+  }
+}
+
+window.addEventListener(
+  "load",
+  updateConnectionStatus
+);
+
+window.addEventListener(
+  "online",
+  updateConnectionStatus
+);
+
+window.addEventListener(
+  "offline",
+  updateConnectionStatus
+);
+
+</script>
+
+
+<div id="tipBox" class="tip-box"></div>
+
+<div class="bottom-nav">
+
+<a href="#" class="nav-link active" data-target="home">🏠 Home</a>
+<a href="#" class="nav-link" data-target="search">🔎 Search</a>
+<a href="#" class="nav-link" data-target="favorites">⭐ Favorites</a>
+<a href="#" class="nav-link" data-target="settings">⚙️ Settings</a>
+
+</div>
+
+<script>
+if (
+  "serviceWorker" in navigator &&
+  location.protocol === "https:"
+) {
+
+  navigator.serviceWorker
+    .register("./sw.js")
+
+    .then(() => {
+      console.log("Offline App Ready ✅");
+    })
+
+    .catch(err => {
+      console.log(err);
+    });
+
+}
+</script>
+
+<script>
+window.addEventListener("load", function(){
+
+  document.body.style.visibility = "visible";
+
+});
+</script>
+<script>
+const tips = [
+ "Use detailed prompts",
+ "Add lighting & mood",
+ "Use 4K keyword",
+ "Try different styles",
+ "Use AI tools for automation",
+ "Use color themes",
+ "Describe mood (dark, vibrant, dreamy)",
+ "Combine styles (realistic + fantasy)",
+ "Mention camera angles (top view, close-up)",
+ "Specify output format (table, list, etc.)",
+ "Ask AI to explain code step-by-step",
+ "Use AI for debugging errors",
+ "Request optimized code",
+ "Ask for comments in code",
+ "Convert code between languages",
+ "Generate UI designs with code",
+ "Use AI for SQL queries",
+ "Ask for real-world examples",
+ "Test edge cases with AI",
+ "Use AI to learn new frameworks",
+ "Automate repetitive tasks",
+ "Create content (blogs, reels, scripts)",
+ "Use AI to summarize long text",
+ "Use AI for freelancing work",
+ "Generate digital products",
+ "Build AI tools/apps",
+ "Offer AI services to businesses",
+ "Generate emails quickly",
+ "Create to-do lists with AI",
+ "Ask AI to simplify complex topics",
+ "Use AI for brainstorming ideas",
+ "Use AI for SEO optimization",
+ "Automate social media posting",
+ "Create YouTube scripts",
+ "Design logos and sell them",
+ "Build niche AI websites",
+ "Use AI for brainstorming ideas",
+ "Plan your day using AI",
+ "Generate reports instantly",
+ "Use AI for research shortcuts",
+ "Convert notes into structured content",
+ "Verify AI-generated information before using it",
+"Save your best prompts for future reuse",
+"Break complex tasks into smaller prompts",
+"Use AI to generate interview questions",
+"Create study plans with AI assistance",
+"Compare multiple AI responses for better results",
+"Use AI to translate content into multiple languages",
+"Generate FAQs for your website or business",
+"Create checklists using AI",
+"Use AI to improve writing clarity",
+"Generate catchy headlines and titles",
+"Use AI to create product descriptions",
+"Create personalized learning schedules",
+"Use AI to draft business proposals",
+"Generate customer support responses",
+"Use AI to organize project workflows",
+"Create presentation outlines instantly",
+"Use AI to generate quiz questions",
+"Practice communication skills with AI",
+"Use AI to identify knowledge gaps",
+"Generate meeting summaries automatically",
+"Use AI to create learning flashcards",
+"Improve resumes with AI suggestions",
+"Use AI to prepare for job interviews",
+"Create content calendars with AI",
+"Generate business name ideas",
+"Use AI to analyze customer feedback",
+"Create marketing campaign ideas",
+"Use AI to improve productivity habits",
+"Generate learning roadmaps for new skills",
+"Use AI to create budget plans",
+"Turn ideas into actionable plans",
+"Generate book summaries quickly",
+"Use AI to prepare presentation speeches",
+"Create workflow templates with AI",
+"Use AI to find alternative solutions",
+"Generate engaging discussion topics",
+"Use AI to learn keyboard shortcuts",
+"Create habit-tracking systems with AI",
+"Use AI to discover new career opportunities",
+"Generate professional LinkedIn posts",
+"Use AI to improve decision-making",
+"Create personalized fitness plans",
+"Use AI to generate business growth ideas",
+"Build a knowledge base with AI",
+"Use AI to create customer surveys",
+"Generate educational worksheets",
+"Use AI to create event planning checklists",
+"Learn one new AI feature every week",
+"Use AI to save time on routine tasks",
+"Use AI to generate meeting agendas",
+"Create customer personas with AI",
+"Analyze competitors using AI",
+"Generate social media content ideas",
+"Use AI to write product reviews",
+"Create onboarding checklists with AI",
+"Generate podcast episode ideas",
+"Use AI to organize research notes",
+"Create business SWOT analyses",
+"Generate survey questions instantly",
+"Use AI to create lesson plans",
+"Draft project proposals with AI",
+"Create event promotion content",
+"Generate newsletter topics",
+"Use AI to identify market trends",
+"Create FAQs from customer queries",
+"Generate webinar outlines",
+"Use AI to write user stories",
+"Create software documentation faster",
+"Generate business slogans",
+"Use AI to improve customer retention",
+"Create personalized email campaigns",
+"Generate fundraising ideas",
+"Use AI to draft press releases",
+"Create training materials quickly",
+"Use AI to optimize workflows",
+"Generate app feature suggestions",
+"Create product launch plans",
+"Use AI to improve website UX",
+"Generate e-commerce descriptions",
+"Create travel itineraries with AI",
+"Use AI to plan team activities",
+"Generate brainstorming questions",
+"Create sales scripts with AI",
+"Use AI to analyze survey results",
+"Generate networking messages",
+"Create customer journey maps",
+"Use AI to improve presentations",
+"Generate lead magnet ideas",
+"Create workshop agendas",
+"Use AI to structure online courses",
+"Generate startup validation questions",
+"Create community engagement ideas",
+"Use AI to draft policy documents",
+"Generate recruitment messages",
+"Create content repurposing plans",
+"Use AI to improve time management",
+"Generate business case studies",
+"Create investor pitch outlines",
+"Use AI to monitor industry news",
+"Generate campaign performance reports",
+"Create product comparison tables",
+"Use AI to write knowledge articles",
+"Generate landing page content",
+"Create customer success plans",
+"Use AI to simplify technical documents",
+"Generate partnership proposals",
+"Create learning assessment questions",
+"Use AI to summarize meeting recordings",
+"Generate app store descriptions",
+"Create user onboarding emails",
+"Use AI to draft legal templates",
+"Generate team productivity ideas",
+"Create support ticket responses",
+"Use AI to improve conversion rates",
+"Generate promotional taglines",
+"Create business process diagrams",
+"Use AI to identify automation opportunities",
+"Generate customer loyalty ideas",
+"Create content audit reports",
+"Use AI to build decision matrices",
+"Generate market research summaries",
+"Create product roadmap ideas",
+"Use AI to estimate project timelines",
+"Generate educational course modules",
+"Create stakeholder communication plans",
+"Use AI to improve negotiation strategies",
+"Generate workshop exercises",
+"Create customer feedback reports",
+"Use AI to plan product updates",
+"Generate audience engagement questions",
+"Create operational checklists",
+"Use AI to identify business risks",
+"Generate content localization ideas",
+"Create annual goal plans with AI",
+"Use AI to enhance team collaboration",
+"Generate data-driven insights",
+"Create innovation challenge ideas",
+"Use AI to map business processes",
+"Generate actionable growth strategies"
+];
+
+function showDailyTip(){
+
+  let today = new Date().toDateString();
+
+  let savedDate = localStorage.getItem("tipDate");
+  let savedTip = localStorage.getItem("tipText");
+
+  // New day → new tip
+  if(savedDate !== today || !savedTip){
+
+    let randomTip = tips[Math.floor(Math.random()*tips.length)];
+
+    localStorage.setItem("tipDate", today);
+    localStorage.setItem("tipText", randomTip);
+
+    savedTip = randomTip;
+  }
+
+  let box = document.getElementById("tipBox");
+  if(!box) return;
+
+  box.innerHTML = "💡 <b>Daily Tip:</b><br>" + savedTip;
+  box.classList.add("show");
+
+  setTimeout(()=>{
+    box.classList.remove("show");
+  },4000);
+}
+
+// ✅ call after page loads
+
+document.addEventListener("DOMContentLoaded", function(){
+
+  if(!sessionStorage.getItem("tipShown")){
+    setTimeout(()=>{
+  showDailyTip();
+}, 1200);
+    sessionStorage.setItem("tipShown", "true");
+  }
+
+});
+</script>
+
+<script>
+document.querySelectorAll(".nav-link").forEach(link => {
+
+  link.addEventListener("click", function(e){
+
+    e.preventDefault();
+
+    // remove active from all
+    document.querySelectorAll(".nav-link").forEach(l=>{
+      l.classList.remove("active");
+    });
+
+    // add active to clicked
+    this.classList.add("active");
+
+    // scroll
+    let target = this.getAttribute("data-target");
+    let el = document.getElementById(target);
+
+    if(el){
+      let y = el.getBoundingClientRect().top + window.pageYOffset;
+
+      window.scrollTo({
+        top: y - 50,
+        behavior: "smooth"
+      });
+    }
+
+  });
+
+});
+</script>
+
+  <script>
+window.addEventListener("error", function(e){
+  console.log("App Error:", e.message);
+});
+
+window.addEventListener("unhandledrejection", function(e){
+  console.log("Promise Error:", e.reason);
+});
+</script>
+  <script>
+
+   function copyPrompt(){
+
+  let text =
+    document.getElementById("result").innerText;
+
+  if(
+    text.trim()==="" ||
+    text.includes("Please enter")
+  ){
+
+   showToast("No prompt to copy");
+    return;
+  }
+
+  // Fallback copy method
+  let textarea =
+    document.createElement("textarea");
+
+  textarea.value = text;
+
+  document.body.appendChild(textarea);
+
+  textarea.select();
+
+  try{
+
+    document.execCommand("copy");
+
+    showToast("Prompt copied successfully");
+
+  }catch(err){
+
+    alert("Copy failed ❌");
+
+  }
+
+  document.body.removeChild(textarea);
+} 
+</script>
+
+  <div id="toast"
+style="
+position:fixed;
+bottom:120px;
+left:50%;
+transform:translateX(-50%);
+background:#2d74d7;
+color:white;
+padding:12px 18px;
+border-radius:12px;
+font-size:14px;
+font-weight:600;
+display:none;
+z-index:99999;
+box-shadow:0 4px 12px rgba(0,0,0,0.2);
+">
+</div>
+
+<script>
+function showToast(message){
+
+  let toast =
+    document.getElementById("toast");
+
+  toast.innerText = message;
+
+  toast.style.display = "block";
+
+  setTimeout(()=>{
+    toast.style.display = "none";
+  },2000);
+}
+</script>
+</body>  
+</html> 
