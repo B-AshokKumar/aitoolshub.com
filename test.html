@@ -119,10 +119,11 @@ width:100%;
 box-sizing:border-box;
 }  
 
- .tool-left{
+.tool-left{
   display:flex;
   align-items:center;
-  gap:2px;
+  gap:4px;
+  flex:1;
 }
 
 .info-icon{
@@ -454,14 +455,16 @@ background:#1f1f1f;
 color:#fff;  
 border-left:5px solid #4da3ff;  
 }  
-.badge{  
-font-size:12px;  
-padding:4px 10px;  
-border-radius:20px;  
-margin-left:8px;  
-font-weight:600;  
-}  
-  
+ 
+ .badge{
+  font-size:11px;
+  padding:4px 8px;
+  border-radius:20px;
+  margin-left:8px;
+  font-weight:600;
+  white-space:nowrap;
+  flex-shrink:0;
+} 
 /* FREE */  
 .free{  
 background:#e8f5ff;  
@@ -1174,7 +1177,6 @@ onclick="event.stopPropagation();toolInfo('SurferSEO')">
 </div>  
   
 <div class="tool" data-name="Canva Magic Write">  
-<div class="tool-left">
 
   <div class="tool-left">
 <a href="https://www.canva.com/magic-write/"  target="_blank"
