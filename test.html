@@ -1810,13 +1810,16 @@ function updateConnectionStatus(){
 
 function retryConnection(){
 
+  updateConnectionStatus();
+
   if(navigator.onLine){
 
-    location.reload();
+    showToast("Connection restored ✅");
 
-  } else {
+  }else{
 
-    alert("Still offline ❌");
+    showToast("Still offline ❌");
+
   }
 }
 
