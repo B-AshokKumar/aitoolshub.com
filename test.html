@@ -742,6 +742,11 @@ content:"";
     </button>
   </div>
 
+<div class="center-btn">
+  <button class="prompt-btn tip-btn" onclick="shareApp()">
+    📤 Share App
+  </button>
+</div>
 </div>
 
 <!-- AI PROMPT TEMPLATES -->
@@ -2166,6 +2171,39 @@ window.addEventListener("unhandledrejection", function(e){
 });
 </script>
   <script>
+
+<script>
+function shareApp(){
+
+  const shareData = {
+    title: "AI Tools Hub",
+    text:
+      "🤖 AI Tools Hub\n\nAccess popular AI tools in one place.\n\nDownload from Google Play:",
+    url:
+      "https://play.google.com/store/apps/details?id=com.ashok.aitoolshub"
+  };
+
+  if(navigator.share){
+
+    navigator.share(shareData)
+      .then(()=>{
+        showToast("Thanks for sharing AI Tools Hub ❤️");
+      })
+      .catch(()=>{});
+
+  }else{
+
+    window.open(
+      "https://wa.me/?text=" +
+      encodeURIComponent(
+        shareData.text + "\n" + shareData.url
+      ),
+      "_blank"
+    );
+
+  }
+}
+</script>
 
    function copyPrompt(){
 
