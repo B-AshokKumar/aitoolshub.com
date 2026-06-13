@@ -2172,17 +2172,17 @@ window.addEventListener("unhandledrejection", function(e){
 </script>
 
 <script>
-function shareApp(){
-  const shareData = {
-  title: "AI Tools Hub",
 
-const shareData = {
-  title: "AI Tools Hub",
-  text:
-    "🚀 AI Tools Hub\n\nTrusted directory of popular AI tools for productivity, coding, learning, design and more.\n\n📲 Download from Google Play:",
-  url:
-    "https://play.google.com/store/apps/details?id=com.ashok.aitoolshub"
-};
+function shareApp(){
+
+  const shareData = {
+    title: "AI Tools Hub",
+    text:
+      "🚀 AI Tools Hub\n\nCurated collection of popular AI tools for productivity, coding, learning, design and more.\n\n📲 Download from Google Play:",
+    url:
+      "https://play.google.com/store/apps/details?id=com.ashok.aitoolshub"
+  };
+
   if(navigator.share){
 
     navigator.share(shareData)
@@ -2203,7 +2203,6 @@ const shareData = {
 
   }
 }
-
    function copyPrompt(){
 
   let text =
