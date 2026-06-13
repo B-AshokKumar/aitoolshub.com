@@ -818,6 +818,13 @@ onclick="setPrompt('artificial intelligence','presentation')">
 <p>Presentation Prompt</p>
 
 </div>
+<div class="category-card"
+onclick="setPrompt('job application','email')">
+
+<span>📧</span>
+<p>Email Prompt</p>
+
+</div>
 
 </div>
 
@@ -1615,6 +1622,14 @@ if(topic.trim() === ""){
       " with slide titles, key points, summary, and engaging structure.";
 
   }
+  else if(type === "email"){
+
+  promptText =
+    "Write a professional email about " +
+    topic +
+    " with a clear subject, greeting, concise message and professional closing.";
+
+}
 
   else{
 
