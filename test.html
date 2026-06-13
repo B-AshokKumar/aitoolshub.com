@@ -870,8 +870,8 @@ rel="noopener noreferrer" >Runway ML</a>
 <div class="search-box" id="search">
 <input type="text" id="searchInput"  
 placeholder="🔍 Search AI tools..."  
-onkeyup="searchTools()">  
-</div>  
+onkeyup="searchToolsDebounced()">  
+</div>
   
 <div id="searchResults"></div>  
 <div class="category-container">  
@@ -1751,6 +1751,16 @@ function goTo(sectionId){
 </script>  
   
 <script>
+let searchTimer;
+
+function searchToolsDebounced(){
+
+  clearTimeout(searchTimer);
+
+  searchTimer = setTimeout(()=>{
+    searchTools();
+  },200);
+
 function searchTools(){
 
 let input =
