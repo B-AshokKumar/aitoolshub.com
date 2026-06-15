@@ -2371,33 +2371,22 @@ window.addEventListener("unhandledrejection", function(e){
 
 function shareApp(){
 
-  const shareData = {
-    title: "AI Tools Hub",
-    text:
-      "🚀 AI Tools Hub\n\nCurated collection of popular AI tools for productivity, coding, learning, design and more.\n\n📲 Download from Google Play:",
-    url:
-      "https://play.google.com/store/apps/details?id=com.ashok.aitoolshub"
-  };
+    const shareText =
+    "🚀 AI Tools Hub\n\n" +
+    "Curated collection of popular AI tools for productivity, coding, learning and design.\n\n" +
+    "https://play.google.com/store/apps/details?id=com.ashok.aitoolshub";
 
-  if(navigator.share){
+    if(typeof Android !== "undefined"){
+        Android.shareText(shareText);
+        return;
+    }
 
-    navigator.share(shareData)
-      .then(()=>{
-        showToast("Thanks for sharing AI Tools Hub ❤️");
-      })
-      .catch(()=>{});
-
-  }else{
-
-    window.open(
-      "https://wa.me/?text=" +
-      encodeURIComponent(
-        shareData.text + "\n" + shareData.url
-      ),
-      "_blank"
-    );
-
-  }
+    if(navigator.share){
+        navigator.share({
+            title: "AI Tools Hub",
+            text: shareText
+        });
+    }
 }
 
    function copyPrompt(){
