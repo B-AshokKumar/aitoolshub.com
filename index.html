@@ -144,6 +144,12 @@ box-sizing:border-box;
 transform:scale(1.02);  
 background:#d9e5f9;  
 }  
+/* Smooth animations */
+.category-card,
+.tool,
+.prompt-btn{
+  will-change:transform;
+}
   
 .tool a{  
 text-decoration:none;  
@@ -671,6 +677,7 @@ content:"";
 .dark .offline-box p{
   color:#ddd;
 }
+
 </style>  
   
 </head> 
@@ -706,7 +713,7 @@ content:"";
 
   <!-- ✅ ADD HERE -->
   <p class="welcome-desc">
-    This app provides quick access to popular AI tools and resources in one place.
+    Browse a curated collection of AI tools and resources for work, learning and creativity.
   </p>
 
   <p class="welcome-sub">Generate powerful AI prompts instantly</p>
@@ -735,6 +742,11 @@ content:"";
     </button>
   </div>
 
+<div class="center-btn">
+  <button class="prompt-btn tip-btn" onclick="shareApp()">
+    📢 Share AI Tools Hub
+  </button>
+</div>
 </div>
 
 <!-- AI PROMPT TEMPLATES -->
@@ -806,6 +818,13 @@ onclick="setPrompt('artificial intelligence','presentation')">
 <p>Presentation Prompt</p>
 
 </div>
+<div class="category-card"
+onclick="setPrompt('job application','email')">
+
+<span>📧</span>
+<p>Email Prompt</p>
+
+</div>
 
 </div>
 
@@ -861,8 +880,8 @@ rel="noopener noreferrer" >Runway ML</a>
 <div class="search-box" id="search">
 <input type="text" id="searchInput"  
 placeholder="🔍 Search AI tools..."  
-onkeyup="searchTools()">  
-</div>  
+oninput="searchToolsDebounced()">  
+</div>
   
 <div id="searchResults"></div>  
 <div class="category-container">  
@@ -1481,13 +1500,13 @@ App Preferences & Settings
 
 </div>
 </div>  
-<div class="footer">
-  <div>AI Tools Hub © 2026 Public AI tools aggregator</div>
+
+ <div class="footer">
+  <div>AI Tools Hub © 2026 Curated AI tools Directory</div>
   <div style="font-size:12px;color:#999;margin-top:4px;">
     Version 1.12 (11200)
   </div>
-</div>
-  
+</div> 
 <script>  
   
 /* =========================  
@@ -1603,6 +1622,14 @@ if(topic.trim() === ""){
       " with slide titles, key points, summary, and engaging structure.";
 
   }
+  else if(type === "email"){
+
+  promptText =
+    "Write a professional email about " +
+    topic +
+    " with a clear subject, greeting, concise message and professional closing.";
+
+}
 
   else{
 
@@ -1688,6 +1715,7 @@ div.className="tool";
 div.dataset.name=tool.name;  
   
 div.innerHTML=`  
+<div class="tool-left">
 <a href="${tool.link}" target="_blank" rel="noopener noreferrer">${tool.name}</a>  
 <span class="star" onclick="removeFavorite(this)">🌟</span>  
 `;  
@@ -1742,6 +1770,17 @@ function goTo(sectionId){
 </script>  
   
 <script>
+let searchTimer;
+
+function searchToolsDebounced(){
+
+  clearTimeout(searchTimer);
+
+  searchTimer = setTimeout(()=>{
+    searchTools();
+  },200);
+}
+
 function searchTools(){
 
 let input =
@@ -1807,13 +1846,16 @@ function updateConnectionStatus(){
 
 function retryConnection(){
 
+  updateConnectionStatus();
+
   if(navigator.onLine){
 
-    location.reload();
+    showToast("Connection restored ✅");
 
-  } else {
+  }else{
 
-    alert("Still offline ❌");
+    showToast("Still offline ❌");
+
   }
 }
 
@@ -2055,7 +2097,188 @@ const tips = [
 "Generate data-driven insights",
 "Create innovation challenge ideas",
 "Use AI to map business processes",
-"Generate actionable growth strategies"
+"Generate actionable growth strategies",
+"Success is the sum of small efforts repeated daily.",
+"Learn something new every day.",
+"Consistency beats intensity.",
+"Small progress is still progress.",
+"Focus on progress, not perfection.",
+"Your future is created by what you do today.",
+"Stay curious and keep learning.",
+"Every expert was once a beginner.",
+"Discipline creates freedom.",
+"Done is better than perfect.",
+"Growth begins outside your comfort zone.",
+"The best investment is in yourself.",
+"Take one step forward today.",
+"Knowledge grows when shared.",
+"Turn ideas into action.",
+"Dream big, start small.",
+"Success follows preparation.",
+"Stay patient and trust the process.",
+"Learning never exhausts the mind.",
+"Every day is a chance to improve.",
+"Great things take time.",
+"Build habits that build your future.",
+"Keep moving forward.",
+"Focus on solutions, not problems.",
+"Your mindset shapes your reality.",
+"Stay positive and productive.",
+"Progress starts with a decision.",
+"Hard work compounds over time.",
+"Believe in continuous improvement.",
+"Success is earned, not given.",
+"Make today count.",
+"Keep your goals visible.",
+"Learning is a lifelong journey.",
+"Take action despite fear.",
+"Discipline outweighs motivation.",
+"Be better than yesterday.",
+"Growth requires effort.",
+"Never stop asking questions.",
+"Stay focused on what matters.",
+"Every challenge teaches something.",
+"Turn obstacles into opportunities.",
+"Success starts with self-belief.",
+"Work smart and work consistently.",
+"Curiosity fuels innovation.",
+"Build skills, not excuses.",
+"Your habits determine your future.",
+"Stay committed to your goals.",
+"Keep learning, keep growing.",
+"Progress happens daily.",
+"Success is a journey, not a destination.",
+"Take responsibility for your growth.",
+"Focus on what you can control.",
+"Learning creates opportunities.",
+"Start before you're ready.",
+"Keep your standards high.",
+"Every effort counts.",
+"Success loves persistence.",
+"Stay adaptable and open-minded.",
+"Invest time wisely.",
+"Take notes, capture ideas.",
+"Keep improving your craft.",
+"Growth comes from practice.",
+"Celebrate small wins.",
+"Work on yourself every day.",
+"Stay humble and keep learning.",
+"Action creates momentum.",
+"Be patient with your progress.",
+"Master the basics first.",
+"Success rewards consistency.",
+"Use time intentionally.",
+"Every mistake is a lesson.",
+"Focus on long-term growth.",
+"Learn from feedback.",
+"Build systems, not just goals.",
+"Keep your mind open.",
+"Knowledge is a powerful asset.",
+"Stay disciplined during challenges.",
+"Think bigger than your fears.",
+"Turn learning into action.",
+"Read something valuable today.",
+"Stay organized and focused.",
+"Persistence beats talent when talent quits.",
+"Create more than you consume.",
+"Every skill begins with practice.",
+"Seek progress every day.",
+"Stay motivated by your purpose.",
+"Success comes from daily habits.",
+"Never underestimate small improvements.",
+"Take ownership of your future.",
+"Stay consistent with learning.",
+"Improve 1% every day.",
+"Focus on value creation.",
+"Practice makes progress.",
+"Challenge yourself regularly.",
+"Stay hungry for knowledge.",
+"Build confidence through action.",
+"Success requires patience.",
+"Your effort matters.",
+"Keep a growth mindset.",
+"Learning unlocks possibilities.",
+"Stay committed to excellence.",
+"Every day is a fresh start.",
+"Work toward meaningful goals.",
+"Develop skills that matter.",
+"Stay resilient during setbacks.",
+"Learn from successful people.",
+"Make progress your priority.",
+"Keep your vision clear.",
+"Take initiative whenever possible.",
+"Stay productive, not just busy.",
+"Turn knowledge into results.",
+"Focus on improvement, not comparison.",
+"Success starts with discipline.",
+"Stay determined and adaptable.",
+"Create opportunities through effort.",
+"Learning never goes out of style.",
+"Keep your goals realistic and ambitious.",
+"Invest in your future self.",
+"Consistency creates confidence.",
+"Stay proactive, not reactive.",
+"Take breaks but don't quit.",
+"Build momentum through action.",
+"Think long term.",
+"Every accomplishment begins with effort.",
+"Keep your priorities straight.",
+"Stay focused on growth.",
+"Turn setbacks into comebacks.",
+"Learn, apply, repeat.",
+"Success begins with showing up.",
+"Value your time.",
+"Keep your promises to yourself.",
+"Progress is built daily.",
+"Stay curious about the world.",
+"Work toward mastery.",
+"Focus on creating value.",
+"Never stop improving.",
+"Build skills that solve problems.",
+"Stay committed to learning.",
+"Take calculated risks.",
+"Growth requires patience and effort.",
+"Keep moving toward your goals.",
+"Success is built one day at a time.",
+"Learn from every experience.",
+"Stay positive during challenges.",
+"Focus on meaningful work.",
+"Improve your habits regularly.",
+"Action beats overthinking.",
+"Keep your standards high.",
+"Success follows consistency.",
+"Believe in your potential.",
+"Take action on good ideas.",
+"Stay resilient and adaptable.",
+"Learning creates confidence.",
+"Keep a beginner's mindset.",
+"Progress is made step by step.",
+"Focus on solutions.",
+"Stay dedicated to your goals.",
+"Build a strong work ethic.",
+"Every day offers a new opportunity.",
+"Success requires persistence.",
+"Keep growing through challenges.",
+"Invest in lifelong learning.",
+"Work with purpose.",
+"Stay motivated by progress.",
+"Take responsibility for results.",
+"Focus on continuous growth.",
+"Build confidence through practice.",
+"Stay disciplined even when it's difficult.",
+"Keep your vision alive.",
+"Learn something useful today.",
+"Success comes from persistence.",
+"Make improvement a daily habit.",
+"Stay committed to your dreams.",
+"Create value wherever you can.",
+"Focus on what truly matters.",
+"Growth happens gradually.",
+"Take the next step forward.",
+"Stay determined and optimistic.",
+"Keep learning and evolving.",
+"Success is built through daily effort.",
+"Your future starts today."
 ];
 
 function showDailyTip(){
@@ -2143,7 +2366,39 @@ window.addEventListener("unhandledrejection", function(e){
   console.log("Promise Error:", e.reason);
 });
 </script>
-  <script>
+
+<script>
+
+function shareApp(){
+
+  const shareData = {
+    title: "AI Tools Hub",
+    text:
+      "🚀 AI Tools Hub\n\nCurated collection of popular AI tools for productivity, coding, learning, design and more.\n\n📲 Download from Google Play:",
+    url:
+      "https://play.google.com/store/apps/details?id=com.ashok.aitoolshub"
+  };
+
+  if(navigator.share){
+
+    navigator.share(shareData)
+      .then(()=>{
+        showToast("Thanks for sharing AI Tools Hub ❤️");
+      })
+      .catch(()=>{});
+
+  }else{
+
+    window.open(
+      "https://wa.me/?text=" +
+      encodeURIComponent(
+        shareData.text + "\n" + shareData.url
+      ),
+      "_blank"
+    );
+
+  }
+}
 
    function copyPrompt(){
 
