@@ -462,6 +462,14 @@ overflow-wrap:anywhere;
 .prompt-result{
   min-height:60px;
 }
+.prompt-history-item{
+  font-size:12px;
+  line-height:1.4;
+  color:#666;
+}
+.dark .prompt-history-item{
+  color:#ddd;
+}
 /* dark mode */  
 .dark .prompt-result{  
 background:#1f1f1f;  
@@ -1697,7 +1705,7 @@ function showPromptHistory(){
     div.className = "tool";
 
     div.innerHTML = `
-      <div style="font-size:14px;">
+      <div class="prompt-history-item">
         ${item}
       </div>
     `;
