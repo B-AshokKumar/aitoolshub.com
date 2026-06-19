@@ -764,6 +764,11 @@ content:"";
 
 <h2>📜 Prompt History</h2>
 
+<button class="prompt-btn tip-btn"
+onclick="clearPromptHistory()">
+🗑️ Clear Prompt History
+</button>
+
 <div id="promptHistoryList"></div>
 
 </div>
@@ -2505,6 +2510,18 @@ function shareApp(){
 
   document.body.removeChild(textarea);
 } 
+function clearPromptHistory(){
+
+  localStorage.removeItem(
+    "promptHistory"
+  );
+
+  showPromptHistory();
+
+  showToast(
+    "Prompt History Cleared"
+  );
+}
 </script>
 
   <div id="toast"
