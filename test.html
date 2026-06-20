@@ -904,9 +904,9 @@ rel="noopener noreferrer" >Runway ML</a>
 
 <div class="center-btn">
   <button class="prompt-btn tip-btn"
-  onclick="localStorage.removeItem('recentTools');showRecentTools();">
-  🗑️ Clear Recent Tools
-  </button>
+onclick="clearRecentTools()">
+🗑️ Clear Recent Tools
+</button>
 </div>
 
 <div id="recentToolsList"></div>
@@ -2647,6 +2647,18 @@ function clearPromptHistory(){
 
   showToast(
     "Prompt History Cleared"
+  );
+}
+function clearRecentTools(){
+
+  localStorage.removeItem(
+    "recentTools"
+  );
+
+  showRecentTools();
+
+  showToast(
+    "Recent Tools Cleared"
   );
 }
 </script>
