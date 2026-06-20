@@ -1915,6 +1915,14 @@ function showRecentTools(){
     JSON.parse(
       localStorage.getItem("recentTools")
     ) || [];
+    
+     if(recent.length === 0){
+
+    container.innerHTML =
+      "<p style='text-align:center;color:#777;'>No recently used tools</p>";
+
+    return;
+  }
 
   container.innerHTML = "";
 
