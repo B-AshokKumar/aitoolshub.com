@@ -897,8 +897,21 @@ rel="noopener noreferrer" >Runway ML</a>
 <div id="favoritesList"></div>  
   
 </div>  
-  
-  
+
+ <div class="section" id="recentTools">
+
+<h2>🕒 Recently Used Tools</h2>
+
+<div class="center-btn">
+  <button class="prompt-btn tip-btn"
+  onclick="localStorage.removeItem('recentTools');showRecentTools();">
+  🗑️ Clear Recent Tools
+  </button>
+</div>
+
+<div id="recentToolsList"></div>
+
+</div> 
 <!-- AI CATEGORIES -->  
   
 <!-- AI TOOLS CATEGORIES -->  
@@ -1833,9 +1846,74 @@ localStorage.setItem("favorites",JSON.stringify(favorites));
   
 showFavorites();  
 }  
+  function saveRecentTool(name, link){
+
+  let recent =
+    JSON.parse(
+      localStorage.getItem("recentTools")
+    ) || [];
+
+  recent = recent.filter(
+    t => t.name !== name
+  );
+
+  recent.unshift({
+    name:name,
+    link:link
+  });
+
+  recent = recent.slice(0,5);
+
+  localStorage.setItem(
+    "recentTools",
+    JSON.stringify(recent)
+  );
+
+  showRecentTools();
+}
+
+function showRecentTools(){
+
+  let container =
+    document.getElementById(
+      "recentToolsList"
+    );
+
+  if(!container) return;
+
+  let recent =
+    JSON.parse(
+      localStorage.getItem("recentTools")
+    ) || [];
+
+  container.innerHTML = "";
+
+  recent.forEach(tool=>{
+
+    let div =
+      document.createElement("div");
+
+    div.className = "tool";
+
+    div.innerHTML = `
+      <a href="${tool.link}"
+      target="_blank"
+      rel="noopener noreferrer">
+      ${tool.name}
+      </a>
+    `;
+
+    container.appendChild(div);
+
+  });
+
+}
   
-  
-document.addEventListener("DOMContentLoaded",showFavorites);  
+document.addEventListener("DOMContentLoaded",showFavorites); 
+document.addEventListener(
+  "DOMContentLoaded",
+  showRecentTools
+);
   
 function goTo(sectionId){
 
