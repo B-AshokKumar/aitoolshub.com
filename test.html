@@ -1748,6 +1748,14 @@ function showPromptHistory(){
     JSON.parse(
       localStorage.getItem("promptHistory")
     ) || [];
+    
+    if(history.length === 0){
+
+  container.innerHTML =
+    "<p style='text-align:center;color:#777;'>No prompt history</p>";
+
+  return;
+}
 
   container.innerHTML = "";
 
