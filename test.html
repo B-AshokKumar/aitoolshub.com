@@ -854,6 +854,42 @@ onclick="setPrompt('job application','email')">
 
 </div>
 
+<div class="category-card"
+onclick="setPrompt('job interview','interview')">
+<span>🎤</span>
+<p>Interview Prompt</p>
+</div>
+
+<div class="category-card"
+onclick="setPrompt('business idea','business')">
+<span>💡</span>
+<p>Business Plan</p>
+</div>
+
+<div class="category-card"
+onclick="setPrompt('blog article','blog')">
+<span>✍️</span>
+<p>Blog Prompt</p>
+</div>
+
+<div class="category-card"
+onclick="setPrompt('social media post','social')">
+<span>📱</span>
+<p>Social Media</p>
+</div>
+
+<div class="category-card"
+onclick="setPrompt('study notes','summary')">
+<span>📖</span>
+<p>Summary Prompt</p>
+</div>
+
+<div class="category-card"
+onclick="setPrompt('project proposal','proposal')">
+<span>📋</span>
+<p>Proposal Prompt</p>
+</div>
+
 </div>
 
 </div>
@@ -1698,6 +1734,60 @@ if(topic.trim() === ""){
     "Write a professional email about " +
     topic +
     " with a clear subject, greeting, concise message and professional closing.";
+
+}
+
+  else if(type === "interview"){
+
+  promptText =
+    "Generate common interview questions and model answers for " +
+    topic +
+    " with tips and best practices.";
+
+}
+
+else if(type === "business"){
+
+  promptText =
+    "Create a detailed business plan for " +
+    topic +
+    " including target market, revenue model, marketing strategy and growth plan.";
+
+}
+
+else if(type === "blog"){
+
+  promptText =
+    "Write a professional blog post about " +
+    topic +
+    " with title, headings, key points and conclusion.";
+
+}
+
+else if(type === "social"){
+
+  promptText =
+    "Create engaging social media content about " +
+    topic +
+    " with captions, hashtags and call to action.";
+
+}
+
+else if(type === "summary"){
+
+  promptText =
+    "Summarize " +
+    topic +
+    " into concise study notes with key concepts and important points.";
+
+}
+
+else if(type === "proposal"){
+
+  promptText =
+    "Create a professional project proposal for " +
+    topic +
+    " with objectives, scope, timeline and expected outcomes.";
 
 }
 
