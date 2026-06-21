@@ -1823,6 +1823,42 @@ else if(type === "proposal"){
 
 }
 
+  else if(type === "detailed"){
+
+  promptText =
+    "Explain " +
+    topic +
+    " in detail with introduction, key concepts, examples, advantages, disadvantages, real-world applications and conclusion.";
+
+}
+
+  else if(type === "brief"){
+
+  promptText =
+    "Provide a brief explanation of " +
+    topic +
+    " covering the main concepts, importance and key points.";
+
+}
+
+  else if(type === "quicksummary"){
+
+  promptText =
+    "Provide a quick summary of " +
+    topic +
+    " highlighting the most important points in a concise and easy-to-understand format.";
+
+}
+
+  else if(type === "beginner"){
+
+  promptText =
+    "Explain " +
+    topic +
+    " in very simple beginner-friendly language with easy examples and no technical jargon.";
+
+}
+
   else{
 
     promptText =
