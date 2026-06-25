@@ -2069,23 +2069,6 @@ function loadHistoryPrompt(index){
 
 }
 
-function deleteHistoryPrompt(index){
-
-    let history =
-        JSON.parse(localStorage.getItem("promptHistory")) || [];
-
-    history.splice(index,1);
-
-    localStorage.setItem(
-        "promptHistory",
-        JSON.stringify(history)
-    );
-
-    showPromptHistory();
-
-    showToast("History Deleted");
-
-}
 
  /* =========================  
    PROMPT TEMPLATES
