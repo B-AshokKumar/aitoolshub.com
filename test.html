@@ -761,6 +761,12 @@ content:"";
     📋 Copy Prompt
   </button>
 </div>
+<div class="center-btn">
+  <button class="prompt-btn tip-btn"
+          onclick="savePrompt()">
+    ⭐ Save Prompt
+  </button>
+</div>
 
   <div class="center-btn">
     <button class="prompt-btn tip-btn" onclick="showDailyTip()">
@@ -786,6 +792,20 @@ onclick="clearPromptHistory()">
 </button>
 </div>
 <div id="promptHistoryList"></div>
+
+</div>
+<div class="section">
+
+<h2>⭐ Saved Prompts</h2>
+
+<div class="center-btn">
+<button class="prompt-btn tip-btn"
+onclick="clearSavedPrompts()">
+🗑️ Clear Saved Prompts
+</button>
+</div>
+
+<div id="savedPromptList"></div>
 
 </div>
 
@@ -2812,6 +2832,158 @@ function clearPromptHistory(){
     "Prompt History Cleared"
   );
 }
+function savePrompt(){
+
+  let prompt =
+    document.getElementById("result").innerText;
+
+  if(
+    prompt.trim()==="" ||
+    prompt.includes("Please enter")
+  ){
+    showToast("Generate a prompt first");
+    return;
+  }
+
+  let saved =
+    JSON.parse(
+      localStorage.getItem("savedPrompts")
+    ) || [];
+
+  // avoid duplicates
+  if(saved.includes(prompt)){
+    showToast("Already saved");
+    return;
+  }
+
+  saved.unshift(prompt);
+
+  localStorage.setItem(
+    "savedPrompts",
+    JSON.stringify(saved)
+  );
+
+  showSavedPrompts();
+
+  showToast("Prompt Saved ⭐");
+}
+
+function showSavedPrompts(){
+
+  let container =
+    document.getElementById("savedPromptList");
+
+  if(!container) return;
+
+  let saved =
+    JSON.parse(
+      localStorage.getItem("savedPrompts")
+    ) || [];
+
+  if(saved.length===0){
+
+    container.innerHTML =
+      "<p style='text-align:center;color:#777;'>No saved prompts</p>";
+
+    return;
+  }
+
+  container.innerHTML="";
+
+  saved.forEach((prompt,index)=>{
+
+    let div=document.createElement("div");
+
+    div.className="tool";
+
+    div.innerHTML=`
+
+<div style="flex:1">
+
+<div class="prompt-history-item">
+
+${prompt}
+
+</div>
+
+</div>
+
+<div>
+
+<button
+class="prompt-btn tip-btn"
+style="padding:6px 10px;margin-right:6px"
+onclick="copySavedPrompt(${index})">
+
+📋
+
+</button>
+
+<button
+class="prompt-btn tip-btn"
+style="padding:6px 10px;background:#d9534f"
+onclick="deleteSavedPrompt(${index})">
+
+🗑
+
+</button>
+
+</div>
+
+`;
+
+    container.appendChild(div);
+
+  });
+
+}
+
+function copySavedPrompt(index){
+
+  let saved =
+    JSON.parse(
+      localStorage.getItem("savedPrompts")
+    ) || [];
+
+  document.getElementById("result").innerText =
+    saved[index];
+
+  copyPrompt();
+}
+
+function deleteSavedPrompt(index){
+
+  let saved =
+    JSON.parse(
+      localStorage.getItem("savedPrompts")
+    ) || [];
+
+  saved.splice(index,1);
+
+  localStorage.setItem(
+    "savedPrompts",
+    JSON.stringify(saved)
+  );
+
+  showSavedPrompts();
+
+  showToast("Prompt Deleted");
+}
+
+function clearSavedPrompts(){
+
+  localStorage.removeItem("savedPrompts");
+
+  showSavedPrompts();
+
+  showToast("Saved Prompts Cleared");
+}
+
+document.addEventListener(
+"DOMContentLoaded",
+showSavedPrompts
+);
+
 function clearRecentTools(){
 
   localStorage.removeItem(
