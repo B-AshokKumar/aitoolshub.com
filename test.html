@@ -2274,11 +2274,6 @@ function showRecentTools(){
 
 }
   
-document.addEventListener("DOMContentLoaded",showFavorites); 
-document.addEventListener(
-  "DOMContentLoaded",
-  showRecentTools
-);
   
 function goTo(sectionId){
 
@@ -3302,5 +3297,11 @@ showToast(descriptions[name] || "Tool description coming soon.");
 }
 </script>
 <div id="toast"></div>
+document.addEventListener("DOMContentLoaded", () => {
+    showFavorites();
+    showRecentTools();
+    showSavedPrompts();
+    showPromptHistory();
+});
 </body>  
 </html> 
