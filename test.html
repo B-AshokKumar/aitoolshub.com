@@ -389,6 +389,38 @@ transition:0.3s;
 margin-top:10px;  
 }  
 
+.input-wrapper{
+    position:relative;
+    width:80%;
+    max-width:420px;
+    margin:10px auto;
+}
+
+.input-wrapper .prompt-input{
+    width:100%;
+    box-sizing:border-box;
+    padding-right:45px;
+}
+
+#resetBtn{
+    position:absolute;
+    right:10px;
+    top:50%;
+    transform:translateY(-50%);
+    border:none;
+    background:transparent;
+    font-size:18px;
+    cursor:pointer;
+    color:#888;
+}
+
+#resetBtn:hover{
+    color:#d9534f;
+}
+
+.dark #resetBtn{
+    color:#ccc;
+}
 .prompt-section{
   text-align:center;
 }
@@ -790,17 +822,16 @@ transform:translateX(-50%) translateY(0);
   <input id="topic" class="prompt-input"
 placeholder="✨ Enter topic (Example: logo, cat)">
 
-<div class="action-row">
+<div class="input-wrapper">
 
-    <button class="prompt-btn tip-btn"
-    onclick="resetPrompt()">
-        🔄 Reset
-    </button>
+<input id="topic"
+class="prompt-input"
+placeholder="✨ Enter topic (Example: logo, cat)">
 
-    <button class="prompt-btn"
-    onclick="generatePrompt(currentPromptType)">
-        ✨ Generate Prompt
-    </button>
+<button id="resetBtn"
+onclick="resetPrompt()">
+🔄
+</button>
 
 </div>
 
@@ -3188,17 +3219,12 @@ function resetPrompt(){
 
     currentPromptType = "";
 
-    const topic = document.getElementById("topic");
-    const result = document.getElementById("result");
+    document.getElementById("topic").value = "";
+    document.getElementById("result").innerText = "";
 
-    topic.value = "";
-    topic.placeholder = "✨ Enter topic (Example: logo, cat)";
+    document.getElementById("topic").focus();
 
-    result.textContent = "";
-
-    topic.focus();
-
-    showToast("Prompt Generator Reset");
+    showToast("Reset");
 }
 </script>
 
