@@ -1976,21 +1976,21 @@ ${prompt}
 <button
 class="prompt-btn tip-btn"
 style="padding:6px 10px;margin-right:5px"
-onclick="copyHistoryPrompt(${index})">
+onclick="event.stopPropagation();copyHistoryPrompt(${index})">
 📋
 </button>
 
 <button
 class="prompt-btn tip-btn"
 style="padding:6px 10px;margin-right:5px"
-onclick="loadHistoryPrompt(${index})">
+onclick="event.stopPropagation();loadHistoryPrompt(${index})">
 ⬆
 </button>
 
 <button
 class="prompt-btn tip-btn"
 style="padding:6px 10px;background:#d9534f"
-onclick="deleteHistoryPrompt(${index})">
+ onclick="event.stopPropagation();deleteHistoryPrompt(${index})">
 🗑
 </button>
 
