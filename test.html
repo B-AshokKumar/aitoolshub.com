@@ -788,14 +788,21 @@ transform:translateX(-50%) translateY(0);
   <p class="welcome-sub">Generate powerful AI prompts instantly</p>
 
   <input id="topic" class="prompt-input"
-    placeholder="✨ Enter topic (Example: logo, cat)">
+placeholder="✨ Enter topic (Example: logo, cat)">
 
+<div class="action-row">
 
-  <div class="prompt-actions">
-    <button class="prompt-btn" onclick="generatePrompt(currentPromptType)">
-      ✨ Generate Prompt
+    <button class="prompt-btn tip-btn"
+    onclick="resetPrompt()">
+        🆕 New Prompt
     </button>
-  </div>
+
+    <button class="prompt-btn"
+    onclick="generatePrompt(currentPromptType)">
+        ✨ Generate Prompt
+    </button>
+
+</div>
 
   <div id="result" class="prompt-result"></div>
 
@@ -3176,6 +3183,16 @@ function clearRecentTools(){
 }
 </script>
 
+function resetPrompt(){
+
+    currentPromptType = "";
+
+    document.getElementById("topic").value = "";
+
+    document.getElementById("result").innerText = "";
+
+    showToast("Prompt Generator Reset");
+}
 
 <script>
 let toastTimer;
