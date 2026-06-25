@@ -2158,9 +2158,13 @@ if(favorites.length===0){
     </div>
     `;
 
+    // Reset all stars
+    document.querySelectorAll(".tool .star").forEach(star=>{
+        star.innerHTML="⭐";
+    });
+
     return;
-  }
-  
+}
 container.innerHTML="";  
   
 favorites.forEach(tool=>{  
