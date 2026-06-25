@@ -2900,7 +2900,9 @@ function showSavedPrompts(){
 
 <div style="flex:1">
 
-<div class="prompt-history-item">
+<div class="prompt-history-item"
+     style="cursor:pointer;"
+     onclick="loadSavedPrompt(${index})">
 
 ${prompt}
 
@@ -2969,6 +2971,27 @@ function deleteSavedPrompt(index){
 
   showToast("Prompt Deleted");
 }
+function loadSavedPrompt(index){
+
+  let saved =
+    JSON.parse(
+      localStorage.getItem("savedPrompts")
+    ) || [];
+
+  let prompt = saved[index];
+
+  // Show in result box
+  document.getElementById("result").innerText = prompt;
+
+  // Scroll to top
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+  showToast("Prompt Loaded ⭐");
+}
+
 
 function clearSavedPrompts(){
 
