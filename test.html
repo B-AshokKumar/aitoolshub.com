@@ -716,6 +716,37 @@ content:"";
   color:#ddd;
 }
 
+#toast{
+position:fixed;
+bottom:120px;
+left:50%;
+transform:translateX(-50%) translateY(20px);
+
+background:#2d74d7;
+color:#fff;
+
+padding:12px 18px;
+border-radius:12px;
+
+font-size:14px;
+font-weight:600;
+
+opacity:0;
+visibility:hidden;
+
+transition:
+opacity .35s ease,
+transform .35s ease;
+
+z-index:99999;
+box-shadow:0 6px 16px rgba(0,0,0,.25);
+}
+
+#toast.show{
+opacity:1;
+visibility:visible;
+transform:translateX(-50%) translateY(0);
+}
 </style>  
   
 </head> 
@@ -3146,39 +3177,6 @@ function clearRecentTools(){
 }
 </script>
 
-  <div id="toast"
- #toast{
-position:fixed;
-bottom:120px;
-left:50%;
-transform:translateX(-50%) translateY(20px);
-
-background:#2d74d7;
-color:#fff;
-
-padding:12px 18px;
-border-radius:12px;
-
-font-size:14px;
-font-weight:600;
-
-opacity:0;
-visibility:hidden;
-
-transition:
-opacity .35s ease,
-transform .35s ease;
-
-z-index:99999;
-box-shadow:0 6px 16px rgba(0,0,0,.25);
-}
-
-#toast.show{
-opacity:1;
-visibility:visible;
-transform:translateX(-50%) translateY(0);
-} >
-</div>
 
 <script>
 let toastTimer;
@@ -3303,5 +3301,6 @@ const descriptions = {
 showToast(descriptions[name] || "Tool description coming soon.");
 }
 </script>
+<div id="toast"></div>
 </body>  
 </html> 
