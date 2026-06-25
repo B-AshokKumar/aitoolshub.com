@@ -1945,8 +1945,13 @@ function showPromptHistory(){
 
     if(history.length===0){
 
-        container.innerHTML =
-        "<p style='text-align:center;color:#777;'>No prompt history</p>";
+        container.innerHTML = `
+<div style="text-align:center;padding:25px;color:#777;">
+    <div style="font-size:40px;">📜</div>
+    <b>No Prompt History</b>
+    <p>Generated prompts will appear here.</p>
+</div>
+`;
 
         return;
     }
