@@ -1935,50 +1935,121 @@ function savePromptHistory(prompt){
 
 function showPromptHistory(){
 
-  let container =
-    document.getElementById(
-      "promptHistoryList"
+    let container =
+        document.getElementById("promptHistoryList");
+
+    if(!container) return;
+
+    let history =
+        JSON.parse(localStorage.getItem("promptHistory")) || [];
+
+    if(history.length===0){
+
+        container.innerHTML =
+        "<p style='text-align:center;color:#777;'>No prompt history</p>";
+
+        return;
+    }
+
+    container.innerHTML="";
+
+    history.forEach((prompt,index)=>{
+
+        let div=document.createElement("div");
+
+        div.className="tool";
+
+        div.innerHTML=`
+
+<div style="flex:1">
+
+<div class="prompt-history-item">
+
+${prompt}
+
+</div>
+
+</div>
+
+<div>
+
+<button
+class="prompt-btn tip-btn"
+style="padding:6px 10px;margin-right:5px"
+onclick="copyHistoryPrompt(${index})">
+📋
+</button>
+
+<button
+class="prompt-btn tip-btn"
+style="padding:6px 10px;margin-right:5px"
+onclick="loadHistoryPrompt(${index})">
+⬆
+</button>
+
+<button
+class="prompt-btn tip-btn"
+style="padding:6px 10px;background:#d9534f"
+onclick="deleteHistoryPrompt(${index})">
+🗑
+</button>
+
+</div>
+
+`;
+
+        container.appendChild(div);
+
+    });
+
+}
+
+function copyHistoryPrompt(index){
+
+    let history =
+        JSON.parse(localStorage.getItem("promptHistory")) || [];
+
+    document.getElementById("result").innerText =
+        history[index];
+
+    copyPrompt();
+
+}
+
+function loadHistoryPrompt(index){
+
+    let history =
+        JSON.parse(localStorage.getItem("promptHistory")) || [];
+
+    document.getElementById("result").innerText =
+        history[index];
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+    showToast("Prompt Loaded");
+
+}
+
+function deleteHistoryPrompt(index){
+
+    let history =
+        JSON.parse(localStorage.getItem("promptHistory")) || [];
+
+    history.splice(index,1);
+
+    localStorage.setItem(
+        "promptHistory",
+        JSON.stringify(history)
     );
 
-  if(!container) return;
+    showPromptHistory();
 
-  let history =
-    JSON.parse(
-      localStorage.getItem("promptHistory")
-    ) || [];
-    
-    if(history.length === 0){
+    showToast("History Deleted");
 
-  container.innerHTML =
-    "<p style='text-align:center;color:#777;'>No prompt history</p>";
-
-  return;
 }
-
-  container.innerHTML = "";
-
-  history.forEach(item=>{
-
-    let div =
-      document.createElement("div");
-
-    div.className = "tool";
-
-    div.innerHTML = `
-      <div class="prompt-history-item">
-        ${item}
-      </div>
-    `;
-
-    container.appendChild(div);
-
-  });
-}
-
-document.addEventListener(
-  "DOMContentLoaded",
-  showPromptHistory
-);
 
  /* =========================  
    PROMPT TEMPLATES
@@ -2836,18 +2907,20 @@ function shareApp(){
 
   document.body.removeChild(textarea);
 } 
+
 function clearPromptHistory(){
 
-  localStorage.removeItem(
-    "promptHistory"
-  );
+    localStorage.removeItem("promptHistory");
 
-  showPromptHistory();
+    document.getElementById("result").innerText="";
 
-  showToast(
-    "Prompt History Cleared"
-  );
+    showPromptHistory();
+
+    showToast("Prompt History Cleared");
+
 }
+
+
 function savePrompt(){
 
     let prompt =
