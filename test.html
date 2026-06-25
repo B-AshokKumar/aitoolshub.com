@@ -2896,13 +2896,18 @@ function showSavedPrompts(){
 
     div.className="tool";
 
+div.onclick=function(){
+
+  loadSavedPrompt(index);
+
+};
+
     div.innerHTML=`
 
 <div style="flex:1">
 
 <div class="prompt-history-item"
-     style="cursor:pointer;"
-     onclick="loadSavedPrompt(${index})">
+     style="cursor:pointer;">
 
 ${prompt}
 
