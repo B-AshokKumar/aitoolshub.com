@@ -3147,36 +3147,58 @@ function clearRecentTools(){
 </script>
 
   <div id="toast"
-style="
+ #toast{
 position:fixed;
 bottom:120px;
 left:50%;
-transform:translateX(-50%);
+transform:translateX(-50%) translateY(20px);
+
 background:#2d74d7;
-color:white;
+color:#fff;
+
 padding:12px 18px;
 border-radius:12px;
+
 font-size:14px;
 font-weight:600;
-display:none;
+
+opacity:0;
+visibility:hidden;
+
+transition:
+opacity .35s ease,
+transform .35s ease;
+
 z-index:99999;
-box-shadow:0 4px 12px rgba(0,0,0,0.2);
-">
+box-shadow:0 6px 16px rgba(0,0,0,.25);
+}
+
+#toast.show{
+opacity:1;
+visibility:visible;
+transform:translateX(-50%) translateY(0);
+} >
 </div>
 
 <script>
+let toastTimer;
+
 function showToast(message){
 
-  let toast =
-    document.getElementById("toast");
+const toast=document.getElementById("toast");
 
-  toast.innerText = message;
+toast.innerText=message;
 
-  toast.style.display = "block";
+toast.classList.add("show");
 
-  setTimeout(()=>{
-    toast.style.display = "none";
-  },3500);
+clearTimeout(toastTimer);
+
+toastTimer=setTimeout(()=>{
+
+toast.classList.remove("show");
+
+},2500);
+
 }
 </script>
 <script>
