@@ -2850,38 +2850,35 @@ function clearPromptHistory(){
 }
 function savePrompt(){
 
-  let prompt =
-    document.getElementById("result").innerText;
+    let prompt =
+        document.getElementById("result").innerText.trim();
 
-  if(
-    prompt.trim()==="" ||
-    prompt.includes("Please enter")
-  ){
-    showToast("Generate a prompt first");
-    return;
-  }
+    if(
+        prompt==="" ||
+        prompt.includes("Please enter")
+    ){
+        showToast("Generate a prompt first");
+        return;
+    }
 
-  let saved =
-    JSON.parse(
-      localStorage.getItem("savedPrompts")
-    ) || [];
+    let saved =
+        JSON.parse(localStorage.getItem("savedPrompts")) || [];
 
-  // avoid duplicates
-  if(saved.includes(prompt)){
-    showToast("Already saved");
-    return;
-  }
+    if(saved.includes(prompt)){
+        showToast("Prompt already saved");
+        return;
+    }
 
-  saved.unshift(prompt);
+    saved.unshift(prompt);
 
-  localStorage.setItem(
-    "savedPrompts",
-    JSON.stringify(saved)
-  );
+    localStorage.setItem(
+        "savedPrompts",
+        JSON.stringify(saved)
+    );
 
-  showSavedPrompts();
+    showSavedPrompts();
 
-  showToast("Prompt Saved ⭐");
+    showToast("Prompt Saved ⭐");
 }
 
 function showSavedPrompts(){
@@ -2912,10 +2909,10 @@ function showSavedPrompts(){
 
     div.className="tool";
 
+div.style.cursor="pointer";
+
 div.onclick=function(){
-
-  loadSavedPrompt(index);
-
+    loadSavedPrompt(index);
 };
 
     div.innerHTML=`
@@ -2936,19 +2933,15 @@ ${prompt}
 <button
 class="prompt-btn tip-btn"
 style="padding:6px 10px;margin-right:6px"
-onclick="copySavedPrompt(${index})">
-
+onclick="event.stopPropagation();copySavedPrompt(${index})">
 📋
-
 </button>
 
 <button
 class="prompt-btn tip-btn"
 style="padding:6px 10px;background:#d9534f"
-onclick="deleteSavedPrompt(${index})">
-
+onclick="event.stopPropagation();deleteSavedPrompt(${index})">
 🗑
-
 </button>
 
 </div>
@@ -2963,70 +2956,80 @@ onclick="deleteSavedPrompt(${index})">
 
 function copySavedPrompt(index){
 
-  let saved =
-    JSON.parse(
-      localStorage.getItem("savedPrompts")
-    ) || [];
+    let saved =
+        JSON.parse(localStorage.getItem("savedPrompts")) || [];
 
-  document.getElementById("result").innerText =
-    saved[index];
+    if(index<0 || index>=saved.length) return;
 
-  copyPrompt();
+    document.getElementById("result").innerText =
+        saved[index];
+
+    copyPrompt();
 }
 
 function deleteSavedPrompt(index){
 
-  let saved =
-    JSON.parse(
-      localStorage.getItem("savedPrompts")
-    ) || [];
+    let saved =
+        JSON.parse(localStorage.getItem("savedPrompts")) || [];
 
-  saved.splice(index,1);
+    saved.splice(index,1);
 
-  localStorage.setItem(
-    "savedPrompts",
-    JSON.stringify(saved)
-  );
+    localStorage.setItem(
+        "savedPrompts",
+        JSON.stringify(saved)
+    );
 
-  showSavedPrompts();
+    // Last prompt deleted
+    if(saved.length===0){
 
-  showToast("Prompt Deleted");
+        document.getElementById("topic").value="";
+        document.getElementById("result").innerText="";
+        currentPromptType="";
+
+    }else{
+
+        // If deleted prompt was being displayed
+        if(document.getElementById("result").innerText.trim()===""){
+            document.getElementById("topic").value="";
+            currentPromptType="";
+        }
+
+    }
+
+    showSavedPrompts();
+
+    showToast("Prompt Deleted");
 }
+
 function loadSavedPrompt(index){
 
-  let saved =
-    JSON.parse(
-      localStorage.getItem("savedPrompts")
-    ) || [];
+    let saved =
+        JSON.parse(localStorage.getItem("savedPrompts")) || [];
 
-  let prompt = saved[index];
+    if(index<0 || index>=saved.length) return;
 
-  // Show in result box
-  document.getElementById("result").innerText = prompt;
+    document.getElementById("result").innerText =
+        saved[index];
 
-  // Scroll to top
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
 
-  showToast("Prompt Loaded ⭐");
+    showToast("Prompt Loaded ⭐");
 }
-
-
 function clearSavedPrompts(){
 
-  localStorage.removeItem("savedPrompts");
+    localStorage.removeItem("savedPrompts");
 
-  showSavedPrompts();
+    document.getElementById("topic").value="";
+    document.getElementById("result").innerText="";
+    currentPromptType="";
 
-  showToast("Saved Prompts Cleared");
+    showSavedPrompts();
+
+    showToast("Saved Prompts Cleared");
 }
-
-document.addEventListener(
-"DOMContentLoaded",
-showSavedPrompts
-);
 
 function clearRecentTools(){
 
