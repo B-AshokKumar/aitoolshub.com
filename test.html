@@ -2116,6 +2116,19 @@ if(!container) return;
   
 let favorites =  
 JSON.parse(localStorage.getItem("favorites")) || [];  
+
+if(favorites.length===0){
+
+    container.innerHTML=`
+    <div style="text-align:center;padding:25px;color:#777;">
+        <div style="font-size:40px;">❤️</div>
+        <b>No Favorite Tools</b>
+        <p>Tap ⭐ on any AI tool to add it here.</p>
+    </div>
+    `;
+
+    return;
+  }
   
 container.innerHTML="";  
   
