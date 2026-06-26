@@ -3157,6 +3157,10 @@ function copySavedPrompt(index){
 
 function deleteSavedPrompt(index){
 
+    if(!confirm("Delete this saved prompt?")){
+        return;
+    }
+
     let saved =
         JSON.parse(localStorage.getItem("savedPrompts")) || [];
 
@@ -3167,21 +3171,10 @@ function deleteSavedPrompt(index){
         JSON.stringify(saved)
     );
 
-    // Last prompt deleted
     if(saved.length===0){
-
         document.getElementById("topic").value="";
         document.getElementById("result").innerText="";
         currentPromptType="";
-
-    }else{
-
-        // If deleted prompt was being displayed
-        if(document.getElementById("result").innerText.trim()===""){
-            document.getElementById("topic").value="";
-            currentPromptType="";
-        }
-
     }
 
     showSavedPrompts();
