@@ -2128,6 +2128,10 @@ function loadHistoryPrompt(index){
 
 function deleteHistoryPrompt(index){
 
+    if(!confirm("Delete this prompt from history?")){
+        return;
+    }
+
     let history =
         JSON.parse(localStorage.getItem("promptHistory")) || [];
 
