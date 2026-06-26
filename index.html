@@ -1,5 +1,5 @@
 <!DOCTYPE html>  
-<!-- Version 2 -->  
+<!-- Version 1.14 -->  
 <html lang="en">  
 <head>  
 
@@ -69,7 +69,11 @@ font-weight:600;         /* bold text */
 box-shadow:0 3px 8px rgba(0,0,0,0.1);  
 transition:0.3s;  
 }  
-  
+
+ #settings .dark-btn{
+  padding:10px 18px;
+  font-size:14px;
+} 
 .dark .dark-btn{  
 background:#2b2b2b;  
 color:#4da3ff;  
@@ -97,7 +101,9 @@ padding:20px;
 border-radius:16px;  
 box-shadow:0 4px 12px rgba(0,0,0,0.08);  
 }  
-  
+ #settings{
+  text-align:center;
+}
 .section h2{  
 color:#2d74d7;  
 margin-bottom:15px;  
@@ -144,11 +150,15 @@ box-sizing:border-box;
 transform:scale(1.02);  
 background:#d9e5f9;  
 }  
+    
 /* Smooth animations */
 .category-card,
 .tool,
 .prompt-btn{
   will-change:transform;
+
+  user-select:none;
+  -webkit-user-select:none;
 }
   
 .tool a{  
@@ -311,6 +321,14 @@ display:-webkit-box;
 overflow:hidden;  
 color:#444;
 }
+.prompt-template-grid .category-card{
+  min-height:85px;
+  padding:10px 8px;
+}
+
+.prompt-template-grid .category-card p{
+  font-size:14px;
+}
 .category-card:hover{  
 transform:scale(1.05);  
 background:#bfc7db;  
@@ -371,6 +389,52 @@ transition:0.3s;
 margin-top:10px;  
 }  
 
+.input-wrapper{
+    position:relative;
+    width:80%;
+    max-width:420px;
+    margin:10px auto;
+}
+
+.input-wrapper .prompt-input{
+    width:100%;
+    box-sizing:border-box;
+    padding-right:42px;
+}
+
+#resetBtn{
+    position:absolute;
+    right:12px;
+
+    top:50%;
+    transform:translateY(calc(-50% + 2px));
+
+    width:28px;
+    height:28px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:none;
+    background:transparent;
+
+    font-size:18px;
+    line-height:1;
+
+    cursor:pointer;
+    color:#888;
+
+    padding:0;
+}
+
+#resetBtn:hover{
+    color:#d9534f;
+}
+
+.dark #resetBtn{
+    color:#ccc;
+}
 .prompt-section{
   text-align:center;
 }
@@ -408,7 +472,19 @@ margin-top:10px;
   margin-top:20px;
 }
 
-  
+.action-row{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  margin-top:15px;
+}
+
+.action-row .prompt-btn{
+  flex:1;
+  margin-top:0;
+  max-width:180px;
+}
+ 
 /* focus effect */  
 .prompt-input:focus{  
 border-color:#2d74d7;  
@@ -462,6 +538,14 @@ overflow-wrap:anywhere;
 .prompt-result{
   min-height:60px;
 }
+.prompt-history-item{
+  font-size:12px;
+  line-height:1.4;
+  color:#666;
+}
+.dark .prompt-history-item{
+  color:#ddd;
+}
 /* dark mode */  
 .dark .prompt-result{  
 background:#1f1f1f;  
@@ -502,8 +586,9 @@ display:flex;
 flex-wrap:wrap;
 justify-content:center;
 gap:12px;
-font-size:18px;
+font-size:16px;
 font-weight:600;
+margin-top:20px;
 }
 
 .footer-links a{
@@ -678,6 +763,37 @@ content:"";
   color:#ddd;
 }
 
+#toast{
+position:fixed;
+bottom:120px;
+left:50%;
+transform:translateX(-50%) translateY(20px);
+
+background:#2d74d7;
+color:#fff;
+
+padding:12px 18px;
+border-radius:12px;
+
+font-size:14px;
+font-weight:600;
+
+opacity:0;
+visibility:hidden;
+
+transition:
+opacity .35s ease,
+transform .35s ease;
+
+z-index:99999;
+box-shadow:0 6px 16px rgba(0,0,0,.25);
+}
+
+#toast.show{
+opacity:1;
+visibility:visible;
+transform:translateX(-50%) translateY(0);
+}
 </style>  
   
 </head> 
@@ -699,9 +815,9 @@ content:"";
 <div class="header" id="top">
 <span style="font-size:16px;">AI Tools Hub</span>
 
-<button class="dark-btn" onclick="toggleDark()">  
-<span>Dark Mode</span> ☾
-</button>  
+<button class="dark-btn" onclick="toggleDark()" id="themeBtn">
+Dark Mode: OFF
+</button>
 </div>  
 
   
@@ -718,35 +834,84 @@ content:"";
 
   <p class="welcome-sub">Generate powerful AI prompts instantly</p>
 
-  <input id="topic" class="prompt-input"
-    placeholder="✨ Enter topic (Example: logo, cat)">
 
+<div class="input-wrapper">
 
-  <div class="prompt-actions">
-    <button class="prompt-btn" onclick="generatePrompt(currentPromptType)">
-      ✨ Generate Prompt
+<input id="topic"
+class="prompt-input"
+placeholder="✨ Enter topic ">
+
+<button id="resetBtn"
+onclick="resetPrompt()">
+🔄
+</button>
+
+</div>
+
+<div class="prompt-actions">
+    <button class="prompt-btn"
+            onclick="generatePrompt(currentPromptType)">
+        ✨ Generate Prompt
     </button>
-  </div>
+</div>
 
   <div id="result" class="prompt-result"></div>
 
-<div class="center-btn">
-  <button class="prompt-btn tip-btn" onclick="copyPrompt()">
+<div class="action-row">
+
+  <button class="prompt-btn tip-btn"
+          onclick="copyPrompt()">
     📋 Copy Prompt
   </button>
+
+  <button class="prompt-btn tip-btn"
+          onclick="savePrompt()">
+    ⭐ Save Prompt
+  </button>
+
 </div>
 
-  <div class="center-btn">
-    <button class="prompt-btn tip-btn" onclick="showDailyTip()">
-      💡 Show Daily Tip
-    </button>
-  </div>
+<div class="action-row">
+
+  <button class="prompt-btn tip-btn"
+          onclick="showDailyTip()">
+    💡 Daily Tip
+  </button>
+
+  <button class="prompt-btn tip-btn"
+          onclick="shareApp()">
+    📢 Share App
+  </button>
+
+</div>
+</div>
+<!-- PROMPT HISTORY -->
+<div class="section">
+
+<h2>📜 Prompt History</h2>
+    
+<div class="center-btn">
+<button class="prompt-btn tip-btn"
+onclick="clearPromptHistory()">
+🗑️ Clear Prompt History
+</button>
+</div>
+<div id="promptHistoryList"></div>
+
+</div>
+<div class="section">
+
+<h2>⭐ Saved Prompts</h2>
 
 <div class="center-btn">
-  <button class="prompt-btn tip-btn" onclick="shareApp()">
-    📢 Share AI Tools Hub
-  </button>
+<button class="prompt-btn tip-btn"
+onclick="clearSavedPrompts()">
+🗑️ Clear Saved Prompts
+</button>
 </div>
+
+<div id="savedPromptList"></div>
+
 </div>
 
 <!-- AI PROMPT TEMPLATES -->
@@ -755,7 +920,7 @@ content:"";
 
 <h2>✨ AI Prompt Templates</h2>
 
-<div class="category-grid">
+<div class="category-grid prompt-template-grid">
 
 <div class="category-card"
 onclick="setPrompt('software developer','resume')">
@@ -826,6 +991,66 @@ onclick="setPrompt('job application','email')">
 
 </div>
 
+<div class="category-card"
+onclick="setPrompt('job interview','interview')">
+<span>🎤</span>
+<p>Interview Prompt</p>
+</div>
+
+<div class="category-card"
+onclick="setPrompt('business idea','business')">
+<span>💡</span>
+<p>Business Plan</p>
+</div>
+
+<div class="category-card"
+onclick="setPrompt('blog article','blog')">
+<span>✍️</span>
+<p>Blog Prompt</p>
+</div>
+
+<div class="category-card"
+onclick="setPrompt('social media post','social')">
+<span>📱</span>
+<p>Social Media</p>
+</div>
+
+<div class="category-card"
+onclick="setPrompt('study notes','summary')">
+<span>📖</span>
+<p>Summary Prompt</p>
+</div>
+
+<div class="category-card"
+onclick="setPrompt('project proposal','proposal')">
+<span>📋</span>
+<p>Proposal Prompt</p>
+</div>
+<div class="category-card"
+onclick="setPrompt('artificial intelligence','detailed')">
+<span>📚</span>
+<p>Detailed Explanation</p>
+</div>
+    
+<div class="category-card"
+onclick="setPrompt('artificial intelligence','brief')">
+<span>📑</span>
+<p>Brief Explanation</p>
+</div>
+
+<div class="category-card"
+onclick="setPrompt('artificial intelligence','quicksummary')">
+<span>⚡</span>
+<p>Quick Summary</p>
+</div>
+
+<div class="category-card"
+onclick="setPrompt('artificial intelligence','beginner')">
+<span>🎓</span>
+<p>Beginner Friendly</p>
+</div>
+
+
 </div>
 
 </div>
@@ -869,8 +1094,21 @@ rel="noopener noreferrer" >Runway ML</a>
 <div id="favoritesList"></div>  
   
 </div>  
-  
-  
+
+ <div class="section" id="recentTools">
+
+<h2>🕒 Recently Used Tools</h2>
+
+<div class="center-btn">
+  <button class="prompt-btn tip-btn"
+onclick="clearRecentTools()">
+🗑️ Clear Recent Tools
+</button>
+</div>
+
+<div id="recentToolsList"></div>
+
+</div> 
 <!-- AI CATEGORIES -->  
   
 <!-- AI TOOLS CATEGORIES -->  
@@ -943,7 +1181,8 @@ oninput="searchToolsDebounced()">
 
   <div class="tool-left">
 <a href="https://chat.openai.com"   target="_blank"
-rel="noopener noreferrer">ChatGPT</a>  
+rel="noopener noreferrer"
+   onclick="saveRecentTool('ChatGPT',this.href)">ChatGPT</a>  
 
   <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('ChatGPT')">
@@ -959,7 +1198,8 @@ onclick="event.stopPropagation();toolInfo('ChatGPT')">
 
  <div class="tool-left"> 
 <a href="https://gemini.google.com"   target="_blank"
-rel="noopener noreferrer">Google Gemini</a>  
+rel="noopener noreferrer"
+   onclick="saveRecentTool('Google Gemini',this.href)">Google Gemini</a>  
  <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('Google Gemini')">
 ℹ️
@@ -975,7 +1215,8 @@ onclick="event.stopPropagation();toolInfo('Google Gemini')">
 <div class="tool-left">
   
 <a href="https://www.canva.com/ai-image-generator"  target="_blank"
-rel="noopener noreferrer"  >Canva AI</a>  
+rel="noopener noreferrer" 
+   onclick="saveRecentTool('Canva AI',this.href)">Canva AI</a>  
  <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('Canva AI')">
 ℹ️
@@ -997,7 +1238,8 @@ onclick="event.stopPropagation();toolInfo('Canva AI')">
 <div class="tool-left">
 
 <a href="https://www.perplexity.ai" target="_blank"
-rel="noopener noreferrer">Perplexity AI</a>  
+rel="noopener noreferrer"
+  onclick="saveRecentTool('Perplexity AI',this.href)">Perplexity AI</a>  
 
  <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('Perplexity AI')">
@@ -1014,7 +1256,8 @@ onclick="event.stopPropagation();toolInfo('Perplexity AI')">
 <div class="tool-left">
 
 <a href="https://www.grammarly.com" target="_blank"
-rel="noopener noreferrer">Grammarly</a>  
+rel="noopener noreferrer"
+   onclick="saveRecentTool('Grammarly',this.href)">Grammarly</a>  
  <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('Grammarly')">
 ℹ️
@@ -1031,7 +1274,8 @@ onclick="event.stopPropagation();toolInfo('Grammarly')">
 <div class="tool-left">
 
 <a href="https://www.wolframalpha.com" target="_blank"
-rel="noopener noreferrer">Wolfram Alpha</a>  
+rel="noopener noreferrer"
+  onclick="saveRecentTool('Wolfram Alpha',this.href)">Wolfram Alpha</a>  
  <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('Wolfram Alpha')">
 ℹ️
@@ -1048,7 +1292,8 @@ onclick="event.stopPropagation();toolInfo('Wolfram Alpha')">
 <div class="tool-left">
 
 <a href="https://www.notion.so/product/ai" target="_blank"
-rel="noopener noreferrer">Notion AI</a>  
+rel="noopener noreferrer"
+  onclick="saveRecentTool('NotionAI',this.href)">Notion AI</a>  
  <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('Notion AI')">
 ℹ️
@@ -1064,7 +1309,8 @@ onclick="event.stopPropagation();toolInfo('Notion AI')">
 <div class="tool-left">
 
 <a href="https://www.khanacademy.org/khan-labs" target="_blank"
-rel="noopener noreferrer">Khan Academy +<br>Khanmigo</a>  
+rel="noopener noreferrer"
+   onclick="saveRecentTool('Khan Academy + Khanmigo',this.href)">Khan Academy +<br>Khanmigo</a>  
 
  <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('Khan Academy + Khanmigo')">
@@ -1081,7 +1327,8 @@ onclick="event.stopPropagation();toolInfo('Khan Academy + Khanmigo')">
 <div class="tool-left">
 
 <a href="https://quizlet.com/features/magic-notes" target="_blank"
-rel="noopener noreferrer">Quizlet AI</a>  
+rel="noopener noreferrer"
+  onclick="saveRecentTool('Quizlet AI',this.href)">Quizlet AI</a>  
  <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('Quizlet AI')">
 ℹ️
@@ -1098,7 +1345,8 @@ onclick="event.stopPropagation();toolInfo('Quizlet AI')">
 <div class="tool-left">
 
 <a href="https://www.duolingo.com" target="_blank"
-rel="noopener noreferrer">Duolingo Max AI</a>  
+rel="noopener noreferrer"
+  onclick="saveRecentTool('Duolingo Max AI',this.href)">Duolingo Max AI</a>  
  <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('Duolingo Max AI')">
 ℹ️
@@ -1121,7 +1369,8 @@ onclick="event.stopPropagation();toolInfo('Duolingo Max AI')">
 <div class="tool-left">
   
 <a href="https://github.com/features/copilot"  target="_blank" 
-rel="noopener noreferrer" >GitHub Copilot</a>  
+rel="noopener noreferrer"
+  onclick="saveRecentTool('GitHub Copilot',this.href)">GitHub Copilot</a>  
  <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('GitHub Copilot')">
 ℹ️
@@ -1137,7 +1386,8 @@ onclick="event.stopPropagation();toolInfo('GitHub Copilot')">
 <div class="tool-left">
   
 <a href="https://replit.com"  target="_blank"
-rel="noopener noreferrer"  >Replit AI</a>  
+rel="noopener noreferrer"
+  onclick="saveRecentTool('Replit AI',this.href)">Replit AI</a>  
 
   <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('Replit AI')">
@@ -1153,7 +1403,8 @@ onclick="event.stopPropagation();toolInfo('Replit AI')">
 <div class="tool-left">
   
 <a href="https://codeium.com"  target="_blank"
-rel="noopener noreferrer" >Codeium</a>  
+rel="noopener noreferrer"
+  onclick="saveRecentTool('Codeium',this.href)">Codeium</a>  
  <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('Codeium')">
 ℹ️
@@ -1175,7 +1426,8 @@ onclick="event.stopPropagation();toolInfo('Codeium')">
 <div class="tool-left">
   
 <a href="https://writesonic.com"  target="_blank"
-rel="noopener noreferrer"  >Writesonic</a>  
+rel="noopener noreferrer"
+  onclick="saveRecentTool('Writesonic',this.href)">Writesonic</a>  
  <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('Writesonic')">
 ℹ️
@@ -1191,7 +1443,8 @@ onclick="event.stopPropagation();toolInfo('Writesonic')">
 <div class="tool-left">
   
 <a href="https://surferseo.com"  target="_blank"
-rel="noopener noreferrer" >Surfer SEO</a>  
+rel="noopener noreferrer"
+   onclick="saveRecentTool('Surfer SEO',this.href)">Surfer SEO</a>  
  <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('Surfer SEO')">
 ℹ️
@@ -1207,7 +1460,8 @@ onclick="event.stopPropagation();toolInfo('Surfer SEO')">
 
   <div class="tool-left">
 <a href="https://www.canva.com/magic-write/"  target="_blank"
-rel="noopener noreferrer"  >Canva Magic <br>Write</a>  
+rel="noopener noreferrer"
+   onclick="saveRecentTool('Canva Magic Write',this.href)">Canva Magic <br>Write</a>  
 
    <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('Canva Magic Write')">
@@ -1231,7 +1485,8 @@ onclick="event.stopPropagation();toolInfo('Canva Magic Write')">
 <div class="tool-left">
   
 <a href="https://murf.ai" target="_blank"
-rel="noopener noreferrer"  >Murf AI</a> 
+rel="noopener noreferrer"
+   onclick="saveRecentTool('Murf AI',this.href)">Murf AI</a> 
  <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('Murf AI')">
 ℹ️
@@ -1247,7 +1502,8 @@ onclick="event.stopPropagation();toolInfo('Murf AI')">
 <div class="tool-left">
     
 <a href="https://elevenlabs.io" target="_blank"
-rel="noopener noreferrer" >ElevenLabs</a> 
+rel="noopener noreferrer"
+  onclick="saveRecentTool('ElevenLabs',this.href)">ElevenLabs</a> 
  <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('ElevenLabs')">
 ℹ️
@@ -1263,7 +1519,8 @@ onclick="event.stopPropagation();toolInfo('ElevenLabs')">
 <div class="tool-left">
   
 <a href="https://speechify.com" target="_blank"
-rel="noopener noreferrer"  >Speechify</a>  
+rel="noopener noreferrer"
+   onclick="saveRecentTool('Speechify',this.href)">Speechify</a>  
  <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('Speechify')">
 ℹ️
@@ -1279,7 +1536,8 @@ onclick="event.stopPropagation();toolInfo('Speechify')">
 <div class="tool-left">
   
 <a href="https://www.descript.com"  target="_blank"
- rel="noopener noreferrer" >Descript</a>  
+ rel="noopener noreferrer"
+   onclick="saveRecentTool('Descript',this.href)">Descript</a>  
  <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('Descript')">
 ℹ️
@@ -1300,7 +1558,8 @@ onclick="event.stopPropagation();toolInfo('Descript')">
 
   <div class="tool-left">
 <a href="https://pictory.ai" target="_blank"
- rel="noopener noreferrer" >Pictory AI</a>  
+ rel="noopener noreferrer"
+   onclick="saveRecentTool('Pictory AI',this.href)">Pictory AI</a>  
  <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('Pictory AI')">
 ℹ️
@@ -1316,7 +1575,8 @@ onclick="event.stopPropagation();toolInfo('Pictory AI')">
 <div class="tool-left">
   
 <a href="https://invideo.io" target="_blank"
- rel="noopener noreferrer" >InVideo AI</a>  
+ rel="noopener noreferrer"
+   onclick="saveRecentTool('InVideo AI',this.href)">InVideo AI</a>  
  <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('InVideo AI')">
 ℹ️
@@ -1332,7 +1592,8 @@ onclick="event.stopPropagation();toolInfo('InVideo AI')">
 <div class="tool-left">
   
 <a href="https://lumen5.com" target="_blank"
- rel="noopener noreferrer" >Lumen5</a>  
+ rel="noopener noreferrer"
+   onclick="saveRecentTool('Lumen5',this.href)">Lumen5</a>  
  <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('Lumen5')">
 ℹ️
@@ -1348,7 +1609,8 @@ onclick="event.stopPropagation();toolInfo('Lumen5')">
 <div class="tool-left">
   
 <a href="https://www.synthesia.io"  target="_blank"
-rel="noopener noreferrer"  >Synthesia AI</a>  
+rel="noopener noreferrer"
+   onclick="saveRecentTool('Synthesia AI',this.href)">Synthesia AI</a>  
  <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('Synthesia AI')">
 ℹ️
@@ -1370,7 +1632,8 @@ onclick="event.stopPropagation();toolInfo('Synthesia AI')">
 <div class="tool" data-name="AIVA">  
 <div class="tool-left">
 <a href="https://www.aiva.ai" target="_blank"
-  rel="noopener noreferrer" >AIVA</a>  
+  rel="noopener noreferrer"
+   onclick="saveRecentTool('AIVA',this.href)">AIVA</a>  
  <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('AIVA')">
 ℹ️
@@ -1385,7 +1648,8 @@ onclick="event.stopPropagation();toolInfo('AIVA')">
 <div class="tool" data-name="Udio">  
 <div class="tool-left">
 <a href="https://udio.com" target="_blank"
-  rel="noopener noreferrer" >Udio</a>  
+  rel="noopener noreferrer"
+   onclick="saveRecentTool('Udio',this.href)">Udio</a>  
  <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('Udio')">
 ℹ️
@@ -1399,7 +1663,8 @@ onclick="event.stopPropagation();toolInfo('Udio')">
 <div class="tool" data-name="Soundraw">  
 <div class="tool-left">
 <a href="https://soundraw.io" target="_blank"
- rel="noopener noreferrer" >Soundraw</a>  
+ rel="noopener noreferrer"
+   onclick="saveRecentTool('Soundraw',this.href)">Soundraw</a>  
  <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('Soundraw')">
 ℹ️
@@ -1419,7 +1684,8 @@ onclick="event.stopPropagation();toolInfo('Soundraw')">
 <div class="tool" data-name="Scenario AI">  
 <div class="tool-left">
 <a href="https://scenario.gg" target="_blank"
- rel="noopener noreferrer" >Scenario AI</a>  
+ rel="noopener noreferrer"
+   onclick="saveRecentTool('Scenario AI',this.href)">Scenario AI</a>  
  <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('Scenario AI')">
 ℹ️
@@ -1433,7 +1699,8 @@ onclick="event.stopPropagation();toolInfo('Scenario AI')">
 <div class="tool" data-name="Ludo AI">  
 <div class="tool-left">
 <a href="https://ludo.ai" target="_blank"
- rel="noopener noreferrer" >Ludo AI</a>  
+ rel="noopener noreferrer"
+   onclick="saveRecentTool('Ludo AI',this.href)">Ludo AI</a>  
  <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('Ludo AI')">
 ℹ️
@@ -1447,7 +1714,8 @@ onclick="event.stopPropagation();toolInfo('Ludo AI')">
 <div class="tool" data-name="Inworld AI">  
 <div class="tool-left">
 <a href="https://inworld.ai" target="_blank"
- rel="noopener noreferrer" >Inworld AI</a>  
+ rel="noopener noreferrer"
+   onclick="saveRecentTool('Inworld AI',this.href)">Inworld AI</a>  
  <span class="info-icon"
 onclick="event.stopPropagation();toolInfo('Inworld AI')">
 ℹ️
@@ -1477,13 +1745,13 @@ Tools open in secure external pages. Login may be required.
 This app aggregates publicly available AI tools.  
 We are not affiliated with third-party services.  
 </p>  
-
+</div>
 <div class="section" id="settings">
 
 <h2>⚙️ Settings</h2>
 
-<button onclick="toggleDark()" class="dark-btn">
-Toggle Dark Mode ☾
+<button onclick="toggleDark()" class="dark-btn" id="themeBtn2">
+Dark Mode: OFF
 </button>
 
 <p style="margin-top:10px;">
@@ -1499,12 +1767,11 @@ App Preferences & Settings
 <a href="about.html">About Us</a>
 
 </div>
-</div>  
 
  <div class="footer">
   <div>AI Tools Hub © 2026 Curated AI tools Directory</div>
   <div style="font-size:12px;color:#999;margin-top:4px;">
-    Version 1.13 (11300)
+    Version 1.14 (11400)
   </div>
 </div> 
 <script>  
@@ -1512,29 +1779,41 @@ App Preferences & Settings
 /* =========================  
    DARK MODE SYSTEM  
 ========================= */  
-  
-function toggleDark(){  
-  
-document.body.classList.toggle("dark");  
-  
-/* SAVE THEME */  
-if(document.body.classList.contains("dark")){  
-localStorage.setItem("theme","dark");  
-}else{  
-localStorage.setItem("theme","light");  
-}  
 
-}  
+function updateThemeButtons(){
+
+    const text = document.body.classList.contains("dark")
+        ? "Dark Mode: ON"
+        : "Dark Mode: OFF";
+
+    document.getElementById("themeBtn").innerText = text;
+
+    document.getElementById("themeBtn2").innerText = text;
+}
+
+function toggleDark(){
+
+    document.body.classList.toggle("dark");
+
+    if(document.body.classList.contains("dark")){
+        localStorage.setItem("theme","dark");
+    }else{
+        localStorage.setItem("theme","light");
+    }
+
+    updateThemeButtons();
+}
   
 /* LOAD SAVED THEME AFTER REFRESH */  
-document.addEventListener("DOMContentLoaded",function(){  
-  
-if(localStorage.getItem("theme")==="dark"){  
-document.body.classList.add("dark");  
-}  
 
-});  
-  
+ document.addEventListener("DOMContentLoaded",function(){
+
+    if(localStorage.getItem("theme")==="dark"){
+        document.body.classList.add("dark");
+    }
+
+    updateThemeButtons();
+}); 
   
 /* =========================  
    PROMPT GENERATOR  
@@ -1631,6 +1910,96 @@ if(topic.trim() === ""){
 
 }
 
+  else if(type === "interview"){
+
+  promptText =
+    "Generate common interview questions and model answers for " +
+    topic +
+    " with tips and best practices.";
+
+}
+
+else if(type === "business"){
+
+  promptText =
+    "Create a detailed business plan for " +
+    topic +
+    " including target market, revenue model, marketing strategy and growth plan.";
+
+}
+
+else if(type === "blog"){
+
+  promptText =
+    "Write a professional blog post about " +
+    topic +
+    " with title, headings, key points and conclusion.";
+
+}
+
+else if(type === "social"){
+
+  promptText =
+    "Create engaging social media content about " +
+    topic +
+    " with captions, hashtags and call to action.";
+
+}
+
+else if(type === "summary"){
+
+  promptText =
+    "Summarize " +
+    topic +
+    " into clear and concise notes with key points, important concepts and actionable insights.";
+
+}
+
+else if(type === "proposal"){
+
+  promptText =
+    "Create a professional project proposal for " +
+    topic +
+    " with objectives, scope, timeline and expected outcomes.";
+
+}
+
+  else if(type === "detailed"){
+
+  promptText =
+    "Explain " +
+    topic +
+    " in detail with introduction, key concepts, examples, advantages, disadvantages, real-world applications and conclusion.";
+
+}
+
+  else if(type === "brief"){
+
+  promptText =
+    "Provide a brief explanation of " +
+    topic +
+    " covering the main concepts, importance and key points.";
+
+}
+
+  else if(type === "quicksummary"){
+
+  promptText =
+    "Provide a quick summary of " +
+    topic +
+    " highlighting the most important points in a concise and easy-to-understand format.";
+
+}
+
+  else if(type === "beginner"){
+
+  promptText =
+    "Explain " +
+    topic +
+    " in very simple beginner-friendly language with easy examples and no technical jargon.";
+
+}
+
   else{
 
     promptText =
@@ -1642,7 +2011,175 @@ if(topic.trim() === ""){
 
   document.getElementById("result").innerText =
     promptText;
+  
+   savePromptHistory(promptText);
+}
 
+function savePromptHistory(prompt){
+
+  let history =
+    JSON.parse(
+      localStorage.getItem("promptHistory")
+    ) || [];
+
+  history.unshift(prompt);
+
+  history = history.slice(0,10);
+
+  localStorage.setItem(
+    "promptHistory",
+    JSON.stringify(history)
+  );
+
+  showPromptHistory();
+}
+
+function showPromptHistory(){
+
+    let container =
+        document.getElementById("promptHistoryList");
+
+    if(!container) return;
+
+    let history =
+        JSON.parse(localStorage.getItem("promptHistory")) || [];
+
+    if(history.length===0){
+
+        container.innerHTML = `
+<div style="text-align:center;padding:25px;color:#777;">
+    <div style="font-size:40px;">📜</div>
+    <b>No Prompt History</b>
+    <p>Generated prompts will appear here.</p>
+</div>
+`;
+
+        return;
+    }
+
+    container.innerHTML="";
+
+    history.forEach((prompt,index)=>{
+
+        let div=document.createElement("div");
+
+        div.className="tool";
+
+        div.innerHTML=`
+
+<div style="flex:1">
+
+<div class="prompt-history-item">
+
+${prompt}
+
+</div>
+
+</div>
+
+<div>
+
+<button
+class="prompt-btn tip-btn"
+style="padding:6px 10px;margin-right:5px"
+onclick="event.stopPropagation();copyHistoryPrompt(${index})">
+📋
+</button>
+
+<button
+class="prompt-btn tip-btn"
+style="padding:6px 10px;margin-right:5px"
+onclick="event.stopPropagation();loadHistoryPrompt(${index})">
+⬆
+</button>
+
+<button
+class="prompt-btn tip-btn"
+style="padding:6px 10px;background:#d9534f"
+ onclick="event.stopPropagation();deleteHistoryPrompt(${index})">
+🗑
+</button>
+
+</div>
+
+`;
+
+        container.appendChild(div);
+
+    });
+
+}
+
+function copyHistoryPrompt(index){
+
+    let history =
+        JSON.parse(localStorage.getItem("promptHistory")) || [];
+
+    document.getElementById("result").innerText =
+        history[index];
+
+    copyPrompt();
+
+}
+
+function loadHistoryPrompt(index){
+
+    let history =
+        JSON.parse(localStorage.getItem("promptHistory")) || [];
+
+    document.getElementById("result").innerText =
+        history[index];
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+    showToast("Prompt Loaded");
+
+}
+
+let lastHistoryDeleteIndex = -1;
+let lastHistoryDeleteTimer;
+
+function deleteHistoryPrompt(index){
+
+    // First tap
+    if(lastHistoryDeleteIndex !== index){
+
+        lastHistoryDeleteIndex = index;
+
+        clearTimeout(lastHistoryDeleteTimer);
+
+        showToast("Tap 🗑 again to delete");
+
+        lastHistoryDeleteTimer = setTimeout(function(){
+
+            lastHistoryDeleteIndex = -1;
+
+        },2000);
+
+        return;
+    }
+
+    // Second tap → Delete
+    clearTimeout(lastHistoryDeleteTimer);
+
+    lastHistoryDeleteIndex = -1;
+
+    let history =
+        JSON.parse(localStorage.getItem("promptHistory")) || [];
+
+    history.splice(index,1);
+
+    localStorage.setItem(
+        "promptHistory",
+        JSON.stringify(history)
+    );
+
+    showPromptHistory();
+
+    showToast("History Deleted");
 }
 
  /* =========================  
@@ -1705,7 +2242,24 @@ if(!container) return;
   
 let favorites =  
 JSON.parse(localStorage.getItem("favorites")) || [];  
-  
+
+if(favorites.length===0){
+
+    container.innerHTML=`
+    <div style="text-align:center;padding:25px;color:#777;">
+        <div style="font-size:40px;">❤️</div>
+        <b>No Favorite Tools</b>
+        <p>Tap ⭐ on any AI tool to add it here.</p>
+    </div>
+    `;
+
+    // Reset all stars
+    document.querySelectorAll(".tool .star").forEach(star=>{
+        star.innerHTML="⭐";
+    });
+
+    return;
+}
 container.innerHTML="";  
   
 favorites.forEach(tool=>{  
@@ -1717,6 +2271,7 @@ div.dataset.name=tool.name;
 div.innerHTML=`  
 <div class="tool-left">
 <a href="${tool.link}" target="_blank" rel="noopener noreferrer">${tool.name}</a>  
+</div>
 <span class="star" onclick="removeFavorite(this)">🌟</span>  
 `;  
   
@@ -1747,9 +2302,77 @@ localStorage.setItem("favorites",JSON.stringify(favorites));
   
 showFavorites();  
 }  
+  function saveRecentTool(name, link){
+
+  let recent =
+    JSON.parse(
+      localStorage.getItem("recentTools")
+    ) || [];
+
+  recent = recent.filter(
+    t => t.name !== name
+  );
+
+  recent.unshift({
+    name:name,
+    link:link
+  });
+
+  recent = recent.slice(0,5);
+
+  localStorage.setItem(
+    "recentTools",
+    JSON.stringify(recent)
+  );
+
+  showRecentTools();
+}
+
+function showRecentTools(){
+
+  let container =
+    document.getElementById(
+      "recentToolsList"
+    );
+
+  if(!container) return;
+
+  let recent =
+    JSON.parse(
+      localStorage.getItem("recentTools")
+    ) || [];
+    
+     if(recent.length === 0){
+
+    container.innerHTML =
+      "<p style='text-align:center;color:#777;'>No recently used tools</p>";
+
+    return;
+  }
+
+  container.innerHTML = "";
+
+  recent.forEach(tool=>{
+
+    let div =
+      document.createElement("div");
+
+    div.className = "tool";
+
+    div.innerHTML = `
+      <a href="${tool.link}"
+      target="_blank"
+      rel="noopener noreferrer">
+      ${tool.name}
+      </a>
+    `;
+
+    container.appendChild(div);
+
+  });
+
+}
   
-  
-document.addEventListener("DOMContentLoaded",showFavorites);  
   
 function goTo(sectionId){
 
@@ -1822,6 +2445,16 @@ results.appendChild(clone);
 }
 
 });
+
+if(results.innerHTML===""){
+
+    results.innerHTML = `
+    <div class="section" style="text-align:center;color:#777;">
+        ❌ No AI tools found
+    </div>
+    `;
+
+}
 
 }
 
@@ -2427,39 +3060,363 @@ function shareApp(){
 
   document.body.removeChild(textarea);
 } 
-</script>
 
-  <div id="toast"
-style="
-position:fixed;
-bottom:120px;
-left:50%;
-transform:translateX(-50%);
-background:#2d74d7;
-color:white;
-padding:12px 18px;
-border-radius:12px;
-font-size:14px;
-font-weight:600;
-display:none;
-z-index:99999;
-box-shadow:0 4px 12px rgba(0,0,0,0.2);
-">
+let confirmClearHistory = false;
+let clearHistoryTimer;
+
+function clearPromptHistory(){
+
+    let history =
+    JSON.parse(localStorage.getItem("promptHistory")) || [];
+
+if(history.length===0){
+
+    showToast("No prompt history");
+
+    return;
+}
+
+    if(!confirmClearHistory){
+
+        confirmClearHistory = true;
+
+        showToast("Tap Clear again to delete all history");
+
+        clearTimeout(clearHistoryTimer);
+
+        clearHistoryTimer = setTimeout(function(){
+
+            confirmClearHistory = false;
+
+        },2000);
+
+        return;
+    }
+
+    confirmClearHistory = false;
+
+    clearTimeout(clearHistoryTimer);
+
+    localStorage.removeItem("promptHistory");
+
+    document.getElementById("result").innerText="";
+
+    showPromptHistory();
+
+    showToast("Prompt History Cleared");
+}
+
+
+function savePrompt(){
+
+    let prompt =
+        document.getElementById("result").innerText.trim();
+
+    if(
+        prompt==="" ||
+        prompt.includes("Please enter")
+    ){
+        showToast("Generate a prompt first");
+        return;
+    }
+
+    let saved =
+        JSON.parse(localStorage.getItem("savedPrompts")) || [];
+
+    if(saved.includes(prompt)){
+        showToast("Prompt already saved");
+        return;
+    }
+
+    saved.unshift(prompt);
+
+    localStorage.setItem(
+        "savedPrompts",
+        JSON.stringify(saved)
+    );
+
+    showSavedPrompts();
+
+    showToast("Prompt Saved ⭐");
+}
+
+function showSavedPrompts(){
+
+  let container =
+    document.getElementById("savedPromptList");
+
+  if(!container) return;
+
+  let saved =
+    JSON.parse(
+      localStorage.getItem("savedPrompts")
+    ) || [];
+
+  if(saved.length===0){
+
+    container.innerHTML =
+      "<p style='text-align:center;color:#777;'>No saved prompts</p>";
+
+    return;
+  }
+
+  container.innerHTML="";
+
+  saved.forEach((prompt,index)=>{
+
+    let div=document.createElement("div");
+
+    div.className="tool";
+
+div.style.cursor="pointer";
+
+div.onclick=function(){
+    loadSavedPrompt(index);
+};
+
+    div.innerHTML=`
+
+<div style="flex:1">
+
+<div class="prompt-history-item"
+     style="cursor:pointer;">
+
+${prompt}
+
 </div>
 
+</div>
+
+<div>
+
+<button
+class="prompt-btn tip-btn"
+style="padding:6px 10px;margin-right:6px"
+onclick="event.stopPropagation();copySavedPrompt(${index})">
+📋
+</button>
+
+<button
+class="prompt-btn tip-btn"
+style="padding:6px 10px;background:#d9534f"
+onclick="event.stopPropagation();deleteSavedPrompt(${index})">
+🗑
+</button>
+
+</div>
+
+`;
+
+    container.appendChild(div);
+
+  });
+
+}
+
+function copySavedPrompt(index){
+
+    let saved =
+        JSON.parse(localStorage.getItem("savedPrompts")) || [];
+
+    if(index<0 || index>=saved.length) return;
+
+    document.getElementById("result").innerText =
+        saved[index];
+
+    copyPrompt();
+}
+    
+let lastDeleteIndex = -1;
+let lastDeleteTimer;
+
+function deleteSavedPrompt(index){
+
+    // First tap
+    if(lastDeleteIndex !== index){
+
+        lastDeleteIndex = index;
+
+        clearTimeout(lastDeleteTimer);
+
+        showToast("Tap 🗑 again to delete");
+
+        lastDeleteTimer = setTimeout(function(){
+
+            lastDeleteIndex = -1;
+
+        },2000);
+
+        return;
+    }
+
+    // Second tap → Delete
+    clearTimeout(lastDeleteTimer);
+
+    lastDeleteIndex = -1;
+
+    let saved =
+        JSON.parse(localStorage.getItem("savedPrompts")) || [];
+
+    saved.splice(index,1);
+
+    localStorage.setItem(
+        "savedPrompts",
+        JSON.stringify(saved)
+    );
+
+    if(saved.length===0){
+        document.getElementById("topic").value="";
+        document.getElementById("result").innerText="";
+        currentPromptType="";
+    }
+
+    showSavedPrompts();
+
+    showToast("Prompt Deleted");
+}
+
+function loadSavedPrompt(index){
+
+    let saved =
+        JSON.parse(localStorage.getItem("savedPrompts")) || [];
+
+    if(index<0 || index>=saved.length) return;
+
+    document.getElementById("result").innerText =
+        saved[index];
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+    showToast("Prompt Loaded ⭐");
+}
+
+let confirmClearSaved = false;
+let clearSavedTimer;
+
+function clearSavedPrompts(){
+
+    let saved =
+    JSON.parse(localStorage.getItem("savedPrompts")) || [];
+
+if(saved.length===0){
+
+    showToast("No saved prompts");
+
+    return;
+}
+
+    if(!confirmClearSaved){
+
+        confirmClearSaved = true;
+
+        showToast("Tap Clear again to delete all saved prompts");
+
+        clearTimeout(clearSavedTimer);
+
+        clearSavedTimer = setTimeout(function(){
+
+            confirmClearSaved = false;
+
+        },2000);
+
+        return;
+    }
+
+    confirmClearSaved = false;
+
+    clearTimeout(clearSavedTimer);
+
+    localStorage.removeItem("savedPrompts");
+
+    document.getElementById("topic").value="";
+    document.getElementById("result").innerText="";
+    currentPromptType="";
+
+    showSavedPrompts();
+
+    showToast("Saved Prompts Cleared");
+}
+
+let confirmClearRecent = false;
+let clearRecentTimer;
+
+function clearRecentTools(){
+
+    let recent =
+    JSON.parse(localStorage.getItem("recentTools")) || [];
+
+if(recent.length===0){
+
+    showToast("No recent tools");
+
+    return;
+}
+
+    if(!confirmClearRecent){
+
+        confirmClearRecent = true;
+
+        showToast("Tap Clear again to delete recent tools");
+
+        clearTimeout(clearRecentTimer);
+
+        clearRecentTimer = setTimeout(function(){
+
+            confirmClearRecent = false;
+
+        },2000);
+
+        return;
+    }
+
+    confirmClearRecent = false;
+
+    clearTimeout(clearRecentTimer);
+
+    localStorage.removeItem("recentTools");
+
+    showRecentTools();
+
+    showToast("Recent Tools Cleared");
+}
+</script>
+
 <script>
+function resetPrompt(){
+
+    currentPromptType = "";
+
+    document.getElementById("topic").value = "";
+    document.getElementById("result").innerText = "";
+
+    document.getElementById("topic").focus();
+
+    showToast("Reset");
+}
+</script>
+
+<script>
+let toastTimer;
+
 function showToast(message){
 
-  let toast =
-    document.getElementById("toast");
+const toast=document.getElementById("toast");
 
-  toast.innerText = message;
+toast.innerText=message;
 
-  toast.style.display = "block";
+toast.classList.add("show");
 
-  setTimeout(()=>{
-    toast.style.display = "none";
-  },3500);
+clearTimeout(toastTimer);
+
+toastTimer=setTimeout(()=>{
+
+toast.classList.remove("show");
+
+},2500);
+
 }
 </script>
 <script>
@@ -2563,6 +3520,15 @@ const descriptions = {
 
 showToast(descriptions[name] || "Tool description coming soon.");
 }
+</script>
+<div id="toast"></div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    showFavorites();
+    showRecentTools();
+    showSavedPrompts();
+    showPromptHistory();
+});
 </script>
 </body>  
 </html> 
