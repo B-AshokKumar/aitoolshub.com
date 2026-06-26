@@ -3307,17 +3307,37 @@ function clearSavedPrompts(){
     showToast("Saved Prompts Cleared");
 }
 
+let confirmClearRecent = false;
+let clearRecentTimer;
+
 function clearRecentTools(){
 
-  localStorage.removeItem(
-    "recentTools"
-  );
+    if(!confirmClearRecent){
 
-  showRecentTools();
+        confirmClearRecent = true;
 
-  showToast(
-    "Recent Tools Cleared"
-  );
+        showToast("Tap Clear again to delete recent tools");
+
+        clearTimeout(clearRecentTimer);
+
+        clearRecentTimer = setTimeout(function(){
+
+            confirmClearRecent = false;
+
+        },2000);
+
+        return;
+    }
+
+    confirmClearRecent = false;
+
+    clearTimeout(clearRecentTimer);
+
+    localStorage.removeItem("recentTools");
+
+    showRecentTools();
+
+    showToast("Recent Tools Cleared");
 }
 </script>
 
