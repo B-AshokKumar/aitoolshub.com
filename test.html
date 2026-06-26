@@ -3158,12 +3158,34 @@ function copySavedPrompt(index){
 
     copyPrompt();
 }
+    
+let lastDeleteIndex = -1;
+let lastDeleteTimer;
 
 function deleteSavedPrompt(index){
 
-    if(!confirm("Delete this saved prompt?")){
+    // First tap
+    if(lastDeleteIndex !== index){
+
+        lastDeleteIndex = index;
+
+        clearTimeout(lastDeleteTimer);
+
+        showToast("Tap 🗑 again to delete");
+
+        lastDeleteTimer = setTimeout(function(){
+
+            lastDeleteIndex = -1;
+
+        },2000);
+
         return;
     }
+
+    // Second tap → Delete
+    clearTimeout(lastDeleteTimer);
+
+    lastDeleteIndex = -1;
 
     let saved =
         JSON.parse(localStorage.getItem("savedPrompts")) || [];
