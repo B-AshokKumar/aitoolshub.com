@@ -3053,6 +3053,16 @@ let clearHistoryTimer;
 
 function clearPromptHistory(){
 
+    let history =
+    JSON.parse(localStorage.getItem("promptHistory")) || [];
+
+if(history.length===0){
+
+    showToast("No prompt history");
+
+    return;
+}
+
     if(!confirmClearHistory){
 
         confirmClearHistory = true;
@@ -3275,6 +3285,16 @@ let clearSavedTimer;
 
 function clearSavedPrompts(){
 
+    let saved =
+    JSON.parse(localStorage.getItem("savedPrompts")) || [];
+
+if(saved.length===0){
+
+    showToast("No saved prompts");
+
+    return;
+}
+
     if(!confirmClearSaved){
 
         confirmClearSaved = true;
@@ -3311,6 +3331,16 @@ let confirmClearRecent = false;
 let clearRecentTimer;
 
 function clearRecentTools(){
+
+    let recent =
+    JSON.parse(localStorage.getItem("recentTools")) || [];
+
+if(recent.length===0){
+
+    showToast("No recent tools");
+
+    return;
+}
 
     if(!confirmClearRecent){
 
