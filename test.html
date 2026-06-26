@@ -2126,11 +2126,33 @@ function loadHistoryPrompt(index){
 
 }
 
+let lastHistoryDeleteIndex = -1;
+let lastHistoryDeleteTimer;
+
 function deleteHistoryPrompt(index){
 
-    if(!confirm("Delete this prompt from history?")){
+    // First tap
+    if(lastHistoryDeleteIndex !== index){
+
+        lastHistoryDeleteIndex = index;
+
+        clearTimeout(lastHistoryDeleteTimer);
+
+        showToast("Tap 🗑 again to delete");
+
+        lastHistoryDeleteTimer = setTimeout(function(){
+
+            lastHistoryDeleteIndex = -1;
+
+        },2000);
+
         return;
     }
+
+    // Second tap → Delete
+    clearTimeout(lastHistoryDeleteTimer);
+
+    lastHistoryDeleteIndex = -1;
 
     let history =
         JSON.parse(localStorage.getItem("promptHistory")) || [];
@@ -2146,7 +2168,6 @@ function deleteHistoryPrompt(index){
 
     showToast("History Deleted");
 }
-
 
  /* =========================  
    PROMPT TEMPLATES
