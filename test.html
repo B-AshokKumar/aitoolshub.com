@@ -3048,7 +3048,31 @@ function shareApp(){
   document.body.removeChild(textarea);
 } 
 
+let confirmClearHistory = false;
+let clearHistoryTimer;
+
 function clearPromptHistory(){
+
+    if(!confirmClearHistory){
+
+        confirmClearHistory = true;
+
+        showToast("Tap Clear again to delete all history");
+
+        clearTimeout(clearHistoryTimer);
+
+        clearHistoryTimer = setTimeout(function(){
+
+            confirmClearHistory = false;
+
+        },2000);
+
+        return;
+    }
+
+    confirmClearHistory = false;
+
+    clearTimeout(clearHistoryTimer);
 
     localStorage.removeItem("promptHistory");
 
@@ -3057,7 +3081,6 @@ function clearPromptHistory(){
     showPromptHistory();
 
     showToast("Prompt History Cleared");
-
 }
 
 
@@ -3246,7 +3269,32 @@ function loadSavedPrompt(index){
 
     showToast("Prompt Loaded ⭐");
 }
+
+let confirmClearSaved = false;
+let clearSavedTimer;
+
 function clearSavedPrompts(){
+
+    if(!confirmClearSaved){
+
+        confirmClearSaved = true;
+
+        showToast("Tap Clear again to delete all saved prompts");
+
+        clearTimeout(clearSavedTimer);
+
+        clearSavedTimer = setTimeout(function(){
+
+            confirmClearSaved = false;
+
+        },2000);
+
+        return;
+    }
+
+    confirmClearSaved = false;
+
+    clearTimeout(clearSavedTimer);
 
     localStorage.removeItem("savedPrompts");
 
