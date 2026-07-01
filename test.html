@@ -3151,8 +3151,8 @@ function updateSavedPromptTitle(){
     const saved =
         JSON.parse(localStorage.getItem("savedPrompts")) || [];
 
-    document.getElementById("savedPromptTitle").innerText =
-        `⭐ Saved Prompts (${saved.length}/50)`;
+    document.getElementById("savedPromptTitle").innerHTML =
+    `⭐ Saved Prompts <span style="font-size:20px;color:#666;">(${saved.length}/50)</span>`;
 }
 
 function showSavedPrompts(){
