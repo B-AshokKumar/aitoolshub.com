@@ -2040,7 +2040,7 @@ function updateHistoryTitle(){
         JSON.parse(localStorage.getItem("promptHistory")) || [];
 
     document.getElementById("historyTitle").innerHTML =
-        `📜 Prompt History <span style="font-size:20px;color:#5f8fd8;font-weight:600;">(${history.length}/10)</span>`;
+        `📜 Prompt History <span style="font-size:15px;color:#5f8fd8;font-weight:600;">(${history.length}/10)</span>`;
 }
 
 function showPromptHistory(){
@@ -2344,7 +2344,7 @@ function updateRecentToolsTitle(){
         JSON.parse(localStorage.getItem("recentTools")) || [];
 
     document.getElementById("recentToolsTitle").innerHTML =
-        `🕒 Recently Used Tools <span style="font-size:18px;color:#5f8fd8;font-weight:600;">(${recent.length}/5)</span>`;
+        `🕒 Recently Used Tools <span style="font-size:15px;color:#5f8fd8;font-weight:600;">(${recent.length}/5)</span>`;
 }
 
 function showRecentTools(){
@@ -3172,7 +3172,7 @@ function updateSavedPromptTitle(){
         JSON.parse(localStorage.getItem("savedPrompts")) || [];
 
     document.getElementById("savedPromptTitle").innerHTML =
-        `⭐ Saved Prompts <span style="font-size:20px;color:#5f8fd8;font-weight:600;">(${saved.length}/50)</span>`;
+        `⭐ Saved Prompts <span style="font-size:15px;color:#5f8fd8;font-weight:600;">(${saved.length}/50)</span>`;
 }
 
 function showSavedPrompts(){
