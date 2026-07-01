@@ -1107,7 +1107,7 @@ rel="noopener noreferrer" >Runway ML</a>
 
  <div class="section" id="recentTools">
 
-<h2 id="recentToolsTitle">🕒 Recently Used Tools (0/5)</h2>
+<h2 id="recentToolsTitle">🕒 Recently Used Tools (0/10)</h2>
 
 <div class="center-btn">
   <button class="prompt-btn tip-btn"
@@ -2338,7 +2338,7 @@ showFavorites();
     link:link
   });
 
-  recent = recent.slice(0,5);
+  recent = recent.slice(0,10);
 
   localStorage.setItem(
     "recentTools",
@@ -2354,7 +2354,7 @@ function updateRecentToolsTitle(){
         JSON.parse(localStorage.getItem("recentTools")) || [];
 
     document.getElementById("recentToolsTitle").innerHTML =
-        `🕒 Recently Used Tools <span style="font-size:12px;color:#5f8fd8;font-weight:600;">(${recent.length}/5)</span>`;
+        `🕒 Recently Used Tools <span style="font-size:12px;color:#5f8fd8;font-weight:600;">(${recent.length}/10)</span>`;
 }
 
 function showRecentTools(){
