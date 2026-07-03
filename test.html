@@ -546,6 +546,28 @@ overflow-wrap:anywhere;
 .dark .prompt-history-item{
   color:#ddd;
 }
+
+.news-subtitle{
+
+text-align:center;
+
+font-size:14px;
+
+line-height:1.5;
+
+color:#666;
+
+margin-top:-8px;
+
+margin-bottom:20px;
+
+}
+
+.dark .news-subtitle{
+
+color:#ccc;
+
+}
 /* dark mode */  
 .dark .prompt-result{  
 background:#1f1f1f;  
@@ -1108,6 +1130,23 @@ onclick="resetPrompt()">
 
 </div>
 </div>
+
+<div class="section" id="news">
+
+<h2>📰 AI News</h2>
+
+<p class="news-subtitle">
+Latest updates from <b>OpenAI</b>,
+<b>Google AI</b>,
+<b>Anthropic</b>,
+<b>Microsoft AI</b>,
+<b>Meta AI</b> and more.
+</p>
+
+<div id="officialNewsList"></div>
+
+</div>
+
 <!-- PROMPT HISTORY -->
 <div class="section">
 
@@ -1278,13 +1317,6 @@ onclick="setPrompt('artificial intelligence','beginner')">
 
 </div>
 
-<div class="section" id="news">
-
-<h2>📰 AI News</h2>
-
-<div id="officialNewsList"></div>
-
-</div>
   
 <!-- TRENDING TOOLS -->  
   
