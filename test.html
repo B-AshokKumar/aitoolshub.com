@@ -569,6 +569,109 @@ margin-bottom:20px;
 color:#ccc;
 
 }
+
+.news-grid{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:15px;
+
+margin-top:15px;
+
+}
+
+.news-card{
+
+background:#cfd6e6;
+
+border-radius:16px;
+
+padding:18px 10px;
+
+text-align:center;
+
+cursor:pointer;
+
+transition:.3s;
+
+min-height:115px;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+box-shadow:0 3px 10px rgba(0,0,0,.08);
+
+}
+
+.news-card:hover{
+
+transform:translateY(-3px);
+
+background:#c3ccdf;
+
+}
+
+.news-card:active{
+
+transform:scale(.96);
+
+}
+
+.news-icon{
+
+font-size:30px;
+
+margin-bottom:8px;
+
+}
+
+.news-title{
+
+font-size:15px;
+
+font-weight:700;
+
+color:#2d74d7;
+
+margin-bottom:8px;
+
+}
+
+.news-action{
+
+font-size:12px;
+
+font-weight:600;
+
+color:#666;
+
+}
+
+.dark .news-card{
+
+background:#2b2b2b;
+
+}
+
+.dark .news-title{
+
+color:#66b2ff;
+
+}
+
+.dark .news-action{
+
+color:#ccc;
+
+}
+
 /* dark mode */  
 .dark .prompt-result{  
 background:#1f1f1f;  
@@ -1137,14 +1240,60 @@ onclick="resetPrompt()">
 <h2>📰 AI News</h2>
 
 <p class="news-subtitle">
-Latest updates from <b>OpenAI</b>,
-<b>Google AI</b>,
-<b>Anthropic</b>,
-<b>Microsoft AI</b>,
-<b>Meta AI</b> and more.
+Latest updates from leading AI companies
 </p>
 
-<div id="officialNewsList"></div>
+<div class="news-grid">
+
+<div class="news-card" onclick="window.open('https://openai.com/news/','_blank')">
+<div class="news-icon">🤖</div>
+<div class="news-title">OpenAI</div>
+<div class="news-action">Latest News →</div>
+</div>
+
+<div class="news-card" onclick="window.open('https://blog.google/technology/ai/','_blank')">
+<div class="news-icon">💎</div>
+<div class="news-title">Google AI</div>
+<div class="news-action">Latest News →</div>
+</div>
+
+<div class="news-card" onclick="window.open('https://www.anthropic.com/news','_blank')">
+<div class="news-icon">🧠</div>
+<div class="news-title">Anthropic</div>
+<div class="news-action">Latest News →</div>
+</div>
+
+<div class="news-card" onclick="window.open('https://blogs.microsoft.com/ai/','_blank')">
+<div class="news-icon">🪟</div>
+<div class="news-title">Microsoft AI</div>
+<div class="news-action">Latest News →</div>
+</div>
+
+<div class="news-card" onclick="window.open('https://ai.meta.com/blog/','_blank')">
+<div class="news-icon">∞</div>
+<div class="news-title">Meta AI</div>
+<div class="news-action">Latest News →</div>
+</div>
+
+<div class="news-card" onclick="window.open('https://x.ai/news','_blank')">
+<div class="news-icon">🚀</div>
+<div class="news-title">xAI</div>
+<div class="news-action">Latest News →</div>
+</div>
+
+<div class="news-card" onclick="window.open('https://blogs.nvidia.com/blog/category/ai/','_blank')">
+<div class="news-icon">🟢</div>
+<div class="news-title">NVIDIA AI</div>
+<div class="news-action">Latest News →</div>
+</div>
+
+<div class="news-card" onclick="window.open('https://huggingface.co/blog','_blank')">
+<div class="news-icon">🤗</div>
+<div class="news-title">Hugging Face</div>
+<div class="news-action">Latest News →</div>
+</div>
+
+</div>
 
 </div>
 
