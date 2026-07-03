@@ -632,17 +632,19 @@ z-index:1000;
 
 /* ---------- TOP ROW ---------- */
 
+/* ---------- TOP SHORTCUTS ---------- */
+
 .topShortcuts{
 
 display:flex;
 
-justify-content:space-around;
+justify-content:space-evenly;
 
 align-items:center;
 
-padding:12px 0;
+padding:7px 0;
 
-background:#f3f7ff;
+background:transparent;
 
 }
 
@@ -656,15 +658,9 @@ text-decoration:none;
 
 cursor:pointer;
 
-transition:.25s;
-
 color:#2d74d7;
 
-}
-
-.topItem:hover{
-
-transform:scale(1.05);
+transition:.25s;
 
 }
 
@@ -676,29 +672,52 @@ color:#0b5ed7;
 
 .topIcon{
 
-font-size:20px;
+font-size:17px;
+
+line-height:1;
 
 }
 
 .topText{
 
-margin-top:4px;
-
-font-size:13px;
+font-size:11px;
 
 font-weight:600;
 
+margin-top:2px;
+
 }
 
-/* Divider */
+/* Thin divider */
 
 .navDivider{
 
-height:2px;
+height:1px;
 
-background:#d9e7ff;
+background:rgba(0,0,0,.08);
 
 }
+
+/* Dark mode */
+
+.dark .topShortcuts{
+
+background:transparent;
+
+}
+
+.dark .navDivider{
+
+background:rgba(255,255,255,.10);
+
+}
+
+.dark .topItem{
+
+color:#63a9ff;
+
+}
+
 
 /* ---------- BOTTOM ROW ---------- */
 
