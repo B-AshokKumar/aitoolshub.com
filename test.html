@@ -4172,31 +4172,10 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-
-  const items = document.querySelectorAll(
-    ".tool, .category-card, .news-card"
-  );
-
-  const observer = new IntersectionObserver((entries) => {
-
-    entries.forEach(entry => {
-
-      if(entry.isIntersecting){
-
-        entry.target.classList.add("show");
-
-        observer.unobserve(entry.target);
-
-      }
-
-    });
-
-  }, {
-    threshold:0.1
-  });
-
-  items.forEach(item => observer.observe(item));
-
+    showFavorites();
+    showRecentTools();
+    showSavedPrompts();
+    showPromptHistory();
 });
 </script>
 
