@@ -2189,6 +2189,12 @@ We are not affiliated with third-party services.
 Dark Mode: OFF
 </button>
 
+<br><br>
+
+<button onclick="clearAppCache()" class="dark-btn">
+🗑️ Clear App Cache
+</button>
+
 <p style="margin-top:10px;">
 App Preferences & Settings
 </p>
@@ -3966,6 +3972,23 @@ if(recent.length===0){
 </script>
 
 <script>
+
+async function clearAppCache(){
+
+  if ("caches" in window){
+    const names = await caches.keys();
+
+    await Promise.all(
+      names.map(name => caches.delete(name))
+    );
+  }
+
+  showToast("Cache cleared");
+
+  setTimeout(()=>{
+    location.reload();
+  },1000);
+}
 function resetPrompt(){
 
     currentPromptType = "";
