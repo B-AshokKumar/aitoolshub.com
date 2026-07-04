@@ -161,7 +161,23 @@ background:#d9e5f9;
   user-select:none;
   -webkit-user-select:none;
 }
-  
+
+.tool,
+.category-card,
+.news-card{
+  opacity:0;
+  transform:translateY(20px);
+  transition:
+    opacity .5s ease,
+    transform .5s ease;
+}
+
+.tool.show,
+.category-card.show,
+.news-card.show{
+  opacity:1;
+  transform:translateY(0);
+}
 .tool a{  
 text-decoration:none;  
 color:#2d74d7;  
@@ -4134,5 +4150,33 @@ document.addEventListener("DOMContentLoaded", () => {
     showPromptHistory();
 });
 </script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const items = document.querySelectorAll(
+    ".tool, .category-card, .news-card"
+  );
+
+  const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+      if(entry.isIntersecting){
+
+        entry.target.classList.add("show");
+
+        observer.unobserve(entry.target);
+
+      }
+
+    });
+
+  }, {
+    threshold:0.1
+  });
+
+  items.forEach(item => observer.observe(item));
+
+});
+
 </body>  
 </html> 
