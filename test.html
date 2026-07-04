@@ -4143,10 +4143,31 @@ showToast(descriptions[name] || "Tool description coming soon.");
 <div id="toast"></div>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-    showFavorites();
-    showRecentTools();
-    showSavedPrompts();
-    showPromptHistory();
+
+    try {
+        showFavorites();
+    } catch(e) {
+        console.error("Favorites:", e);
+    }
+
+    try {
+        showRecentTools();
+    } catch(e) {
+        console.error("Recent:", e);
+    }
+
+    try {
+        showSavedPrompts();
+    } catch(e) {
+        console.error("Saved:", e);
+    }
+
+    try {
+        showPromptHistory();
+    } catch(e) {
+        console.error("History:", e);
+    }
+
 });
 </script>
 <script>
