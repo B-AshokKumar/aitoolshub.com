@@ -2531,8 +2531,12 @@ function updateHistoryTitle(){
     const history =
         JSON.parse(localStorage.getItem("promptHistory")) || [];
 
+    const collapsed =
+        document.getElementById("historyContent")
+        .classList.contains("hide");
+
     document.getElementById("historyTitle").innerHTML =
-        `📜 Prompt History <span style="font-size:12px;color:#5f8fd8;font-weight:600;">(${history.length}/10)</span>`;
+        `📜 Prompt History ${collapsed ? "▶" : "▼"} <span style="font-size:12px;color:#5f8fd8;font-weight:600;">(${history.length}/10)</span>`;
 }
 
 function showPromptHistory(){
@@ -3770,15 +3774,17 @@ function savePrompt(){
     showToast("Prompt Saved ⭐");
 }
 
-function updateSavedPromptTitle() {
-    const el = document.getElementById("savedPromptTitle");
-    if (!el) return;
+function updateSavedPromptTitle(){
 
     const saved =
         JSON.parse(localStorage.getItem("savedPrompts")) || [];
 
-    el.innerHTML =
-        `⭐ Saved Prompts <span style="font-size:12px;color:#5f8fd8;">(${saved.length}/50)</span>`;
+    const collapsed =
+        document.getElementById("savedContent")
+        .classList.contains("hide");
+
+    document.getElementById("savedPromptTitle").innerHTML =
+        `⭐ Saved Prompts ${collapsed ? "▶" : "▼"} <span style="font-size:12px;color:#5f8fd8;font-weight:600;">(${saved.length}/50)</span>`;
 }
 
 function showSavedPrompts(){
