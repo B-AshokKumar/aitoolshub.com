@@ -1170,6 +1170,21 @@ transform:translateX(-50%) translateY(0);
     font-size:22px;
     flex-wrap:nowrap;
 }
+
+.collapsible{
+    cursor:pointer;
+    user-select:none;
+}
+
+.collapsible-content{
+    overflow:hidden;
+    max-height:1000px;
+    transition:max-height .3s ease;
+}
+
+.collapsible-content.hide{
+    max-height:0;
+}
 </style>  
   
 </head> 
@@ -1334,20 +1349,36 @@ AI Tools Hub does not own, publish, or modify the news content.
 <!-- PROMPT HISTORY -->
 <div class="section">
 
-<h2 id="historyTitle">📜 Prompt History (0/10)</h2>
-    
+<h2 id="historyTitle"
+    class="collapsible"
+    onclick="toggleHistory()">
+📜 Prompt History (0/10) ▼
+</h2>
+
+<div id="historyContent" class="collapsible-content">
+
 <div class="center-btn">
 <button class="prompt-btn tip-btn"
 onclick="clearPromptHistory()">
 🗑️ Clear Prompt History
 </button>
 </div>
+
 <div id="promptHistoryList"></div>
 
 </div>
+
+</div>
+
 <div class="section">
 
-<h2 id="savedPromptTitle">⭐ Saved Prompts (0/50)</h2>
+<h2 id="savedPromptTitle"
+    class="collapsible"
+    onclick="toggleSaved()">
+⭐ Saved Prompts (0/50) ▼
+</h2>
+
+<div id="savedContent" class="collapsible-content">
 
 <div class="center-btn">
 <button class="prompt-btn tip-btn"
@@ -1357,6 +1388,8 @@ onclick="clearSavedPrompts()">
 </div>
 
 <div id="savedPromptList"></div>
+
+</div>
 
 </div>
 
@@ -4186,6 +4219,75 @@ document.addEventListener("DOMContentLoaded", () => {
     showPromptHistory();
 });
 </script>
+<script>
 
+function toggleHistory(){
+
+    const box=document.getElementById("historyContent");
+    const title=document.getElementById("historyTitle");
+
+    box.classList.toggle("hide");
+
+    localStorage.setItem(
+        "historyCollapsed",
+        box.classList.contains("hide")
+    );
+
+    title.innerHTML=
+        title.innerHTML.includes("▼")
+        ? title.innerHTML.replace("▼","▲")
+        : title.innerHTML.replace("▲","▼");
+}
+
+function toggleSaved(){
+
+    const box=document.getElementById("savedContent");
+    const title=document.getElementById("savedPromptTitle");
+
+    box.classList.toggle("hide");
+
+    localStorage.setItem(
+        "savedCollapsed",
+        box.classList.contains("hide")
+    );
+
+    title.innerHTML=
+        title.innerHTML.includes("▼")
+        ? title.innerHTML.replace("▼","▲")
+        : title.innerHTML.replace("▲","▼");
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    if(localStorage.getItem("historyCollapsed")==="true"){
+
+        document
+        .getElementById("historyContent")
+        .classList.add("hide");
+
+        document
+        .getElementById("historyTitle")
+        .innerHTML=
+        document
+        .getElementById("historyTitle")
+        .innerHTML.replace("▼","▲");
+    }
+
+    if(localStorage.getItem("savedCollapsed")==="true"){
+
+        document
+        .getElementById("savedContent")
+        .classList.add("hide");
+
+        document
+        .getElementById("savedPromptTitle")
+        .innerHTML=
+        document
+        .getElementById("savedPromptTitle")
+        .innerHTML.replace("▼","▲");
+    }
+
+});
+</script>
 </body>  
 </html> 
