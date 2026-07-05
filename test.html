@@ -3809,8 +3809,7 @@ function updateRecentToolsTitle(){
 
     const recent =
         JSON.parse(localStorage.getItem("recentTools")) || [];
-    updateRecentToolsTitle();
-
+    
     const collapsed =
         document.getElementById("recentToolsContent")
         .classList.contains("hide");
@@ -4254,14 +4253,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 </script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    showFavorites();
-    showRecentTools();
-    showSavedPrompts();
-    showPromptHistory();
-});
-</script>
+
 <script>
 
 function toggleHistory(){
