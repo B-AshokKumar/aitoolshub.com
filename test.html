@@ -2853,18 +2853,6 @@ showFavorites();
   showRecentTools();
 }
 
-function updateRecentToolsTitle() {
-    const el = document.getElementById("recentToolsTitle");
-    if (!el) return;
-
-    const recent =
-        JSON.parse(localStorage.getItem("recentTools")) || [];
-
-    el.innerHTML =
-        `🕒 Recently Used Tools <span style="font-size:12px;color:#5f8fd8;">(${recent.length}/10)</span>`;
-}
-
-
 function showRecentTools(){
 
   let container =
