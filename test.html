@@ -4235,8 +4235,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function toggleHistory(){
 
-    const box=document.getElementById("historyContent");
-    const title=document.getElementById("historyTitle");
+    const box = document.getElementById("historyContent");
 
     box.classList.toggle("hide");
 
@@ -4245,16 +4244,12 @@ function toggleHistory(){
         box.classList.contains("hide")
     );
 
-    title.innerHTML=
-        title.innerHTML.includes("▼")
-        ? title.innerHTML.replace("▼","▲")
-        : title.innerHTML.replace("▲","▼");
+    updateHistoryTitle();
 }
 
 function toggleSaved(){
 
-    const box=document.getElementById("savedContent");
-    const title=document.getElementById("savedPromptTitle");
+    const box = document.getElementById("savedContent");
 
     box.classList.toggle("hide");
 
@@ -4263,10 +4258,7 @@ function toggleSaved(){
         box.classList.contains("hide")
     );
 
-    title.innerHTML=
-        title.innerHTML.includes("▼")
-        ? title.innerHTML.replace("▼","▲")
-        : title.innerHTML.replace("▲","▼");
+    updateSavedPromptTitle();
 }
 
 document.addEventListener("DOMContentLoaded",()=>{
