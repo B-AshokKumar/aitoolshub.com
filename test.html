@@ -1166,9 +1166,10 @@ transform:translateX(-50%) translateY(0);
 #recentToolsTitle{
     display:flex;
     align-items:center;
-    gap:8px;
+    gap:6px;
     font-size:22px;
     flex-wrap:nowrap;
+    white-space:nowrap;
 }
 
 .collapsible{
@@ -2544,14 +2545,19 @@ function updateHistoryTitle(){
 
     const arrow = collapsed ? "▸" : "▾";
 
-document.getElementById("historyTitle").innerHTML =
-`📜 Prompt History
-<span style="font-size:22px;font-weight:bold;vertical-align:middle;">${arrow}</span>
+    document.getElementById("historyTitle").innerHTML =
+`
+<span style="white-space:nowrap;">📜 Prompt History</span>
+
+<span style="font-size:28px;font-weight:bold;line-height:1;">
+${arrow}
+</span>
+
 <span style="font-size:12px;color:#5f8fd8;font-weight:600;">
 (${history.length}/10)
-</span>`;
+</span>
+`;
 }
-
 function showPromptHistory(){
 
     let container =
@@ -3798,19 +3804,25 @@ function updateSavedPromptTitle(){
 
     const arrow = collapsed ? "▸" : "▾";
 
-document.getElementById("savedPromptTitle").innerHTML =
-`⭐ Saved Prompts
-<span style="font-size:22px;font-weight:bold;vertical-align:middle;">${arrow}</span>
+    document.getElementById("savedPromptTitle").innerHTML =
+`
+<span style="white-space:nowrap;">⭐ Saved Prompts</span>
+
+<span style="font-size:28px;font-weight:bold;line-height:1;">
+${arrow}
+</span>
+
 <span style="font-size:12px;color:#5f8fd8;font-weight:600;">
 (${saved.length}/50)
-</span>`;
+</span>
+`;
 }
 
 function updateRecentToolsTitle(){
 
     const recent =
         JSON.parse(localStorage.getItem("recentTools")) || [];
-    
+
     const collapsed =
         document.getElementById("recentToolsContent")
         .classList.contains("hide");
@@ -3818,11 +3830,17 @@ function updateRecentToolsTitle(){
     const arrow = collapsed ? "▸" : "▾";
 
     document.getElementById("recentToolsTitle").innerHTML =
-        `🕒 Recently Used Tools
-        <span style="font-size:20px;font-weight:bold;">${arrow}</span>
-        <span style="font-size:12px;color:#5f8fd8;font-weight:600;">
-        (${recent.length}/10)
-        </span>`;
+`
+<span style="white-space:nowrap;">🕒 Recently Used Tools</span>
+
+<span style="font-size:28px;font-weight:bold;line-height:1;">
+${arrow}
+</span>
+
+<span style="font-size:12px;color:#5f8fd8;font-weight:600;">
+(${recent.length}/10)
+</span>
+`;
 }
 function showSavedPrompts(){
     
