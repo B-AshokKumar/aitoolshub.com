@@ -1578,18 +1578,24 @@ rel="noopener noreferrer" >Runway ML</a>
 
  <div class="section" id="recentTools">
 
-<h2 id="recentToolsTitle">🕒 Recently Used Tools (0/10)</h2>
+<h2 id="recentToolsTitle"
+    class="collapsible"
+    onclick="toggleRecentTools()">
+🕒 Recently Used Tools ▾
+</h2>
+
+<div id="recentToolsContent" class="collapsible-content">
 
 <div class="center-btn">
-  <button class="prompt-btn tip-btn"
+<button class="prompt-btn tip-btn"
 onclick="clearRecentTools()">
-🗑️ Clear Recent Tools
+🗑 Clear Recent Tools
 </button>
 </div>
 
 <div id="recentToolsList"></div>
 
-</div> 
+</div>
 <!-- AI CATEGORIES -->  
   
 <!-- AI TOOLS CATEGORIES -->  
@@ -3799,6 +3805,25 @@ document.getElementById("savedPromptTitle").innerHTML =
 </span>`;
 }
 
+function updateRecentToolsTitle(){
+
+    const recent =
+        JSON.parse(localStorage.getItem("recentTools")) || [];
+    updateRecentToolsTitle();
+
+    const collapsed =
+        document.getElementById("recentToolsContent")
+        .classList.contains("hide");
+
+    const arrow = collapsed ? "▸" : "▾";
+
+    document.getElementById("recentToolsTitle").innerHTML =
+        `🕒 Recently Used Tools
+        <span style="font-size:20px;font-weight:bold;">${arrow}</span>
+        <span style="font-size:12px;color:#5f8fd8;font-weight:600;">
+        (${recent.length}/10)
+        </span>`;
+}
 function showSavedPrompts(){
     
   let container =
@@ -4267,6 +4292,21 @@ function toggleSaved(){
     updateSavedPromptTitle();
 }
 
+function toggleRecentTools(){
+
+    const box =
+        document.getElementById("recentToolsContent");
+
+    box.classList.toggle("hide");
+
+    localStorage.setItem(
+        "recentCollapsed",
+        box.classList.contains("hide")
+    );
+
+    updateRecentToolsTitle();
+}
+
 document.addEventListener("DOMContentLoaded",()=>{
 
     if(localStorage.getItem("historyCollapsed")==="true"){
@@ -4286,6 +4326,7 @@ document.addEventListener("DOMContentLoaded",()=>{
 
     updateHistoryTitle();
     updateSavedPromptTitle();
+    updateRecentToolsTitle();
 
 });
 </script>
