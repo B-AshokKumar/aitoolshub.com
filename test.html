@@ -2471,21 +2471,26 @@ else if(type === "proposal"){
 
 function savePromptHistory(prompt){
 
-  let history =
-    JSON.parse(
-      localStorage.getItem("promptHistory")
-    ) || [];
+    let history =
+        JSON.parse(
+            localStorage.getItem("promptHistory")
+        ) || [];
 
-  history.unshift(prompt);
+    // Remove duplicate if it already exists
+    history = history.filter(item => item !== prompt);
 
-  history = history.slice(0,10);
+    // Add newest prompt at the top
+    history.unshift(prompt);
 
-  localStorage.setItem(
-    "promptHistory",
-    JSON.stringify(history)
-  );
+    // Keep only the latest 10 prompts
+    history = history.slice(0,10);
 
-  showPromptHistory();
+    localStorage.setItem(
+        "promptHistory",
+        JSON.stringify(history)
+    );
+
+    showPromptHistory();
 }
 
 function updateHistoryTitle(){
