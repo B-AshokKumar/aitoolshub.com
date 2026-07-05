@@ -2536,7 +2536,10 @@ function updateHistoryTitle(){
         .classList.contains("hide");
 
     document.getElementById("historyTitle").innerHTML =
-        `📜 Prompt History ${collapsed ? "▶" : "▼"} <span style="font-size:12px;color:#5f8fd8;font-weight:600;">(${history.length}/10)</span>`;
+`📜 Prompt History <span style="font-size:18px">${collapsed ? "▶" : "▼"}</span>
+<span style="font-size:12px;color:#5f8fd8;font-weight:600;">
+(${history.length}/10)
+</span>`;
 }
 
 function showPromptHistory(){
@@ -3784,7 +3787,10 @@ function updateSavedPromptTitle(){
         .classList.contains("hide");
 
     document.getElementById("savedPromptTitle").innerHTML =
-        `⭐ Saved Prompts ${collapsed ? "▶" : "▼"} <span style="font-size:12px;color:#5f8fd8;font-weight:600;">(${saved.length}/50)</span>`;
+        `⭐ Saved Prompts <span style="font-size:18px">${arrow}</span>
+        <span style="font-size:12px;color:#5f8fd8;font-weight:600;">
+        (${saved.length}/50)
+        </span>`;
 }
 
 function showSavedPrompts(){
