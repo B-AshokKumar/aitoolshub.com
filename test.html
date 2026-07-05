@@ -3786,6 +3786,8 @@ function updateSavedPromptTitle(){
         document.getElementById("savedContent")
         .classList.contains("hide");
 
+    const arrow = collapsed ? "▸" : "▾";
+
     document.getElementById("savedPromptTitle").innerHTML =
         `⭐ Saved Prompts <span style="font-size:18px">${arrow}</span>
         <span style="font-size:12px;color:#5f8fd8;font-weight:600;">
@@ -4268,13 +4270,6 @@ document.addEventListener("DOMContentLoaded",()=>{
         document
         .getElementById("historyContent")
         .classList.add("hide");
-
-        document
-        .getElementById("historyTitle")
-        .innerHTML=
-        document
-        .getElementById("historyTitle")
-        .innerHTML.replace("▼","▲");
     }
 
     if(localStorage.getItem("savedCollapsed")==="true"){
@@ -4283,13 +4278,10 @@ document.addEventListener("DOMContentLoaded",()=>{
         .getElementById("savedContent")
         .classList.add("hide");
 
-        document
-        .getElementById("savedPromptTitle")
-        .innerHTML=
-        document
-        .getElementById("savedPromptTitle")
-        .innerHTML.replace("▼","▲");
     }
+
+    updateHistoryTitle();
+    updateSavedPromptTitle();
 
 });
 </script>
