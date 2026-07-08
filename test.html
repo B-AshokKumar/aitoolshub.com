@@ -4333,6 +4333,13 @@ document.addEventListener("DOMContentLoaded",()=>{
 
     }
 
+    if(localStorage.getItem("recentCollapsed")==="true"){
+
+    document
+    .getElementById("recentToolsContent")
+    .classList.add("hide");
+}
+
     updateHistoryTitle();
     updateSavedPromptTitle();
     updateRecentToolsTitle();
