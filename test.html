@@ -1580,12 +1580,22 @@ rel="noopener noreferrer" >Runway ML</a>
   
 <!-- FAVORITE TOOLS -->  
 
-
 <div class="section" id="favorites">
-<h2>⭐ My Favorite Tools</h2>
-<div id="favoritesList"></div>  
-  
-</div>  
+
+<h2 id="favoritesTitle"
+    class="collapsible"
+    onclick="toggleFavorites()">
+⭐ My Favorite Tools ▾
+</h2>
+
+<div id="favoritesContent"
+     class="collapsible-content">
+
+<div id="favoritesList"></div>
+
+</div>
+
+</div>
 
  <div class="section" id="recentTools">
 
@@ -2821,7 +2831,8 @@ if(!star) return;
 let exists=favorites.find(f=>f.name===t.dataset.name);  
 star.innerHTML = exists ? "🌟" : "⭐";  
 });  
-  
+
+updateFavoritesTitle();
 }  
   
 function removeFavorite(el){  
@@ -4316,6 +4327,39 @@ function toggleRecentTools(){
     updateRecentToolsTitle();
 }
 
+function toggleFavorites(){
+
+    const box =
+        document.getElementById("favoritesContent");
+
+    box.classList.toggle("hide");
+
+    localStorage.setItem(
+        "favoritesCollapsed",
+        box.classList.contains("hide")
+    );
+
+    updateFavoritesTitle();
+}
+
+function updateFavoritesTitle(){
+
+    const favorites =
+        JSON.parse(localStorage.getItem("favorites")) || [];
+
+    const collapsed =
+        document.getElementById("favoritesContent")
+        .classList.contains("hide");
+
+    const arrow = collapsed ? "▸" : "▾";
+
+    document.getElementById("favoritesTitle").innerHTML =
+        `⭐ My Favorite Tools ${arrow}
+<span style="font-size:12px;color:#5f8fd8;font-weight:600;">
+(${favorites.length})
+</span>`;
+}
+
 document.addEventListener("DOMContentLoaded",()=>{
 
     if(localStorage.getItem("historyCollapsed")==="true"){
@@ -4340,9 +4384,17 @@ document.addEventListener("DOMContentLoaded",()=>{
     .classList.add("hide");
 }
 
+    if(localStorage.getItem("favoritesCollapsed")==="true"){
+
+    document
+    .getElementById("favoritesContent")
+    .classList.add("hide");
+}
+
     updateHistoryTitle();
     updateSavedPromptTitle();
     updateRecentToolsTitle();
+    updateFavoritesTitle();
 
 });
 </script>
