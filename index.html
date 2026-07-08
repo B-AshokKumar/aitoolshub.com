@@ -1,5 +1,5 @@
 <!DOCTYPE html>  
-<!-- Version 1.14 -->  
+<!-- Version 1.15 -->
 <html lang="en">  
 <head>  
 
@@ -21,6 +21,7 @@
 <meta name="robots" content="index,follow">
 
 <meta name="theme-color" content="#111">  
+<meta name="color-scheme" content="light dark">
 <link rel="manifest" href="manifest.json">
 <title>AI Tools Hub</title>  
     
@@ -170,12 +171,26 @@ background:#d9e5f9;
   user-select:none;
   -webkit-user-select:none;
 }
-  
+
+.tool,
+.category-card,
+.news-card{
+  opacity:1 !important;
+  transform:none !important;
+}
+
+.tool.show,
+.category-card.show,
+.news-card.show{
+  opacity:1;
+  transform:translateY(0);
+}
 .tool a{  
 text-decoration:none;  
 color:#2d74d7;  
 font-size:18px;  
 font-weight:600;  
+pointer-events:auto;
 }  
   
 /* CATEGORY GRID */  
@@ -343,12 +358,6 @@ color:#444;
 transform:scale(1.05);  
 background:#bfc7db;  
 }  
-
-  
-.tool a{  
-pointer-events:auto;  
-}  
-  
   
 /* your existing CSS code */  
   
@@ -556,6 +565,146 @@ overflow-wrap:anywhere;
 .dark .prompt-history-item{
   color:#ddd;
 }
+
+.news-subtitle{
+
+text-align:center;
+
+font-size:14px;
+
+line-height:1.5;
+
+color:#666;
+
+margin-top:-8px;
+
+margin-bottom:20px;
+
+}
+
+.dark .news-subtitle{
+
+color:#ccc;
+
+}
+
+.news-grid{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:12px;
+
+margin-top:12px;
+
+}
+
+.news-card{
+
+background:#cfd6e6;
+
+border-radius:14px;
+
+padding:14px 8px;
+
+text-align:center;
+
+cursor:pointer;
+
+transition:.3s;
+
+min-height:95px;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+box-shadow:0 2px 8px rgba(0,0,0,.08);
+
+}
+
+.news-card:hover{
+
+transform:translateY(-3px);
+
+background:#c3ccdf;
+
+}
+
+.news-card:active{
+
+transform:scale(.96);
+
+}
+
+.news-icon{
+
+font-size:24px;
+
+margin-bottom:6px;
+
+}
+
+.news-title{
+
+font-size:14px;
+
+font-weight:700;
+
+color:#2d74d7;
+
+margin-bottom:5px;
+
+}
+
+.news-action{
+
+font-size:11px;
+
+font-weight:600;
+
+color:#666;
+
+}
+
+.dark .news-card{
+
+background:#2b2b2b;
+
+}
+
+.dark .news-title{
+
+color:#66b2ff;
+
+}
+
+.dark .news-action{
+
+color:#ccc;
+
+}
+
+.news-note{
+    width:100%;
+    max-width:320px;
+    margin:16px auto 0;
+    padding:0 12px;
+    font-size:12px;
+    line-height:1.5;
+    color:#777;
+    text-align:center;
+}
+
+.dark .news-note{
+    color:#bbb;
+}
+
 /* dark mode */  
 .dark .prompt-result{  
 background:#1f1f1f;  
@@ -615,27 +764,244 @@ margin-left:12px;
 content:"";
 }
 
+/* ===================================
+   FLOATING NAVIGATION
+=================================== */
+
+#floatingNav{
+
+position:fixed;
+
+left:12px;
+right:12px;
+
+bottom:max(14px,env(safe-area-inset-bottom));
+
+background:rgba(255,255,255,0.85);
+
+backdrop-filter:blur(12px);
+-webkit-backdrop-filter:blur(12px);
+
+border-radius:22px;
+
+overflow:hidden;
+
+box-shadow:0 8px 22px rgba(0,0,0,.18);
+
+z-index:1000;
+
+}
+
+/* ---------- TOP ROW ---------- */
+
+/* ---------- TOP SHORTCUTS ---------- */
+
+.topShortcuts{
+
+display:flex;
+
+justify-content:space-evenly;
+
+align-items:center;
+
+padding:7px 0;
+
+background:transparent;
+
+}
+
+.topItem{
+
+flex:1;
+
+text-align:center;
+
+text-decoration:none;
+
+cursor:pointer;
+
+color:#2d74d7;
+
+transition:.25s;
+
+}
+
+.topItem.active{
+
+color:#0b5ed7;
+
+}
+
+.topIcon{
+
+font-size:17px;
+
+line-height:1;
+
+}
+
+.topText{
+
+font-size:11px;
+
+font-weight:600;
+
+margin-top:2px;
+
+}
+
+/* Thin divider */
+
+.navDivider{
+
+height:1px;
+
+background:rgba(0,0,0,.08);
+
+}
+
+/* Dark mode */
+
+.dark .topShortcuts{
+
+background:transparent;
+
+}
+
+.dark .navDivider{
+
+background:rgba(255,255,255,.10);
+
+}
+
+.dark .topItem{
+
+color:#63a9ff;
+
+}
+
+
+/* ---------- BOTTOM ROW ---------- */
+
 .bottom-nav{
-  position:fixed;
 
-  left:12px;
-  right:12px;
+display:flex;
 
-  bottom:max(14px, env(safe-area-inset-bottom));
+justify-content:space-around;
 
-  background:#fff;
+align-items:center;
 
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
+padding:9px 0;
 
-  padding:12px 0;
+background:#fff;
 
-  border-radius:18px;
+}
 
-  box-shadow:0 -2px 10px rgba(0,0,0,0.12);
+.nav-link{
 
-  z-index:1000;
+flex:1;
+
+text-align:center;
+
+text-decoration:none;
+
+color:#6a1b9a;
+
+font-size:12px;
+
+font-weight:600;
+
+transition:.25s;
+
+}
+
+.nav-link span{
+
+display:block;
+
+margin-top:3px;
+
+font-size:11px;
+
+}
+
+.nav-link.active{
+
+color:#2d74d7;
+
+transform:scale(1.05);
+
+}
+
+.nav-link.active::after{
+
+content:"";
+
+display:block;
+
+width:6px;
+
+height:6px;
+
+margin:4px auto 0;
+
+background:#2d74d7;
+
+border-radius:50%;
+
+}
+
+/* ---------- DARK MODE ---------- */
+
+.dark #floatingNav{
+
+background:rgba(30,30,30,0.85);
+
+backdrop-filter:blur(12px);
+-webkit-backdrop-filter:blur(12px);
+
+}
+
+.dark .topShortcuts{
+
+background:#252f3d;
+
+}
+
+.dark .bottom-nav{
+
+background:#1e1e1e;
+
+}
+
+.dark .navDivider{
+
+background:#344a66;
+
+}
+
+.dark .topItem{
+
+color:#63a9ff;
+
+}
+
+.dark .nav-link{
+
+color:#ddd;
+
+}
+
+.dark .nav-link.active{
+
+color:#63a9ff;
+
+}
+
+.dark .nav-link.active::after{
+
+background:#63a9ff;
+
 }
 
 
@@ -804,6 +1170,32 @@ opacity:1;
 visibility:visible;
 transform:translateX(-50%) translateY(0);
 }
+
+#savedPromptTitle,
+#historyTitle,
+#recentToolsTitle{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:22px;
+    flex-wrap:nowrap;
+    white-space:nowrap;
+}
+
+.collapsible{
+    cursor:pointer;
+    user-select:none;
+}
+
+.collapsible-content{
+    overflow:hidden;
+    max-height:9999px;
+    transition:max-height .35s ease;
+}
+
+.collapsible-content.hide{
+    max-height:0;
+}
 </style>  
   
 </head> 
@@ -832,8 +1224,10 @@ Dark Mode: OFF
 
   
 <!-- HOME -->  
+
+<div id="home" style="height:1px;"></div>
   
-<div class="section prompt-section" id="home">
+<div class="section prompt-section" id="prompts">
 
   <h2 class="welcome-title">Welcome to<br> AI Tools Hub</h2>
 
@@ -895,23 +1289,107 @@ onclick="resetPrompt()">
 
 </div>
 </div>
+
+<div class="section" id="news">
+
+<h2>📰 AI News</h2>
+
+<p class="news-subtitle">
+Latest updates from leading AI companies
+</p>
+
+<div class="news-grid">
+
+<div class="news-card" onclick="window.open('https://openai.com/news/','_blank')">
+<div class="news-icon">🤖</div>
+<div class="news-title">OpenAI</div>
+<div class="news-action">Latest News →</div>
+</div>
+
+<div class="news-card" onclick="window.open('https://blog.google/technology/ai/','_blank')">
+<div class="news-icon">💎</div>
+<div class="news-title">Google AI</div>
+<div class="news-action">Latest News →</div>
+</div>
+
+<div class="news-card" onclick="window.open('https://www.anthropic.com/news','_blank')">
+<div class="news-icon">🧠</div>
+<div class="news-title">Anthropic</div>
+<div class="news-action">Latest News →</div>
+</div>
+
+<div class="news-card" onclick="window.open('https://blogs.microsoft.com/ai/','_blank')">
+<div class="news-icon">🪟</div>
+<div class="news-title">Microsoft AI</div>
+<div class="news-action">Latest News →</div>
+</div>
+
+<div class="news-card" onclick="window.open('https://ai.meta.com/blog/','_blank')">
+<div class="news-icon">∞</div>
+<div class="news-title">Meta AI</div>
+<div class="news-action">Latest News →</div>
+</div>
+
+<div class="news-card" onclick="window.open('https://x.ai/news','_blank')">
+<div class="news-icon">🚀</div>
+<div class="news-title">xAI</div>
+<div class="news-action">Latest News →</div>
+</div>
+
+<div class="news-card" onclick="window.open('https://blogs.nvidia.com/blog/category/ai/','_blank')">
+<div class="news-icon">🟢</div>
+<div class="news-title">NVIDIA AI</div>
+<div class="news-action">Latest News →</div>
+</div>
+
+<div class="news-card" onclick="window.open('https://huggingface.co/blog','_blank')">
+<div class="news-icon">🤗</div>
+<div class="news-title">Hugging Face</div>
+<div class="news-action">Latest News →</div>
+</div>
+ 
+</div>
+
+<p class="news-note">
+📰 News links open the official websites of their respective companies.
+AI Tools Hub does not own, publish, or modify the news content.
+</p>
+
+</div>
+
 <!-- PROMPT HISTORY -->
 <div class="section">
 
-<h2>📜 Prompt History</h2>
-    
+<h2 id="historyTitle"
+    class="collapsible"
+    onclick="toggleHistory()">
+📜 Prompt History (0/10) ▼
+</h2>
+
+<div id="historyContent" class="collapsible-content">
+
 <div class="center-btn">
 <button class="prompt-btn tip-btn"
 onclick="clearPromptHistory()">
 🗑️ Clear Prompt History
 </button>
 </div>
+
 <div id="promptHistoryList"></div>
 
 </div>
+
+</div>
+
 <div class="section">
 
-<h2>⭐ Saved Prompts</h2>
+<h2 id="savedPromptTitle"
+    class="collapsible"
+    onclick="toggleSaved()">
+⭐ Saved Prompts (0/50) ▼
+</h2>
+
+<div id="savedContent" class="collapsible-content">
 
 <div class="center-btn">
 <button class="prompt-btn tip-btn"
@@ -924,9 +1402,11 @@ onclick="clearSavedPrompts()">
 
 </div>
 
+</div>
+
 <!-- AI PROMPT TEMPLATES -->
 
-<div class="section">
+<div class="section" id="promptTemplates">
 
 <h2>✨ AI Prompt Templates</h2>
 
@@ -1064,11 +1544,13 @@ onclick="setPrompt('artificial intelligence','beginner')">
 </div>
 
 </div>
+
   
 <!-- TRENDING TOOLS -->  
   
-<div class="section">  
-<h2>🔥 Trending AI Tools</h2>  
+<div class="section" id="tools">
+
+<h2>🔥 Trending AI Tools</h2>
   
 <div class="tool" data-name="ChatGPT">  
 <a href="https://chat.openai.com"  target="_blank" 
@@ -1098,27 +1580,44 @@ rel="noopener noreferrer" >Runway ML</a>
   
 <!-- FAVORITE TOOLS -->  
 
-
 <div class="section" id="favorites">
-<h2>⭐ My Favorite Tools</h2>
-<div id="favoritesList"></div>  
-  
-</div>  
+
+<h2 id="favoritesTitle"
+    class="collapsible"
+    onclick="toggleFavorites()">
+⭐ My Favorite Tools ▾
+</h2>
+
+<div id="favoritesContent"
+     class="collapsible-content">
+
+<div id="favoritesList"></div>
+
+</div>
+
+</div>
 
  <div class="section" id="recentTools">
 
-<h2>🕒 Recently Used Tools</h2>
+<h2 id="recentToolsTitle"
+    class="collapsible"
+    onclick="toggleRecentTools()">
+🕒 Recently Used Tools ▾
+</h2>
+
+<div id="recentToolsContent" class="collapsible-content">
 
 <div class="center-btn">
-  <button class="prompt-btn tip-btn"
+<button class="prompt-btn tip-btn"
 onclick="clearRecentTools()">
-🗑️ Clear Recent Tools
+🗑 Clear Recent Tools
 </button>
 </div>
 
 <div id="recentToolsList"></div>
 
-</div> 
+</div>
+</div>
 <!-- AI CATEGORIES -->  
   
 <!-- AI TOOLS CATEGORIES -->  
@@ -1764,6 +2263,12 @@ We are not affiliated with third-party services.
 Dark Mode: OFF
 </button>
 
+<br><br>
+
+<button onclick="clearAppCache()" class="dark-btn">
+🗑️ Clear App Cache
+</button>
+
 <p style="margin-top:10px;">
 App Preferences & Settings
 </p>
@@ -1781,7 +2286,7 @@ App Preferences & Settings
  <div class="footer">
   <div>AI Tools Hub © 2026 Curated AI tools Directory</div>
   <div style="font-size:12px;color:#999;margin-top:4px;">
-    Version 1.14 (11400)
+    Version 1.15 (11500)
   </div>
 </div> 
 <script>  
@@ -2027,23 +2532,52 @@ else if(type === "proposal"){
 
 function savePromptHistory(prompt){
 
-  let history =
-    JSON.parse(
-      localStorage.getItem("promptHistory")
-    ) || [];
+    let history =
+        JSON.parse(
+            localStorage.getItem("promptHistory")
+        ) || [];
 
-  history.unshift(prompt);
+    // Remove duplicate if it already exists
+    history = history.filter(item => item !== prompt);
 
-  history = history.slice(0,10);
+    // Add newest prompt at the top
+    history.unshift(prompt);
 
-  localStorage.setItem(
-    "promptHistory",
-    JSON.stringify(history)
-  );
+    // Keep only the latest 10 prompts
+    history = history.slice(0,10);
 
-  showPromptHistory();
+    localStorage.setItem(
+        "promptHistory",
+        JSON.stringify(history)
+    );
+
+    showPromptHistory();
 }
 
+function updateHistoryTitle(){
+
+    const history =
+        JSON.parse(localStorage.getItem("promptHistory")) || [];
+
+    const collapsed =
+        document.getElementById("historyContent")
+        .classList.contains("hide");
+
+    const arrow = collapsed ? "▸" : "▾";
+
+    document.getElementById("historyTitle").innerHTML =
+`
+<span style="white-space:nowrap;">📜 Prompt History</span>
+
+<span style="font-size:28px;font-weight:bold;line-height:1;">
+${arrow}
+</span>
+
+<span style="font-size:12px;color:#5f8fd8;font-weight:600;">
+(${history.length}/10)
+</span>
+`;
+}
 function showPromptHistory(){
 
     let container =
@@ -2053,7 +2587,8 @@ function showPromptHistory(){
 
     let history =
         JSON.parse(localStorage.getItem("promptHistory")) || [];
-
+    
+      updateHistoryTitle();
     if(history.length===0){
 
         container.innerHTML = `
@@ -2296,7 +2831,8 @@ if(!star) return;
 let exists=favorites.find(f=>f.name===t.dataset.name);  
 star.innerHTML = exists ? "🌟" : "⭐";  
 });  
-  
+
+updateFavoritesTitle();
 }  
   
 function removeFavorite(el){  
@@ -2328,7 +2864,7 @@ showFavorites();
     link:link
   });
 
-  recent = recent.slice(0,5);
+  recent = recent.slice(0,10);
 
   localStorage.setItem(
     "recentTools",
@@ -2352,6 +2888,7 @@ function showRecentTools(){
       localStorage.getItem("recentTools")
     ) || [];
     
+    updateRecentToolsTitle();
      if(recent.length === 0){
 
     container.innerHTML =
@@ -2522,12 +3059,79 @@ window.addEventListener(
 
 <div id="tipBox" class="tip-box"></div>
 
-<div class="bottom-nav">
+<!-- Floating Navigation -->
 
-<a href="#" class="nav-link active" data-target="home">🏠 Home</a>
-<a href="#" class="nav-link" data-target="search">🔎 Search</a>
-<a href="#" class="nav-link" data-target="favorites">⭐ Favorites</a>
-<a href="#" class="nav-link" data-target="settings">⚙️ Settings</a>
+<div id="floatingNav">
+
+    <!-- Top Row -->
+
+    <div class="topShortcuts">
+
+        <a href="#" class="topItem" data-target="tools">
+
+            <div class="topIcon">🤖</div>
+
+            <div class="topText">AI Tools</div>
+
+        </a>
+
+        <a href="#" class="topItem" data-target="news">
+
+            <div class="topIcon">📰</div>
+
+            <div class="topText">AI News</div>
+
+        </a>
+
+        <a href="#" class="topItem" data-target="promptTemplates">
+
+            <div class="topIcon">✨</div>
+
+            <div class="topText">Prompts</div>
+
+        </a>
+
+    </div>
+
+    <div class="navDivider"></div>
+
+    <!-- Bottom Row -->
+
+    <div class="bottom-nav">
+
+        <a href="#" class="nav-link active" data-target="home">
+
+            🏠
+
+            <span>Home</span>
+
+        </a>
+
+        <a href="#" class="nav-link" data-target="search">
+
+            🔎
+
+            <span>Search</span>
+
+        </a>
+
+        <a href="#" class="nav-link" data-target="favorites">
+
+            ⭐
+
+            <span>Favorites</span>
+
+        </a>
+
+        <a href="#" class="nav-link" data-target="settings">
+
+            ⚙️
+
+            <span>Settings</span>
+
+        </a>
+
+    </div>
 
 </div>
 
@@ -2552,12 +3156,13 @@ if (
 </script>
 
 <script>
-window.addEventListener("load", function(){
+document.addEventListener("DOMContentLoaded", function(){
 
-  document.body.style.visibility = "visible";
+    document.body.style.visibility = "visible";
 
 });
 </script>
+
 <script>
 const tips = [
  "Use detailed prompts",
@@ -2590,7 +3195,6 @@ const tips = [
  "Generate emails quickly",
  "Create to-do lists with AI",
  "Ask AI to simplify complex topics",
- "Use AI for brainstorming ideas",
  "Use AI for SEO optimization",
  "Automate social media posting",
  "Create YouTube scripts",
@@ -2968,34 +3572,76 @@ document.addEventListener("DOMContentLoaded", function(){
 </script>
 
 <script>
-document.querySelectorAll(".nav-link").forEach(link => {
+// Bottom Navigation
 
-  link.addEventListener("click", function(e){
+document.querySelectorAll(".nav-link").forEach(link=>{
 
-    e.preventDefault();
+link.addEventListener("click",function(e){
 
-    // remove active from all
-    document.querySelectorAll(".nav-link").forEach(l=>{
-      l.classList.remove("active");
-    });
+e.preventDefault();
 
-    // add active to clicked
-    this.classList.add("active");
+document.querySelectorAll(".nav-link").forEach(l=>{
 
-    // scroll
-    let target = this.getAttribute("data-target");
-    let el = document.getElementById(target);
+l.classList.remove("active");
 
-    if(el){
-      let y = el.getBoundingClientRect().top + window.pageYOffset;
+});
 
-      window.scrollTo({
-        top: y - 50,
-        behavior: "smooth"
-      });
-    }
+this.classList.add("active");
 
-  });
+let target=this.dataset.target;
+
+let el=document.getElementById(target);
+
+if(el){
+
+window.scrollTo({
+
+top:el.offsetTop-50,
+
+behavior:"smooth"
+
+});
+
+}
+
+});
+
+});
+
+
+// Top Navigation
+
+document.querySelectorAll(".topItem").forEach(link=>{
+
+link.addEventListener("click",function(e){
+
+e.preventDefault();
+
+document.querySelectorAll(".topItem").forEach(l=>{
+
+l.classList.remove("active");
+
+});
+
+this.classList.add("active");
+
+let target=this.dataset.target;
+
+let el=document.getElementById(target);
+
+if(el){
+
+window.scrollTo({
+
+top:el.offsetTop-50,
+
+behavior:"smooth"
+
+});
+
+}
+
+});
 
 });
 </script>
@@ -3132,7 +3778,13 @@ function savePrompt(){
 
     let saved =
         JSON.parse(localStorage.getItem("savedPrompts")) || [];
+    
+     if(saved.length >= 50){
 
+    showToast("Prompt limit reached (50). Delete an old prompt to save a new one.");
+
+    return;
+}
     if(saved.includes(prompt)){
         showToast("Prompt already saved");
         return;
@@ -3150,8 +3802,57 @@ function savePrompt(){
     showToast("Prompt Saved ⭐");
 }
 
-function showSavedPrompts(){
+function updateSavedPromptTitle(){
 
+    const saved =
+        JSON.parse(localStorage.getItem("savedPrompts")) || [];
+
+    const collapsed =
+        document.getElementById("savedContent")
+        .classList.contains("hide");
+
+    const arrow = collapsed ? "▸" : "▾";
+
+    document.getElementById("savedPromptTitle").innerHTML =
+`
+<span style="white-space:nowrap;">⭐ Saved Prompts</span>
+
+<span style="font-size:28px;font-weight:bold;line-height:1;">
+${arrow}
+</span>
+
+<span style="font-size:12px;color:#5f8fd8;font-weight:600;">
+(${saved.length}/50)
+</span>
+`;
+}
+
+function updateRecentToolsTitle(){
+
+    const recent =
+        JSON.parse(localStorage.getItem("recentTools")) || [];
+
+    const collapsed =
+        document.getElementById("recentToolsContent")
+        .classList.contains("hide");
+
+    const arrow = collapsed ? "▸" : "▾";
+
+    document.getElementById("recentToolsTitle").innerHTML =
+`
+<span style="white-space:nowrap;">🕒 Recently Used Tools</span>
+
+<span style="font-size:28px;font-weight:bold;line-height:1;">
+${arrow}
+</span>
+
+<span style="font-size:12px;color:#5f8fd8;font-weight:600;">
+(${recent.length}/10)
+</span>
+`;
+}
+function showSavedPrompts(){
+    
   let container =
     document.getElementById("savedPromptList");
 
@@ -3161,6 +3862,8 @@ function showSavedPrompts(){
     JSON.parse(
       localStorage.getItem("savedPrompts")
     ) || [];
+
+    updateSavedPromptTitle();
 
   if(saved.length===0){
 
@@ -3395,6 +4098,23 @@ if(recent.length===0){
 </script>
 
 <script>
+
+async function clearAppCache(){
+
+  if ("caches" in window){
+    const names = await caches.keys();
+
+    await Promise.all(
+      names.map(name => caches.delete(name))
+    );
+  }
+
+  showToast("Cache cleared");
+
+  setTimeout(()=>{
+    location.reload();
+  },1000);
+}
 function resetPrompt(){
 
     currentPromptType = "";
@@ -3534,10 +4254,148 @@ showToast(descriptions[name] || "Tool description coming soon.");
 <div id="toast"></div>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-    showFavorites();
-    showRecentTools();
-    showSavedPrompts();
-    showPromptHistory();
+
+    try {
+        showFavorites();
+    } catch(e) {
+        console.error("Favorites:", e);
+    }
+
+    try {
+        showRecentTools();
+    } catch(e) {
+        console.error("Recent:", e);
+    }
+
+    try {
+        showSavedPrompts();
+    } catch(e) {
+        console.error("Saved:", e);
+    }
+
+    try {
+        showPromptHistory();
+    } catch(e) {
+        console.error("History:", e);
+    }
+
+});
+</script>
+
+<script>
+
+function toggleHistory(){
+
+    const box = document.getElementById("historyContent");
+
+    box.classList.toggle("hide");
+
+    localStorage.setItem(
+        "historyCollapsed",
+        box.classList.contains("hide")
+    );
+
+    updateHistoryTitle();
+}
+
+function toggleSaved(){
+
+    const box = document.getElementById("savedContent");
+
+    box.classList.toggle("hide");
+
+    localStorage.setItem(
+        "savedCollapsed",
+        box.classList.contains("hide")
+    );
+
+    updateSavedPromptTitle();
+}
+
+function toggleRecentTools(){
+
+    const box =
+        document.getElementById("recentToolsContent");
+
+    box.classList.toggle("hide");
+
+    localStorage.setItem(
+        "recentCollapsed",
+        box.classList.contains("hide")
+    );
+
+    updateRecentToolsTitle();
+}
+
+function toggleFavorites(){
+
+    const box =
+        document.getElementById("favoritesContent");
+
+    box.classList.toggle("hide");
+
+    localStorage.setItem(
+        "favoritesCollapsed",
+        box.classList.contains("hide")
+    );
+
+    updateFavoritesTitle();
+}
+
+function updateFavoritesTitle(){
+
+    const favorites =
+        JSON.parse(localStorage.getItem("favorites")) || [];
+
+    const collapsed =
+        document.getElementById("favoritesContent")
+        .classList.contains("hide");
+
+    const arrow = collapsed ? "▸" : "▾";
+
+    document.getElementById("favoritesTitle").innerHTML =
+        `⭐ My Favorite Tools ${arrow}
+<span style="font-size:12px;color:#5f8fd8;font-weight:600;">
+(${favorites.length})
+</span>`;
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    if(localStorage.getItem("historyCollapsed")==="true"){
+
+        document
+        .getElementById("historyContent")
+        .classList.add("hide");
+    }
+
+    if(localStorage.getItem("savedCollapsed")==="true"){
+
+        document
+        .getElementById("savedContent")
+        .classList.add("hide");
+
+    }
+
+    if(localStorage.getItem("recentCollapsed")==="true"){
+
+    document
+    .getElementById("recentToolsContent")
+    .classList.add("hide");
+}
+
+    if(localStorage.getItem("favoritesCollapsed")==="true"){
+
+    document
+    .getElementById("favoritesContent")
+    .classList.add("hide");
+}
+
+    updateHistoryTitle();
+    updateSavedPromptTitle();
+    updateRecentToolsTitle();
+    updateFavoritesTitle();
+
 });
 </script>
 </body>  
