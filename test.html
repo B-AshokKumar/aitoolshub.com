@@ -4590,17 +4590,17 @@ function checkConnection(){
     connection.effectiveType==="3g";
 
     const loader =
-    document.getElementById("loader");
+document.getElementById("loader");
 
-    if(slow && !loader.classList.contains("loader-hide")){
+if(slow && loader && !loader.classList.contains("loader-hide")){
 
-        showSlowNetwork();
+    showSlowNetwork();
 
-    }else{
+}else{
 
-        hideSlowNetwork();
+    hideSlowNetwork();
 
-    }
+}
 
 }
 
