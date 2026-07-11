@@ -4560,95 +4560,55 @@ hideSlowNetwork();
    SLOW INTERNET DETECTION
 =================================== */
 
-function checkConnection(){
-
-const connection =
-navigator.connection ||
-navigator.mozConnection ||
-navigator.webkitConnection;
-
-if(!connection) return;
-
-const slow =
-connection.effectiveType==="2g" ||
-connection.effectiveType==="slow-2g" ||
-connection.effectiveType==="3g";
-
 const networkBar =
 document.getElementById("networkStatus");
 
 function showSlowNetwork(){
 
-networkBar.classList.add("show");
+    networkBar.classList.add("show");
 
-clearTimeout(networkBar.timer);
+    clearTimeout(networkBar.timer);
 
-networkBar.timer=setTimeout(()=>{
+    networkBar.timer=setTimeout(()=>{
 
-networkBar.classList.remove("show");
+        networkBar.classList.remove("show");
 
-},5000);
+    },5000);
 
 }
 
 function hideSlowNetwork(){
 
-networkBar.classList.remove("show");
+    networkBar.classList.remove("show");
 
 }
 
 function checkConnection(){
 
-const connection =
-navigator.connection ||
-navigator.mozConnection ||
-navigator.webkitConnection;
+    const connection =
+    navigator.connection ||
+    navigator.mozConnection ||
+    navigator.webkitConnection;
 
-if(!connection) return;
+    if(!connection) return;
 
-const slow =
-connection.effectiveType==="slow-2g" ||
-connection.effectiveType==="2g" ||
-connection.effectiveType==="3g";
+    const slow =
+    connection.effectiveType==="slow-2g" ||
+    connection.effectiveType==="2g" ||
+    connection.effectiveType==="3g";
 
-const loader =
-document.getElementById("loader");
+    const loader =
+    document.getElementById("loader");
 
-if(slow && loader){
+    if(slow && !loader.classList.contains("loader-hide")){
 
-showSlowNetwork();
+        showSlowNetwork();
 
-}else{
+    }else{
 
-hideSlowNetwork();
+        hideSlowNetwork();
 
-}
-
-}
-
-checkConnection();
-
-if(navigator.connection){
-
-navigator.connection.addEventListener(
-"change",
-checkConnection
-);
-
-}
-
-const bar =
-document.getElementById("networkStatus");
-
-if(slow){
-
-bar.style.display="block";
-
-}else{
-
-bar.style.display="none";
-
-}
+    }
 
 }
 
@@ -4656,12 +4616,13 @@ checkConnection();
 
 if(navigator.connection){
 
-navigator.connection.addEventListener(
-"change",
-checkConnection
-);
+    navigator.connection.addEventListener(
+        "change",
+        checkConnection
+    );
 
 }
+
 
 </script>
 
