@@ -4823,6 +4823,7 @@ document
 document.body.style.visibility="visible";
 document.body.style.opacity="1";
 
+stopTimeout();
 hideSlowNetwork();
 
 },500);
@@ -4877,6 +4878,11 @@ if(slow && loader && !loader.classList.contains("loader-hide")){
 
 }
 
+/* TEST ONLY
+Will be replaced with
+real API requests later.
+*/
+
 function fakeNetworkRequest(){
 
     const success =
@@ -4889,6 +4895,10 @@ function fakeNetworkRequest(){
         retryCount = 0;
 
         stopTimeout();
+
+      document
+.getElementById("timeoutBox")
+.style.display="none";
 
     }else{
 
