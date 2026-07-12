@@ -1260,6 +1260,100 @@ transform:rotate(360deg);
 }
 
 /* ==========================
+   REQUEST TIMEOUT
+========================== */
+
+.timeout-box{
+
+display:none;
+
+position:fixed;
+
+top:50%;
+
+left:50%;
+
+transform:translate(-50%,-50%);
+
+width:90%;
+
+max-width:340px;
+
+background:#ffffff;
+
+padding:25px;
+
+border-radius:18px;
+
+text-align:center;
+
+box-shadow:0 15px 40px rgba(0,0,0,.25);
+
+z-index:999999;
+
+}
+
+.dark .timeout-box{
+
+background:#1e1e1e;
+
+color:#ffffff;
+
+}
+
+.timeout-icon{
+
+font-size:45px;
+
+margin-bottom:12px;
+
+}
+
+.timeout-box h3{
+
+margin:10px 0;
+
+font-size:22px;
+
+}
+
+.timeout-box p{
+
+color:#666;
+
+line-height:1.6;
+
+margin-bottom:20px;
+
+}
+
+.dark .timeout-box p{
+
+color:#cccccc;
+
+}
+
+#retryBtn{
+
+border:none;
+
+background:#2d74d7;
+
+color:#ffffff;
+
+padding:14px 30px;
+
+border-radius:30px;
+
+font-size:16px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+}
+
+/* ==========================
    NETWORK STATUS
 ========================== */
 
@@ -4532,8 +4626,72 @@ Loading...
 📶 Slow network • Loading may take longer
 </div>
 
-<script>
+<div id="timeoutBox" class="timeout-box">
 
+    <div class="timeout-icon">⚠️</div>
+
+    <h3>Connection Timed Out</h3>
+
+    <p>
+        The server is taking too long to respond.
+        Please check your internet connection.
+    </p>
+
+    <button id="retryBtn">
+        🔄 Retry
+    </button>
+
+</div>
+
+/* ===================================
+   REQUEST TIMEOUT
+=================================== */
+<script>
+let timeoutTimer;
+
+function startTimeout(){
+
+    clearTimeout(timeoutTimer);
+
+    timeoutTimer=setTimeout(()=>{
+
+        document
+        .getElementById("loader")
+        .classList.add("loader-hide");
+
+        hideSlowNetwork();
+
+        document.body.style.visibility="visible";
+        document.body.style.opacity="1";
+
+        document
+        .getElementById("timeoutBox")
+        .style.display="block";
+
+    },20000);
+
+}
+
+function stopTimeout(){
+
+    clearTimeout(timeoutTimer);
+
+    document
+    .getElementById("timeoutBox")
+    .style.display="none";
+
+}
+
+document
+.getElementById("retryBtn")
+.addEventListener("click",()=>{
+
+    location.reload();
+
+});
+</script>
+  
+<script>
 
 /* ===================================
    APP LOADER
@@ -4541,6 +4699,7 @@ Loading...
 
 window.addEventListener("load",()=>{
 
+startTimeout();
 setTimeout(()=>{
 
 document
@@ -4550,6 +4709,7 @@ document
 document.body.style.visibility="visible";
 document.body.style.opacity="1";
 
+stopTimeout();
 hideSlowNetwork();
 
 },500);
