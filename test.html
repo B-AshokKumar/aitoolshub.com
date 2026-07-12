@@ -4720,6 +4720,14 @@ instead of the initial page loader.
 
 let timeoutTimer;
 
+/* ===================================
+   AUTOMATIC RETRY
+=================================== */
+
+const MAX_RETRIES = 3;
+
+let retryCount = 0;
+
 function startTimeout(){
 
     clearTimeout(timeoutTimer);
@@ -4753,6 +4761,35 @@ function stopTimeout(){
 
 }
 
+function retryRequest(task){
+
+    if(retryCount < MAX_RETRIES){
+
+        retryCount++;
+
+        console.log(
+            "Retry Attempt:",
+            retryCount
+        );
+
+        setTimeout(()=>{
+
+            task();
+
+        },retryCount*1000);
+
+    }else{
+
+        retryCount = 0;
+
+        document
+        .getElementById("timeoutBox")
+        .style.display = "block";
+
+    }
+
+}
+
 const retryBtn =
 document.getElementById("retryBtn");
 
@@ -4773,6 +4810,10 @@ window.location.reload();
 
 document.addEventListener("DOMContentLoaded",()=>{
 
+startTimeout();
+
+fakeNetworkRequest();
+  
 setTimeout(()=>{
 
 document
@@ -4833,6 +4874,29 @@ if(slow && loader && !loader.classList.contains("loader-hide")){
     hideSlowNetwork();
 
 }
+
+}
+
+function fakeNetworkRequest(){
+
+    const success =
+        Math.random() > 0.7;
+
+    if(success){
+
+        console.log("Request Success");
+
+        retryCount = 0;
+
+        stopTimeout();
+
+    }else{
+
+        console.log("Request Failed");
+
+        retryRequest(fakeNetworkRequest);
+
+    }
 
 }
 
