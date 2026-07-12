@@ -4643,10 +4643,11 @@ Loading...
 
 </div>
 
+<script>
 /* ===================================
    REQUEST TIMEOUT
 =================================== */
-<script>
+
 let timeoutTimer;
 
 function startTimeout(){
@@ -4682,13 +4683,19 @@ function stopTimeout(){
 
 }
 
-document
-.getElementById("retryBtn")
-.addEventListener("click",()=>{
+const retryBtn =
+document.getElementById("retryBtn");
 
-    location.reload();
+if(retryBtn){
+
+retryBtn.addEventListener("click",()=>{
+
+window.location.reload();
 
 });
+
+}
+
 </script>
   
 <script>
@@ -4697,7 +4704,7 @@ document
    APP LOADER
 =================================== */
 
-window.addEventListener("load",()=>{
+document.addEventListener("DOMContentLoaded",()=>{
 
 startTimeout();
 setTimeout(()=>{
