@@ -4,7 +4,15 @@ const urlsToCache = [
   "/",
   "/index.html",
   "/offline.html",
-  "/manifest.json"
+  "/manifest.json",
+
+  "/icon-192.png",
+  "/icon-512.png",
+
+  "/about.html",
+  "/privacy-policy.html",
+  "/terms.html",
+  "/disclaimer.html"
 ];
 
 // Install
