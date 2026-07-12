@@ -4810,23 +4810,25 @@ window.location.reload();
 
 document.addEventListener("DOMContentLoaded",()=>{
 
-startTimeout();
+    startTimeout();
 
-fakeNetworkRequest();
-  
-setTimeout(()=>{
+    // TEST ONLY
+    fakeNetworkRequest();
 
-document
-.getElementById("loader")
-.classList.add("loader-hide");
+    setTimeout(()=>{
 
-document.body.style.visibility="visible";
-document.body.style.opacity="1";
+        document
+        .getElementById("loader")
+        .classList.add("loader-hide");
 
-stopTimeout();
-hideSlowNetwork();
+        document.body.style.visibility="visible";
+        document.body.style.opacity="1";
 
-},500);
+        stopTimeout();
+
+        hideSlowNetwork();
+
+    },500);
 
 });
 
