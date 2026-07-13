@@ -4892,33 +4892,6 @@ Will be replaced with
 real API requests later.
 */
 
-function fakeNetworkRequest(){
-
-    const success =
-        Math.random() > 0.2;
-
-    if(success){
-
-        console.log("Request Success");
-
-        retryCount = 0;
-
-        stopTimeout();
-
-      document
-.getElementById("timeoutBox")
-.style.display="none";
-
-    }else{
-
-        console.log("Request Failed");
-
-        retryRequest(fakeNetworkRequest);
-
-    }
-
-}
-
 checkConnection();
 
 if(navigator.connection){
