@@ -1263,6 +1263,29 @@ body.dark .how-text{
     color:#d6d6d6;
 }
 
+.how-to-use-btn{
+    width:100%;
+    margin:18px 0;
+    padding:16px 20px;
+    background:linear-gradient(135deg,#1a73e8,#4a90ff);
+    color:#fff;
+    border:none;
+    border-radius:14px;
+    font-size:18px;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 6px 15px rgba(26,115,232,.35);
+    transition:.25s;
+}
+
+.how-to-use-btn:hover{
+    transform:translateY(-2px);
+}
+
+.how-to-use-btn:active{
+    transform:scale(.98);
+}
+
 
 /* ===================================
    LOADER
@@ -1569,6 +1592,10 @@ Dark Mode: OFF
 
   <p class="welcome-sub">Generate powerful AI prompts instantly</p>
 
+<button class="how-to-use-btn" onclick="showHowToUse()">
+    📖 How to Use AI Tools Hub
+</button>
+ 
 <div class="how-to-use-card" onclick="window.location.href='how-to-use.html'">
   📖 <strong>How to Use AI Tools Hub</strong><br>
   Learn how to use prompts, AI tools, favorites, and AI news.
