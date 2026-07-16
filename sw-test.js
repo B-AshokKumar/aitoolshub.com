@@ -62,12 +62,18 @@ self.addEventListener("fetch", event => {
   event.respondWith(
 
     caches.match(event.request)
-
       .then(response => {
 
         return response || fetch(event.request)
+          .catch(() => {
 
-          .catch(() => caches.match("/offline.html"));
+            if (event.request.mode === "navigate") {
+              return caches.match("/offline.html");
+            }
+
+            return Response.error();
+
+          });
 
       })
 
