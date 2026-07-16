@@ -59,6 +59,8 @@ self.addEventListener("activate", event => {
 // Fetch
 self.addEventListener("fetch", event => {
 
+  if (event.request.method !== "GET") return;
+  
   event.respondWith(
 
     caches.match(event.request)
