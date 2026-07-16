@@ -1201,6 +1201,57 @@ transform:translateX(-50%) translateY(0);
 }
 
 /* ===================================
+   HOW TO USE CARD
+=================================== */
+
+.how-to-use-card{
+
+    margin:16px 0;
+
+    padding:16px;
+
+    background:#eef6ff;
+
+    border-left:5px solid #1a73e8;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+}
+
+.how-to-use-card:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.how-title{
+
+    font-size:18px;
+
+    font-weight:700;
+
+    color:#1565c0;
+
+    margin-bottom:6px;
+
+}
+
+.how-text{
+
+    font-size:14px;
+
+    color:#555;
+
+    line-height:1.5;
+
+}
+
+
+/* ===================================
    LOADER
 =================================== */
 
@@ -1462,6 +1513,7 @@ background:#dc2626;
     opacity:1;
 
 }
+
 </style>  
   
 </head> 
@@ -1504,7 +1556,11 @@ Dark Mode: OFF
 
   <p class="welcome-sub">Generate powerful AI prompts instantly</p>
 
-
+<div class="how-to-use-card" onclick="window.location.href='how-to-use.html'">
+  ❓ <strong>How to Use AI Tools Hub</strong><br>
+  Learn how to use prompts, AI tools, favorites, and AI news.
+</div>
+  
 <div class="input-wrapper">
 
 <input id="topic"
