@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>How to Use AI Tools Hub</title>
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    margin:0;
+    background:#f5f7fb;
+    color:#333;
+    line-height:1.7;
+}
+
+.header{
+    background:#1a73e8;
+    color:white;
+    padding:18px;
+    text-align:center;
+    font-size:26px;
+    font-weight:bold;
+}
+
+.container{
+    max-width:800px;
+    margin:auto;
+    padding:20px;
+}
+
+.step{
+    background:white;
+    margin-bottom:18px;
+    padding:18px;
+    border-radius:12px;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.step h2{
+    margin-top:0;
+    color:#1a73e8;
+}
+
+.back-btn{
+    display:block;
+    width:220px;
+    margin:30px auto;
+    padding:14px;
+    background:#1a73e8;
+    color:white;
+    text-align:center;
+    text-decoration:none;
+    border-radius:10px;
+    font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+📖 How to Use AI Tools Hub
+</div>
+
+<div class="container">
+
+<div class="step">
+<h2>1️⃣ Generate AI Prompts</h2>
+
+<p>
+Choose a prompt category, enter your topic, and tap
+<b>Generate Prompt</b>.
+</p>
+
+<p>
+Example:
+<br><br>
+
+Topic: Solar Energy
+<br>
+
+Result: A professional AI prompt ready to use.
+</p>
+
+</div>
+
+
+<div class="step">
+<h2>2️⃣ Copy the Prompt</h2>
+
+<p>
+
+Tap <b>Copy Prompt</b> and paste it into your favourite AI assistant like ChatGPT, Gemini, Claude, Grok, Microsoft Copilot, or other AI services.
+
+</p>
+
+</div>
+
+
+<div class="step">
+
+<h2>3️⃣ Browse AI Tools</h2>
+
+<p>
+
+Open the AI Tools section to discover useful AI websites for writing, coding, image generation, video creation, productivity, learning, and much more.
+
+</p>
+
+</div>
+
+
+<div class="step">
+
+<h2>4️⃣ Read AI News</h2>
+
+<p>
+
+Stay updated with the latest announcements from OpenAI, Google AI, Anthropic, Microsoft AI, Meta AI, xAI, NVIDIA AI, Hugging Face and other leading AI companies.
+
+</p>
+
+</div>
+
+
+<div class="step">
+
+<h2>5️⃣ Search</h2>
+
+<p>
+
+Use the Search page to quickly find AI tools, prompts, or resources without scrolling through the entire app.
+
+</p>
+
+</div>
+
+
+<div class="step">
+
+<h2>6️⃣ Save Favorites</h2>
+
+<p>
+
+Tap the ⭐ button to save prompts or tools you use frequently.
+
+Open the Favorites page anytime to access them quickly.
+
+</p>
+
+</div>
+
+
+<div class="step">
+
+<h2>7️⃣ Settings</h2>
+
+<p>
+
+Use Settings to change the app theme, access Privacy Policy, About page, and other useful options.
+
+</p>
+
+</div>
+
+
+<div class="step">
+
+<h2>8️⃣ Internet Required</h2>
+
+<p>
+
+Most AI tools and news open official websites.
+
+An internet connection is required for these features.
+
+</p>
+
+</div>
+
+
+<div class="step">
+
+<h2>9️⃣ Privacy</h2>
+
+<p>
+
+AI Tools Hub does not send your prompts or conversations to AI providers.
+
+When you open external AI services like ChatGPT, Gemini, Claude, Grok or Microsoft Copilot, your interaction happens directly with that provider and is governed by their own Privacy Policy and Terms of Service.
+
+</p>
+
+</div>
+
+
+<div class="step">
+
+<h2>💡 Tips</h2>
+
+<ul>
+
+<li>Use clear topics for better prompts.</li>
+
+<li>Save useful prompts in Favorites.</li>
+
+<li>Explore AI News regularly.</li>
+
+<li>Try different AI assistants.</li>
+
+<li>Share AI Tools Hub with friends.</li>
+
+</ul>
+
+</div>
+
+<a href="index.html" class="back-btn">
+⬅ Back to Home
+</a>
+
+</div>
+
+</body>
+</html>
