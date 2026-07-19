@@ -4980,7 +4980,7 @@ function checkConnection(){
     connection.effectiveType === "2g" ||
     (
         connection.effectiveType === "3g" &&
-        connection.downlink < 1
+        (connection.downlink ?? 0) < 1
     );
 
     if (slow) {
