@@ -4977,11 +4977,7 @@ function checkConnection(){
 
     const slow =
     connection.effectiveType === "slow-2g" ||
-    connection.effectiveType === "2g" ||
-    (
-        connection.effectiveType === "3g" &&
-        (connection.downlink ?? 0) < 1
-    );
+    connection.effectiveType === "2g";
 
     if (slow) {
 
