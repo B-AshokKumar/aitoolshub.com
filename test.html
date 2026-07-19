@@ -4989,14 +4989,11 @@ function checkConnection(){
     connection.effectiveType==="2g" ||
     connection.effectiveType==="3g";
 
-    const loader =
-document.getElementById("loader");
-
-if(slow && loader && !loader.classList.contains("loader-hide")){
+    if (slow) {
 
     showSlowNetwork();
 
-}else{
+} else {
 
     hideSlowNetwork();
 
