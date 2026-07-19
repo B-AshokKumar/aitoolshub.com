@@ -4957,19 +4957,9 @@ function showSlowNetwork(){
 
     networkBar.classList.add("show");
 
-    clearTimeout(networkBar.timer);
-
-    networkBar.timer = setTimeout(()=>{
-
-        networkBar.classList.remove("show");
-
-    },4000);
-
 }
 
 function hideSlowNetwork(){
-
-    clearTimeout(networkBar.timer);
 
     networkBar.classList.remove("show");
 
