@@ -1227,6 +1227,9 @@ transform:translateX(-50%) translateY(0);
     transform:scale(.98);
 }
 
+.how-use-link{
+    text-decoration:none;
+}
 
 /* ===================================
    LOADER
@@ -1535,10 +1538,11 @@ Dark Mode: OFF
   <p class="welcome-sub">Generate powerful AI prompts instantly</p>
 
 <div class="how-use-wrapper">
-    <button class="prompt-btn"
-            onclick="window.location.href='how-to-use.html'">
-        📖 How to Use AI Tools Hub
-    </button>
+    <a href="how-to-use.html" class="how-use-link">
+        <button class="prompt-btn" type="button">
+            📖 How to Use AI Tools Hub
+        </button>
+    </a>
 </div>
   
 <div class="input-wrapper">
