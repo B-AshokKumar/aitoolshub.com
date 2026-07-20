@@ -5,11 +5,9 @@ const urlsToCache = [
   "/index.html",
   "/offline.html",
   "/manifest.json",
-
   "/icon-192.png",
   "/icon-512.png",
   "/how-to-use.html",
-
   "/about.html",
   "/privacy-policy.html",
   "/terms.html",
@@ -21,13 +19,15 @@ self.addEventListener("install", event => {
 
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => Promise.all(
-  urlsToCache.map(url =>
-    cache.add(url).catch(err =>
-      console.warn("Failed to cache:", url, err)
-    )
-  )
-)
+      .then(cache =>
+        Promise.all(
+          urlsToCache.map(url =>
+            cache.add(url).catch(err => {
+              console.warn("Failed to cache:", url, err);
+            })
+          )
+        )
+      )
   );
 
   self.skipWaiting();
