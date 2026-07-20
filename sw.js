@@ -8,6 +8,7 @@ const urlsToCache = [
 
   "/icon-192.png",
   "/icon-512.png",
+  "/how-to-use.html",
 
   "/about.html",
   "/privacy-policy.html",
