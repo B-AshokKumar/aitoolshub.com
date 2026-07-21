@@ -75,32 +75,52 @@ footer{
 
 /* Floating Home Button */
 
+.home-button{
+    position:fixed;
+    right:20px;
+    bottom:80px;
 
-.home-button {
-    position: fixed;
-    right: 20px;
-    bottom: 80px; /* Moved up */
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
 
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    min-width:150px;
+    height:60px;
+    padding:0 28px;
 
-    padding: 12px 18px;
+    background:#0D6EFD;
+    color:#fff;
 
-    background: #0D6EFD;
-    color: #fff;
+    text-decoration:none;
 
-    text-decoration: none;
-    border-radius: 50px;
+    border-radius:30px;
 
-    font-size: 16px;
-    font-weight: 600;
+    font-size:20px;
+    font-weight:700;
 
-    box-shadow: 0 6px 16px rgba(0,0,0,.25);
+    font-family:Arial, Helvetica, sans-serif;
 
-    z-index: 9999;
+    box-shadow:0 8px 18px rgba(0,0,0,.25);
 
-    transition: all .25s ease;
+    z-index:9999;
+
+    transition:all .25s ease;
+}
+
+.home-button:hover{
+    background:#0B5ED7;
+}
+
+.home-button:active{
+    transform:scale(.96);
+}
+
+.home-button svg{
+    width:24px;
+    height:24px;
+    fill:#fff;
+    flex-shrink:0;
 }
 
 </style>
@@ -143,20 +163,17 @@ ashokashkashas@gmail.com</a>
 
 
 <!-- Floating Home Button -->
-<a href="https://b-ashokkumar.github.io/aitoolshub.com/" class="home-button">
 
+<a href="https://b-ashokkumar.github.io/aitoolshub.com/" class="home-button">
     <svg xmlns="http://www.w3.org/2000/svg"
-         width="22"
-         height="22"
+         width="24"
+         height="24"
          viewBox="0 0 24 24"
          fill="currentColor">
-
         <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-
     </svg>
 
     <span>Home</span>
-
 </a>
 
 <footer>
