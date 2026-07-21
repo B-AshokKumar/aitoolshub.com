@@ -12,6 +12,7 @@
   gtag('config', 'G-EGGSP1RHDV');
 </script>
 <title>Terms & Conditions - AI Tools Hub</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 
@@ -22,6 +23,7 @@ body{
     font-size:18px;
     line-height:1.8;
     color:#333;
+  padding-bottom:140px;
 }
 
 .header{
@@ -108,7 +110,10 @@ footer{
 
     cursor:pointer;
 
-    transition:all .25s ease;
+    transition:
+        background .25s,
+        transform .25s,
+        box-shadow .25s;
 }
 
 .home-button:hover{
@@ -168,7 +173,7 @@ ashokashkashas@gmail.com</a>
 
 <!-- Floating Home Button -->
 
-<a href="javascript:void(0)" class="home-button" onclick="goHome()">
+<a href="#" class="home-button" onclick="goHome(); return false;" aria-label="Go to Home">
     <svg xmlns="http://www.w3.org/2000/svg"
          viewBox="0 0 24 24"
          fill="currentColor">
