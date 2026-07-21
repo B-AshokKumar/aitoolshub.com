@@ -39,7 +39,7 @@ box-shadow:0 4px 10px rgba(0,0,0,0.08);
 .home-button {
     position: fixed;
     right: 20px;
-    bottom: 80px; /* Moved up */
+    bottom: calc(100px + env(safe-area-inset-bottom));
 
     display: flex;
     align-items: center;
