@@ -78,38 +78,42 @@ footer{
 .home-button{
     position:fixed;
     right:20px;
-    bottom: calc(100px + env(safe-area-inset-bottom));
+    bottom:calc(100px + env(safe-area-inset-bottom));
 
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:10px;
+    gap:12px;
 
-    min-width:150px;
-    height:60px;
-    padding:0 28px;
+    min-width:180px;      /* Wider button */
+    height:72px;          /* Taller button */
+
+    padding:0 34px;
 
     background:#0D6EFD;
     color:#fff;
 
     text-decoration:none;
 
-    border-radius:30px;
+    border-radius:36px;
 
-    font-size:20px;
+    font-size:22px;       /* Larger text */
     font-weight:700;
 
     font-family:Arial, Helvetica, sans-serif;
 
-    box-shadow:0 8px 18px rgba(0,0,0,.25);
+    box-shadow:0 10px 22px rgba(0,0,0,.28);
 
     z-index:9999;
+
+    cursor:pointer;
 
     transition:all .25s ease;
 }
 
 .home-button:hover{
     background:#0B5ED7;
+    transform:translateY(-2px);
 }
 
 .home-button:active{
@@ -117,8 +121,8 @@ footer{
 }
 
 .home-button svg{
-    width:24px;
-    height:24px;
+    width:30px;           /* Larger icon */
+    height:30px;
     fill:#fff;
     flex-shrink:0;
 }
@@ -166,8 +170,6 @@ ashokashkashas@gmail.com</a>
 
 <a href="javascript:void(0)" class="home-button" onclick="goHome()">
     <svg xmlns="http://www.w3.org/2000/svg"
-         width="24"
-         height="24"
          viewBox="0 0 24 24"
          fill="currentColor">
         <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
