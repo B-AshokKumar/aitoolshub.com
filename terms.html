@@ -23,7 +23,7 @@ body{
     font-size:18px;
     line-height:1.8;
     color:#333;
-  padding-bottom:140px;
+   padding-bottom:140px;
 }
 
 .header{
@@ -36,11 +36,13 @@ body{
 
 .container{
     max-width:800px;
-    margin:20px 16px;
-    background:white;
+    margin:20px auto;
     padding:28px;
+    background:#fff;
     border-radius:12px;
     box-shadow:0 0 12px rgba(0,0,0,.10);
+    width:calc(100% - 32px);
+    box-sizing:border-box;
 }
 
 h1{
@@ -107,6 +109,14 @@ footer{
         background .25s,
         transform .25s,
         box-shadow .25s;
+}
+
+.home-button:hover{
+    background:#0B5ED7;
+}
+
+.home-button:active{
+    transform:scale(.96);
 }
 
 .home-button svg{
