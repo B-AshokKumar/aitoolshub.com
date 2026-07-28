@@ -38,6 +38,9 @@ function loadLesson(index){
     document.getElementById("lessonCategory").textContent =
         "Category: " + topic.category;
 
+   document.getElementById("lessonProgress").textContent =
+    "Lesson " + (index + 1) + " of " + topics.length;
+
     document.getElementById("lessonContent").innerHTML =
         topic.content.replace(/\n/g,"<br>");
 
