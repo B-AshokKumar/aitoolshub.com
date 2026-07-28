@@ -21,6 +21,8 @@ document.getElementById("nextBtn");
 
 function updateButtons(){
 
+   console.log("Index:", currentIndex, "Total:", topics.length);
+
     prevBtn.disabled = currentIndex === 0;
 
     nextBtn.disabled = currentIndex === topics.length - 1;
