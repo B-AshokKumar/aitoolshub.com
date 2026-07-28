@@ -29,13 +29,10 @@ function renderTopics(list){
 
         card.onclick = () => {
 
-            alert(
-`${topic.title}
+    location.href =
+    "lesson.html?id=" + topic.id;
 
-${topic.content}`
-            );
-
-        };
+};
 
         cardContainer.appendChild(card);
 
