@@ -429,3 +429,15 @@ color:#fff;
 }
 
 }
+
+.lesson-buttons button:disabled{
+
+    background:#bdbdbd;
+
+    color:#666;
+
+    cursor:not-allowed;
+
+    opacity:.7;
+
+}
