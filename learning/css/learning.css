@@ -394,9 +394,35 @@ margin-top:25px;
 
     align-items:center;
 
-    justify-content:center;
+    justify-content:space-between;
 
-    gap:8px;
+    width:220px;
+
+    padding:0 18px;
+
+}
+
+.nav-icon{
+
+    width:22px;
+
+    height:22px;
+
+    stroke:currentColor;
+
+    stroke-width:2.5;
+
+    fill:none;
+
+    stroke-linecap:round;
+
+    stroke-linejoin:round;
+
+}
+
+.nav-space{
+
+    width:22px;
 
 }
 
