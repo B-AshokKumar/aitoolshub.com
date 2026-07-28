@@ -13,6 +13,20 @@ if (currentIndex === -1) {
     currentIndex = 0;
 }
 
+const prevBtn =
+document.getElementById("prevBtn");
+
+const nextBtn =
+document.getElementById("nextBtn");
+
+function updateButtons(){
+
+    prevBtn.disabled = currentIndex === 0;
+
+    nextBtn.disabled = currentIndex === topics.length - 1;
+
+}
+
 function loadLesson(index){
 
     const topic = topics[index];
@@ -26,6 +40,16 @@ function loadLesson(index){
 
     document.getElementById("lessonContent").innerHTML =
         topic.content.replace(/\n/g,"<br>");
+
+   updateButtons();
+
+window.scrollTo({
+
+    top:0,
+
+    behavior:"smooth"
+
+});
 
 }
 
@@ -70,11 +94,3 @@ document.getElementById("nextBtn").addEventListener("click",()=>{
     }
 
 });
-
-function updateButtons(){
-
-    prevBtn.disabled = currentIndex === 0;
-
-    nextBtn.disabled = currentIndex === topics.length - 1;
-
-}
