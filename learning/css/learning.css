@@ -441,3 +441,23 @@ color:#fff;
     opacity:.7;
 
 }
+
+.lesson-progress{
+
+    display:inline-block;
+
+    margin:15px 0 20px;
+
+    padding:8px 16px;
+
+    background:#0D6EFD;
+
+    color:#ffffff;
+
+    border-radius:20px;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+}
