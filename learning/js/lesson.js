@@ -60,18 +60,16 @@ loadLesson(currentIndex);
 
 /* Previous */
 
-document.getElementById("prevBtn").addEventListener("click",()=>{
+prevBtn.addEventListener("click", () => {
 
-    if(currentIndex>0){
+    if (currentIndex > 0) {
 
-        currentIndex--;
-
-        loadLesson(currentIndex);
+        loadLesson(currentIndex - 1);
 
         history.replaceState(
             {},
             "",
-            "lesson.html?id="+topics[currentIndex].id
+            "lesson.html?id=" + topics[currentIndex].id
         );
 
     }
@@ -80,18 +78,16 @@ document.getElementById("prevBtn").addEventListener("click",()=>{
 
 /* Next */
 
-document.getElementById("nextBtn").addEventListener("click",()=>{
+nextBtn.addEventListener("click", () => {
 
-    if(currentIndex<topics.length-1){
+    if (currentIndex < topics.length - 1) {
 
-        currentIndex++;
-
-        loadLesson(currentIndex);
+        loadLesson(currentIndex + 1);
 
         history.replaceState(
             {},
             "",
-            "lesson.html?id="+topics[currentIndex].id
+            "lesson.html?id=" + topics[currentIndex].id
         );
 
     }
