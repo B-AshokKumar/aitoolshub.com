@@ -403,4 +403,96 @@ Although Deep Learning produces powerful results, it usually requires large data
     related: [7,9,10]
 },
 
+    {
+    id: 9,
+
+    title: "Neural Networks",
+
+    category: "AI Basics",
+
+    icon: "🕸️",
+
+    level: "Intermediate",
+
+    duration: "8 min",
+
+    description: "Learn how Artificial Neural Networks help computers recognise patterns and make intelligent decisions.",
+
+    content: `
+Artificial Neural Networks (ANNs) are computer systems inspired by the human brain.
+
+A neural network consists of many connected nodes called neurons. These neurons work together to process information and recognise patterns in data.
+
+Neural Networks are the foundation of Deep Learning. They can analyse images, understand speech, recognise handwriting and translate languages.
+
+The more quality data a neural network is trained with, the better it usually performs.
+
+Modern AI applications such as ChatGPT, image generators and speech assistants rely on advanced neural networks.
+`,
+
+    keyPoints: [
+        "Inspired by the human brain.",
+        "Made up of connected artificial neurons.",
+        "Learns patterns from data.",
+        "Forms the basis of Deep Learning.",
+        "Used in many modern AI applications."
+    ],
+
+    examples: [
+        "Face recognition",
+        "Speech-to-text",
+        "Handwriting recognition",
+        "Language translation",
+        "Image generation"
+    ],
+
+    related: [7,8,10]
+},
+
+{
+    id: 10,
+
+    title: "Natural Language Processing (NLP)",
+
+    category: "AI Basics",
+
+    icon: "💬",
+
+    level: "Intermediate",
+
+    duration: "9 min",
+
+    description: "Discover how AI understands, analyses and generates human language.",
+
+    content: `
+Natural Language Processing (NLP) is a branch of Artificial Intelligence that enables computers to understand and communicate using human language.
+
+NLP combines Machine Learning, Deep Learning and linguistics to analyse text and speech.
+
+It allows AI systems to answer questions, translate languages, summarise documents, detect emotions and power intelligent chatbots.
+
+Many popular AI assistants and Generative AI tools use NLP to communicate naturally with users.
+
+As NLP continues to improve, conversations between humans and computers become more accurate and more natural.
+`,
+
+    keyPoints: [
+        "NLP helps computers understand human language.",
+        "Works with both text and speech.",
+        "Uses Machine Learning and Deep Learning.",
+        "Powers chatbots and virtual assistants.",
+        "Improves communication between humans and AI."
+    ],
+
+    examples: [
+        "ChatGPT",
+        "Google Translate",
+        "Voice assistants",
+        "Email spam filtering",
+        "Automatic text summarisation"
+    ],
+
+    related: [7,8,9]
+}
+
 ];
