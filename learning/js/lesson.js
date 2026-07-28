@@ -70,3 +70,11 @@ document.getElementById("nextBtn").addEventListener("click",()=>{
     }
 
 });
+
+function updateButtons(){
+
+    prevBtn.disabled = currentIndex === 0;
+
+    nextBtn.disabled = currentIndex === topics.length - 1;
+
+}
