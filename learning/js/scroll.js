@@ -1,74 +1,51 @@
 const topBtn = document.getElementById("scrollTopBtn");
 const bottomBtn = document.getElementById("scrollBottomBtn");
 
-function updateButtons(){
+function updateButtons() {
 
     const scrollTop = window.pageYOffset;
     const pageHeight = document.documentElement.scrollHeight;
     const windowHeight = window.innerHeight;
 
-    if(topBtn){
-
-        if(scrollTop < 100){
-
-            topBtn.style.display = "none";
-
-        }else{
-
-            topBtn.style.display = "block";
-
-        }
-
+    if (topBtn) {
+        topBtn.style.display = (scrollTop < 100) ? "none" : "flex";
     }
 
-    if(bottomBtn){
-
-        if(scrollTop + windowHeight >= pageHeight - 100){
-
-            bottomBtn.style.display = "none";
-
-        }else{
-
-            bottomBtn.style.display = "block";
-
-        }
-
+    if (bottomBtn) {
+        bottomBtn.style.display =
+            (scrollTop + windowHeight >= pageHeight - 100)
+            ? "none"
+            : "flex";
     }
 
 }
 
-if(topBtn){
+if (topBtn) {
 
-    topBtn.addEventListener("click",()=>{
+    topBtn.addEventListener("click", function () {
 
         window.scrollTo({
-
-            top:0,
-
-            behavior:"smooth"
-
+            top: 0,
+            behavior: "smooth"
         });
 
     });
 
 }
 
-if(bottomBtn){
+if (bottomBtn) {
 
-    bottomBtn.addEventListener("click",()=>{
+    bottomBtn.addEventListener("click", function () {
 
         window.scrollTo({
-
-            top:document.documentElement.scrollHeight,
-
-            behavior:"smooth"
-
+            top: document.documentElement.scrollHeight,
+            behavior: "smooth"
         });
 
     });
 
 }
 
-window.addEventListener("scroll",updateButtons);
+window.addEventListener("scroll", updateButtons);
 
-window.addEventListener("load",updateButtons);
+document.addEventListener("DOMContentLoaded", updateButtons);
