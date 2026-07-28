@@ -1,1 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>AI Lesson - AI Learning Hub</title>
+
+<link rel="stylesheet" href="css/learning.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="logo">
+
+📘 AI Lesson
+
+</div>
+
+<a href="study.html" class="home-btn">
+
+⬅ Back
+
+</a>
+
+</header>
+
+<div class="lesson-container">
+
+<h1 id="lessonTitle">
+
+Loading...
+
+</h1>
+
+<p class="lesson-category">
+
+<span id="lessonCategory"></span>
+
+</p>
+
+<div id="lessonContent"
+class="lesson-content">
+
+Loading lesson...
+
+</div>
+
+<div class="lesson-buttons">
+
+<button
+id="prevBtn">
+
+⬅ Previous
+
+</button>
+
+<button
+id="nextBtn">
+
+Next ➜
+
+</button>
+
+</div>
+
+</div>
+
+<script src="data/topics.js"></script>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+
+const id = parseInt(params.get("id")) || 1;
+
+let currentIndex = topics.findIndex(t => t.id === id);
+
+if(currentIndex === -1)
+currentIndex = 0;
+
+function loadLesson(index){
+
+const topic = topics[index];
+
+document.title = topic.title;
+
+document.getElementById("lessonTitle").textContent = topic.title;
+
+document.getElementById("lessonCategory").textContent =
+"Category : " + topic.category;
+
+document.getElementById("lessonContent").innerHTML =
+topic.content.replace(/\n/g,"<br>");
+
+}
+
+loadLesson(currentIndex);
+
+document.getElementById("prevBtn").onclick=function(){
+
+if(currentIndex>0){
+
+currentIndex--;
+
+loadLesson(currentIndex);
+
+history.replaceState(
+{},
+"",
+"?id="+topics[currentIndex].id
+);
+
+}
+
+};
+
+document.getElementById("nextBtn").onclick=function(){
+
+if(currentIndex<topics.length-1){
+
+currentIndex++;
+
+loadLesson(currentIndex);
+
+history.replaceState(
+{},
+"",
+"?id="+topics[currentIndex].id
+);
+
+}
+
+};
+
+</script>
+
+</body>
+
+</html>
