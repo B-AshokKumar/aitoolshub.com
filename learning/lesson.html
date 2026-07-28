@@ -74,73 +74,7 @@ Next ➜
 </div>
 
 <script src="data/topics.js"></script>
-
-<script>
-
-const params = new URLSearchParams(window.location.search);
-
-const id = parseInt(params.get("id")) || 1;
-
-let currentIndex = topics.findIndex(t => t.id === id);
-
-if(currentIndex === -1)
-currentIndex = 0;
-
-function loadLesson(index){
-
-const topic = topics[index];
-
-document.title = topic.title;
-
-document.getElementById("lessonTitle").textContent = topic.title;
-
-document.getElementById("lessonCategory").textContent =
-"Category : " + topic.category;
-
-document.getElementById("lessonContent").innerHTML =
-topic.content.replace(/\n/g,"<br>");
-
-}
-
-loadLesson(currentIndex);
-
-document.getElementById("prevBtn").onclick=function(){
-
-if(currentIndex>0){
-
-currentIndex--;
-
-loadLesson(currentIndex);
-
-history.replaceState(
-{},
-"",
-"?id="+topics[currentIndex].id
-);
-
-}
-
-};
-
-document.getElementById("nextBtn").onclick=function(){
-
-if(currentIndex<topics.length-1){
-
-currentIndex++;
-
-loadLesson(currentIndex);
-
-history.replaceState(
-{},
-"",
-"?id="+topics[currentIndex].id
-);
-
-}
-
-};
-
-</script>
+<script src="js/lesson.js"></script>
 
 </body>
 
