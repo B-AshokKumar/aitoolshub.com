@@ -493,6 +493,446 @@ As NLP continues to improve, conversations between humans and computers become m
     ],
 
     related: [7,8,9]
+},
+
+    {
+    id: 11,
+
+    title: "Computer Vision",
+
+    category: "AI Basics",
+
+    icon: "👁️",
+
+    level: "Intermediate",
+
+    duration: "8 min",
+
+    description: "Learn how AI enables computers to understand and analyse images and videos.",
+
+    content: `
+Computer Vision is a branch of Artificial Intelligence that allows computers to interpret visual information from images and videos.
+
+Using Machine Learning and Deep Learning, AI can identify objects, recognise faces, detect movement and understand scenes.
+
+Computer Vision is widely used in smartphones, healthcare, manufacturing, agriculture and transportation.
+
+As camera technology and AI continue to improve, Computer Vision is becoming an essential part of many modern applications.
+`,
+
+    keyPoints: [
+        "Helps computers understand images and videos.",
+        "Uses Machine Learning and Deep Learning.",
+        "Recognises objects, faces and text.",
+        "Improves automation and safety.",
+        "Used in many industries."
+    ],
+
+    examples: [
+        "Face Unlock on smartphones",
+        "Medical image analysis",
+        "Traffic monitoring",
+        "Quality inspection in factories",
+        "Self-driving vehicles"
+    ],
+
+    related: [8,9,12]
+},
+
+{
+    id: 12,
+
+    title: "Robotics and AI",
+
+    category: "AI Basics",
+
+    icon: "🤖",
+
+    level: "Intermediate",
+
+    duration: "8 min",
+
+    description: "Discover how Artificial Intelligence makes robots smarter and more autonomous.",
+
+    content: `
+Robotics combines engineering with Artificial Intelligence to build machines that can perform tasks automatically.
+
+AI enables robots to learn from data, recognise objects, make decisions and interact with their surroundings.
+
+Modern robots are used in factories, hospitals, warehouses, homes and even space exploration.
+
+As AI technology advances, robots are becoming more intelligent, efficient and capable of working alongside humans.
+`,
+
+    keyPoints: [
+        "Robotics uses AI to make intelligent machines.",
+        "Robots can sense and respond to their environment.",
+        "Used in manufacturing and healthcare.",
+        "Improves productivity and safety.",
+        "Future robots will become more autonomous."
+    ],
+
+    examples: [
+        "Industrial robots",
+        "Robot vacuum cleaners",
+        "Surgical robots",
+        "Warehouse robots",
+        "Mars exploration rovers"
+    ],
+
+    related: [11,13]
+},
+
+{
+    id: 13,
+
+    title: "Expert Systems",
+
+    category: "AI Basics",
+
+    icon: "🧩",
+
+    level: "Intermediate",
+
+    duration: "7 min",
+
+    description: "Understand how Expert Systems solve problems using specialised knowledge.",
+
+    content: `
+An Expert System is an AI program that uses stored knowledge and logical rules to make decisions like a human expert.
+
+Instead of learning from data, Expert Systems rely on a knowledge base and an inference engine.
+
+They are commonly used where expert advice is required consistently and quickly.
+
+Although newer AI technologies have become more popular, Expert Systems are still valuable in many specialised fields.
+`,
+
+    keyPoints: [
+        "Uses a knowledge base.",
+        "Applies logical rules.",
+        "Simulates expert decision-making.",
+        "Provides consistent recommendations.",
+        "Still useful in specialised industries."
+    ],
+
+    examples: [
+        "Medical diagnosis",
+        "Tax advisory systems",
+        "Equipment troubleshooting",
+        "Legal support systems",
+        "Business rule engines"
+    ],
+
+    related: [7,14]
+},
+
+{
+    id: 14,
+
+    title: "Reinforcement Learning",
+
+    category: "AI Basics",
+
+    icon: "🎯",
+
+    level: "Advanced",
+
+    duration: "9 min",
+
+    description: "Learn how AI improves through rewards and penalties.",
+
+    content: `
+Reinforcement Learning is a type of Machine Learning in which an AI agent learns by interacting with its environment.
+
+The agent receives rewards for good actions and penalties for poor decisions.
+
+Over time, it discovers the best strategy to achieve its goals.
+
+Reinforcement Learning is widely used in robotics, gaming, recommendation systems and autonomous vehicles.
+`,
+
+    keyPoints: [
+        "Learns by trial and error.",
+        "Uses rewards and penalties.",
+        "Improves decision-making over time.",
+        "Suitable for complex environments.",
+        "Used in robotics and games."
+    ],
+
+    examples: [
+        "Game-playing AI",
+        "Robot navigation",
+        "Warehouse automation",
+        "Recommendation systems",
+        "Autonomous driving"
+    ],
+
+    related: [7,12,15]
+},
+
+{
+    id: 15,
+
+    title: "Generative AI",
+
+    category: "AI Basics",
+
+    icon: "✨",
+
+    level: "Beginner",
+
+    duration: "10 min",
+
+    description: "Explore how Generative AI creates new text, images, music, videos and code.",
+
+    content: `
+Generative AI is a type of Artificial Intelligence that creates new content instead of simply analysing existing information.
+
+It can generate text, images, videos, music, computer code and many other forms of digital content.
+
+Generative AI is powered by advanced Deep Learning models trained on large datasets.
+
+Today, Generative AI is transforming education, software development, healthcare, business and creative industries by helping people work faster and explore new ideas.
+`,
+
+    keyPoints: [
+        "Creates original digital content.",
+        "Uses advanced Deep Learning models.",
+        "Can generate text, images and code.",
+        "Improves productivity and creativity.",
+        "One of the fastest-growing AI technologies."
+    ],
+
+    examples: [
+        "ChatGPT",
+        "AI image generators",
+        "AI coding assistants",
+        "AI music generation",
+        "AI video creation"
+    ],
+
+    related: [8,9,10]
+}, 
+
+    {
+    id: 16,
+
+    title: "AI Ethics",
+
+    category: "AI Basics",
+
+    icon: "⚖️",
+
+    level: "Beginner",
+
+    duration: "8 min",
+
+    description: "Learn why ethics is essential when developing and using Artificial Intelligence.",
+
+    content: `
+AI Ethics is the study of designing and using Artificial Intelligence in a fair, responsible and trustworthy way.
+
+As AI becomes part of everyday life, it can influence important decisions in healthcare, education, finance and employment.
+
+Developers must ensure AI systems respect privacy, avoid discrimination and make decisions transparently whenever possible.
+
+Ethical AI helps build trust between people and technology while reducing the risk of harmful outcomes.
+`,
+
+    keyPoints: [
+        "Promotes fairness in AI.",
+        "Protects user privacy.",
+        "Encourages transparency.",
+        "Reduces harmful outcomes.",
+        "Builds trust in AI systems."
+    ],
+
+    examples: [
+        "Fair hiring systems",
+        "Responsible healthcare AI",
+        "Privacy protection",
+        "Transparent recommendations",
+        "Ethical AI policies"
+    ],
+
+    related: [17,18]
+},
+
+{
+    id: 17,
+
+    title: "Bias in Artificial Intelligence",
+
+    category: "AI Basics",
+
+    icon: "⚠️",
+
+    level: "Intermediate",
+
+    duration: "8 min",
+
+    description: "Understand how bias can affect AI systems and why reducing it is important.",
+
+    content: `
+AI systems learn from data. If the training data contains unfair or inaccurate information, the AI may produce biased results.
+
+Bias can affect decisions related to recruitment, banking, healthcare and law enforcement.
+
+Developers work to reduce bias by using diverse datasets, testing AI systems carefully and continuously improving their models.
+
+Reducing bias helps create fairer AI systems for everyone.
+`,
+
+    keyPoints: [
+        "Bias usually comes from data.",
+        "Biased AI can produce unfair decisions.",
+        "High-quality datasets reduce bias.",
+        "Testing helps identify problems.",
+        "Fair AI benefits everyone."
+    ],
+
+    examples: [
+        "Hiring recommendations",
+        "Loan approval systems",
+        "Medical diagnosis",
+        "Face recognition",
+        "Language translation"
+    ],
+
+    related: [16,18]
+},
+
+{
+    id: 18,
+
+    title: "Responsible AI",
+
+    category: "AI Basics",
+
+    icon: "🛡️",
+
+    level: "Intermediate",
+
+    duration: "8 min",
+
+    description: "Explore the principles of building safe, reliable and accountable AI systems.",
+
+    content: `
+Responsible AI focuses on creating AI systems that are safe, secure, reliable and beneficial to society.
+
+It includes protecting user data, reducing bias, ensuring transparency and allowing humans to oversee important decisions.
+
+Many organisations follow Responsible AI principles when developing new AI technologies.
+
+These principles help ensure AI is used for positive purposes.
+`,
+
+    keyPoints: [
+        "Keeps AI safe and reliable.",
+        "Protects user information.",
+        "Encourages accountability.",
+        "Supports human oversight.",
+        "Promotes trustworthy AI."
+    ],
+
+    examples: [
+        "Healthcare AI review",
+        "Financial fraud detection",
+        "Content moderation",
+        "Autonomous vehicles",
+        "Government AI guidelines"
+    ],
+
+    related: [16,17,19]
+},
+
+{
+    id: 19,
+
+    title: "The Future of Artificial Intelligence",
+
+    category: "AI Basics",
+
+    icon: "🚀",
+
+    level: "Beginner",
+
+    duration: "9 min",
+
+    description: "Discover how AI may shape the future of technology and society.",
+
+    content: `
+Artificial Intelligence is expected to continue transforming nearly every industry.
+
+Future AI systems may improve healthcare, education, transportation, agriculture, scientific research and environmental protection.
+
+Although AI will automate many tasks, it will also create new careers and opportunities for people with AI skills.
+
+Learning AI today prepares individuals for tomorrow's technology-driven world.
+`,
+
+    keyPoints: [
+        "AI will continue to evolve.",
+        "Many industries will benefit.",
+        "New careers will emerge.",
+        "AI skills will become increasingly valuable.",
+        "Responsible innovation remains important."
+    ],
+
+    examples: [
+        "AI-powered healthcare",
+        "Smart cities",
+        "Precision farming",
+        "Scientific research",
+        "Personal AI assistants"
+    ],
+
+    related: [15,20]
+},
+
+{
+    id: 20,
+
+    title: "Artificial Intelligence in Everyday Life",
+
+    category: "AI Basics",
+
+    icon: "🌍",
+
+    level: "Beginner",
+
+    duration: "8 min",
+
+    description: "See how AI is already improving daily life around the world.",
+
+    content: `
+Artificial Intelligence is already part of everyday life, often without people realising it.
+
+It helps recommend movies and music, filters spam emails, provides navigation, translates languages and powers virtual assistants.
+
+Businesses use AI to improve customer service, manage inventory and analyse large amounts of data.
+
+As AI continues to develop, it will become an even more useful tool for education, work and daily activities.
+`,
+
+    keyPoints: [
+        "AI is already widely used.",
+        "Improves convenience and productivity.",
+        "Supports communication and learning.",
+        "Helps businesses make better decisions.",
+        "Will become even more common in the future."
+    ],
+
+    examples: [
+        "Google Maps",
+        "Netflix recommendations",
+        "Online shopping",
+        "Voice assistants",
+        "Spam email filtering"
+    ],
+
+    related: [1,15,19]
 }
 
 ];
