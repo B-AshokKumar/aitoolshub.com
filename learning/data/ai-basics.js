@@ -495,7 +495,7 @@ As NLP continues to improve, conversations between humans and computers become m
     related: [7,8,9]
 },
 
-    {
+{
     id: 11,
 
     title: "Computer Vision",
