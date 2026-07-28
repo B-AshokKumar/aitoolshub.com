@@ -266,6 +266,141 @@ If General AI becomes a reality in the future, it could transform education, hea
     ],
 
     related: [3,4,6]
-}
+},
+
+    {
+    id: 6,
+
+    title: "Super AI",
+
+    category: "AI Basics",
+
+    icon: "🚀",
+
+    level: "Advanced",
+
+    duration: "6 min",
+
+    description: "Learn about the theoretical concept of Super Artificial Intelligence.",
+
+    content: `
+Super Artificial Intelligence (Super AI) is a hypothetical form of AI that would become more intelligent than humans in almost every field.
+
+It could solve scientific problems, make complex decisions and learn new skills much faster than humans.
+
+Today, Super AI does not exist. It is discussed mainly in research, books and future technology predictions.
+
+Many scientists believe that if Super AI is ever developed, it must be designed carefully to ensure it remains safe, ethical and beneficial to humanity.
+`,
+
+    keyPoints: [
+        "Super AI is only a concept today.",
+        "It would exceed human intelligence.",
+        "It could solve highly complex problems.",
+        "Safety and ethics are important.",
+        "Researchers continue to study this possibility."
+    ],
+
+    examples: [
+        "Advanced scientific research",
+        "Global climate modelling",
+        "Space exploration",
+        "Medical discoveries"
+    ],
+
+    related: [5,7]
+},
+
+{
+    id: 7,
+
+    title: "Machine Learning",
+
+    category: "AI Basics",
+
+    icon: "📊",
+
+    level: "Beginner",
+
+    duration: "8 min",
+
+    description: "Understand how computers learn from data without being explicitly programmed.",
+
+    content: `
+Machine Learning (ML) is a branch of Artificial Intelligence.
+
+Instead of following fixed instructions, Machine Learning systems analyse data, identify patterns and improve their performance through experience.
+
+The more high-quality data a model receives, the better it can usually make predictions.
+
+Machine Learning powers many applications that people use every day.
+
+It is one of the most important technologies behind modern AI.
+`,
+
+    keyPoints: [
+        "Machine Learning is a branch of AI.",
+        "It learns from data.",
+        "It improves with experience.",
+        "Good data improves accuracy.",
+        "ML powers many modern applications."
+    ],
+
+    examples: [
+        "Spam detection",
+        "Netflix recommendations",
+        "YouTube recommendations",
+        "Online shopping suggestions",
+        "Fraud detection"
+    ],
+
+    related: [1,8,9]
+},
+
+{
+    id: 8,
+
+    title: "Deep Learning",
+
+    category: "AI Basics",
+
+    icon: "🧠",
+
+    level: "Intermediate",
+
+    duration: "8 min",
+
+    description: "Discover how Deep Learning enables computers to solve complex problems.",
+
+    content: `
+Deep Learning is a specialised area of Machine Learning.
+
+It uses Artificial Neural Networks with many layers to process large amounts of information.
+
+Deep Learning performs exceptionally well in tasks involving images, speech, text and video.
+
+Recent breakthroughs in Generative AI have been made possible because of Deep Learning techniques.
+
+Although Deep Learning produces powerful results, it usually requires large datasets and significant computing power.
+`,
+
+    keyPoints: [
+        "Deep Learning is part of Machine Learning.",
+        "It uses multi-layer neural networks.",
+        "It performs well with complex data.",
+        "It powers many modern AI systems.",
+        "Training often requires powerful computers."
+    ],
+
+    examples: [
+        "Image recognition",
+        "Speech recognition",
+        "Self-driving vehicles",
+        "Medical image analysis",
+        "Generative AI"
+    ],
+
+    related: [7,9,10]
+},
 
 ];
