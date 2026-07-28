@@ -5,33 +5,20 @@
 
 const params = new URLSearchParams(window.location.search);
 
-const lessonId = parseInt(params.get("id")) || 1;
+const lessonId = Number(params.get("id")) || 1;
 
 let currentIndex = topics.findIndex(topic => topic.id === lessonId);
 
-if (currentIndex === -1) {
-    currentIndex = 0;
-}
+if (currentIndex < 0) currentIndex = 0;
 
-const prevBtn =
-document.getElementById("prevBtn");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
 
-const nextBtn =
-document.getElementById("nextBtn");
+function loadLesson(index) {
 
-function updateButtons(){
+    currentIndex = index;
 
-   console.log("Index:", currentIndex, "Total:", topics.length);
-
-    prevBtn.disabled = currentIndex === 0;
-
-    nextBtn.disabled = currentIndex === topics.length - 1;
-
-}
-
-function loadLesson(index){
-
-    const topic = topics[index];
+    const topic = topics[currentIndex];
 
     document.title = topic.title + " - AI Learning Hub";
 
@@ -40,59 +27,46 @@ function loadLesson(index){
     document.getElementById("lessonCategory").textContent =
         "Category: " + topic.category;
 
-   document.getElementById("lessonProgress").textContent =
-    "Lesson " + (index + 1) + " of " + topics.length;
+    document.getElementById("lessonProgress").textContent =
+        "Lesson " + (currentIndex + 1) + " of " + topics.length;
 
     document.getElementById("lessonContent").innerHTML =
-        topic.content.replace(/\n/g,"<br>");
+        topic.content.replace(/\n/g, "<br>");
 
-   updateButtons();
+    prevBtn.disabled = (currentIndex === 0);
+    nextBtn.disabled = (currentIndex === topics.length - 1);
 
-window.scrollTo({
+    history.replaceState(
+        {},
+        "",
+        "lesson.html?id=" + topic.id
+    );
 
-    top:0,
-
-    behavior:"smooth"
-
-});
-
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 }
 
-loadLesson(currentIndex);
-
-/* Previous */
-
-prevBtn.addEventListener("click", () => {
+prevBtn.addEventListener("click", function () {
 
     if (currentIndex > 0) {
 
         loadLesson(currentIndex - 1);
 
-        history.replaceState(
-            {},
-            "",
-            "lesson.html?id=" + topics[currentIndex].id
-        );
-
     }
 
 });
 
-/* Next */
-
-nextBtn.addEventListener("click", () => {
+nextBtn.addEventListener("click", function () {
 
     if (currentIndex < topics.length - 1) {
 
         loadLesson(currentIndex + 1);
 
-        history.replaceState(
-            {},
-            "",
-            "lesson.html?id=" + topics[currentIndex].id
-        );
-
     }
 
 });
+
+loadLesson(currentIndex);
 
