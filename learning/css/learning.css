@@ -388,6 +388,28 @@ margin-top:25px;
 
 }
 
+.lesson-nav button{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+}
+
+.lesson-nav button svg{
+
+    width:20px;
+
+    height:20px;
+
+    flex-shrink:0;
+
+}
+
 .lesson-buttons button{
 
 background:#0D6EFD;
