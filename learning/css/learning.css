@@ -339,3 +339,93 @@ font-size:26px;
 }
 
 }
+
+/* ==========================
+   LESSON PAGE
+========================== */
+
+.lesson-container{
+
+max-width:900px;
+
+margin:30px auto;
+
+padding:25px;
+
+}
+
+.lesson-category{
+
+color:#666;
+
+margin-bottom:20px;
+
+font-weight:bold;
+
+}
+
+.lesson-content{
+
+background:#ffffff;
+
+padding:25px;
+
+border-radius:15px;
+
+line-height:1.8;
+
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+.lesson-buttons{
+
+display:flex;
+
+justify-content:space-between;
+
+margin-top:25px;
+
+}
+
+.lesson-buttons button{
+
+background:#0D6EFD;
+
+color:#fff;
+
+border:none;
+
+padding:12px 24px;
+
+border-radius:30px;
+
+font-size:16px;
+
+cursor:pointer;
+
+}
+
+.lesson-buttons button:hover{
+
+background:#0958cc;
+
+}
+
+@media(prefers-color-scheme:dark){
+
+.lesson-category{
+
+color:#ccc;
+
+}
+
+.lesson-content{
+
+background:#1d1d1d;
+
+color:#fff;
+
+}
+
+}
