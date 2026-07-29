@@ -580,6 +580,20 @@ color:#fff;
 
     gap:8px;
 
+    background:#ffffff;
+
+    color:#0D6EFD;
+
+    text-decoration:none;
+
+    padding:10px 18px;
+
+    border-radius:30px;
+
+    font-weight:bold;
+
+    transition:.3s;
+
 }
 
 .back-icon{
@@ -588,11 +602,11 @@ color:#fff;
 
     height:20px;
 
-    fill:none;
-
     stroke:currentColor;
 
     stroke-width:2.5;
+
+    fill:none;
 
     stroke-linecap:round;
 
