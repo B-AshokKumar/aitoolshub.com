@@ -824,6 +824,124 @@ const quizzes = [
         }
 
     ]
+},
+
+{
+    lessonId: 8,
+
+    questions: [
+
+        {
+            question: "Deep Learning is a specialised area of:",
+            options: [
+                "Machine Learning",
+                "Computer Hardware",
+                "Cybersecurity",
+                "Cloud Computing"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Deep Learning uses:",
+            options: [
+                "Artificial Neural Networks",
+                "Computer Monitors",
+                "Printers",
+                "Databases Only"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Deep Learning processes information using:",
+            options: [
+                "Many layers of neural networks",
+                "One simple instruction",
+                "Paper documents",
+                "Only internet connections"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Deep Learning performs especially well with:",
+            options: [
+                "Images, speech, text and video",
+                "Paper files only",
+                "Electric circuits",
+                "Keyboard shortcuts"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Recent advances in Generative AI are mainly possible because of:",
+            options: [
+                "Deep Learning",
+                "Typewriters",
+                "Web browsers",
+                "Spreadsheet software"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Deep Learning usually requires:",
+            options: [
+                "Large datasets",
+                "Small notebooks",
+                "Only calculators",
+                "No training data"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Training Deep Learning models often needs:",
+            options: [
+                "Powerful computers",
+                "Only mobile phones",
+                "Televisions",
+                "USB drives"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which application commonly uses Deep Learning?",
+            options: [
+                "Speech recognition",
+                "Typing documents",
+                "Using a calculator",
+                "File compression"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which of the following is another Deep Learning application?",
+            options: [
+                "Medical image analysis",
+                "Writing with a pen",
+                "Photocopying documents",
+                "Creating folders"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "According to the lesson, Deep Learning is:",
+            options: [
+                "A powerful technology behind many modern AI systems",
+                "A replacement for Machine Learning",
+                "Used only in gaming",
+                "No longer important"
+            ],
+            answer: 0
+        }
+
+    ]
 }
 
 ];
