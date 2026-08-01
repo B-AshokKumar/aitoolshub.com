@@ -1060,6 +1060,124 @@ const quizzes = [
         }
 
     ]
+},
+
+{
+    lessonId: 10,
+
+    questions: [
+
+        {
+            question: "Natural Language Processing (NLP) is a branch of:",
+            options: [
+                "Artificial Intelligence",
+                "Cybersecurity",
+                "Computer Hardware",
+                "Networking"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "NLP enables computers to:",
+            options: [
+                "Understand and communicate using human language",
+                "Build computer hardware",
+                "Repair mobile phones",
+                "Create internet connections"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Natural Language Processing works with:",
+            options: [
+                "Text and speech",
+                "Images only",
+                "Videos only",
+                "Numbers only"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "NLP combines Artificial Intelligence with:",
+            options: [
+                "Machine Learning, Deep Learning and linguistics",
+                "Civil Engineering",
+                "Mechanical Engineering",
+                "Accounting"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which of the following is an application of NLP?",
+            options: [
+                "Language translation",
+                "Building bridges",
+                "Manufacturing robots",
+                "Charging batteries"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "NLP allows AI systems to:",
+            options: [
+                "Answer questions",
+                "Repair cars",
+                "Manufacture computers",
+                "Generate electricity"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which popular AI tool uses NLP?",
+            options: [
+                "ChatGPT",
+                "Calculator",
+                "Paint",
+                "Clock"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which application is powered by NLP?",
+            options: [
+                "Google Translate",
+                "Spreadsheet software",
+                "Calculator",
+                "Photo Viewer"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "As NLP improves, conversations between humans and computers become:",
+            options: [
+                "More natural and accurate",
+                "More difficult",
+                "Slower",
+                "Less useful"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "According to the lesson, NLP powers:",
+            options: [
+                "Chatbots and virtual assistants",
+                "Computer keyboards",
+                "Power supplies",
+                "Computer monitors"
+            ],
+            answer: 0
+        }
+
+    ]
 }
 
 ];
