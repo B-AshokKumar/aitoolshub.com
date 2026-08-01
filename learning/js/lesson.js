@@ -13,6 +13,7 @@ if (currentIndex < 0) currentIndex = 0;
 
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
+const quizBtn = document.getElementById("quizBtn");
 
 function loadLesson(index) {
 
@@ -41,6 +42,10 @@ function loadLesson(index) {
         "",
         "lesson.html?id=" + topic.id
     );
+
+   quizBtn.onclick = function () {
+    location.href = "quiz.html?id=" + topic.id;
+};
 
     window.scrollTo({
         top: 0,
