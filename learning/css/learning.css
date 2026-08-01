@@ -802,3 +802,37 @@ box-shadow:0 5px 15px rgba(0,0,0,.08);
     transition:.5s;
 
 }
+
+/* ==========================
+   QUIZ PROGRESS BAR
+========================== */
+
+.quiz-progress-bar{
+
+    width:100%;
+
+    max-width:600px;
+
+    height:14px;
+
+    background:#e5e7eb;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    margin:15px auto 25px;
+
+}
+
+#quizProgressFill{
+
+    width:0%;
+
+    height:100%;
+
+    background:#0D6EFD;
+
+    transition:width .4s ease;
+
+}
