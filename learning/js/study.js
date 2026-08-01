@@ -63,3 +63,47 @@ searchBox.addEventListener("input", function(){
 /* Load */
 
 renderTopics(topics);
+
+updateProgress();
+
+function updateProgress(){
+
+    let completed = 0;
+
+    topics.forEach(topic => {
+
+        const bestScore =
+            localStorage.getItem("quiz_" + topic.id);
+
+        if(bestScore !== null){
+
+            completed++;
+
+        }
+
+    });
+
+    document.getElementById("completedLessons").textContent =
+        "Lessons Completed: " +
+        completed +
+        " / " +
+        topics.length;
+
+    document.getElementById("completedQuizzes").textContent =
+        "Quizzes Passed: " +
+        completed +
+        " / " +
+        topics.length;
+
+    const percent =
+        Math.round(
+            (completed / topics.length) * 100
+        );
+
+    document.getElementById("progressFill").style.width =
+        percent + "%";
+
+    document.getElementById("progressPercent").textContent =
+        percent + "% Completed";
+
+}
