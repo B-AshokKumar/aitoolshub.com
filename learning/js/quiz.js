@@ -33,6 +33,13 @@ function showQuestion() {
 
     const q = quiz.questions[currentQuestion];
 
+    const options = q.options.map((option, index) => ({
+    text: option,
+    correct: index === q.answer
+}));
+
+options.sort(() => Math.random() - 0.5);
+
     quizProgress.textContent =
         "Question " + (currentQuestion + 1) +
         " of " + quiz.questions.length;
@@ -41,11 +48,11 @@ function showQuestion() {
 
     answers.innerHTML = "";
 
-    q.options.forEach((option, index) => {
+    options.forEach((option) => {
 
     const button = document.createElement("button");
 
-    button.textContent = option;
+    button.textContent = option.text;
 
     button.className = "quiz-option";
 
@@ -55,7 +62,7 @@ function showQuestion() {
             .querySelectorAll(".quiz-option")
             .forEach(btn => btn.disabled = true);
 
-        if(index === q.answer){
+        if(option.correct){
 
             score++;
 
@@ -65,9 +72,16 @@ function showQuestion() {
 
             button.style.background = "#dc2626";
 
-            document
-                .querySelectorAll(".quiz-option")[q.answer]
-                .style.background = "#16a34a";
+            document.querySelectorAll(".quiz-option")
+.forEach((btn, i) => {
+
+    if(options[i].correct){
+
+        btn.style.background = "#16a34a";
+
+    }
+
+});
 
         }
 
