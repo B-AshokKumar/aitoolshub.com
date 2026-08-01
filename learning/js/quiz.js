@@ -34,9 +34,17 @@ const quizTitle = document.getElementById("quizTitle");
 const quizProgress = document.getElementById("quizProgress");
 const question = document.getElementById("question");
 const answers = document.getElementById("answers");
+const nextQuestionBtn = document.getElementById("nextQuestionBtn");
+const quizProgressFill = document.getElementById("quizProgressFill");
 
-const nextQuestionBtn =
-document.getElementById("nextQuestionBtn");
+alert(
+"quizTitle: " + !!quizTitle +
+"\nquizProgress: " + !!quizProgress +
+"\nquestion: " + !!question +
+"\nanswers: " + !!answers +
+"\nnextButton: " + !!nextQuestionBtn +
+"\nprogressFill: " + !!quizProgressFill
+);
 
 let currentQuestion = 0;
 let score = 0;
