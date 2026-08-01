@@ -644,3 +644,31 @@ box-shadow:0 5px 15px rgba(0,0,0,.08);
     background:#0958cc;
 
 }
+
+#nextQuestionBtn{
+
+    display:block;
+
+    margin:25px auto 0;
+
+    padding:14px 30px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:#0D6EFD;
+
+    color:#fff;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+}
+
+#nextQuestionBtn:hover{
+
+    background:#0958cc;
+
+}
