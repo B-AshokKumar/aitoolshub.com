@@ -672,3 +672,67 @@ box-shadow:0 5px 15px rgba(0,0,0,.08);
     background:#0958cc;
 
 }
+
+.quiz-result{
+
+    text-align:center;
+
+}
+
+.quiz-result h2{
+
+    font-size:40px;
+
+    color:#0D6EFD;
+
+    margin:20px 0;
+
+}
+
+.quiz-stars{
+
+    font-size:34px;
+
+    margin:15px 0;
+
+}
+
+.quiz-result p{
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    margin-bottom:25px;
+
+}
+
+.quiz-result button{
+
+    display:block;
+
+    width:260px;
+
+    margin:12px auto;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:#0D6EFD;
+
+    color:#fff;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+}
+
+.quiz-result button:hover{
+
+    background:#0958cc;
+
+}
