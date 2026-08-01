@@ -352,6 +352,124 @@ const quizzes = [
         }
 
     ]
-}
+},
+
+{
+    lessonId: 4,
+
+    questions: [
+
+        {
+            question: "What is another name for Narrow AI?",
+            options: [
+                "Weak AI",
+                "Strong AI",
+                "Super AI",
+                "General AI"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Narrow AI is designed to perform:",
+            options: [
+                "A specific task",
+                "Every human task",
+                "Scientific research only",
+                "Any task without training"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Can Narrow AI think beyond its training?",
+            options: [
+                "No",
+                "Yes",
+                "Only sometimes",
+                "Only on weekends"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which type of AI do almost all AI applications today belong to?",
+            options: [
+                "Narrow AI",
+                "General AI",
+                "Super AI",
+                "Artificial General Intelligence"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which of the following is an example of Narrow AI?",
+            options: [
+                "Google Maps",
+                "General AI",
+                "Super AI",
+                "Human Brain"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which AI application helps recommend movies and TV shows?",
+            options: [
+                "Netflix Recommendations",
+                "Calculator",
+                "Spreadsheet",
+                "Word Processor"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "What is one advantage of Narrow AI?",
+            options: [
+                "It performs specialised tasks quickly and accurately",
+                "It can perform every human task",
+                "It never needs data",
+                "It replaces all human workers"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "According to the lesson, Narrow AI is mainly designed to:",
+            options: [
+                "Assist humans",
+                "Replace humans completely",
+                "Control the internet",
+                "Build robots automatically"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which of these is NOT an example of Narrow AI?",
+            options: [
+                "General AI",
+                "Face Unlock",
+                "Alexa",
+                "ChatGPT"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "As technology improves, Narrow AI continues to become:",
+            options: [
+                "More useful in everyday life and business",
+                "Less accurate",
+                "Unable to learn",
+                "Completely independent of humans"
+            ],
+            answer: 0
+        }
+
+    ]
+},
 
 ];
