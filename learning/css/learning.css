@@ -615,3 +615,20 @@ color:#fff;
     flex-shrink:0;
 
 }
+
+.lesson-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+}
+
+#prevBtn,
+#nextBtn{
+    flex:1;
+}
+
+#quizBtn{
+    flex:0 0 100%;
+    max-width:260px;
+    margin:0 auto;
+}
