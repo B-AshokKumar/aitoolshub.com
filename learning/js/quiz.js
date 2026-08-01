@@ -9,6 +9,9 @@ const quizProgress = document.getElementById("quizProgress");
 const question = document.getElementById("question");
 const answers = document.getElementById("answers");
 
+const nextQuestionBtn =
+document.getElementById("nextQuestionBtn");
+
 let currentQuestion = 0;
 let score = 0;
 
@@ -40,37 +43,41 @@ function showQuestion() {
 
     q.options.forEach((option, index) => {
 
-        const button = document.createElement("button");
+    const button = document.createElement("button");
 
-        button.textContent = option;
+    button.textContent = option;
 
-        button.className = "quiz-option";
+    button.className = "quiz-option";
 
-        button.onclick = function () {
+    button.onclick = function () {
 
-            if (index === q.answer) {
+        document
+            .querySelectorAll(".quiz-option")
+            .forEach(btn => btn.disabled = true);
 
-                score++;
+        if(index === q.answer){
 
-            }
+            score++;
 
-            currentQuestion++;
+            button.style.background = "#16a34a";
 
-            if (currentQuestion < quiz.questions.length) {
+        }else{
 
-                showQuestion();
+            button.style.background = "#dc2626";
 
-            } else {
+            document
+                .querySelectorAll(".quiz-option")[q.answer]
+                .style.background = "#16a34a";
 
-                showResult();
+        }
 
-            }
+        nextQuestionBtn.style.display = "block";
 
-        };
+    };
 
-        answers.appendChild(button);
+    answers.appendChild(button);
 
-    });
+});
 
 }
 
@@ -96,3 +103,21 @@ function showResult() {
     quizProgress.textContent = "Completed";
 
 }
+
+nextQuestionBtn.onclick = function(){
+
+    currentQuestion++;
+
+    nextQuestionBtn.style.display = "none";
+
+    if(currentQuestion < quiz.questions.length){
+
+        showQuestion();
+
+    }else{
+
+        showResult();
+
+    }
+
+};
