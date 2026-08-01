@@ -942,6 +942,124 @@ const quizzes = [
         }
 
     ]
+},
+
+{
+    lessonId: 9,
+
+    questions: [
+
+        {
+            question: "Artificial Neural Networks (ANNs) are inspired by:",
+            options: [
+                "The human brain",
+                "The internet",
+                "A calculator",
+                "A keyboard"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "A neural network consists of many connected:",
+            options: [
+                "Neurons",
+                "Printers",
+                "Monitors",
+                "Folders"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Artificial neurons work together to:",
+            options: [
+                "Process information and recognise patterns",
+                "Print documents",
+                "Store batteries",
+                "Create hardware"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Neural Networks are the foundation of:",
+            options: [
+                "Deep Learning",
+                "Web Design",
+                "Cloud Storage",
+                "Cybersecurity"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which of the following is an application of Neural Networks?",
+            options: [
+                "Face recognition",
+                "Paper filing",
+                "Typing documents",
+                "Battery charging"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Neural Networks can understand:",
+            options: [
+                "Speech",
+                "Only numbers",
+                "Only images",
+                "Only hardware"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "The more quality data a neural network is trained with, the:",
+            options: [
+                "Better it usually performs",
+                "Slower it always becomes",
+                "Less accurate it becomes",
+                "More printers it needs"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which modern AI application relies on advanced Neural Networks?",
+            options: [
+                "ChatGPT",
+                "Calculator",
+                "Notepad",
+                "Clock"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Neural Networks can also be used for:",
+            options: [
+                "Language translation",
+                "Repairing computers",
+                "Printing books",
+                "Charging phones"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "According to the lesson, Neural Networks help computers:",
+            options: [
+                "Recognise patterns and make intelligent decisions",
+                "Replace all humans",
+                "Build roads automatically",
+                "Increase internet speed"
+            ],
+            answer: 0
+        }
+
+    ]
 }
 
 ];
