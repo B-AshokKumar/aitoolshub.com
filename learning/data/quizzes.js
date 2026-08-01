@@ -1,3 +1,4 @@
+alert("quizzes.js loaded");
 const quizzes = [
 
 {
