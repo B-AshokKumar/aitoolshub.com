@@ -83,24 +83,86 @@ function showQuestion() {
 
 function showResult() {
 
-    question.textContent =
-        "Quiz Completed!";
+    quizProgress.textContent = "Completed";
+
+    question.innerHTML = "🎉 Quiz Completed!";
+
+    let stars = "";
+
+    const percentage = (score / quiz.questions.length) * 100;
+
+    if (percentage === 100) {
+
+        stars = "⭐⭐⭐⭐⭐";
+
+    } else if (percentage >= 80) {
+
+        stars = "⭐⭐⭐⭐";
+
+    } else if (percentage >= 60) {
+
+        stars = "⭐⭐⭐";
+
+    } else if (percentage >= 40) {
+
+        stars = "⭐⭐";
+
+    } else {
+
+        stars = "⭐";
+
+    }
+
+    let message = "";
+
+    if (percentage === 100) {
+
+        message = "Excellent!";
+
+    } else if (percentage >= 80) {
+
+        message = "Very Good!";
+
+    } else if (percentage >= 60) {
+
+        message = "Good Job!";
+
+    } else {
+
+        message = "Keep Practising!";
+    }
 
     answers.innerHTML = `
 
-        <h2>Your Score</h2>
+        <div class="quiz-result">
 
-        <p>${score} / ${quiz.questions.length}</p>
+            <h2>${score} / ${quiz.questions.length}</h2>
 
-        <button onclick="location.reload()">
+            <div class="quiz-stars">${stars}</div>
 
-            🔄 Retry Quiz
+            <p>${message}</p>
 
-        </button>
+            <button onclick="location.reload()">
+
+                🔄 Retry Quiz
+
+            </button>
+
+            <button onclick="history.back()">
+
+                📘 Back to Lesson
+
+            </button>
+
+            <button onclick="location.href='study.html'">
+
+                🏠 Learning Hub
+
+            </button>
+
+        </div>
 
     `;
-
-    quizProgress.textContent = "Completed";
 
 }
 
