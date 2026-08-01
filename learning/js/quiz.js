@@ -132,11 +132,28 @@ function showResult() {
         message = "Keep Practising!";
     }
 
+    // Save best score
+const bestScore = localStorage.getItem("quiz_" + lessonId);
+
+if (!bestScore || score > Number(bestScore)) {
+
+    localStorage.setItem("quiz_" + lessonId, score);
+
+}
+    
     answers.innerHTML = `
 
         <div class="quiz-result">
 
             <h2>${score} / ${quiz.questions.length}</h2>
+
+<p>
+Best Score:
+${localStorage.getItem("quiz_" + lessonId)}
+/
+${quiz.questions.length}
+🏆
+</p>
 
             <div class="quiz-stars">${stars}</div>
 
