@@ -470,6 +470,124 @@ const quizzes = [
         }
 
     ]
+},
+
+{
+    lessonId: 5,
+
+    questions: [
+
+        {
+            question: "What is another name for General AI?",
+            options: [
+                "Strong AI",
+                "Weak AI",
+                "Super AI",
+                "Narrow AI"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "General AI is also known as:",
+            options: [
+                "Artificial General Intelligence (AGI)",
+                "Artificial Graphic Intelligence",
+                "Advanced General Internet",
+                "Automatic General Intelligence"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "General AI is considered to be:",
+            options: [
+                "A theoretical form of Artificial Intelligence",
+                "A type of Narrow AI",
+                "A completed technology used everywhere",
+                "A mobile application"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Unlike Narrow AI, General AI would be able to:",
+            options: [
+                "Perform almost any intellectual task a human can perform",
+                "Perform only one specific task",
+                "Work only without the internet",
+                "Play games only"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "A General AI system could:",
+            options: [
+                "Learn new skills without special programming",
+                "Only repeat the same task",
+                "Work only with images",
+                "Never improve itself"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Does a true General AI system exist today?",
+            options: [
+                "No",
+                "Yes",
+                "Only in smartphones",
+                "Only in robots"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Researchers continue to study:",
+            options: [
+                "Artificial General Intelligence (AGI)",
+                "Only video games",
+                "Only web browsers",
+                "Only computer hardware"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Building General AI remains:",
+            options: [
+                "One of the biggest challenges in computer science",
+                "A very easy task",
+                "Already completed",
+                "No longer necessary"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "If General AI becomes a reality, it could transform:",
+            options: [
+                "Education, healthcare, science and engineering",
+                "Only music",
+                "Only sports",
+                "Only social media"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which statement about General AI is correct?",
+            options: [
+                "It is still under research and does not yet exist",
+                "It is the most common AI used today",
+                "It cannot learn new skills",
+                "It performs only one specific task"
+            ],
+            answer: 0
+        }
+
+    ]
 }
 
 ];
