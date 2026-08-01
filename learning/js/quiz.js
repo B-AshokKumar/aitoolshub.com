@@ -77,6 +77,11 @@ for (let i = options.length - 1; i > 0; i--) {
         "Question " + (currentQuestion + 1) +
         " of " + shuffledQuestions.length;
 
+    const progress =
+((currentQuestion + 1) / shuffledQuestions.length) * 100;
+
+document.getElementById("quizProgressFill").style.width =
+progress + "%";
     question.textContent = q.question;
 
     answers.innerHTML = "";
@@ -132,6 +137,7 @@ function showResult() {
 
     quizProgress.textContent = "Completed";
 
+    document.getElementById("quizProgressFill").style.width = "100%";
     question.innerHTML = "🎉 Quiz Completed!";
 
     let stars = "";
