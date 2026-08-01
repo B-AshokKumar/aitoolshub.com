@@ -617,3 +617,30 @@ box-shadow:0 5px 15px rgba(0,0,0,.08);
 
 }
 
+.quiz-option{
+
+    width:100%;
+
+    padding:14px;
+
+    margin:10px 0;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#0D6EFD;
+
+    color:#fff;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+}
+
+.quiz-option:hover{
+
+    background:#0958cc;
+
+}
