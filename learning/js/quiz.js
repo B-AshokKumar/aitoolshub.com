@@ -41,6 +41,15 @@ if (!quiz) {
 } else {
 
     quizTitle.textContent = "Lesson " + lessonId + " Quiz";
+    if (shuffledQuestions.length === 0) {
+
+    quizProgress.textContent = "";
+
+    question.textContent = "This quiz has no questions yet.";
+
+    return;
+
+}
 
     showQuestion();
 
