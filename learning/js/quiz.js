@@ -1,3 +1,11 @@
+window.onerror = function(message, source, line, column, error) {
+    alert(
+        "Error:\n\n" +
+        message +
+        "\n\nLine: " + line
+    );
+};
+
 alert("quiz.js loaded");
 const params = new URLSearchParams(window.location.search);
 
