@@ -384,6 +384,8 @@ box-shadow:0 5px 15px rgba(0,0,0,.08);
 
     flex-wrap:wrap;
 
+   justify-content:center;
+
     gap:16px;
 
     margin-top:25px;
@@ -439,11 +441,6 @@ box-shadow:0 5px 15px rgba(0,0,0,.08);
 
 }
 
-#quizBtn:hover{
-
-    background:#15803d;
-
-}
 .nav-icon{
 
     width:22px;
@@ -467,6 +464,12 @@ box-shadow:0 5px 15px rgba(0,0,0,.08);
 .lesson-buttons button:hover{
 
     background:#0958cc;
+
+}
+
+#quizBtn:hover{
+
+    background:#15803d;
 
 }
 
