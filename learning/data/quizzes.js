@@ -124,15 +124,112 @@ const quizzes = [
     questions: [
 
         {
-            question: "AI became an academic field in which year?",
-
+            question: "In which year did Artificial Intelligence become an academic field?",
             options: [
                 "1956",
                 "1980",
                 "2001",
                 "1945"
             ],
+            answer: 0
+        },
 
+        {
+            question: "Which conference officially introduced AI as an academic field?",
+            options: [
+                "Dartmouth Conference",
+                "Geneva Conference",
+                "MIT Conference",
+                "London Conference"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Early AI systems mainly focused on:",
+            options: [
+                "Solving mathematical problems",
+                "Building websites",
+                "Creating videos",
+                "Making smartphones"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which game was an early AI challenge?",
+            options: [
+                "Chess",
+                "Football",
+                "Cricket",
+                "Tennis"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "During which decade did Expert Systems become popular?",
+            options: [
+                "1980s",
+                "1960s",
+                "1990s",
+                "2010s"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "What helped Machine Learning grow rapidly in the 2000s?",
+            options: [
+                "More computing power and large amounts of data",
+                "Faster printers",
+                "Smaller keyboards",
+                "Television"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Generative AI can create:",
+            options: [
+                "Text, images and code",
+                "Only spreadsheets",
+                "Only emails",
+                "Only phone calls"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which of these is an example of Generative AI?",
+            options: [
+                "ChatGPT",
+                "Calculator",
+                "MS Paint",
+                "Clock"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "AI has evolved because of advances in:",
+            options: [
+                "Computing power and data",
+                "Paper books",
+                "Typewriters",
+                "Fax machines"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "According to the lesson, AI is expected to:",
+            options: [
+                "Become even more capable in the future",
+                "Disappear completely",
+                "Replace electricity",
+                "Stop improving"
+            ],
             answer: 0
         }
 
