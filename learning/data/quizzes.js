@@ -588,6 +588,124 @@ const quizzes = [
         }
 
     ]
+},
+
+{
+    lessonId: 6,
+
+    questions: [
+
+        {
+            question: "What is Super AI?",
+            options: [
+                "A hypothetical AI more intelligent than humans",
+                "A type of Narrow AI",
+                "A search engine",
+                "A computer operating system"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Super AI is expected to be:",
+            options: [
+                "More intelligent than humans in almost every field",
+                "Limited to one task",
+                "Less intelligent than humans",
+                "Used only in schools"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which of these could Super AI potentially do?",
+            options: [
+                "Solve highly complex scientific problems",
+                "Only play music",
+                "Only send emails",
+                "Only browse websites"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Does Super AI exist today?",
+            options: [
+                "No",
+                "Yes",
+                "Only in smartphones",
+                "Only in factories"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Today, Super AI is mainly discussed in:",
+            options: [
+                "Research and future technology predictions",
+                "Primary school textbooks only",
+                "Video games only",
+                "Accounting software"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "If Super AI is developed, it should be:",
+            options: [
+                "Safe, ethical and beneficial",
+                "Hidden from everyone",
+                "Used without rules",
+                "Controlled only by robots"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which topic is closely related to Super AI?",
+            options: [
+                "AI Safety and Ethics",
+                "Web Design",
+                "Photo Editing",
+                "Computer Hardware Repair"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Super AI could learn new skills:",
+            options: [
+                "Much faster than humans",
+                "Slower than humans",
+                "Only once",
+                "Never"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which statement is true about Super AI?",
+            options: [
+                "It remains a future concept",
+                "It is used in every mobile app",
+                "It has replaced humans",
+                "It is the same as Narrow AI"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Why do researchers emphasise safety when discussing Super AI?",
+            options: [
+                "To ensure it benefits humanity",
+                "To make computers slower",
+                "To reduce internet speed",
+                "To replace all software"
+            ],
+            answer: 0
+        }
+
+    ]
 }
 
 ];
