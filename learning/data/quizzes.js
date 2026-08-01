@@ -706,6 +706,124 @@ const quizzes = [
         }
 
     ]
+},
+
+{
+    lessonId: 7,
+
+    questions: [
+
+        {
+            question: "Machine Learning (ML) is a branch of:",
+            options: [
+                "Artificial Intelligence",
+                "Computer Hardware",
+                "Cybersecurity",
+                "Networking"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Machine Learning systems learn primarily from:",
+            options: [
+                "Data",
+                "Electricity",
+                "Printers",
+                "Keyboards"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Instead of following fixed instructions, Machine Learning systems:",
+            options: [
+                "Analyse data and identify patterns",
+                "Always repeat the same task",
+                "Work without data",
+                "Only perform calculations"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "As a Machine Learning model receives more high-quality data, it usually becomes:",
+            options: [
+                "More accurate",
+                "Slower forever",
+                "Less useful",
+                "Unable to learn"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Machine Learning improves its performance through:",
+            options: [
+                "Experience",
+                "Changing the keyboard",
+                "Replacing the monitor",
+                "Restarting the computer"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which of the following is an everyday application of Machine Learning?",
+            options: [
+                "Spam detection",
+                "Typing on a keyboard",
+                "Using a calculator",
+                "Printing documents"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which online service uses Machine Learning to recommend videos?",
+            options: [
+                "YouTube",
+                "Calculator",
+                "Notepad",
+                "Paint"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which of these is another common application of Machine Learning?",
+            options: [
+                "Fraud detection",
+                "Paper recycling",
+                "Charging a battery",
+                "Installing software"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Why is good-quality data important in Machine Learning?",
+            options: [
+                "It helps improve prediction accuracy",
+                "It reduces internet speed",
+                "It replaces computers",
+                "It stops the model from learning"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "According to the lesson, Machine Learning is:",
+            options: [
+                "One of the most important technologies behind modern AI",
+                "A replacement for Artificial Intelligence",
+                "Only used in games",
+                "No longer important"
+            ],
+            answer: 0
+        }
+
+    ]
 }
 
 ];
