@@ -4,6 +4,16 @@ const lessonId = Number(params.get("id"));
 
 const quiz = quizzes.find(q => q.lessonId === lessonId);
 
+let shuffledQuestions = [];
+
+if (quiz) {
+
+    shuffledQuestions = [...quiz.questions];
+
+    shuffledQuestions.sort(() => Math.random() - 0.5);
+
+}
+
 const quizTitle = document.getElementById("quizTitle");
 const quizProgress = document.getElementById("quizProgress");
 const question = document.getElementById("question");
@@ -31,7 +41,7 @@ if (!quiz) {
 
 function showQuestion() {
 
-    const q = quiz.questions[currentQuestion];
+    const q = shuffledQuestions[currentQuestion];
 
     const options = q.options.map((option, index) => ({
     text: option,
@@ -49,7 +59,7 @@ for (let i = options.length - 1; i > 0; i--) {
 
     quizProgress.textContent =
         "Question " + (currentQuestion + 1) +
-        " of " + quiz.questions.length;
+        " of " + shuffledQuestions.length;
 
     question.textContent = q.question;
 
@@ -110,7 +120,7 @@ function showResult() {
 
     let stars = "";
 
-    const percentage = (score / quiz.questions.length) * 100;
+    const percentage = (score / shuffledQuestions.length) * 100;
 
     if (percentage === 100) {
 
@@ -166,13 +176,13 @@ if (!bestScore || score > Number(bestScore)) {
 
         <div class="quiz-result">
 
-            <h2>${score} / ${quiz.questions.length}</h2>
+            <h2>${score} / ${shuffledQuestions.length}</h2>
 
 <p>
 Best Score:
 ${localStorage.getItem("quiz_" + lessonId)}
 /
-${quiz.questions.length}
+${shuffledQuestions.length}
 🏆
 </p>
 
@@ -210,7 +220,7 @@ nextQuestionBtn.onclick = function(){
 
     nextQuestionBtn.style.display = "none";
 
-    if(currentQuestion < quiz.questions.length){
+    if(currentQuestion < shuffledQuestions.length){
 
         showQuestion();
 
