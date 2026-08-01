@@ -234,6 +234,124 @@ const quizzes = [
         }
 
     ]
+},
+
+{
+    lessonId: 3,
+
+    questions: [
+
+        {
+            question: "How many main categories of Artificial Intelligence are discussed in the lesson?",
+            options: [
+                "Three",
+                "Two",
+                "Four",
+                "Five"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which type of AI is commonly used today?",
+            options: [
+                "Narrow AI",
+                "General AI",
+                "Super AI",
+                "Quantum AI"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "What is another name for Narrow AI?",
+            options: [
+                "Weak AI",
+                "Strong AI",
+                "Super AI",
+                "Smart AI"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "What is General AI also called?",
+            options: [
+                "Strong AI",
+                "Weak AI",
+                "Super AI",
+                "Limited AI"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which type of AI does NOT exist yet?",
+            options: [
+                "General AI",
+                "Narrow AI",
+                "Machine Learning",
+                "Expert Systems"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Super AI is expected to:",
+            options: [
+                "Surpass human intelligence",
+                "Replace the internet",
+                "Work only in hospitals",
+                "Play games only"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which of the following is an example of Narrow AI?",
+            options: [
+                "ChatGPT",
+                "Human brain",
+                "General AI",
+                "Super AI"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which statement about General AI is correct?",
+            options: [
+                "It can perform any intellectual task a human can do",
+                "It exists in every smartphone",
+                "It is used only for gaming",
+                "It cannot learn new skills"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Today, almost all AI systems belong to which category?",
+            options: [
+                "Narrow AI",
+                "General AI",
+                "Super AI",
+                "Strong AI"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which type of AI remains a future concept?",
+            options: [
+                "Super AI",
+                "Narrow AI",
+                "Recommendation Systems",
+                "Spam Filters"
+            ],
+            answer: 0
+        }
+
+    ]
 }
 
 ];
