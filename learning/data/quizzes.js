@@ -1650,6 +1650,124 @@ const quizzes = [
         }
 
     ]
+},
+
+    {
+    lessonId: 15,
+
+    questions: [
+
+        {
+            question: "What is Prompt Engineering?",
+            options: [
+                "The skill of writing effective instructions for AI",
+                "Designing computer hardware",
+                "Building websites",
+                "Repairing AI systems"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "A prompt is:",
+            options: [
+                "The instruction or question given to an AI",
+                "A computer program",
+                "A type of database",
+                "An operating system"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "A clear and detailed prompt usually produces:",
+            options: [
+                "More accurate and useful responses",
+                "Slower internet connections",
+                "More computer errors",
+                "Smaller file sizes"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which of the following is an example of a good prompt?",
+            options: [
+                "Write a 200-word summary of Artificial Intelligence for beginners.",
+                "AI",
+                "Do something",
+                "Computer"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Prompt Engineering is commonly used with:",
+            options: [
+                "Generative AI tools like ChatGPT",
+                "Calculators",
+                "Photo viewers",
+                "Music players"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Adding context to a prompt helps AI:",
+            options: [
+                "Understand the request more accurately",
+                "Increase internet speed",
+                "Repair hardware",
+                "Use less electricity"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which prompt is likely to produce better results?",
+            options: [
+                "Explain Machine Learning in simple language with examples.",
+                "Machine Learning",
+                "Tell me something",
+                "Write"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Prompt Engineering helps users:",
+            options: [
+                "Get better-quality AI responses",
+                "Replace computer hardware",
+                "Install operating systems",
+                "Build computer networks"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "When writing prompts, it is helpful to include:",
+            options: [
+                "Clear instructions, context and the desired format",
+                "Random words",
+                "Only one keyword",
+                "Computer specifications"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "According to the lesson, Prompt Engineering is an important skill for:",
+            options: [
+                "Using AI effectively in work, learning and daily life",
+                "Repairing mobile phones",
+                "Building robots",
+                "Installing software only"
+            ],
+            answer: 0
+        }
+
+    ]
 }
 
 ];
