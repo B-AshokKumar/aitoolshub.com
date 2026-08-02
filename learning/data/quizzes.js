@@ -1532,6 +1532,124 @@ const quizzes = [
         }
 
     ]
+},
+
+    {
+    lessonId: 14,
+
+    questions: [
+
+        {
+            question: "An AI Assistant is designed to:",
+            options: [
+                "Help users complete tasks and answer questions",
+                "Repair computer hardware",
+                "Build websites automatically",
+                "Replace the internet"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which of the following is an AI Assistant?",
+            options: [
+                "ChatGPT",
+                "Calculator",
+                "Paint",
+                "Notepad"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "AI Assistants use which technology to understand human language?",
+            options: [
+                "Natural Language Processing (NLP)",
+                "Computer Hardware",
+                "Networking",
+                "Cloud Storage"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which task can an AI Assistant perform?",
+            options: [
+                "Answer questions and generate content",
+                "Manufacture smartphones",
+                "Repair vehicles",
+                "Build roads"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which of these is a voice-based AI Assistant?",
+            options: [
+                "Amazon Alexa",
+                "Microsoft Excel",
+                "File Explorer",
+                "Calculator"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which company developed Google Gemini?",
+            options: [
+                "Google",
+                "Apple",
+                "Intel",
+                "Adobe"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Microsoft Copilot is mainly designed to:",
+            options: [
+                "Assist users with productivity and creativity",
+                "Repair computers",
+                "Manage internet connections",
+                "Replace operating systems"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "AI Assistants are commonly used for:",
+            options: [
+                "Writing, learning, coding and research",
+                "Manufacturing vehicles",
+                "Building bridges",
+                "Repairing electrical equipment"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "When using AI Assistants, users should:",
+            options: [
+                "Verify important information before relying on it",
+                "Assume every answer is always correct",
+                "Never review the responses",
+                "Ignore factual mistakes"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "According to the lesson, AI Assistants help people by:",
+            options: [
+                "Saving time and improving productivity",
+                "Replacing all human workers",
+                "Eliminating the need to learn",
+                "Controlling the internet"
+            ],
+            answer: 0
+        }
+
+    ]
 }
 
 ];
