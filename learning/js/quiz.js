@@ -125,7 +125,6 @@ function checkAnswer(button, correct) {
         button.style.background = "#dc2626";
         button.style.color = "#fff";
 
-        const q = quiz.questions[currentQuestion];
 
         buttons.forEach(btn => {
 
