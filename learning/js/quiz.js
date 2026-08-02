@@ -1,42 +1,20 @@
-window.onerror = function(message, source, line, column, error) {
-    alert(
-        "Error:\n\n" +
-        message +
-        "\n\nLine: " + line
-    );
-};
+/* ======================================
+   AI Learning Hub
+   quiz.js
+====================================== */
 
-alert("quiz.js loaded");
 const params = new URLSearchParams(window.location.search);
 
 const lessonId = Number(params.get("id"));
 
 const quiz = quizzes.find(q => q.lessonId === lessonId);
 
-alert("Lesson ID = " + lessonId);
-
-alert("Quiz found = " + (quiz !== undefined));
-
-if (quiz) {
-    alert("Questions = " + quiz.questions.length);
-}
-
-
 const quizTitle = document.getElementById("quizTitle");
 const quizProgress = document.getElementById("quizProgress");
+const quizProgressFill = document.getElementById("quizProgressFill");
 const question = document.getElementById("question");
 const answers = document.getElementById("answers");
 const nextQuestionBtn = document.getElementById("nextQuestionBtn");
-const quizProgressFill = document.getElementById("quizProgressFill");
-
-alert(
-"quizTitle: " + !!quizTitle +
-"\nquizProgress: " + !!quizProgress +
-"\nquestion: " + !!question +
-"\nanswers: " + !!answers +
-"\nnextButton: " + !!nextQuestionBtn +
-"\nprogressFill: " + !!quizProgressFill
-);
 
 let currentQuestion = 0;
 let score = 0;
@@ -44,21 +22,16 @@ let score = 0;
 if (!quiz) {
 
     quizTitle.textContent = "Quiz Not Available";
-    quizProgress.textContent = "";
-    question.textContent = "No quiz has been created for this lesson yet.";
+
+    question.textContent =
+        "No quiz found for this lesson.";
+
+    nextQuestionBtn.style.display = "none";
 
 } else {
 
-    quizTitle.textContent = "Lesson " + lessonId + " Quiz";
-    if (quiz.questions.length === 0) {
-
-    quizProgress.textContent = "";
-
-    question.textContent = "This quiz has no questions yet.";
-
-    return;
-
-}
+    quizTitle.textContent =
+        "Lesson " + lessonId + " Quiz";
 
     showQuestion();
 
@@ -68,197 +41,60 @@ function showQuestion() {
 
     const q = quiz.questions[currentQuestion];
 
-    const options = q.options.map((option, index) => ({
-    text: option,
-    correct: index === q.answer
-}));
-
-// Fisher-Yates Shuffle
-for (let i = options.length - 1; i > 0; i--) {
-
-    const j = Math.floor(Math.random() * (i + 1));
-
-    [options[i], options[j]] = [options[j], options[i]];
-
-}
-
     quizProgress.textContent =
-        "Question " + (currentQuestion + 1) +
-        " of " + quiz.questions.length;
+        "Question " +
+        (currentQuestion + 1) +
+        " of " +
+        quiz.questions.length;
 
     const progress =
-((currentQuestion + 1) / quiz.questions.length) * 100;
+        ((currentQuestion + 1) /
+        quiz.questions.length) * 100;
 
-document.getElementById("quizProgressFill").style.width =
-progress + "%";
+    quizProgressFill.style.width =
+        progress + "%";
+
     question.textContent = q.question;
 
     answers.innerHTML = "";
 
-    options.forEach((option) => {
+    const options = q.options.map((text, index) => ({
 
-    const button = document.createElement("button");
+        text,
 
-    button.textContent = option.text;
+        correct: index === q.answer
 
-    button.className = "quiz-option";
+    }));
 
-    button.onclick = function () {
+    // Fisher-Yates Shuffle
 
-        document
-            .querySelectorAll(".quiz-option")
-            .forEach(btn => btn.disabled = true);
+    for (let i = options.length - 1; i > 0; i--) {
 
-        if(option.correct){
+        const j =
+        Math.floor(Math.random() * (i + 1));
 
-            score++;
-
-            button.style.background = "#16a34a";
-
-        }else{
-
-            button.style.background = "#dc2626";
-
-            document.querySelectorAll(".quiz-option")
-.forEach((btn, i) => {
-
-    if(options[i].correct){
-
-        btn.style.background = "#16a34a";
+        [options[i], options[j]] =
+        [options[j], options[i]];
 
     }
 
-});
+    options.forEach(option => {
 
-        }
+        const button =
+        document.createElement("button");
 
-        nextQuestionBtn.style.display = "block";
+        button.className = "quiz-option";
 
-    };
+        button.textContent = option.text;
 
-    answers.appendChild(button);
+        button.onclick = function () {
 
-});
+            checkAnswer(button, option.correct);
+
+        };
+
+        answers.appendChild(button);
+
+    });
 
 }
-
-function showResult() {
-
-    quizProgress.textContent = "Completed";
-
-    document.getElementById("quizProgressFill").style.width = "100%";
-    question.innerHTML = "🎉 Quiz Completed!";
-
-    let stars = "";
-
-    const percentage = (score / quiz.questions.length) * 100;
-
-    if (percentage === 100) {
-
-        stars = "⭐⭐⭐⭐⭐";
-
-    } else if (percentage >= 80) {
-
-        stars = "⭐⭐⭐⭐";
-
-    } else if (percentage >= 60) {
-
-        stars = "⭐⭐⭐";
-
-    } else if (percentage >= 40) {
-
-        stars = "⭐⭐";
-
-    } else {
-
-        stars = "⭐";
-
-    }
-
-    let message = "";
-
-    if (percentage === 100) {
-
-        message = "Excellent!";
-
-    } else if (percentage >= 80) {
-
-        message = "Very Good!";
-
-    } else if (percentage >= 60) {
-
-        message = "Good Job!";
-
-    } else {
-
-        message = "Keep Practising!";
-    }
-
-    // Save best score
-const bestScore = localStorage.getItem("quiz_" + lessonId);
-
-if (!bestScore || score > Number(bestScore)) {
-
-    localStorage.setItem("quiz_" + lessonId, score);
-
-}
-    
-    answers.innerHTML = `
-
-        <div class="quiz-result">
-
-            <h2>${score} / ${quiz.questions.length}</h2>
-
-<p>
-Best Score:
-${localStorage.getItem("quiz_" + lessonId)}
-/
-${quiz.questions.length}
-🏆
-</p>
-
-            <div class="quiz-stars">${stars}</div>
-
-            <p>${message}</p>
-
-            <button onclick="location.reload()">
-
-                🔄 Retry Quiz
-
-            </button>
-
-            <button onclick="history.back()">
-
-                📘 Back to Lesson
-
-            </button>
-
-            <button onclick="location.href='study.html'">
-
-                🏠 Learning Hub
-
-            </button>
-
-        </div>
-
-    `;
-
-}
-
-nextQuestionBtn.onclick = function(){
-
-    currentQuestion++;
-
-    nextQuestionBtn.style.display = "none";
-
-    if(currentQuestion < quiz.questions.length){
-
-        showQuestion();
-
-    }else{
-
-        showResult();
-
-    }
-
-};
