@@ -98,3 +98,45 @@ function showQuestion() {
     });
 
 }
+
+function checkAnswer(button, correct) {
+
+    const buttons =
+        document.querySelectorAll(".quiz-option");
+
+    buttons.forEach(btn => {
+
+        btn.disabled = true;
+
+    });
+
+    if (correct) {
+
+        score++;
+
+        button.style.background = "#16a34a";
+        button.style.color = "#fff";
+
+    } else {
+
+        button.style.background = "#dc2626";
+        button.style.color = "#fff";
+
+        const q = quiz.questions[currentQuestion];
+
+        buttons.forEach(btn => {
+
+            if (btn.textContent === q.options[q.answer]) {
+
+                btn.style.background = "#16a34a";
+                btn.style.color = "#fff";
+
+            }
+
+        });
+
+    }
+
+    nextQuestionBtn.style.display = "inline-block";
+
+}
