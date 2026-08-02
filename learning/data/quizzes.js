@@ -1768,6 +1768,124 @@ const quizzes = [
         }
 
     ]
+},
+
+    {
+    lessonId: 16,
+
+    questions: [
+
+        {
+            question: "AI Ethics is the study of:",
+            options: [
+                "Using Artificial Intelligence responsibly and fairly",
+                "Building computer hardware",
+                "Creating websites",
+                "Repairing software bugs"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "One important goal of AI Ethics is to:",
+            options: [
+                "Ensure AI benefits people and society",
+                "Replace all human workers",
+                "Increase internet speed",
+                "Reduce computer memory"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "AI systems should avoid:",
+            options: [
+                "Bias and unfair discrimination",
+                "Learning from data",
+                "Answering questions",
+                "Performing calculations"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Protecting personal information is known as:",
+            options: [
+                "Privacy",
+                "Programming",
+                "Networking",
+                "Automation"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which of the following is an ethical concern in AI?",
+            options: [
+                "Bias in decision-making",
+                "Keyboard shortcuts",
+                "Screen brightness",
+                "Battery charging"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Transparency in AI means:",
+            options: [
+                "People should understand how AI makes decisions",
+                "AI should never explain its answers",
+                "AI should only work offline",
+                "AI should hide all information"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Who is responsible for ensuring AI is used ethically?",
+            options: [
+                "Developers, organisations and users",
+                "Only computers",
+                "Only governments",
+                "Only schools"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Why is human oversight important when using AI?",
+            options: [
+                "To review and verify AI decisions",
+                "To make AI slower",
+                "To reduce computer storage",
+                "To replace internet access"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Responsible AI should be:",
+            options: [
+                "Fair, transparent and accountable",
+                "Secret and unpredictable",
+                "Used without rules",
+                "Available only to experts"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "According to the lesson, AI Ethics helps ensure that AI:",
+            options: [
+                "Is developed and used for the benefit of humanity",
+                "Replaces all human intelligence",
+                "Controls the internet",
+                "Eliminates the need for education"
+            ],
+            answer: 0
+        }
+
+    ]
 }
 
 ];
