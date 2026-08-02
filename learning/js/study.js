@@ -20,12 +20,16 @@ function renderTopics(list){
         card.className = "card";
 
         card.innerHTML = `
-            <div style="font-size:40px;">📘</div>
+    <div class="lesson-icon">📘</div>
 
-            <h3>${topic.title}</h3>
+    <div class="lesson-number">
+        Lesson ${topic.id}
+    </div>
 
-            <p>${topic.description}</p>
-        `;
+    <h3>${topic.title}</h3>
+
+    <p>${topic.description}</p>
+`;
 
         card.onclick = () => {
 
