@@ -2122,6 +2122,124 @@ const quizzes = [
         }
 
     ]
+},
+
+    {
+    lessonId: 19,
+
+    questions: [
+
+        {
+            question: "AI in Education is mainly used to:",
+            options: [
+                "Support teaching and improve student learning",
+                "Replace all teachers",
+                "Build school buildings",
+                "Manufacture textbooks"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "One benefit of AI in Education is:",
+            options: [
+                "Personalised learning experiences",
+                "Slower learning",
+                "Replacing classrooms",
+                "Reducing access to education"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "AI tutoring systems can:",
+            options: [
+                "Provide personalised guidance and feedback",
+                "Replace all classroom activities",
+                "Build computers",
+                "Repair school equipment"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "AI can help teachers by:",
+            options: [
+                "Automating grading and administrative tasks",
+                "Building classrooms",
+                "Replacing textbooks",
+                "Managing school buses"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which of the following is an example of AI in Education?",
+            options: [
+                "An AI-powered learning assistant",
+                "A paper notebook",
+                "A calculator without AI",
+                "A classroom projector"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "AI can improve accessibility in education by:",
+            options: [
+                "Providing translation, captions and learning support",
+                "Removing online learning",
+                "Replacing students",
+                "Reducing educational resources"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "When using AI in Education, students should:",
+            options: [
+                "Use AI as a learning assistant, not a replacement for learning",
+                "Copy every AI answer without understanding it",
+                "Avoid checking AI-generated information",
+                "Depend only on AI for exams"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Teachers should use AI to:",
+            options: [
+                "Enhance teaching while applying professional judgment",
+                "Allow AI to make every decision",
+                "Eliminate classroom discussions",
+                "Replace student assessments completely"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "A major advantage of AI in Education is:",
+            options: [
+                "Helping students learn at their own pace",
+                "Making learning more difficult",
+                "Reducing educational opportunities",
+                "Replacing all schools"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "According to the lesson, AI in Education should be used:",
+            options: [
+                "Responsibly to support teachers and students",
+                "Without any human supervision",
+                "Only in universities",
+                "To replace all educators"
+            ],
+            answer: 0
+        }
+
+    ]
 }
 
 ];
