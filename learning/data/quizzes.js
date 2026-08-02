@@ -1886,6 +1886,124 @@ const quizzes = [
         }
 
     ]
+},
+
+    {
+    lessonId: 17,
+
+    questions: [
+
+        {
+            question: "What is an AI hallucination?",
+            options: [
+                "When AI generates incorrect or false information that sounds believable",
+                "When AI shuts down unexpectedly",
+                "When a computer screen flickers",
+                "When the internet connection is lost"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "AI hallucinations occur because:",
+            options: [
+                "AI predicts responses instead of truly understanding facts",
+                "The keyboard is damaged",
+                "The monitor is turned off",
+                "The battery is low"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "An AI hallucination may appear to be:",
+            options: [
+                "Confident and convincing even when incorrect",
+                "Always marked as false",
+                "A computer virus",
+                "A network error"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which type of AI commonly experiences hallucinations?",
+            options: [
+                "Generative AI",
+                "Calculator",
+                "Clock",
+                "File Manager"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "What should users do before trusting important AI-generated information?",
+            options: [
+                "Verify it using reliable sources",
+                "Accept every answer without checking",
+                "Delete the information",
+                "Restart the computer"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which of the following can help reduce AI hallucinations?",
+            options: [
+                "Providing clear and detailed prompts",
+                "Typing random words",
+                "Turning off the internet",
+                "Using shorter passwords"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "AI hallucinations are especially risky in fields such as:",
+            options: [
+                "Healthcare and law",
+                "Music playlists",
+                "Video games only",
+                "Wallpaper design"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Why can AI hallucinations be misleading?",
+            options: [
+                "Because they may sound accurate even when they are incorrect",
+                "Because they always contain spelling mistakes",
+                "Because they stop the computer from working",
+                "Because they slow down the internet"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Responsible AI users should:",
+            options: [
+                "Review and fact-check important AI responses",
+                "Assume AI is always correct",
+                "Ignore possible errors",
+                "Never ask follow-up questions"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "According to the lesson, the best way to use AI is to:",
+            options: [
+                "Treat it as a helpful assistant while verifying important information",
+                "Trust every answer without question",
+                "Replace all human judgment",
+                "Use it only without internet access"
+            ],
+            answer: 0
+        }
+
+    ]
 }
 
 ];
