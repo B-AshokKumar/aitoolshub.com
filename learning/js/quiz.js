@@ -85,7 +85,10 @@ function showQuestion() {
 
         button.className = "quiz-option";
 
-        button.textContent = option.text;
+button.textContent = option.text;
+
+// Store whether this is the correct answer
+button.dataset.correct = option.correct;
 
         button.onclick = function () {
 
@@ -126,14 +129,14 @@ function checkAnswer(button, correct) {
 
         buttons.forEach(btn => {
 
-            if (btn.textContent === q.options[q.answer]) {
+    if (btn.dataset.correct === "true") {
 
-                btn.style.background = "#16a34a";
-                btn.style.color = "#fff";
+        btn.style.background = "#16a34a";
+        btn.style.color = "#fff";
 
-            }
+    }
 
-        });
+});
 
     }
 
