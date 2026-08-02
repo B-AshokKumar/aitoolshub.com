@@ -13,6 +13,14 @@ const lessonId = Number(params.get("id"));
 
 const quiz = quizzes.find(q => q.lessonId === lessonId);
 
+alert("Lesson ID = " + lessonId);
+
+alert("Quiz found = " + (quiz !== undefined));
+
+if (quiz) {
+    alert("Questions = " + quiz.questions.length);
+}
+
 
 const quizTitle = document.getElementById("quizTitle");
 const quizProgress = document.getElementById("quizProgress");
