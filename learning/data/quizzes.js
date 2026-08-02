@@ -1178,6 +1178,124 @@ const quizzes = [
         }
 
     ]
+}, 
+
+    {
+    lessonId: 11,
+
+    questions: [
+
+        {
+            question: "Computer Vision is a branch of:",
+            options: [
+                "Artificial Intelligence",
+                "Networking",
+                "Cybersecurity",
+                "Database Management"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Computer Vision enables computers to:",
+            options: [
+                "Understand and analyse images and videos",
+                "Repair computer hardware",
+                "Create websites",
+                "Increase internet speed"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Computer Vision mainly works with:",
+            options: [
+                "Images and videos",
+                "Audio only",
+                "Text documents",
+                "Spreadsheets"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which of the following is a common application of Computer Vision?",
+            options: [
+                "Face recognition",
+                "Word processing",
+                "Typing documents",
+                "Spreadsheet calculations"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Self-driving cars use Computer Vision to:",
+            options: [
+                "Recognise roads, vehicles and pedestrians",
+                "Send emails",
+                "Play music",
+                "Repair engines"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which smartphone feature commonly uses Computer Vision?",
+            options: [
+                "Face Unlock",
+                "Calculator",
+                "Clock",
+                "Calendar"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Computer Vision helps doctors by:",
+            options: [
+                "Analysing medical images",
+                "Manufacturing medicines",
+                "Building hospitals",
+                "Writing prescriptions automatically"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Computer Vision systems learn to recognise objects using:",
+            options: [
+                "Machine Learning and Deep Learning",
+                "Paper documents",
+                "Mechanical tools",
+                "Keyboard shortcuts"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Computer Vision is widely used in:",
+            options: [
+                "Security, healthcare and autonomous vehicles",
+                "Only banking",
+                "Only agriculture",
+                "Only accounting"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "According to the lesson, Computer Vision allows computers to:",
+            options: [
+                "Interpret visual information similarly to humans",
+                "Replace electricity",
+                "Manufacture computers",
+                "Increase internet speed"
+            ],
+            answer: 0
+        }
+
+    ]
 }
 
 ];
