@@ -140,3 +140,115 @@ function checkAnswer(button, correct) {
     nextQuestionBtn.style.display = "inline-block";
 
 }
+
+function showResult() {
+
+    quizProgress.textContent = "Completed";
+
+    quizProgressFill.style.width = "100%";
+
+    question.innerHTML = "🎉 Quiz Completed!";
+
+    const percentage =
+        (score / quiz.questions.length) * 100;
+
+    let stars = "";
+    let message = "";
+
+    if (percentage === 100) {
+
+        stars = "⭐⭐⭐⭐⭐";
+        message = "Excellent!";
+
+    } else if (percentage >= 80) {
+
+        stars = "⭐⭐⭐⭐";
+        message = "Very Good!";
+
+    } else if (percentage >= 60) {
+
+        stars = "⭐⭐⭐";
+        message = "Good Job!";
+
+    } else if (percentage >= 40) {
+
+        stars = "⭐⭐";
+        message = "Keep Practising!";
+
+    } else {
+
+        stars = "⭐";
+        message = "Keep Practising!";
+
+    }
+
+    // Save Best Score
+
+    const key = "quiz_" + lessonId;
+
+    const bestScore =
+        Number(localStorage.getItem(key) || 0);
+
+    if (score > bestScore) {
+
+        localStorage.setItem(key, score);
+
+    }
+
+    answers.innerHTML = `
+
+        <div class="quiz-result">
+
+            <h2>${score} / ${quiz.questions.length}</h2>
+
+            <p>
+                Best Score:
+                ${localStorage.getItem(key)}
+                /
+                ${quiz.questions.length}
+                🏆
+            </p>
+
+            <div class="quiz-stars">
+                ${stars}
+            </div>
+
+            <p>${message}</p>
+
+            <button onclick="location.reload()">
+                🔄 Retry Quiz
+            </button>
+
+            <button onclick="history.back()">
+                📘 Back to Lesson
+            </button>
+
+            <button onclick="location.href='study.html'">
+                🏠 Learning Hub
+            </button>
+
+        </div>
+
+    `;
+
+    nextQuestionBtn.style.display = "none";
+
+}
+
+nextQuestionBtn.onclick = function () {
+
+    currentQuestion++;
+
+    nextQuestionBtn.style.display = "none";
+
+    if (currentQuestion < quiz.questions.length) {
+
+        showQuestion();
+
+    } else {
+
+        showResult();
+
+    }
+
+};
