@@ -1414,6 +1414,124 @@ const quizzes = [
         }
 
     ]
+},
+
+    {
+    lessonId: 13,
+
+    questions: [
+
+        {
+            question: "What does LLM stand for?",
+            options: [
+                "Large Language Model",
+                "Long Learning Machine",
+                "Language Logic Module",
+                "Large Logic Machine"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Large Language Models are designed to:",
+            options: [
+                "Understand and generate human language",
+                "Repair computer hardware",
+                "Manufacture electronic devices",
+                "Build computer networks"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "LLMs are trained using:",
+            options: [
+                "Large amounts of text data",
+                "Only images",
+                "Only videos",
+                "Only audio recordings"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which of the following is an example of a Large Language Model?",
+            options: [
+                "ChatGPT",
+                "Calculator",
+                "Microsoft Paint",
+                "File Explorer"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Large Language Models can help users by:",
+            options: [
+                "Answering questions and generating text",
+                "Repairing mobile phones",
+                "Building houses",
+                "Manufacturing computers"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "LLMs are commonly used for:",
+            options: [
+                "Translation, summarisation and writing",
+                "Printing books",
+                "Charging batteries",
+                "Installing hardware"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "A key strength of Large Language Models is their ability to:",
+            options: [
+                "Understand context in conversations",
+                "Increase internet speed",
+                "Repair computer chips",
+                "Replace electricity"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Large Language Models continue improving through:",
+            options: [
+                "Training on more high-quality data and better models",
+                "Changing computer keyboards",
+                "Replacing monitors",
+                "Installing printers"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which company developed ChatGPT?",
+            options: [
+                "OpenAI",
+                "Microsoft",
+                "Apple",
+                "Intel"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "According to the lesson, Large Language Models are transforming:",
+            options: [
+                "How people communicate, learn and work",
+                "Only computer hardware",
+                "Only mobile phones",
+                "Only internet cables"
+            ],
+            answer: 0
+        }
+
+    ]
 }
 
 ];
