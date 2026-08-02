@@ -16,18 +16,7 @@ const quiz = quizzes.find(q => q.lessonId === lessonId);
 let shuffledQuestions = [];
 
 if (quiz) {
-
-    shuffledQuestions = [...quiz.questions];
-
-    for (let i = shuffledQuestions.length - 1; i > 0; i--) {
-
-    const j = Math.floor(Math.random() * (i + 1));
-
-    [shuffledQuestions[i], shuffledQuestions[j]] =
-    [shuffledQuestions[j], shuffledQuestions[i]];
-
-}
-
+    shuffledQuestions = quiz.questions;
 }
 
 const quizTitle = document.getElementById("quizTitle");
