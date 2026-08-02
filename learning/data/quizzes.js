@@ -1296,6 +1296,124 @@ const quizzes = [
         }
 
     ]
+},
+
+    {
+    lessonId: 12,
+
+    questions: [
+
+        {
+            question: "Generative AI is designed to:",
+            options: [
+                "Create new content such as text, images and code",
+                "Repair computer hardware",
+                "Increase internet speed",
+                "Build computer networks"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which of the following is an example of Generative AI?",
+            options: [
+                "ChatGPT",
+                "Calculator",
+                "Calendar",
+                "File Explorer"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Generative AI can create:",
+            options: [
+                "Text, images, audio, video and code",
+                "Only spreadsheets",
+                "Only databases",
+                "Only emails"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Generative AI is mainly powered by:",
+            options: [
+                "Deep Learning models",
+                "Mechanical machines",
+                "Paper documents",
+                "Computer keyboards"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which task can Generative AI perform?",
+            options: [
+                "Writing stories and articles",
+                "Repairing vehicles",
+                "Building roads",
+                "Manufacturing computer chips"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Generative AI can help programmers by:",
+            options: [
+                "Generating computer code",
+                "Replacing computer hardware",
+                "Installing operating systems automatically",
+                "Manufacturing keyboards"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which of these is an image generation AI tool?",
+            options: [
+                "DALL·E",
+                "Microsoft Excel",
+                "Notepad",
+                "Calculator"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Generative AI is widely used in:",
+            options: [
+                "Education, business, healthcare and entertainment",
+                "Only banking",
+                "Only transportation",
+                "Only manufacturing"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "When using Generative AI, users should:",
+            options: [
+                "Verify the accuracy of generated content",
+                "Assume every answer is always correct",
+                "Never review the results",
+                "Ignore factual errors"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "According to the lesson, Generative AI helps people by:",
+            options: [
+                "Improving creativity and productivity",
+                "Replacing all human workers",
+                "Stopping software development",
+                "Removing the need for learning"
+            ],
+            answer: 0
+        }
+
+    ]
 }
 
 ];
