@@ -2004,6 +2004,124 @@ const quizzes = [
         }
 
     ]
+},
+
+    {
+    lessonId: 18,
+
+    questions: [
+
+        {
+            question: "AI in Healthcare is mainly used to:",
+            options: [
+                "Support doctors and improve patient care",
+                "Replace all healthcare professionals",
+                "Manufacture medicines",
+                "Build hospitals"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "One important application of AI in Healthcare is:",
+            options: [
+                "Medical image analysis",
+                "Road construction",
+                "Website development",
+                "Network installation"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "AI can help doctors detect diseases by analysing:",
+            options: [
+                "Medical images such as X-rays and MRIs",
+                "Television programmes",
+                "Computer keyboards",
+                "Internet cables"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "AI can assist in drug discovery by:",
+            options: [
+                "Analysing large amounts of medical data",
+                "Manufacturing medicine bottles",
+                "Driving ambulances",
+                "Building laboratories"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Virtual health assistants powered by AI can:",
+            options: [
+                "Answer patient questions and provide basic guidance",
+                "Perform surgery independently",
+                "Replace all doctors",
+                "Manufacture medical equipment"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "AI helps hospitals by:",
+            options: [
+                "Improving efficiency and reducing routine work",
+                "Replacing electricity",
+                "Building hospital buildings",
+                "Manufacturing computers"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "When using AI in Healthcare, medical professionals should:",
+            options: [
+                "Review and verify AI recommendations",
+                "Accept every AI decision without checking",
+                "Ignore patient information",
+                "Use AI without human supervision"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "AI can help personalise patient treatment by:",
+            options: [
+                "Analysing individual health data",
+                "Using the same treatment for everyone",
+                "Ignoring medical history",
+                "Replacing laboratory tests"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "A major benefit of AI in Healthcare is:",
+            options: [
+                "Earlier disease detection and improved patient care",
+                "Slower medical diagnosis",
+                "Higher error rates",
+                "Reduced access to healthcare"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "According to the lesson, AI in Healthcare should be used:",
+            options: [
+                "Responsibly, with doctors making the final decisions",
+                "Without any human involvement",
+                "Only in large hospitals",
+                "To replace all healthcare workers"
+            ],
+            answer: 0
+        }
+
+    ]
 }
 
 ];
