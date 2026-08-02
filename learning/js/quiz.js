@@ -13,11 +13,6 @@ const lessonId = Number(params.get("id"));
 
 const quiz = quizzes.find(q => q.lessonId === lessonId);
 
-let shuffledQuestions = [];
-
-if (quiz) {
-    shuffledQuestions = quiz.questions;
-}
 
 const quizTitle = document.getElementById("quizTitle");
 const quizProgress = document.getElementById("quizProgress");
@@ -47,7 +42,7 @@ if (!quiz) {
 } else {
 
     quizTitle.textContent = "Lesson " + lessonId + " Quiz";
-    if (shuffledQuestions.length === 0) {
+    if (quiz.questions.length === 0) {
 
     quizProgress.textContent = "";
 
@@ -63,7 +58,7 @@ if (!quiz) {
 
 function showQuestion() {
 
-    const q = shuffledQuestions[currentQuestion];
+    const q = quiz.questions[currentQuestion];
 
     const options = q.options.map((option, index) => ({
     text: option,
@@ -81,10 +76,10 @@ for (let i = options.length - 1; i > 0; i--) {
 
     quizProgress.textContent =
         "Question " + (currentQuestion + 1) +
-        " of " + shuffledQuestions.length;
+        " of " + quiz.questions.length;
 
     const progress =
-((currentQuestion + 1) / shuffledQuestions.length) * 100;
+((currentQuestion + 1) / quiz.questions.length) * 100;
 
 document.getElementById("quizProgressFill").style.width =
 progress + "%";
@@ -148,7 +143,7 @@ function showResult() {
 
     let stars = "";
 
-    const percentage = (score / shuffledQuestions.length) * 100;
+    const percentage = (score / quiz.questions.length) * 100;
 
     if (percentage === 100) {
 
@@ -204,13 +199,13 @@ if (!bestScore || score > Number(bestScore)) {
 
         <div class="quiz-result">
 
-            <h2>${score} / ${shuffledQuestions.length}</h2>
+            <h2>${score} / ${quiz.questions.length}</h2>
 
 <p>
 Best Score:
 ${localStorage.getItem("quiz_" + lessonId)}
 /
-${shuffledQuestions.length}
+${quiz.questions.length}
 🏆
 </p>
 
@@ -248,7 +243,7 @@ nextQuestionBtn.onclick = function(){
 
     nextQuestionBtn.style.display = "none";
 
-    if(currentQuestion < shuffledQuestions.length){
+    if(currentQuestion < quiz.questions.length){
 
         showQuestion();
 
