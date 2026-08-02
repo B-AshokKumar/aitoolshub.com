@@ -2240,6 +2240,124 @@ const quizzes = [
         }
 
     ]
+},
+
+    {
+    lessonId: 20,
+
+    questions: [
+
+        {
+            question: "The future of AI is expected to bring:",
+            options: [
+                "More advanced and intelligent AI systems",
+                "The end of computer technology",
+                "Slower internet connections",
+                "Fewer digital innovations"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "AI is expected to continue improving because of advances in:",
+            options: [
+                "Computing power, data and research",
+                "Paper documents",
+                "Typewriters",
+                "Fax machines"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which industry is expected to benefit from future AI developments?",
+            options: [
+                "Healthcare, education, business and science",
+                "Only agriculture",
+                "Only banking",
+                "Only entertainment"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Future AI systems may help solve:",
+            options: [
+                "Complex global challenges",
+                "Only simple arithmetic",
+                "Only computer repairs",
+                "Only internet problems"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "As AI becomes more powerful, it is important to:",
+            options: [
+                "Develop and use it responsibly",
+                "Allow AI to operate without rules",
+                "Ignore AI safety",
+                "Replace all human decisions"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Which field is expected to see major improvements through AI?",
+            options: [
+                "Scientific research",
+                "Typewriter manufacturing",
+                "Paper filing",
+                "Manual bookkeeping"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "The future of AI will likely require:",
+            options: [
+                "Collaboration between humans and AI",
+                "Removing humans from all workplaces",
+                "Eliminating education",
+                "Stopping technological progress"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "Why is AI safety becoming increasingly important?",
+            options: [
+                "Because AI systems are becoming more capable",
+                "Because computers are becoming smaller",
+                "Because keyboards are changing",
+                "Because internet speeds are increasing"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "The goal of future AI development should be to:",
+            options: [
+                "Benefit humanity while respecting ethical principles",
+                "Replace every human job",
+                "Control all technology",
+                "Remove human creativity"
+            ],
+            answer: 0
+        },
+
+        {
+            question: "According to the lesson, the future of AI depends on:",
+            options: [
+                "Responsible innovation, ethical development and human guidance",
+                "AI making every decision alone",
+                "Reducing technology research",
+                "Using AI without human oversight"
+            ],
+            answer: 0
+        }
+
+    ]
 }
 
 ];
