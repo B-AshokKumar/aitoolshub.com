@@ -52,8 +52,10 @@
     </div>
 
     <p class="note">
-        This certificate recognises the successful completion of the AI Learning Hub course offered by AI Tools Hub.
-        It is a certificate of course completion and does not represent professional, academic or government accreditation.
+        This certificate recognises the successful completion of the
+        AI Learning Hub course offered by AI Tools Hub.
+        It is a certificate of course completion and does not represent
+        professional, academic or government accreditation.
     </p>
 
     <button onclick="window.print()">
@@ -61,12 +63,50 @@
     </button>
 
     <button id="editNameBtn">
-    ✏️ Edit Certificate Name
-</button>
+        ✏️ Edit Certificate Name
+    </button>
 
     <button onclick="location.href='course-complete.html'">
         ⬅ Back
     </button>
+
+</div>
+
+
+<!-- Edit Name Popup -->
+
+<div id="editModal" class="modal">
+
+    <div class="modal-box">
+
+        <h2>✏️ Edit Certificate Name</h2>
+
+        <p>
+            Enter the name you'd like to appear on your certificate.
+        </p>
+
+        <input
+            type="text"
+            id="editNameInput"
+            placeholder="Enter your name">
+
+        <small>
+            This name is stored only on your device and can be changed at any time.
+        </small>
+
+        <div class="modal-buttons">
+
+            <button id="cancelEditBtn">
+                Cancel
+            </button>
+
+            <button id="saveEditBtn">
+                Save
+            </button>
+
+        </div>
+
+    </div>
 
 </div>
 
