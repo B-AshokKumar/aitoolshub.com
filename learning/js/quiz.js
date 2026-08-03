@@ -139,7 +139,15 @@ function checkAnswer(button, correct) {
 
     }
 
+    if (currentQuestion < quiz.questions.length - 1) {
+
     nextQuestionBtn.style.display = "inline-block";
+
+} else {
+
+    setTimeout(showResult, 800);
+
+}
 
 }
 
