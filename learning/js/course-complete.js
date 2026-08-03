@@ -1,4 +1,4 @@
-alert("course-complete.js loaded");
+
 
 let passed = 0;
 
@@ -82,8 +82,6 @@ function showToast(message) {
     }, 2500);
 }
 
-
-
-
-
+// Make function available to the button
+window.handleRestart = handleRestart;
 
