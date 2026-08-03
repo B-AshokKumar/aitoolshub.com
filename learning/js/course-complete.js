@@ -1,61 +1,57 @@
-let passed = 0;
+document.addEventListener("DOMContentLoaded", () => {
 
-const total = topics.length;
+    let passed = 0;
+    const total = topics.length;
 
-topics.forEach(topic => {
-    if (localStorage.getItem("quiz_passed_" + topic.id)) {
-        passed++;
-    }
-});
-
-document.getElementById("lessonCount").textContent =
-    passed + " / " + total;
-
-document.getElementById("quizCount").textContent =
-    passed + " / " + total;
-
-document.getElementById("progress").textContent =
-    Math.round((passed / total) * 100) + "%";
-
-
-let restartConfirm = false;
-let restartTimer;
-
-const restartBtn = document.getElementById("restartBtn");
-
-restartBtn.addEventListener("click", function () {
-
-    if (!restartConfirm) {
-
-        restartConfirm = true;
-
-        showToast("⚠️ Tap Restart again within 3 seconds to confirm.");
-
-        restartTimer = setTimeout(() => {
-            restartConfirm = false;
-        }, 3000);
-
-        return;
-    }
-
-    clearTimeout(restartTimer);
-
-    // Clear quiz progress
     topics.forEach(topic => {
-        localStorage.removeItem("quiz_" + topic.id);
-        localStorage.removeItem("quiz_passed_" + topic.id);
+        if (localStorage.getItem("quiz_passed_" + topic.id)) {
+            passed++;
+        }
     });
 
-    // Clear completion flag
-    localStorage.removeItem("course_completed");
+    document.getElementById("lessonCount").textContent = passed + " / " + total;
+    document.getElementById("quizCount").textContent = passed + " / " + total;
+    document.getElementById("progress").textContent =
+        Math.round((passed / total) * 100) + "%";
 
-    restartConfirm = false;
+    let restartConfirm = false;
+    let restartTimer;
 
-    showToast("✅ Course restarted successfully!");
+    const restartBtn = document.getElementById("restartBtn");
 
-    setTimeout(() => {
-        location.href = "study.html";
-    }, 2000);
+    restartBtn.addEventListener("click", () => {
+
+        if (!restartConfirm) {
+
+            restartConfirm = true;
+
+            showToast("⚠️ Tap Restart again within 3 seconds to confirm.");
+
+            restartTimer = setTimeout(() => {
+                restartConfirm = false;
+            }, 3000);
+
+            return;
+        }
+
+        clearTimeout(restartTimer);
+
+        topics.forEach(topic => {
+            localStorage.removeItem("quiz_" + topic.id);
+            localStorage.removeItem("quiz_passed_" + topic.id);
+        });
+
+        localStorage.removeItem("course_completed");
+
+        restartConfirm = false;
+
+        showToast("✅ Course restarted successfully!");
+
+        setTimeout(() => {
+            location.href = "study.html";
+        }, 2000);
+
+    });
 
 });
 
@@ -63,9 +59,7 @@ restartBtn.addEventListener("click", function () {
 function showToast(message) {
 
     const toast = document.createElement("div");
-
     toast.className = "toast";
-
     toast.textContent = message;
 
     document.body.appendChild(toast);
