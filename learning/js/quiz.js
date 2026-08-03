@@ -203,6 +203,8 @@ function showResult() {
 
     const key = "quiz_" + lessonId;
 
+   const passKey = "quiz_passed_" + lessonId;
+
     const bestScore =
         Number(localStorage.getItem(key) || 0);
 
@@ -211,6 +213,16 @@ function showResult() {
         localStorage.setItem(key, score);
 
     }
+
+   if (passed) {
+
+    localStorage.setItem(passKey, "true");
+
+} else {
+
+    localStorage.removeItem(passKey);
+
+}
 
     answers.innerHTML = `
 
