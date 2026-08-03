@@ -30,11 +30,12 @@ function handleRestart() {
 
     if (!restartConfirm) {
         restartConfirm = true;
-        btn.textContent = "⚠️ Tap again to confirm";
+
+        // Show toast instead of changing button text
+        showToast("⚠️ Tap Restart again within 3 seconds to confirm.");
 
         restartTimer = setTimeout(() => {
             restartConfirm = false;
-            btn.textContent = "🔄 Restart Course";
         }, 3000);
 
         return;
@@ -52,10 +53,15 @@ function handleRestart() {
     localStorage.removeItem("course_completed");
 
     restartConfirm = false;
-    btn.textContent = "🔄 Restart Course";
 
-    location.href = "study.html";
+    // Success toast
+    showToast("✅ Course restarted successfully!");
+
+    setTimeout(() => {
+        location.href = "study.html";
+    }, 1000);
 }
+
 
 function showToast(message) {
     const toast = document.createElement("div");
