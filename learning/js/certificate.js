@@ -1,3 +1,7 @@
+// ===============================
+// Load Certificate Information
+// ===============================
+
 const studentName =
     localStorage.getItem("student_name") || "AI Learner";
 
@@ -13,61 +17,52 @@ document.getElementById("date").textContent =
         year: "numeric"
     });
 
-const certificateId =
-    "ATH-" +
-    today.getFullYear() +
-    "-" +
-    Math.floor(100000 + Math.random() * 900000);
+let certificateId =
+    localStorage.getItem("certificate_id");
+
+if (!certificateId) {
+
+    certificateId =
+        "ATH-" +
+        today.getFullYear() +
+        "-" +
+        Math.floor(100000 + Math.random() * 900000);
+
+    localStorage.setItem(
+        "certificate_id",
+        certificateId
+    );
+}
 
 document.getElementById("certificateId").textContent =
     certificateId;
 
 
-/* ===== Edit Certificate Name ===== */
-
-document.getElementById("editNameBtn").addEventListener("click", () => {
-
-    const currentName =
-        localStorage.getItem("student_name") || "";
-
-    const newName = prompt(
-        "Enter the name for your certificate:",
-        currentName
-    );
-
-    if (newName && newName.trim() !== "") {
-
-        localStorage.setItem(
-            "student_name",
-            newName.trim()
-        );
-
-        document.getElementById("studentName").textContent =
-            newName.trim();
-    }
-
-});
+// ===============================
+// Edit Certificate Name (Custom Popup)
+// ===============================
 
 const editBtn =
-document.getElementById("editNameBtn");
+    document.getElementById("editNameBtn");
 
 const editModal =
-document.getElementById("editModal");
+    document.getElementById("editModal");
 
 const editInput =
-document.getElementById("editNameInput");
+    document.getElementById("editNameInput");
 
 const cancelBtn =
-document.getElementById("cancelEditBtn");
+    document.getElementById("cancelEditBtn");
 
 const saveBtn =
-document.getElementById("saveEditBtn");
+    document.getElementById("saveEditBtn");
+
 
 editBtn.addEventListener("click", () => {
 
     editInput.value =
         localStorage.getItem("student_name") ||
-        "";
+        "AI Learner";
 
     editModal.classList.add("show");
 
@@ -75,20 +70,22 @@ editBtn.addEventListener("click", () => {
 
 });
 
+
 cancelBtn.addEventListener("click", () => {
 
     editModal.classList.remove("show");
 
 });
 
+
 saveBtn.addEventListener("click", () => {
 
     let name =
         editInput.value.trim();
 
-    if(name===""){
+    if (name === "") {
 
-        name="AI Learner";
+        name = "AI Learner";
 
     }
 
@@ -104,3 +101,15 @@ saveBtn.addEventListener("click", () => {
 
 });
 
+
+// Close popup when clicking outside
+
+editModal.addEventListener("click", (e) => {
+
+    if (e.target === editModal) {
+
+        editModal.classList.remove("show");
+
+    }
+
+});
