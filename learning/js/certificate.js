@@ -1,16 +1,13 @@
-const name =
-localStorage.getItem("student_name") ||
-"AI Learner";
+const studentName =
+    localStorage.getItem("student_name") || "AI Learner";
 
-document.getElementById("studentName").textContent =
-name;
+document.getElementById("studentName").textContent = studentName;
 
 document.getElementById("date").textContent =
-new Date().toLocaleDateString();
+    new Date().toLocaleDateString();
 
-const id =
-"ATH-" +
-Date.now();
+const certificateId =
+    "ATH-" + Date.now();
 
 document.getElementById("certificateId").textContent =
-id;
+    certificateId;
