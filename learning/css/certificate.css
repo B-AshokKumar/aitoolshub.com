@@ -1,0 +1,99 @@
+body{
+    margin:0;
+    padding:30px;
+    font-family:Arial,sans-serif;
+    background:#f3f6fb;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.certificate{
+    width:900px;
+    max-width:100%;
+    background:#fff;
+    border:10px solid #2563eb;
+    border-radius:20px;
+    padding:50px;
+    text-align:center;
+    box-shadow:0 20px 40px rgba(0,0,0,.2);
+}
+
+h1{
+    color:#2563eb;
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.issued{
+    color:#666;
+    font-size:18px;
+}
+
+h2{
+    font-size:38px;
+    color:#111827;
+    margin:20px 0;
+}
+
+h3{
+    color:#f59e0b;
+    font-size:32px;
+    margin:20px 0;
+}
+
+h4{
+    color:#2563eb;
+    font-size:26px;
+    margin-bottom:30px;
+}
+
+.details{
+    margin:30px 0;
+    font-size:18px;
+    line-height:2;
+}
+
+.note{
+    margin-top:40px;
+    color:#666;
+    font-size:14px;
+    line-height:1.6;
+}
+
+button{
+    display:block;
+    width:100%;
+    margin-top:15px;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#2563eb;
+    color:#fff;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+@media print{
+
+    body{
+        background:#fff;
+        padding:0;
+    }
+
+    button{
+        display:none;
+    }
+
+    .certificate{
+        border:8px solid #2563eb;
+        box-shadow:none;
+    }
+
+}
