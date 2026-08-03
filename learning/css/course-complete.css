@@ -153,3 +153,9 @@ button{
     opacity: 1;
     transform: translateX(-50%) translateY(0);
 }
+
+button:hover{
+    background:#f3f4f6;
+    transform:scale(1.02);
+    transition:0.2s;
+}
