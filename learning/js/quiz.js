@@ -145,7 +145,9 @@ function checkAnswer(button, correct) {
 
 function showResult() {
 
-    quizProgress.textContent = "Completed";
+    quizProgress.textContent = passed
+    ? "✅ Passed"
+    : "❌ Not Passed";
 
     quizProgressFill.style.width = "100%";
 
