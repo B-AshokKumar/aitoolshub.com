@@ -1,3 +1,5 @@
+alert("course-complete.js loaded");
+
 let passed = 0;
 
 const total = topics.length;
