@@ -153,9 +153,14 @@ function showResult() {
 
     const percentage =
         (score / quiz.questions.length) * 100;
+   
+   const passMark = 70;
+
+   const passed = percentage >= passMark;
 
     let stars = "";
     let message = "";
+    let result = "";
 
     if (percentage === 100) {
 
@@ -184,6 +189,16 @@ function showResult() {
 
     }
 
+   if (passed) {
+
+    result = "✅ PASSED";
+
+   } else {
+
+    result = "❌ TRY AGAIN";
+
+   }
+
     // Save Best Score
 
     const key = "quiz_" + lessonId;
@@ -202,6 +217,15 @@ function showResult() {
         <div class="quiz-result">
 
             <h2>${score} / ${quiz.questions.length}</h2>
+
+<h3 class="quiz-status">
+    ${result}
+</h3>
+
+<p>
+    Score:
+    ${percentage.toFixed(0)}%
+</p>
 
             <p>
                 Best Score:
