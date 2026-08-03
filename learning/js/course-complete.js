@@ -83,5 +83,5 @@ function showToast(message) {
 }
 
 // Make function available to the button
-window.handleRestart = handleRestart;
 
+document.getElementById("restartBtn").addEventListener("click", handleRestart);
