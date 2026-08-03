@@ -118,10 +118,10 @@ if (passed) {
     });
 
     document.getElementById("completedLessons").textContent =
-        "Lessons Completed: " +
-        completed +
-        " / " +
-        topics.length;
+    "Lessons Passed: " +
+    completed +
+    " / " +
+    topics.length;
 
     document.getElementById("completedQuizzes").textContent =
         "Quizzes Passed: " +
