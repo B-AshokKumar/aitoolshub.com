@@ -85,3 +85,65 @@ function showToast(message, type = "info") {
     }, 2200);
 
 }
+
+const certificateBtn =
+document.getElementById("certificateBtn");
+
+const modal =
+document.getElementById("nameModal");
+
+const input =
+document.getElementById("certificateName");
+
+const continueBtn =
+document.getElementById("continueBtn");
+
+const skipBtn =
+document.getElementById("skipBtn");
+
+certificateBtn.addEventListener("click", () => {
+
+    const saved =
+    localStorage.getItem("student_name");
+
+    if(saved){
+
+        location.href="certificate.html";
+
+        return;
+
+    }
+
+    modal.classList.add("show");
+
+});
+
+continueBtn.addEventListener("click",()=>{
+
+    const name=input.value.trim();
+
+    if(name){
+
+        localStorage.setItem(
+            "student_name",
+            name
+        );
+
+    }
+
+    location.href="certificate.html";
+
+});
+
+skipBtn.addEventListener("click",()=>{
+
+    localStorage.setItem(
+        "student_name",
+        "AI Learner"
+    );
+
+    location.href="certificate.html";
+
+});
+
+
