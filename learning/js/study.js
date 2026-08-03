@@ -151,17 +151,8 @@ if (
 
     setTimeout(function () {
 
-        alert(
-`🎉 CONGRATULATIONS! 🎉
+       location.href = "course-complete.html";
 
-You have successfully completed
-
-AI Learning Hub
-
-🏆 ${topics.length} / ${topics.length} Lessons Passed
-
-Keep learning and exploring AI! 🚀`
-        );
 
     }, 500);
 
