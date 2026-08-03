@@ -19,7 +19,33 @@ function renderTopics(list){
 
         card.className = "card";
 
-        card.innerHTML = `
+        const passed =
+    localStorage.getItem("quiz_passed_" + topic.id);
+
+const attempted =
+    localStorage.getItem("quiz_" + topic.id);
+
+let status = "";
+let statusClass = "";
+
+if (passed) {
+
+    status = "🟢 Passed";
+    statusClass = "status-passed";
+
+} else if (attempted) {
+
+    status = "🔴 Try Again";
+    statusClass = "status-failed";
+
+} else {
+
+    status = "⚪ Not Attempted";
+    statusClass = "status-not";
+
+}
+
+card.innerHTML = `
     <div class="lesson-icon">📘</div>
 
     <div class="lesson-number">
@@ -29,6 +55,10 @@ function renderTopics(list){
     <h3>${topic.title}</h3>
 
     <p>${topic.description}</p>
+
+    <div class="${statusClass}">
+        ${status}
+    </div>
 `;
 
         card.onclick = () => {
@@ -76,14 +106,14 @@ function updateProgress(){
 
     topics.forEach(topic => {
 
-        const bestScore =
-            localStorage.getItem("quiz_" + topic.id);
+        const passed =
+    localStorage.getItem("quiz_passed_" + topic.id);
 
-        if(bestScore !== null){
+if (passed) {
 
-            completed++;
+    completed++;
 
-        }
+}
 
     });
 
