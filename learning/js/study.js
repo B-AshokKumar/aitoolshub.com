@@ -140,4 +140,26 @@ if (passed) {
     document.getElementById("progressPercent").textContent =
         percent + "% Completed";
 
+   // Course Completed
+
+if (completed === topics.length) {
+
+    setTimeout(function () {
+
+        alert(
+`🎉 CONGRATULATIONS! 🎉
+
+You have successfully completed
+
+AI Learning Hub
+
+🏆 ${topics.length} / ${topics.length} Lessons Passed
+
+Keep learning and exploring AI! 🚀`
+        );
+
+    }, 500);
+
+}
+
 }
