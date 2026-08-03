@@ -1,17 +1,11 @@
-
-
 let passed = 0;
 
 const total = topics.length;
 
 topics.forEach(topic => {
-
     if (localStorage.getItem("quiz_passed_" + topic.id)) {
-
         passed++;
-
     }
-
 });
 
 document.getElementById("lessonCount").textContent =
@@ -27,15 +21,15 @@ document.getElementById("progress").textContent =
 let restartConfirm = false;
 let restartTimer;
 
-function handleRestart() {
-    const btn = document.getElementById("restartBtn");
+const restartBtn = document.getElementById("restartBtn");
+
+restartBtn.addEventListener("click", function () {
 
     if (!restartConfirm) {
+
         restartConfirm = true;
 
-        // Show toast instead of changing button text
-
-        alert("First tap detected");
+        showToast("⚠️ Tap Restart again within 3 seconds to confirm.");
 
         restartTimer = setTimeout(() => {
             restartConfirm = false;
@@ -46,42 +40,47 @@ function handleRestart() {
 
     clearTimeout(restartTimer);
 
-    // Remove quiz progress
+    // Clear quiz progress
     topics.forEach(topic => {
         localStorage.removeItem("quiz_" + topic.id);
         localStorage.removeItem("quiz_passed_" + topic.id);
     });
 
-    // Remove course completion flag
+    // Clear completion flag
     localStorage.removeItem("course_completed");
 
     restartConfirm = false;
 
-    // Success toast
     showToast("✅ Course restarted successfully!");
 
-// Wait 2.5 seconds before redirecting
-setTimeout(() => {
-    location.href = "study.html";
-}, 2500);
-}
+    setTimeout(() => {
+        location.href = "study.html";
+    }, 2000);
+
+});
 
 
 function showToast(message) {
+
     const toast = document.createElement("div");
+
     toast.className = "toast";
+
     toast.textContent = message;
 
     document.body.appendChild(toast);
 
-    setTimeout(() => toast.classList.add("show"), 10);
+    setTimeout(() => {
+        toast.classList.add("show");
+    }, 10);
 
     setTimeout(() => {
         toast.classList.remove("show");
-        setTimeout(() => toast.remove(), 300);
-    }, 2500);
+
+        setTimeout(() => {
+            toast.remove();
+        }, 300);
+
+    }, 2000);
+
 }
-
-// Make function available to the button
-
-document.getElementById("restartBtn").addEventListener("click", handleRestart);
