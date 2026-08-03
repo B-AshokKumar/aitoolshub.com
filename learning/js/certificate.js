@@ -47,3 +47,60 @@ document.getElementById("editNameBtn").addEventListener("click", () => {
     }
 
 });
+
+const editBtn =
+document.getElementById("editNameBtn");
+
+const editModal =
+document.getElementById("editModal");
+
+const editInput =
+document.getElementById("editNameInput");
+
+const cancelBtn =
+document.getElementById("cancelEditBtn");
+
+const saveBtn =
+document.getElementById("saveEditBtn");
+
+editBtn.addEventListener("click", () => {
+
+    editInput.value =
+        localStorage.getItem("student_name") ||
+        "";
+
+    editModal.classList.add("show");
+
+    editInput.focus();
+
+});
+
+cancelBtn.addEventListener("click", () => {
+
+    editModal.classList.remove("show");
+
+});
+
+saveBtn.addEventListener("click", () => {
+
+    let name =
+        editInput.value.trim();
+
+    if(name===""){
+
+        name="AI Learner";
+
+    }
+
+    localStorage.setItem(
+        "student_name",
+        name
+    );
+
+    document.getElementById("studentName").textContent =
+        name;
+
+    editModal.classList.remove("show");
+
+});
+
