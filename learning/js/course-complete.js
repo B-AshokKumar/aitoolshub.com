@@ -32,7 +32,8 @@ function handleRestart() {
         restartConfirm = true;
 
         // Show toast instead of changing button text
-        showToast("⚠️ Tap Restart again within 3 seconds to confirm.");
+
+        alert("First tap detected");
 
         restartTimer = setTimeout(() => {
             restartConfirm = false;
