@@ -145,6 +145,13 @@ function checkAnswer(button, correct) {
 
 function showResult() {
 
+   const percentage =
+    (score / quiz.questions.length) * 100;
+
+const passMark = 70;
+
+const passed = percentage >= passMark;
+
     quizProgress.textContent = passed
     ? "✅ Passed"
     : "❌ Not Passed";
@@ -153,12 +160,6 @@ function showResult() {
 
     question.innerHTML = "🎉 Quiz Completed!";
 
-    const percentage =
-        (score / quiz.questions.length) * 100;
-   
-   const passMark = 70;
-
-   const passed = percentage >= passMark;
 
     let stars = "";
     let message = "";
