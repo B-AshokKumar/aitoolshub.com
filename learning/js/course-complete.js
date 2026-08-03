@@ -55,12 +55,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-
-function showToast(message) {
+function showToast(message, type = "info") {
 
     const toast = document.createElement("div");
-    toast.className = "toast";
-    toast.textContent = message;
+
+    toast.className = "toast " + type;
+
+    if (type === "success") {
+        toast.innerHTML = "✅ " + message;
+    } else if (type === "warning") {
+        toast.innerHTML = "⚠️ " + message;
+    } else {
+        toast.innerHTML = message;
+    }
 
     document.body.appendChild(toast);
 
@@ -75,6 +82,6 @@ function showToast(message) {
             toast.remove();
         }, 300);
 
-    }, 2000);
+    }, 2200);
 
 }
