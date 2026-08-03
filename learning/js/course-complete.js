@@ -57,9 +57,10 @@ function handleRestart() {
     // Success toast
     showToast("✅ Course restarted successfully!");
 
-    setTimeout(() => {
-        location.href = "study.html";
-    }, 1000);
+// Wait 2.5 seconds before redirecting
+setTimeout(() => {
+    location.href = "study.html";
+}, 2500);
 }
 
 
