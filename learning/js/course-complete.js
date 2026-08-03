@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             restartConfirm = true;
 
-            showToast("⚠️ Tap Restart again within 3 seconds to confirm.");
+            showToast("Tap Restart again within 3 seconds to confirm.", "warning");
 
             restartTimer = setTimeout(() => {
                 restartConfirm = false;
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         restartConfirm = false;
 
-        showToast("✅ Course restarted successfully!");
+        showToast("Course restarted successfully.", "success");
 
         setTimeout(() => {
             location.href = "study.html";
