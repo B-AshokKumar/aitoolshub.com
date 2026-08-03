@@ -140,9 +140,14 @@ if (passed) {
     document.getElementById("progressPercent").textContent =
         percent + "% Completed";
 
-   // Course Completed
+   // Course Completed (Show Only Once)
 
-if (completed === topics.length) {
+if (
+    completed === topics.length &&
+    !localStorage.getItem("course_completed")
+) {
+
+    localStorage.setItem("course_completed", "true");
 
     setTimeout(function () {
 
