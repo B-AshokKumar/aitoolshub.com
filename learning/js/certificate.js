@@ -127,3 +127,91 @@ document.addEventListener("keydown", (e) => {
     }
 
 });
+
+// ==========================================
+// Download Certificate as PDF
+// ==========================================
+
+const pdfBtn =
+    document.getElementById("downloadPdfBtn");
+
+pdfBtn.addEventListener("click", async () => {
+
+    const certificate =
+        document.querySelector(".certificate");
+
+    pdfBtn.disabled = true;
+    pdfBtn.textContent = "Generating PDF...";
+
+    try {
+
+        const canvas =
+            await html2canvas(certificate, {
+
+                scale: 2,
+
+                useCORS: true,
+
+                backgroundColor: "#ffffff"
+
+            });
+
+        const image =
+            canvas.toDataURL("image/png");
+
+        const { jsPDF } = window.jspdf;
+
+        const pdf =
+            new jsPDF({
+
+                orientation: "portrait",
+
+                unit: "mm",
+
+                format: "a4"
+
+            });
+
+        const pageWidth =
+            pdf.internal.pageSize.getWidth();
+
+        const pageHeight =
+            pdf.internal.pageSize.getHeight();
+
+        const imgWidth =
+            pageWidth;
+
+        const imgHeight =
+            canvas.height * imgWidth / canvas.width;
+
+        pdf.addImage(
+            image,
+            "PNG",
+            0,
+            0,
+            imgWidth,
+            imgHeight
+        );
+
+        const studentName =
+            (localStorage.getItem("student_name") || "AI Learner")
+            .replace(/\s+/g, "-");
+
+        pdf.save(
+            "AI-Tools-Hub-Certificate-" +
+            studentName +
+            ".pdf"
+        );
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert("Unable to generate PDF.");
+
+    }
+
+    pdfBtn.disabled = false;
+    pdfBtn.textContent = "📄 Download PDF";
+
+});
