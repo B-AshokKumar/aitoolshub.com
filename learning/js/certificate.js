@@ -178,20 +178,32 @@ pdfBtn.addEventListener("click", async () => {
         const pageHeight =
             pdf.internal.pageSize.getHeight();
 
-        const imgWidth =
-            pageWidth;
+        const ratio =
+    Math.min(
+        pageWidth / canvas.width,
+        pageHeight / canvas.height
+    );
 
-        const imgHeight =
-            canvas.height * imgWidth / canvas.width;
+const imgWidth =
+    canvas.width * ratio;
 
-        pdf.addImage(
-            image,
-            "PNG",
-            0,
-            0,
-            imgWidth,
-            imgHeight
-        );
+const imgHeight =
+    canvas.height * ratio;
+
+const x =
+    (pageWidth - imgWidth) / 2;
+
+const y =
+    (pageHeight - imgHeight) / 2;
+
+pdf.addImage(
+    image,
+    "PNG",
+    x,
+    y,
+    imgWidth,
+    imgHeight
+);
 
         const studentName =
             (localStorage.getItem("student_name") || "AI Learner")
