@@ -304,19 +304,15 @@ h3{
 
 .seal img{
 
-    width:58px;
+    width:60px;
 
-    height:58px;
+    height:60px;
 
     object-fit:contain;
 
     margin-bottom:8px;
 
     border-radius:12px;
-
-    background:#fff;
-
-    padding:6px;
 
 }
 
