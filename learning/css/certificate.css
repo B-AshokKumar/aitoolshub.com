@@ -378,7 +378,9 @@ h3{
 
     align-items:center;
 
-    gap:6px;
+    flex-wrap:nowrap;
+
+    white-space:nowrap;
 
     font-size:16px;
 
@@ -386,7 +388,7 @@ h3{
 
     color:#444;
 
-    white-space:nowrap;
+    text-align:center;
 
 }
 
@@ -624,7 +626,9 @@ h3{
 
    .signature p{
 
-    font-size:15px;
+    font-size:12px;
+
+    flex-wrap:nowrap;
 
     white-space:nowrap;
 
