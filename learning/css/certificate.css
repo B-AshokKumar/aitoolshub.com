@@ -69,6 +69,8 @@ body{
 
     border-radius:12px;
 
+   pointer-events:none;
+
 }
 
 .header{
@@ -404,6 +406,10 @@ h3{
 
     margin-top:40px;
 
+   position:relative;
+
+    z-index:5;
+
 }
 
 .actions button{
@@ -637,8 +643,18 @@ h3{
 
     .certificate-border{
 
-        border:8px solid #d4af37;
+    margin:18px;
 
-    }
+    padding:50px;
+
+    border:8px solid #d4af37;
+
+    border-radius:18px;
+
+    position:relative;
+
+    z-index:1;
+
+}
 
 }
