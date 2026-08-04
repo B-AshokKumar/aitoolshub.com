@@ -100,7 +100,7 @@
 
 .pdf-name{
 
-    margin-top:20px;
+    margin-top:45px;
 
     text-align:center;
 
@@ -122,7 +122,7 @@
 
 .pdf-text{
 
-    margin-top:30px;
+    margin-top:40px;
 
     text-align:center;
 
@@ -134,7 +134,7 @@
 
 .pdf-certificate h3{
 
-    margin-top:12px;
+    margin-top:25px;
 
     text-align:center;
 
@@ -146,7 +146,7 @@
 
 .pdf-description{
 
-    margin:15px auto;
+    margin:28px auto;
 
     width:80%;
 
@@ -161,6 +161,8 @@
 }
 
 .pdf-seal{
+
+   margin:35px 0;
 
     width:90px;
 
@@ -187,7 +189,7 @@
 
     gap:18px;
 
-    margin-top:18px;
+    margin-top:20px;
 
 }
 
@@ -231,7 +233,7 @@
 
 .pdf-signature{
 
-    margin-top:20px;
+    margin-top:35px;
 
     text-align:center;
 
@@ -267,7 +269,7 @@
 
 .pdf-note{
 
-    margin-top:18px;
+    margin-top:28px;
 
     width:88%;
 
@@ -281,6 +283,6 @@
 
     font-size:17px;
 
-    line-height:1.6;
+    line-height:1.8;
 
 }
