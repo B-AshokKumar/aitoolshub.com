@@ -150,20 +150,26 @@ pdfBtn.addEventListener("click", async () => {
         document.getElementById("certificateId").textContent;
 
     const pdfCertificate =
-        document.getElementById("pdfCertificate");
+    document.getElementById("pdfCertificate");
 
-    try{
+try{
 
-        const canvas =
-            await html2canvas(pdfCertificate,{
+    // Temporarily show the hidden certificate
+    pdfCertificate.style.visibility = "visible";
 
-                scale:3,
+    const canvas =
+        await html2canvas(pdfCertificate,{
 
-                useCORS:true,
+            scale:3,
 
-                backgroundColor:"#ffffff"
+            useCORS:true,
 
-            });
+            backgroundColor:"#ffffff"
+
+        });
+
+    // Hide it again
+    pdfCertificate.style.visibility = "hidden";
 
         const image =
             canvas.toDataURL("image/png");
