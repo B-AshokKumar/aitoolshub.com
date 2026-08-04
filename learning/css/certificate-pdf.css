@@ -152,7 +152,7 @@
 
 .pdf-description{
 
-    margin:25px auto;
+    margin:18px auto;
 
     width:80%;
 
@@ -176,9 +176,9 @@
 
 .pdf-seal img{
 
-    width:90px;
+    width:70px;
 
-    height:90px;
+    height:70px;
 
 }
 
@@ -232,7 +232,7 @@
 
 .pdf-signature{
 
-    margin-top:35px;
+    margin-top:20px;
 
     text-align:center;
 
@@ -267,15 +267,12 @@
 }
 
 .pdf-note{
-
-    margin-top:28px;
-
+    margin-top:40px;
     text-align:center;
-
     color:#666;
-
     font-size:16px;
-
-    line-height:1.7;
-
+    line-height:1.8;
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
 }
