@@ -129,30 +129,39 @@ document.addEventListener("keydown", (e) => {
 });
 
 // ==========================================
-// Download Certificate as PDF
+// Professional PDF Download
 // ==========================================
 
-const pdfBtn =
-    document.getElementById("downloadPdfBtn");
+const pdfBtn = document.getElementById("downloadPdfBtn");
 
 pdfBtn.addEventListener("click", async () => {
-
-    const certificate =
-        document.querySelector(".certificate");
 
     pdfBtn.disabled = true;
     pdfBtn.textContent = "Generating PDF...";
 
-    try {
+    // Copy certificate data
+    document.getElementById("pdfStudentName").textContent =
+        document.getElementById("studentName").textContent;
+
+    document.getElementById("pdfDate").textContent =
+        document.getElementById("date").textContent;
+
+    document.getElementById("pdfCertificateId").textContent =
+        document.getElementById("certificateId").textContent;
+
+    const pdfCertificate =
+        document.getElementById("pdfCertificate");
+
+    try{
 
         const canvas =
-            await html2canvas(certificate, {
+            await html2canvas(pdfCertificate,{
 
-                scale: 2,
+                scale:3,
 
-                useCORS: true,
+                useCORS:true,
 
-                backgroundColor: "#ffffff"
+                backgroundColor:"#ffffff"
 
             });
 
@@ -164,58 +173,31 @@ pdfBtn.addEventListener("click", async () => {
         const pdf =
             new jsPDF({
 
-                orientation: "portrait",
+                orientation:"portrait",
 
-                unit: "mm",
+                unit:"mm",
 
-                format: "a4"
+                format:"a4"
 
             });
 
-        const pageWidth =
-            pdf.internal.pageSize.getWidth();
-
-        const pageHeight =
-            pdf.internal.pageSize.getHeight();
-
-        const ratio =
-    Math.min(
-        pageWidth / canvas.width,
-        pageHeight / canvas.height
-    );
-
-const imgWidth =
-    canvas.width * ratio;
-
-const imgHeight =
-    canvas.height * ratio;
-
-const x =
-    (pageWidth - imgWidth) / 2;
-
-const y =
-    (pageHeight - imgHeight) / 2;
-
-pdf.addImage(
-    image,
-    "PNG",
-    x,
-    y,
-    imgWidth,
-    imgHeight
-);
-
-        const studentName =
-            (localStorage.getItem("student_name") || "AI Learner")
-            .replace(/\s+/g, "-");
-
-        pdf.save(
-            "AI-Tools-Hub-Certificate-" +
-            studentName +
-            ".pdf"
+        pdf.addImage(
+            image,
+            "PNG",
+            0,
+            0,
+            210,
+            297
         );
 
-    } catch (error) {
+        const filename =
+            "AI-Tools-Hub-Certificate-" +
+            studentName.replace(/\s+/g,"-") +
+            ".pdf";
+
+        pdf.save(filename);
+
+    }catch(error){
 
         console.error(error);
 
@@ -223,7 +205,7 @@ pdf.addImage(
 
     }
 
-    pdfBtn.disabled = false;
-    pdfBtn.textContent = "📄 Download PDF";
+    pdfBtn.disabled=false;
+    pdfBtn.textContent="📄 Download PDF";
 
 });
