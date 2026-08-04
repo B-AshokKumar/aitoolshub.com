@@ -5,11 +5,13 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-<title>AI Tools Hub - Certificate of Completion</title>
+<title>Certificate of Completion</title>
 
-<link rel="stylesheet" href="css/certificate.css">
+<link rel="stylesheet"
+href="css/certificate.css">
 
 </head>
 
@@ -17,147 +19,240 @@
 
 <div class="certificate">
 
-    <div class="certificate-border">
+<div class="certificate-border">
 
-        <div class="header">
+<!-- Header -->
 
-            <div class="logo">
+<div class="header">
 
-    <img
-        src="images/ai-tools-hub-logo.png"
-        alt="AI Tools Hub Logo">
+<div class="logo">
 
-    <h2>AI Tools Hub</h2>
+<img
+src="images/ai-tools-hub-logo.png"
+alt="AI Tools Hub Logo">
 
-</div>
-
-            <h1>Certificate of Completion</h1>
-
-            <p class="subtitle">
-                This certificate is proudly presented to
-            </p>
-
-        </div>
-
-        <div class="recipient">
-
-            <h2 id="studentName">AI Learner</h2>
-
-        </div>
-
-        <p class="completion-text">
-            for successfully completing the
-        </p>
-
-        <h3>AI Learning Hub</h3>
-
-        <p class="description">
-            This certificate recognises successful completion of the
-            AI Learning Hub course offered by AI Tools Hub.
-        </p>
-
-        <div class="certificate-details">
-
-            <div class="detail-box">
-
-                <strong>Completion Date</strong><br>
-                <span id="date"></span>
-
-            </div>
-
-            <div class="seal">
-
-    <img
-        src="images/ai-tools-hub-logo.png"
-        alt="AI Tools Hub Logo">
-
-    <span>AI Tools Hub</span>
+<h2>AI Tools Hub</h2>
 
 </div>
 
-            <div class="detail-box">
+<h1>
+Certificate of Completion
+</h1>
 
-                <strong>Certificate ID</strong><br>
-                <span id="certificateId"></span>
+<p class="subtitle">
+This certificate is proudly presented to
+</p>
 
-            </div>
+</div>
 
-        </div>
 
-        <div class="signature">
+<!-- Student -->
 
-            <div class="line"></div>
+<div class="recipient">
 
-            <p>Verified by AI Tools Hub</p>
+<h2 id="studentName">
 
-        </div>
+AI Learner
 
-        <p class="note">
+</h2>
 
-            This certificate is issued by AI Tools Hub as proof of
-            successful completion of the AI Learning Hub course.
-            It is a course completion certificate and does not represent
-            professional, academic or government accreditation.
+</div>
 
-        </p>
 
-        <div class="actions">
+<!-- Course -->
 
-            <button onclick="window.print()">
-                📄 Download / Print
-            </button>
+<div class="completion-text">
 
-            <button id="editNameBtn">
-                ✏️ Edit Name
-            </button>
+for successfully completing the
 
-            <button onclick="location.href='course-complete.html'">
-                ⬅ Back
-            </button>
+</div>
 
-        </div>
+<h3>
 
-    </div>
+AI Learning Hub
+
+</h3>
+
+<p class="description">
+
+This certificate recognises the successful
+completion of the AI Learning Hub course
+offered by AI Tools Hub.
+
+</p>
+
+
+<!-- Details -->
+
+<div class="certificate-details">
+
+<div class="detail-box">
+
+<strong>
+
+Completion Date
+
+</strong>
+
+<span id="date"></span>
+
+</div>
+
+
+<div class="seal">
+
+<img
+src="images/ai-tools-hub-logo.png"
+alt="AI Tools Hub">
+
+<span>
+
+AI Tools Hub
+
+</span>
+
+</div>
+
+
+<div class="detail-box">
+
+<strong>
+
+Certificate ID
+
+</strong>
+
+<span id="certificateId"></span>
+
+</div>
+
+</div>
+
+
+<!-- Signature -->
+
+<div class="signature">
+
+<div class="line"></div>
+
+<p>
+
+Digitally Verified by
+
+<strong>
+
+AI Tools Hub
+
+</strong>
+
+</p>
+
+</div>
+
+
+<!-- Note -->
+
+<p class="note">
+
+This certificate is issued by
+<strong>AI Tools Hub</strong>
+as proof of successful completion
+of the AI Learning Hub course.
+
+It is a course completion certificate
+and does not represent professional,
+academic or government accreditation.
+
+</p>
+
+
+<!-- Buttons -->
+
+<div class="actions">
+
+<button
+onclick="window.print()">
+
+📄 Download / Print
+
+</button>
+
+<button
+id="editNameBtn">
+
+✏️ Edit Name
+
+</button>
+
+<button
+onclick="location.href='course-complete.html'">
+
+⬅ Back
+
+</button>
+
+</div>
+
+</div>
 
 </div>
 
 
 <!-- Edit Name Modal -->
 
-<div id="editModal" class="modal">
+<div
+id="editModal"
+class="modal">
 
-    <div class="modal-box">
+<div class="modal-box">
 
-        <h2>✏️ Edit Certificate Name</h2>
+<h2>
 
-        <p>
-            Enter the name you want to appear on your certificate.
-        </p>
+✏️ Edit Certificate Name
 
-        <input
-            id="editNameInput"
-            type="text"
-            placeholder="Enter your name">
+</h2>
 
-        <small>
+<p>
 
-            Your name is stored only on your device.
+Enter the name you would like
+to appear on your certificate.
 
-        </small>
+</p>
 
-        <div class="modal-buttons">
+<input
 
-            <button id="cancelEditBtn">
-                Cancel
-            </button>
+type="text"
 
-            <button id="saveEditBtn">
-                Save
-            </button>
+id="editNameInput"
 
-        </div>
+placeholder="Enter your name">
 
-    </div>
+<small>
+
+Your name is stored only on
+your device.
+
+</small>
+
+<div class="modal-buttons">
+
+<button
+id="cancelEditBtn">
+
+Cancel
+
+</button>
+
+<button
+id="saveEditBtn">
+
+Save
+
+</button>
+
+</div>
+
+</div>
 
 </div>
 
