@@ -264,9 +264,9 @@ h3{
 
 .seal{
 
-    width:130px;
+    width:140px;
 
-    height:130px;
+    height:140px;
 
     border-radius:50%;
 
@@ -280,15 +280,12 @@ h3{
 
     align-items:center;
 
-    color:#fff;
-
-    font-size:42px;
-
-    font-weight:bold;
-
     box-shadow:0 10px 25px rgba(0,0,0,.25);
 
+    overflow:hidden;
+
 }
+
 
 .seal span{
 
@@ -310,9 +307,13 @@ h3{
 
     object-fit:contain;
 
-    margin-bottom:8px;
-
     border-radius:12px;
+
+    background:#fff;
+
+    padding:5px;
+
+    margin-bottom:8px;
 
 }
 
