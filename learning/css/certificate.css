@@ -29,7 +29,7 @@ body{
 
 .certificate{
 
-    width:1000px;
+    width:210mm;
 
     max-width:100%;
 
@@ -41,19 +41,23 @@ body{
 
     overflow:hidden;
 
+    margin:auto;
+
 }
 
 .certificate-border{
 
-    margin:12px;
+    margin:10px;
 
-    padding:35px;
+    padding:30px;
 
     border:8px solid #d4af37;
 
     border-radius:18px;
 
     position:relative;
+
+    min-height:260mm;
 
 }
 
@@ -214,9 +218,9 @@ h3{
 
     align-items:center;
 
-    gap:25px;
+    gap:18px;
 
-    margin-top:25px;
+    margin-top:18px;
 
     position:relative;
 
@@ -346,7 +350,7 @@ h3{
 
 .signature{
 
-    margin-top:15px;
+    margin-top:10px;
 
     text-align:right;
 
@@ -385,7 +389,7 @@ h3{
 
 .note{
 
-    margin-top:15px;
+    margin-top:10px;
 
     text-align:center;
 
@@ -614,7 +618,7 @@ h3{
 
     @page{
         size:A4 portrait;
-        margin:10mm;
+        margin:8mm;
     }
 
     html,
@@ -837,6 +841,47 @@ body{
     .certificate,
     .certificate-border{
         overflow:visible;
+    }
+
+}
+
+@media print{
+
+    html,
+    body{
+
+        width:210mm;
+
+        height:297mm;
+
+        overflow:hidden;
+
+    }
+
+    .certificate{
+
+        width:100%;
+
+        height:auto;
+
+        page-break-after:avoid;
+
+        page-break-before:avoid;
+
+        page-break-inside:avoid;
+
+        break-after:avoid-page;
+
+        break-before:avoid-page;
+
+        break-inside:avoid-page;
+
+    }
+
+    *{
+
+        page-break-inside:avoid;
+
     }
 
 }
