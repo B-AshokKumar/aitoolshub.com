@@ -606,55 +606,207 @@ h3{
 
 }
 
-
 /* =====================================
-   Print
+   Print (One Page A4)
 ===================================== */
 
 @media print{
 
+    @page{
+        size:A4 portrait;
+        margin:8mm;
+    }
+
+    html,
     body{
-
-        background:#fff;
-
+        width:210mm;
+        height:297mm;
+        margin:0;
         padding:0;
-
+        background:#fff;
     }
 
-    .actions{
-
-        display:none;
-
-    }
-
+    .actions,
     .modal{
-
         display:none !important;
-
     }
 
     .certificate{
 
+        width:100%;
+
+        max-width:none;
+
         box-shadow:none;
 
-        width:100%;
+        border-radius:0;
 
     }
 
     .certificate-border{
 
-    margin:14px;
+        margin:0;
 
-    padding:35px;
+        padding:20px;
 
-    border:8px solid #d4af37;
+        border:6px solid #d4af37;
 
-    border-radius:18px;
+    }
 
-    position:relative;
+    .certificate-border::before{
 
-    z-index:1;
+        inset:10px;
 
-}
+    }
+
+    .logo img{
+
+        width:55px;
+
+        height:55px;
+
+    }
+
+    .logo{
+
+        margin-bottom:12px;
+
+    }
+
+    .logo h2{
+
+        font-size:22px;
+
+    }
+
+    h1{
+
+        font-size:34px;
+
+        margin-bottom:8px;
+
+    }
+
+    .subtitle{
+
+        font-size:16px;
+
+    }
+
+    .recipient{
+
+        margin:18px 0 10px;
+
+    }
+
+    .recipient h2{
+
+        font-size:36px;
+
+        padding-bottom:6px;
+
+    }
+
+    .completion-text{
+
+        margin-top:16px;
+
+        font-size:18px;
+
+    }
+
+    h3{
+
+        margin-top:10px;
+
+        font-size:30px;
+
+    }
+
+    .description{
+
+        margin:12px auto;
+
+        font-size:15px;
+
+        line-height:1.5;
+
+    }
+
+    .certificate-details{
+
+        margin-top:18px;
+
+        gap:16px;
+
+    }
+
+    .detail-box{
+
+        padding:12px;
+
+    }
+
+    .detail-box strong{
+
+        font-size:15px;
+
+    }
+
+    .detail-box span{
+
+        font-size:16px;
+
+    }
+
+    .seal{
+
+        width:90px;
+
+        height:90px;
+
+    }
+
+    .seal img{
+
+        width:36px;
+
+        height:36px;
+
+    }
+
+    .seal span{
+
+        font-size:12px;
+
+    }
+
+    .signature{
+
+        margin-top:18px;
+
+    }
+
+    .line{
+
+        width:180px;
+
+    }
+
+    .signature p{
+
+        font-size:14px;
+
+    }
+
+    .note{
+
+        margin-top:15px;
+
+        font-size:12px;
+
+        line-height:1.4;
+
+    }
 
 }
