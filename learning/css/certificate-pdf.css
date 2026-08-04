@@ -30,7 +30,7 @@
     border:8px solid #d4af37;
     border-radius:18px;
     position:relative;
-    padding:25px;
+    padding:30px;
     box-sizing:border-box;
 }
 
@@ -161,13 +161,10 @@
 }
 
 .pdf-seal{
-
-   margin:35px 0;
-
-    width:90px;
-
-    text-align:center;
-
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:35px 0;
 }
 
 
@@ -176,6 +173,9 @@
     width:80px;
 
     height:80px;
+
+   display:block;
+    margin:0 auto;
 
 }
 
