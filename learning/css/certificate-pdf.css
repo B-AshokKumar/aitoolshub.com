@@ -1,0 +1,279 @@
+/* =====================================
+   PDF Certificate (Hidden)
+===================================== */
+
+.pdf-certificate{
+
+    position:fixed;
+
+    left:-99999px;
+
+    top:0;
+
+    width:210mm;
+
+    height:297mm;
+
+    background:#fff;
+
+    overflow:hidden;
+
+    z-index:-1;
+
+}
+
+.pdf-border{
+
+    margin:10mm;
+
+    height:calc(297mm - 20mm);
+
+    border:8px solid #d4af37;
+
+    border-radius:18px;
+
+    position:relative;
+
+    padding:35px;
+
+}
+
+.pdf-border::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:12px;
+
+    border:2px solid #d4af37;
+
+    border-radius:12px;
+
+}
+
+.pdf-header{
+
+    position:relative;
+
+    z-index:2;
+
+    text-align:center;
+
+}
+
+.pdf-header img{
+
+    width:75px;
+
+    height:75px;
+
+    object-fit:contain;
+
+    margin-bottom:10px;
+
+}
+
+.pdf-header h2{
+
+    color:#2563eb;
+
+    font-size:30px;
+
+    margin-bottom:12px;
+
+}
+
+.pdf-header h1{
+
+    color:#1e3a8a;
+
+    font-size:42px;
+
+    margin-bottom:10px;
+
+}
+
+.pdf-header p{
+
+    color:#666;
+
+    font-size:20px;
+
+}
+
+.pdf-name{
+
+    margin-top:35px;
+
+    text-align:center;
+
+    font-size:48px;
+
+    font-weight:bold;
+
+    color:#111827;
+
+    border-bottom:3px solid #d4af37;
+
+    display:inline-block;
+
+    width:100%;
+
+    padding-bottom:12px;
+
+}
+
+.pdf-text{
+
+    margin-top:30px;
+
+    text-align:center;
+
+    font-size:24px;
+
+    color:#444;
+
+}
+
+.pdf-certificate h3{
+
+    margin-top:18px;
+
+    text-align:center;
+
+    color:#f59e0b;
+
+    font-size:40px;
+
+}
+
+.pdf-description{
+
+    margin:25px auto;
+
+    width:80%;
+
+    text-align:center;
+
+    line-height:1.8;
+
+    color:#555;
+
+    font-size:18px;
+
+}
+
+.pdf-seal{
+
+    text-align:center;
+
+    margin:25px 0;
+
+}
+
+.pdf-seal img{
+
+    width:90px;
+
+    height:90px;
+
+}
+
+.pdf-details{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:25px;
+
+}
+
+.pdf-box{
+
+    flex:1;
+
+    text-align:center;
+
+    padding:18px;
+
+    border:1px solid #ddd;
+
+    border-radius:12px;
+
+    background:#fafafa;
+
+}
+
+.pdf-box strong{
+
+    display:block;
+
+    color:#1e40af;
+
+    font-size:18px;
+
+}
+
+.pdf-box span{
+
+    display:block;
+
+    margin-top:10px;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+}
+
+.pdf-signature{
+
+    margin-top:35px;
+
+    text-align:center;
+
+}
+
+.pdf-line{
+
+    width:220px;
+
+    height:3px;
+
+    background:#d4af37;
+
+    margin:0 auto 12px;
+
+}
+
+.pdf-signature p{
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    color:#444;
+
+}
+
+.pdf-signature strong{
+
+    color:#2563eb;
+
+}
+
+.pdf-note{
+
+    margin-top:28px;
+
+    text-align:center;
+
+    color:#666;
+
+    font-size:16px;
+
+    line-height:1.7;
+
+}
