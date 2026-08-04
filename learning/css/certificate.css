@@ -83,15 +83,38 @@ body{
 
 .logo{
 
-    font-size:38px;
+    text-align:center;
 
-    font-weight:bold;
+    margin-bottom:25px;
+
+}
+
+.logo img{
+
+    width:95px;
+
+    height:95px;
+
+    object-fit:contain;
+
+    margin-bottom:12px;
+
+}
+
+.logo h2{
 
     color:#2563eb;
 
-    margin-bottom:18px;
+    font-size:28px;
+
+    margin:0;
+
+    font-weight:700;
+
+    letter-spacing:.5px;
 
 }
+
 
 h1{
 
