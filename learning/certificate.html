@@ -7,7 +7,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Certificate of Completion</title>
+<title>AI Tools Hub - Certificate of Completion</title>
 
 <link rel="stylesheet" href="css/certificate.css">
 
@@ -17,63 +17,104 @@
 
 <div class="certificate">
 
-    <h1>🏆 Certificate of Completion</h1>
+    <div class="certificate-border">
 
-    <p class="issued">
-        This certifies that
-    </p>
+        <div class="header">
 
-    <h2 id="studentName">AI Learner</h2>
+            <div class="logo">
+                🎓 AI Tools Hub
+            </div>
 
-    <p>
-        has successfully completed the course
-    </p>
+            <h1>Certificate of Completion</h1>
 
-    <h3>AI Learning Hub</h3>
+            <p class="subtitle">
+                This certificate is proudly presented to
+            </p>
 
-    <p>
-        Issued by
-    </p>
+        </div>
 
-    <h4>AI Tools Hub</h4>
+        <div class="recipient">
 
-    <div class="details">
+            <h2 id="studentName">AI Learner</h2>
 
-        <p>
-            📅 Completion Date:
-            <span id="date"></span>
+        </div>
+
+        <p class="completion-text">
+            for successfully completing the
         </p>
 
-        <p>
-            🆔 Certificate ID:
-            <span id="certificateId"></span>
+        <h3>AI Learning Hub</h3>
+
+        <p class="description">
+            This certificate recognises successful completion of the
+            AI Learning Hub course offered by AI Tools Hub.
         </p>
+
+        <div class="certificate-details">
+
+            <div class="detail-box">
+
+                <strong>Completion Date</strong><br>
+                <span id="date"></span>
+
+            </div>
+
+            <div class="seal">
+
+                🏅
+
+                <span>AI Tools Hub</span>
+
+            </div>
+
+            <div class="detail-box">
+
+                <strong>Certificate ID</strong><br>
+                <span id="certificateId"></span>
+
+            </div>
+
+        </div>
+
+        <div class="signature">
+
+            <div class="line"></div>
+
+            <p>Issued by AI Tools Hub</p>
+
+        </div>
+
+        <p class="note">
+
+            This certificate is issued by AI Tools Hub as proof of
+            successful completion of the AI Learning Hub course.
+            It is a course completion certificate and does not represent
+            professional, academic or government accreditation.
+
+        </p>
+
+        <div class="actions">
+
+            <button onclick="window.print()">
+                📄 Download / Print
+            </button>
+
+            <button id="editNameBtn">
+                ✏️ Edit Name
+            </button>
+
+            <button onclick="location.href='course-complete.html'">
+                ⬅ Back
+            </button>
+
+        </div>
 
     </div>
-
-    <p class="note">
-        This certificate recognises the successful completion of the
-        AI Learning Hub course offered by AI Tools Hub.
-        It is a certificate of course completion and does not represent
-        professional, academic or government accreditation.
-    </p>
-
-    <button onclick="window.print()">
-        📄 Download / Print Certificate
-    </button>
-
-    <button id="editNameBtn">
-        ✏️ Edit Certificate Name
-    </button>
-
-    <button onclick="location.href='course-complete.html'">
-        ⬅ Back
-    </button>
 
 </div>
 
 
-<!-- Edit Name Popup -->
+<!-- Edit Name Modal -->
 
 <div id="editModal" class="modal">
 
@@ -82,16 +123,18 @@
         <h2>✏️ Edit Certificate Name</h2>
 
         <p>
-            Enter the name you'd like to appear on your certificate.
+            Enter the name you want to appear on your certificate.
         </p>
 
         <input
-            type="text"
             id="editNameInput"
+            type="text"
             placeholder="Enter your name">
 
         <small>
-            This name is stored only on your device and can be changed at any time.
+
+            Your name is stored only on your device.
+
         </small>
 
         <div class="modal-buttons">
