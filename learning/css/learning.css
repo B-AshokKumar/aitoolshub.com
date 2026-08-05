@@ -944,3 +944,83 @@ box-shadow:0 5px 15px rgba(0,0,0,.08);
     display:inline-block;
 
 }
+
+/* ==========================
+   Quick Actions
+========================== */
+
+.quick-actions{
+
+    max-width:900px;
+
+    margin:25px auto;
+
+    background:#fff;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+.quick-actions h2{
+
+    text-align:center;
+
+    color:#2563eb;
+
+    margin-bottom:20px;
+
+}
+
+.action-buttons{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:15px;
+
+    justify-content:center;
+
+}
+
+.action-btn{
+
+    display:inline-flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-width:220px;
+
+    padding:14px 20px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#2563eb;
+
+    color:#fff;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    text-decoration:none;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.action-btn:hover{
+
+    background:#1d4ed8;
+
+}
