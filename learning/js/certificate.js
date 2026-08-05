@@ -315,15 +315,27 @@ function generateCertificateQR(){
     new QRCode(qr,{
 
         text:
-`AI Learning Hub
+`AI Tools Hub
 
-Student: ${document.getElementById("studentName").textContent}
+AI Learning Hub Certificate
 
-Certificate ID: ${document.getElementById("certificateId").textContent}
+Student Name:
+${document.getElementById("studentName").textContent}
 
-Course: AI Learning Hub
+Certificate ID:
+${document.getElementById("certificateId").textContent}
 
-Issued By: AI Tools Hub`,
+Completion Date:
+${document.getElementById("date").textContent}
+
+Course:
+AI Learning Hub
+
+Issued By:
+AI Tools Hub
+
+This QR code contains certificate information only.
+It is not an online verification system.`,
 
         width:90,
 
