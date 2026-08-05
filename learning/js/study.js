@@ -159,3 +159,34 @@ if (
 }
 
 }
+
+// ===================================
+// Restart Quiz
+// ===================================
+
+const restartQuizBtn =
+document.getElementById("restartQuizBtn");
+
+if(restartQuizBtn){
+
+restartQuizBtn.addEventListener("click",()=>{
+
+const confirmReset =
+confirm(
+"Restart all quizzes?\n\nYour quiz progress will be cleared."
+);
+
+if(!confirmReset) return;
+
+// Remove quiz progress
+localStorage.removeItem("quiz_progress");
+localStorage.removeItem("quiz_score");
+localStorage.removeItem("quiz_completed");
+
+alert("Quiz progress has been restarted.");
+
+location.reload();
+
+});
+
+}
