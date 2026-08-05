@@ -149,6 +149,9 @@ pdfBtn.addEventListener("click", async () => {
     document.getElementById("pdfCertificateId").textContent =
         document.getElementById("certificateId").textContent;
 
+
+    generateCertificateQR();
+    
     const pdfCertificate =
     document.getElementById("pdfCertificate");
 
@@ -237,6 +240,9 @@ shareBtn.addEventListener("click", async () => {
         document.getElementById("pdfCertificateId").textContent =
             document.getElementById("certificateId").textContent;
 
+       
+        generateCertificateQR();
+        
         const pdfCertificate =
         document.getElementById("pdfCertificate");
 
@@ -294,3 +300,30 @@ shareBtn.addEventListener("click", async () => {
     }
 
 });
+
+// ==========================================
+// Generate QR Code
+// ==========================================
+
+function generateCertificateQR(){
+
+    const qr =
+    document.getElementById("pdfQrCode");
+
+    qr.innerHTML = "";
+
+    new QRCode(qr,{
+
+        text:
+`Certificate ID: ${document.getElementById("certificateId").textContent}
+Student: ${document.getElementById("studentName").textContent}
+Course: AI Learning Hub
+Issued By: AI Tools Hub`,
+
+        width:90,
+
+        height:90
+
+    });
+
+}
