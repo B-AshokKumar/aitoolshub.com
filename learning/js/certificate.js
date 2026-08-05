@@ -277,7 +277,8 @@ shareBtn.addEventListener("click", async () => {
 
                     title:"AI Learning Hub Certificate",
 
-                    text:"I completed the AI Learning Hub course!",
+                    text:
+`${document.getElementById("studentName").textContent} has successfully completed the AI Learning Hub course on AI Tools Hub.`,
 
                     files:[file]
 
