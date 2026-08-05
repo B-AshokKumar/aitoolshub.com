@@ -315,9 +315,14 @@ function generateCertificateQR(){
     new QRCode(qr,{
 
         text:
-`Certificate ID: ${document.getElementById("certificateId").textContent}
+`AI Learning Hub
+
 Student: ${document.getElementById("studentName").textContent}
+
+Certificate ID: ${document.getElementById("certificateId").textContent}
+
 Course: AI Learning Hub
+
 Issued By: AI Tools Hub`,
 
         width:90,
