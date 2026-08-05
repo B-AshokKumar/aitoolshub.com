@@ -286,3 +286,15 @@
     line-height:1.8;
 
 }
+
+#pdfQrCode{
+    width:90px;
+    height:90px;
+    margin:15px auto 0;
+}
+
+#pdfQrCode img,
+#pdfQrCode canvas{
+    width:90px !important;
+    height:90px !important;
+}
