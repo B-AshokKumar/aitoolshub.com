@@ -215,3 +215,82 @@ try{
     pdfBtn.textContent="📄 Download PDF";
 
 });
+
+// ==========================================
+// Share Certificate
+// ==========================================
+
+const shareBtn =
+document.getElementById("shareCertificateBtn");
+
+shareBtn.addEventListener("click", async () => {
+
+    try{
+
+        // Copy latest values
+        document.getElementById("pdfStudentName").textContent =
+            document.getElementById("studentName").textContent;
+
+        document.getElementById("pdfDate").textContent =
+            document.getElementById("date").textContent;
+
+        document.getElementById("pdfCertificateId").textContent =
+            document.getElementById("certificateId").textContent;
+
+        const pdfCertificate =
+        document.getElementById("pdfCertificate");
+
+        pdfCertificate.style.visibility="visible";
+
+        const canvas =
+        await html2canvas(pdfCertificate,{
+            scale:3,
+            useCORS:true,
+            backgroundColor:"#ffffff"
+        });
+
+        pdfCertificate.style.visibility="hidden";
+
+        canvas.toBlob(async(blob)=>{
+
+            const file =
+            new File(
+                [blob],
+                "AI-Tools-Hub-Certificate.png",
+                {
+                    type:"image/png"
+                }
+            );
+
+            if(
+                navigator.canShare &&
+                navigator.canShare({files:[file]})
+            ){
+
+                await navigator.share({
+
+                    title:"AI Learning Hub Certificate",
+
+                    text:"I completed the AI Learning Hub course!",
+
+                    files:[file]
+
+                });
+
+            }else{
+
+                alert("Sharing is not supported on this device.");
+
+            }
+
+        });
+
+    }catch(error){
+
+        console.log(error);
+
+        alert("Unable to share certificate.");
+
+    }
+
+});
