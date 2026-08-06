@@ -191,27 +191,41 @@ location.reload();
 
 }
 
+// ===================================
+// View Certificate
+// ===================================
+
 const viewCertificateBtn =
 document.getElementById("viewCertificateBtn");
 
-viewCertificateBtn.addEventListener("click", () => {
+if(viewCertificateBtn){
 
-    const lessons =
-        Number(localStorage.getItem("completedLessons")) || 0;
+    viewCertificateBtn.addEventListener("click", () => {
 
-    const quizzes =
-        Number(localStorage.getItem("completedQuizzes")) || 0;
+        let completed = 0;
 
-    if (lessons < 20 || quizzes < 20) {
+        topics.forEach(topic => {
 
-        showToast(
-            "🏆 Certificate Not Yet Available<br><br>Complete all <b>20 lessons</b> and pass all <b>20 quizzes</b> to unlock your AI Learning Hub Certificate."
-        );
+            if(localStorage.getItem("quiz_passed_" + topic.id)){
 
-        return;
+                completed++;
 
-    }
+            }
 
-    location.href = "certificate.html";
+        });
 
-});
+        if(completed < topics.length){
+
+            alert(
+                "🏆 Certificate Not Yet Available\n\nComplete all 20 lessons and pass all 20 quizzes to unlock your AI Learning Hub Certificate."
+            );
+
+            return;
+
+        }
+
+        location.href = "certificate.html";
+
+    });
+
+}
