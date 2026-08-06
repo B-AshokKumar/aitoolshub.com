@@ -212,15 +212,17 @@ function showToast(message){
 
     if(!toast) return;
 
-    toast.innerHTML =
-    `<span class="toast-icon">🏆</span>${message}`;
+    toast.innerHTML = message;
 
     toast.classList.add("show");
 
-    setTimeout(() => {
+    clearTimeout(toast.timer);
+
+    toast.timer = setTimeout(() => {
 
         toast.classList.remove("show");
 
     }, 4500);
 
 }
+
