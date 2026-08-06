@@ -1,4 +1,3 @@
-
 /* ======================================
    AI Learning Hub
    study.js
@@ -7,9 +6,11 @@
 const cardContainer = document.querySelector(".card-container");
 const searchBox = document.getElementById("searchBox");
 
-/* Render Topics */
+/* ======================================
+   Render Topics
+====================================== */
 
-function renderTopics(list){
+function renderTopics(list) {
 
     cardContainer.innerHTML = "";
 
@@ -20,53 +21,52 @@ function renderTopics(list){
         card.className = "card";
 
         const passed =
-    localStorage.getItem("quiz_passed_" + topic.id);
+            localStorage.getItem("quiz_passed_" + topic.id);
 
-const attempted =
-    localStorage.getItem("quiz_" + topic.id);
+        const attempted =
+            localStorage.getItem("quiz_" + topic.id);
 
-let status = "";
-let statusClass = "";
+        let status = "";
+        let statusClass = "";
 
-if (passed) {
+        if (passed) {
 
-    status = "🟢 Passed";
-    statusClass = "status-passed";
+            status = "🟢 Passed";
+            statusClass = "status-passed";
 
-} else if (attempted) {
+        } else if (attempted) {
 
-    status = "🔴 Try Again";
-    statusClass = "status-failed";
+            status = "🔴 Try Again";
+            statusClass = "status-failed";
 
-} else {
+        } else {
 
-    status = "⚪ Not Attempted";
-    statusClass = "status-not";
+            status = "⚪ Not Attempted";
+            statusClass = "status-not";
 
-}
+        }
 
-card.innerHTML = `
-    <div class="lesson-icon">📘</div>
+        card.innerHTML = `
+            <div class="lesson-icon">📘</div>
 
-    <div class="lesson-number">
-        Lesson ${topic.id}
-    </div>
+            <div class="lesson-number">
+                Lesson ${topic.id}
+            </div>
 
-    <h3>${topic.title}</h3>
+            <h3>${topic.title}</h3>
 
-    <p>${topic.description}</p>
+            <p>${topic.description}</p>
 
-    <div class="${statusClass}">
-        ${status}
-    </div>
-`;
+            <div class="${statusClass}">
+                ${status}
+            </div>
+        `;
 
         card.onclick = () => {
 
-    location.href =
-    "lesson.html?id=" + topic.id;
+            location.href = "lesson.html?id=" + topic.id;
 
-};
+        };
 
         cardContainer.appendChild(card);
 
@@ -74,54 +74,63 @@ card.innerHTML = `
 
 }
 
-/* Search */
+/* ======================================
+   Search
+====================================== */
 
-searchBox.addEventListener("input", function(){
+if (searchBox) {
 
-    const keyword = this.value.toLowerCase();
+    searchBox.addEventListener("input", function () {
 
-    const filtered = topics.filter(topic =>
+        const keyword = this.value.toLowerCase();
 
-        topic.title.toLowerCase().includes(keyword) ||
+        const filtered = topics.filter(topic =>
 
-        topic.description.toLowerCase().includes(keyword) ||
+            topic.title.toLowerCase().includes(keyword) ||
 
-        topic.category.toLowerCase().includes(keyword)
+            topic.description.toLowerCase().includes(keyword) ||
 
-    );
+            topic.category.toLowerCase().includes(keyword)
 
-    renderTopics(filtered);
+        );
 
-});
+        renderTopics(filtered);
 
-/* Load */
+    });
+
+}
+
+/* ======================================
+   Initial Load
+====================================== */
 
 renderTopics(topics);
 
 updateProgress();
 
-function updateProgress(){
+/* ======================================
+   Learning Progress
+====================================== */
+
+function updateProgress() {
 
     let completed = 0;
 
     topics.forEach(topic => {
 
-        const passed =
-    localStorage.getItem("quiz_passed_" + topic.id);
+        if (localStorage.getItem("quiz_passed_" + topic.id)) {
 
-if (passed) {
+            completed++;
 
-    completed++;
-
-}
+        }
 
     });
 
     document.getElementById("completedLessons").textContent =
-    "Lessons Passed: " +
-    completed +
-    " / " +
-    topics.length;
+        "Lessons Passed: " +
+        completed +
+        " / " +
+        topics.length;
 
     document.getElementById("completedQuizzes").textContent =
         "Quizzes Passed: " +
@@ -130,9 +139,7 @@ if (passed) {
         topics.length;
 
     const percent =
-        Math.round(
-            (completed / topics.length) * 100
-        );
+        Math.round((completed / topics.length) * 100);
 
     document.getElementById("progressFill").style.width =
         percent + "%";
@@ -140,84 +147,47 @@ if (passed) {
     document.getElementById("progressPercent").textContent =
         percent + "% Completed";
 
-   // Course Completed (Show Only Once)
+    // Course Completed (Show Only Once)
 
-if (
-    completed === topics.length &&
-    !localStorage.getItem("course_completed")
-) {
+    if (
+        completed === topics.length &&
+        !localStorage.getItem("course_completed")
+    ) {
 
-    localStorage.setItem("course_completed", "true");
+        localStorage.setItem(
+            "course_completed",
+            "true"
+        );
 
-    setTimeout(function () {
+        setTimeout(function () {
 
-       location.href = "course-complete.html";
+            location.href = "course-complete.html";
 
+        }, 500);
 
-    }, 500);
-
-}
-
-}
-
-// ===================================
-// Restart Quiz
-// ===================================
-
-const restartQuizBtn =
-document.getElementById("restartQuizBtn");
-
-if(restartQuizBtn){
-
-restartQuizBtn.addEventListener("click",()=>{
-
-const confirmReset =
-confirm(
-"Restart all quizzes?\n\nYour quiz progress will be cleared."
-);
-
-if(!confirmReset) return;
-
-// Remove quiz progress
-localStorage.removeItem("quiz_progress");
-localStorage.removeItem("quiz_score");
-localStorage.removeItem("quiz_completed");
-
-alert("Quiz progress has been restarted.");
-
-location.reload();
-
-});
+    }
 
 }
 
-// ===================================
-// View Certificate
-// ===================================
+/* ======================================
+   View Certificate
+====================================== */
 
 const viewCertificateBtn =
 document.getElementById("viewCertificateBtn");
 
-if(viewCertificateBtn){
+if (viewCertificateBtn) {
 
     viewCertificateBtn.addEventListener("click", () => {
 
-        let completed = 0;
-
-        topics.forEach(topic => {
-
-            if(localStorage.getItem("quiz_passed_" + topic.id)){
-
-                completed++;
-
-            }
-
-        });
-
-        if(completed < topics.length){
+        if (
+            localStorage.getItem("course_completed") !== "true"
+        ) {
 
             alert(
-                "🏆 Certificate Not Yet Available\n\nComplete all 20 lessons and pass all 20 quizzes to unlock your AI Learning Hub Certificate."
+`🏆 Certificate Not Yet Available
+
+Complete all 20 lessons and pass all 20 quizzes to unlock your AI Learning Hub Certificate.`
             );
 
             return;
