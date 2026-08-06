@@ -7,7 +7,7 @@ const cardContainer = document.querySelector(".card-container");
 const searchBox = document.getElementById("searchBox");
 
 /* ======================================
-   Render Topics
+   Render Topics 
 ====================================== */
 
 function renderTopics(list) {
