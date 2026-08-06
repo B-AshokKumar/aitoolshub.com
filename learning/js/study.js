@@ -184,11 +184,12 @@ if (viewCertificateBtn) {
             localStorage.getItem("course_completed") !== "true"
         ) {
 
-            alert(
-`🏆 Certificate Not Yet Available
-
-Complete all 20 lessons and pass all 20 quizzes to unlock your AI Learning Hub Certificate.`
-            );
+            showToast(
+`🏆 <strong>Certificate Not Yet Available</strong><br><br>
+Complete all <strong>20 lessons</strong> and pass all
+<strong>20 quizzes</strong> to unlock your
+<strong>AI Learning Hub Certificate</strong>.`
+);
 
             return;
 
