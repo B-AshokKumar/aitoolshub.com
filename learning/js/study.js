@@ -190,3 +190,28 @@ location.reload();
 });
 
 }
+
+const viewCertificateBtn =
+document.getElementById("viewCertificateBtn");
+
+viewCertificateBtn.addEventListener("click", () => {
+
+    const lessons =
+        Number(localStorage.getItem("completedLessons")) || 0;
+
+    const quizzes =
+        Number(localStorage.getItem("completedQuizzes")) || 0;
+
+    if (lessons < 20 || quizzes < 20) {
+
+        showToast(
+            "🏆 Certificate Not Yet Available<br><br>Complete all <b>20 lessons</b> and pass all <b>20 quizzes</b> to unlock your AI Learning Hub Certificate."
+        );
+
+        return;
+
+    }
+
+    location.href = "certificate.html";
+
+});
