@@ -164,36 +164,46 @@ if (
 // Restart Quiz
 // ===================================
 
-const confirmReset =
-confirm(
-"Restart all quizzes?\n\nYour learning progress, quiz results and certificate information will be cleared."
-);
+const restartQuizBtn =
+document.getElementById("restartQuizBtn");
 
-if(!confirmReset) return;
+if (restartQuizBtn) {
 
-// Remove all lesson progress
-topics.forEach(topic => {
+    restartQuizBtn.addEventListener("click", () => {
 
-    localStorage.removeItem("quiz_passed_" + topic.id);
-    localStorage.removeItem("quiz_" + topic.id);
+        const confirmReset = confirm(
+            "Restart all quizzes?\n\nYour learning progress, quiz results and certificate information will be cleared."
+        );
 
-});
+        if (!confirmReset) return;
 
-// Remove completion data
-localStorage.removeItem("course_completed");
+        // Remove all lesson progress
+        topics.forEach(topic => {
 
-// Remove certificate information
-localStorage.removeItem("certificate_id");
-localStorage.removeItem("student_name");
+            localStorage.removeItem("quiz_passed_" + topic.id);
+            localStorage.removeItem("quiz_" + topic.id);
 
-// Remove old quiz data
-localStorage.removeItem("quiz_progress");
-localStorage.removeItem("quiz_score");
-localStorage.removeItem("quiz_completed");
+        });
 
-alert("AI Learning Hub has been restarted.");
+        // Remove completion data
+        localStorage.removeItem("course_completed");
 
-location.reload();
+        // Remove certificate information
+        localStorage.removeItem("certificate_id");
+        localStorage.removeItem("student_name");
+
+        // Remove old quiz data
+        localStorage.removeItem("quiz_progress");
+        localStorage.removeItem("quiz_score");
+        localStorage.removeItem("quiz_completed");
+
+        alert("AI Learning Hub has been restarted.");
+
+        location.reload();
+
+    });
+
+}
 
 // ===================================
 // View Certificate
