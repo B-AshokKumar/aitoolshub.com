@@ -207,15 +207,10 @@ Complete all <strong>20 lessons</strong> and pass all
 
 function showToast(message){
 
-    alert("showToast() is working");
-
     const toast =
     document.getElementById("toast");
 
-    if(!toast){
-        alert("Toast element not found!");
-        return;
-    }
+    if(!toast) return;
 
     toast.innerHTML = message;
 
