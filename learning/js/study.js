@@ -164,32 +164,36 @@ if (
 // Restart Quiz
 // ===================================
 
-const restartQuizBtn =
-document.getElementById("restartQuizBtn");
-
-if(restartQuizBtn){
-
-restartQuizBtn.addEventListener("click",()=>{
-
 const confirmReset =
 confirm(
-"Restart all quizzes?\n\nYour quiz progress will be cleared."
+"Restart all quizzes?\n\nYour learning progress, quiz results and certificate information will be cleared."
 );
 
 if(!confirmReset) return;
 
-// Remove quiz progress
+// Remove all lesson progress
+topics.forEach(topic => {
+
+    localStorage.removeItem("quiz_passed_" + topic.id);
+    localStorage.removeItem("quiz_" + topic.id);
+
+});
+
+// Remove completion data
+localStorage.removeItem("course_completed");
+
+// Remove certificate information
+localStorage.removeItem("certificate_id");
+localStorage.removeItem("student_name");
+
+// Remove old quiz data
 localStorage.removeItem("quiz_progress");
 localStorage.removeItem("quiz_score");
 localStorage.removeItem("quiz_completed");
 
-alert("Quiz progress has been restarted.");
+alert("AI Learning Hub has been restarted.");
 
 location.reload();
-
-});
-
-}
 
 // ===================================
 // View Certificate
