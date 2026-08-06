@@ -207,12 +207,12 @@ Complete all <strong>20 lessons</strong> and pass all
 
 function showToast(message){
 
-    const toast =
-    document.getElementById("toast");
+    const toast = document.getElementById("toast");
 
     if(!toast) return;
 
-    toast.innerHTML = message;
+    toast.innerHTML =
+    `<span class="toast-icon">🏆</span>${message}`;
 
     toast.classList.add("show");
 
@@ -220,6 +220,6 @@ function showToast(message){
 
         toast.classList.remove("show");
 
-    }, 3000);
+    }, 4500);
 
 }
