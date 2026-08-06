@@ -200,3 +200,24 @@ Complete all <strong>20 lessons</strong> and pass all
     });
 
 }
+
+/* ======================================
+   Toast Message
+====================================== */
+
+function showToast(message){
+
+    const toast =
+    document.getElementById("toast");
+
+    toast.innerHTML = message;
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    }, 3000);
+
+}
