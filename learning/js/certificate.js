@@ -150,7 +150,7 @@ pdfBtn.addEventListener("click", async () => {
         document.getElementById("certificateId").textContent;
 
 
-    generateCertificateQR();
+    
     
     const pdfCertificate =
     document.getElementById("pdfCertificate");
@@ -241,7 +241,7 @@ shareBtn.addEventListener("click", async () => {
             document.getElementById("certificateId").textContent;
 
        
-        generateCertificateQR();
+        
         
         const pdfCertificate =
         document.getElementById("pdfCertificate");
@@ -302,46 +302,3 @@ shareBtn.addEventListener("click", async () => {
 
 });
 
-// ==========================================
-// Generate QR Code
-// ==========================================
-
-function generateCertificateQR(){
-
-    const qr =
-    document.getElementById("pdfQrCode");
-
-    qr.innerHTML = "";
-
-    new QRCode(qr,{
-
-        text:
-`AI Tools Hub
-
-AI Learning Hub Certificate
-
-Student Name:
-${document.getElementById("studentName").textContent}
-
-Certificate ID:
-${document.getElementById("certificateId").textContent}
-
-Completion Date:
-${document.getElementById("date").textContent}
-
-Course:
-AI Learning Hub
-
-Issued By:
-AI Tools Hub
-
-This QR code contains certificate information only.
-It is not an online verification system.`,
-
-        width:90,
-
-        height:90
-
-    });
-
-}
