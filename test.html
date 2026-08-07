@@ -1243,18 +1243,24 @@ transform:translateX(-50%) translateY(0);
     color:#fff;
     font-size:24px;
     font-weight:700;
+    text-align:center;
     cursor:pointer;
     box-shadow:0 6px 16px rgba(59,130,246,.22);
-    transition:all .25s ease;
+    transition:transform .2s ease, box-shadow .2s ease;
 }
 
 .learning-btn:hover{
     transform:translateY(-2px);
-    box-shadow:0 12px 28px rgba(59,130,246,.45);
+    box-shadow:0 10px 24px rgba(59,130,246,.32);
 }
 
 .learning-btn:active{
-    transform:scale(.98);
+    transform:scale(.97);
+    box-shadow:0 4px 10px rgba(59,130,246,.18);
+}
+
+.learning-btn:focus{
+    outline:none;
 }
   
 /* ===================================
