@@ -189,7 +189,7 @@ if (viewCertificateBtn) {
 
 Complete all <strong>20 lessons</strong> and pass all
 <strong>20 quizzes</strong> to unlock your
-<strong>AI Learning Hub Certificate</strong>.
+<strong>AI Learning Hub Certificate</strong>
 `);
 
             return;
