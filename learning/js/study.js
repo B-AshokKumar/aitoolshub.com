@@ -1,6 +1,6 @@
 /* ======================================
    AI Learning Hub
-   study.js
+   study.js 
 ====================================== */
 
 const cardContainer = document.querySelector(".card-container");
