@@ -1,5 +1,5 @@
 <!DOCTYPE html>  
-<!-- Version 1.16 -->
+<!-- Version 1.17 -->
 <html lang="en">  
 <head>  
 
@@ -1231,6 +1231,33 @@ transform:translateX(-50%) translateY(0);
     text-decoration:none;
 }
 
+.learning-btn{
+    display:block;
+    width:70%;
+    max-width:360px;
+    margin:24px auto;
+    padding:14px 20px;
+    border:none;
+    border-radius:18px;
+    background:linear-gradient(135deg,#3b82f6,#60a5fa);
+    color:#fff;
+    font-size:18px;
+    font-weight:700;
+    text-align:center;
+    cursor:pointer;
+    box-shadow:0 6px 16px rgba(59,130,246,.22);
+    transition:transform .2s ease, box-shadow .2s ease;
+}
+
+.learning-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 24px rgba(59,130,246,.32);
+}
+
+.learning-btn:active{
+    transform:scale(.97);
+}
+  
 /* ===================================
    LOADER
 =================================== */
@@ -1605,6 +1632,10 @@ onclick="resetPrompt()">
 
 </div>
 </div>
+
+<button class="feature-btn learning-btn" onclick="openAILearningHub()">
+    🎓 AI Learning Hub
+</button>
 
 <div class="section" id="news">
 
@@ -2674,7 +2705,7 @@ App Preferences & Settings
  <div class="footer">
   <div>AI Tools Hub © 2026 Curated AI tools Directory</div>
   <div style="font-size:12px;color:#999;margin-top:4px;">
-    Version 1.16 (11600)
+    Version 1.17 (11700)
   </div>
 </div> 
 <script>  
@@ -4066,6 +4097,12 @@ function shareApp(){
     }
 }
 
+
+  function openAILearningHub() {
+    window.location.href =
+    "https://b-ashokkumar.github.io/aitoolshub.com/learning/study.html";
+}
+
    function copyPrompt(){
 
   let text =
@@ -5068,4 +5105,4 @@ checkConnection();
 </script>
 
 </body>  
-</html> 
+</html>
