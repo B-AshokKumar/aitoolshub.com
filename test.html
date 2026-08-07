@@ -1231,6 +1231,32 @@ transform:translateX(-50%) translateY(0);
     text-decoration:none;
 }
 
+.learning-btn{
+    display:block;
+    width:82%;
+    max-width:420px;
+    margin:24px auto;
+    padding:18px 22px;
+    border:none;
+    border-radius:20px;
+    background:linear-gradient(135deg,#3b82f6,#60a5fa);
+    color:#fff;
+    font-size:24px;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 8px 22px rgba(59,130,246,.35);
+    transition:all .25s ease;
+}
+
+.learning-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 28px rgba(59,130,246,.45);
+}
+
+.learning-btn:active{
+    transform:scale(.98);
+}
+  
 /* ===================================
    LOADER
 =================================== */
@@ -1606,7 +1632,7 @@ onclick="resetPrompt()">
 </div>
 </div>
 
-<button class="feature-btn" onclick="openAILearningHub()">
+<button class="feature-btn learning-btn" onclick="openAILearningHub()">
     🎓 AI Learning Hub
 </button>
 
