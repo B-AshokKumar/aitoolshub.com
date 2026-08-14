@@ -1,7 +1,17 @@
 <!DOCTYPE html>  
-<!-- Version 1.15 --> 
+<!-- Version 1.17 -->
 <html lang="en">  
 <head>  
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EGGSP1RHDV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-EGGSP1RHDV');
+</script>
 
 <meta charset="UTF-8">  
 
@@ -25,16 +35,19 @@
 html{
 scroll-behavior:smooth;
 }
-body{  
-margin:0;  
-font-family:'Poppins', sans-serif;
-background:#f2f4f7;  
-transition:0.4s;  
-padding-bottom:120px;
--webkit-font-smoothing:antialiased;
-visibility:hidden;
+
+body{
+    margin:0;
+    font-family:'Poppins', sans-serif;
+    background:#f2f4f7;
+    padding-bottom:120px;
+    -webkit-font-smoothing:antialiased;
+
+    visibility:hidden;
+    opacity:0;
+    transition:background .4s, opacity .35s;
 }
-  
+
 /* HEADER */  
   
 .header{
@@ -1166,10 +1179,359 @@ transform:translateX(-50%) translateY(0);
 #recentToolsTitle{
     display:flex;
     align-items:center;
-    gap:8px;
+    gap:6px;
     font-size:22px;
     flex-wrap:nowrap;
+    white-space:nowrap;
 }
+
+.collapsible{
+    cursor:pointer;
+    user-select:none;
+}
+
+.collapsible-content{
+    overflow:hidden;
+    max-height:9999px;
+    transition:max-height .35s ease;
+}
+
+.collapsible-content.hide{
+    max-height:0;
+}
+
+/* ===================================
+   HOW TO USE BUTTON
+=================================== */
+
+.how-to-use-btn{
+    width:100%;
+    margin:18px 0;
+    padding:16px 20px;
+    background:linear-gradient(135deg,#1a73e8,#4a90ff);
+    color:#fff;
+    border:none;
+    border-radius:14px;
+    font-size:18px;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 6px 15px rgba(26,115,232,.35);
+    transition:.25s;
+}
+
+.how-to-use-btn:hover{
+    transform:translateY(-2px);
+}
+
+.how-to-use-btn:active{
+    transform:scale(.98);
+}
+
+.how-use-link{
+    text-decoration:none;
+}
+
+.learning-btn{
+    display:block;
+    width:70%;
+    max-width:360px;
+    margin:24px auto;
+    padding:14px 20px;
+    border:none;
+    border-radius:18px;
+    background:linear-gradient(135deg,#3b82f6,#60a5fa);
+    color:#fff;
+    font-size:18px;
+    font-weight:700;
+    text-align:center;
+    cursor:pointer;
+    box-shadow:0 6px 16px rgba(59,130,246,.22);
+    transition:transform .2s ease, box-shadow .2s ease;
+}
+
+.learning-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 24px rgba(59,130,246,.32);
+}
+
+.learning-btn:active{
+    transform:scale(.97);
+}
+  
+/* ===================================
+   LOADER
+=================================== */
+
+.loader-overlay{
+    position:fixed;
+    inset:0;
+    background:#f2f4f7;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    z-index:999999;
+    transition:.35s;
+}
+
+.dark .loader-overlay{
+    background:#121212;
+}
+
+.loader{
+    width:48px;
+    height:48px;
+    border:5px solid rgba(45,116,215,.15);
+    border-top:5px solid #2d74d7;
+    border-radius:50%;
+    animation:spin .9s linear infinite;
+}
+
+.loader-text{
+    margin-top:18px;
+    font-size:15px;
+    font-weight:600;
+    color:#2d74d7;
+}
+
+.loader-sub{
+    margin-top:8px;
+    font-size:13px;
+    color:#777;
+}
+
+.dark .loader-sub{
+    color:#bbb;
+}
+
+.loader-hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+@keyframes spin{
+
+100%{
+transform:rotate(360deg);
+}
+
+}
+
+/* ==========================
+   REQUEST TIMEOUT
+========================== */
+
+.timeout-box{
+
+display:none;
+
+position:fixed;
+
+top:50%;
+
+left:50%;
+
+transform:translate(-50%,-50%);
+
+width:90%;
+
+max-width:340px;
+
+background:#ffffff;
+
+padding:25px;
+
+border-radius:18px;
+
+text-align:center;
+
+box-shadow:0 15px 40px rgba(0,0,0,.25);
+
+z-index:999999;
+
+}
+
+.dark .timeout-box{
+
+background:#1e1e1e;
+
+color:#ffffff;
+
+}
+
+.timeout-icon{
+
+font-size:45px;
+
+margin-bottom:12px;
+
+}
+
+.timeout-box h3{
+
+margin:10px 0;
+
+font-size:22px;
+
+}
+
+.timeout-box p{
+
+color:#666;
+
+line-height:1.6;
+
+margin-bottom:20px;
+
+}
+
+.dark .timeout-box p{
+
+color:#cccccc;
+
+}
+
+#retryBtn{
+
+border:none;
+
+background:#2d74d7;
+
+color:#ffffff;
+
+padding:14px 30px;
+
+border-radius:30px;
+
+font-size:16px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+}
+
+/* ==========================
+   NETWORK STATUS
+========================== */
+
+#networkStatus{
+
+    position:fixed;
+
+    top:60px;          /* Below app header */
+
+    left:50%;
+
+    transform:translateX(-50%) translateY(-80px);
+
+    background:#ff9800;
+
+    color:#fff;
+
+    padding:8px 14px;
+
+    border-radius:8px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+
+    z-index:99999;
+
+    opacity:0;
+
+    transition:
+        transform .35s ease,
+        opacity .35s ease;
+
+    pointer-events:none;
+
+    max-width:300px;
+width:calc(100% - 40px);
+
+    text-align:center;
+
+}
+
+/* ==========================
+   ONLINE / OFFLINE STATUS
+========================== */
+
+.connection-status{
+
+    position:fixed;
+
+    top:120px;
+
+    left:50%;
+
+    transform:translateX(-50%) translateY(-80px);
+
+    padding:10px 18px;
+
+    border-radius:12px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:#ffffff;
+
+    white-space:nowrap;
+
+    text-align:center;
+
+    width:fit-content;
+
+    max-width:90%;
+
+    min-width:260px;
+
+    opacity:0;
+
+    transition:
+        transform .35s ease,
+        opacity .35s ease;
+
+    z-index:99998;
+
+    pointer-events:none;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+
+}
+
+.connection-status.show{
+
+opacity:1;
+
+transform:translateX(-50%) translateY(0);
+
+}
+
+.connection-status.online{
+
+background:#16a34a;
+
+}
+
+.connection-status.offline{
+
+background:#dc2626;
+
+}
+
+#networkStatus.show{
+
+    transform:translateX(-50%) translateY(0);
+
+    opacity:1;
+
+}
+
 </style>  
   
 </head> 
@@ -1212,7 +1574,14 @@ Dark Mode: OFF
 
   <p class="welcome-sub">Generate powerful AI prompts instantly</p>
 
-
+<div class="how-use-wrapper">
+    <a href="how-to-use.html" class="how-use-link">
+        <button class="prompt-btn" type="button">
+            📖 How to Use AI Tools Hub
+        </button>
+    </a>
+</div>
+  
 <div class="input-wrapper">
 
 <input id="topic"
@@ -1263,6 +1632,10 @@ onclick="resetPrompt()">
 
 </div>
 </div>
+
+<button class="feature-btn learning-btn" onclick="openAILearningHub()">
+    🎓 AI Learning Hub
+</button>
 
 <div class="section" id="news">
 
@@ -1334,20 +1707,36 @@ AI Tools Hub does not own, publish, or modify the news content.
 <!-- PROMPT HISTORY -->
 <div class="section">
 
-<h2 id="historyTitle">📜 Prompt History (0/10)</h2>
-    
+<h2 id="historyTitle"
+    class="collapsible"
+    onclick="toggleHistory()">
+📜 Prompt History (0/10) ▼
+</h2>
+
+<div id="historyContent" class="collapsible-content">
+
 <div class="center-btn">
 <button class="prompt-btn tip-btn"
 onclick="clearPromptHistory()">
 🗑️ Clear Prompt History
 </button>
 </div>
+
 <div id="promptHistoryList"></div>
 
 </div>
+
+</div>
+
 <div class="section">
 
-<h2 id="savedPromptTitle">⭐ Saved Prompts (0/50)</h2>
+<h2 id="savedPromptTitle"
+    class="collapsible"
+    onclick="toggleSaved()">
+⭐ Saved Prompts (0/50) ▼
+</h2>
+
+<div id="savedContent" class="collapsible-content">
 
 <div class="center-btn">
 <button class="prompt-btn tip-btn"
@@ -1357,6 +1746,8 @@ onclick="clearSavedPrompts()">
 </div>
 
 <div id="savedPromptList"></div>
+
+</div>
 
 </div>
 
@@ -1536,27 +1927,44 @@ rel="noopener noreferrer" >Runway ML</a>
   
 <!-- FAVORITE TOOLS -->  
 
-
 <div class="section" id="favorites">
-<h2>⭐ My Favorite Tools</h2>
-<div id="favoritesList"></div>  
-  
-</div>  
+
+<h2 id="favoritesTitle"
+    class="collapsible"
+    onclick="toggleFavorites()">
+⭐ My Favorite Tools ▾
+</h2>
+
+<div id="favoritesContent"
+     class="collapsible-content">
+
+<div id="favoritesList"></div>
+
+</div>
+
+</div>
 
  <div class="section" id="recentTools">
 
-<h2 id="recentToolsTitle">🕒 Recently Used Tools (0/10)</h2>
+<h2 id="recentToolsTitle"
+    class="collapsible"
+    onclick="toggleRecentTools()">
+🕒 Recently Used Tools ▾
+</h2>
+
+<div id="recentToolsContent" class="collapsible-content">
 
 <div class="center-btn">
-  <button class="prompt-btn tip-btn"
+<button class="prompt-btn tip-btn"
 onclick="clearRecentTools()">
-🗑️ Clear Recent Tools
+🗑 Clear Recent Tools
 </button>
 </div>
 
 <div id="recentToolsList"></div>
 
-</div> 
+</div>
+</div>
 <!-- AI CATEGORIES -->  
   
 <!-- AI TOOLS CATEGORIES -->  
@@ -1658,7 +2066,79 @@ onclick="event.stopPropagation();toolInfo('Google Gemini')">
   
 <span class="star" onclick="fav(this)">⭐</span>  
 </div>  
-  
+
+<div class="tool" data-name="Claude">
+
+<div class="tool-left">
+
+<a href="https://claude.ai"
+target="_blank"
+rel="noopener noreferrer"
+onclick="saveRecentTool('Claude',this.href)">
+Claude
+</a>
+
+<span class="info-icon"
+onclick="event.stopPropagation();toolInfo('Claude')">
+ℹ️
+</span>
+
+</div>
+
+<span class="badge pro">FREE + PRO</span>
+
+<span class="star" onclick="fav(this)">⭐</span>
+
+</div>
+
+<div class="tool" data-name="Microsoft Copilot">
+
+<div class="tool-left">
+
+<a href="https://copilot.microsoft.com"
+target="_blank"
+rel="noopener noreferrer"
+onclick="saveRecentTool('Microsoft Copilot',this.href)">
+Microsoft Copilot
+</a>
+
+<span class="info-icon"
+onclick="event.stopPropagation();toolInfo('Microsoft Copilot')">
+ℹ️
+</span>
+
+</div>
+
+<span class="badge pro">FREE + PRO</span>
+
+<span class="star" onclick="fav(this)">⭐</span>
+
+</div>
+
+<div class="tool" data-name="Grok">
+
+<div class="tool-left">
+
+<a href="https://grok.com"
+target="_blank"
+rel="noopener noreferrer"
+onclick="saveRecentTool('Grok',this.href)">
+Grok
+</a>
+
+<span class="info-icon"
+onclick="event.stopPropagation();toolInfo('Grok')">
+ℹ️
+</span>
+
+</div>
+
+<span class="badge pro">FREE + PRO</span>
+
+<span class="star" onclick="fav(this)">⭐</span>
+
+</div>
+
 <div class="tool" data-name="Canva AI"> 
 <div class="tool-left">
   
@@ -2225,7 +2705,7 @@ App Preferences & Settings
  <div class="footer">
   <div>AI Tools Hub © 2026 Curated AI tools Directory</div>
   <div style="font-size:12px;color:#999;margin-top:4px;">
-    Version 1.15 (11500)
+    Version 1.17 (11700)
   </div>
 </div> 
 <script>  
@@ -2471,21 +2951,26 @@ else if(type === "proposal"){
 
 function savePromptHistory(prompt){
 
-  let history =
-    JSON.parse(
-      localStorage.getItem("promptHistory")
-    ) || [];
+    let history =
+        JSON.parse(
+            localStorage.getItem("promptHistory")
+        ) || [];
 
-  history.unshift(prompt);
+    // Remove duplicate if it already exists
+    history = history.filter(item => item !== prompt);
 
-  history = history.slice(0,10);
+    // Add newest prompt at the top
+    history.unshift(prompt);
 
-  localStorage.setItem(
-    "promptHistory",
-    JSON.stringify(history)
-  );
+    // Keep only the latest 10 prompts
+    history = history.slice(0,10);
 
-  showPromptHistory();
+    localStorage.setItem(
+        "promptHistory",
+        JSON.stringify(history)
+    );
+
+    showPromptHistory();
 }
 
 function updateHistoryTitle(){
@@ -2493,10 +2978,25 @@ function updateHistoryTitle(){
     const history =
         JSON.parse(localStorage.getItem("promptHistory")) || [];
 
-    document.getElementById("historyTitle").innerHTML =
-        `📜 Prompt History <span style="font-size:12px;color:#5f8fd8;font-weight:600;">(${history.length}/10)</span>`;
-}
+    const collapsed =
+        document.getElementById("historyContent")
+        .classList.contains("hide");
 
+    const arrow = collapsed ? "▸" : "▾";
+
+    document.getElementById("historyTitle").innerHTML =
+`
+<span style="white-space:nowrap;">📜 Prompt History</span>
+
+<span style="font-size:28px;font-weight:bold;line-height:1;">
+${arrow}
+</span>
+
+<span style="font-size:12px;color:#5f8fd8;font-weight:600;">
+(${history.length}/10)
+</span>
+`;
+}
 function showPromptHistory(){
 
     let container =
@@ -2750,7 +3250,8 @@ if(!star) return;
 let exists=favorites.find(f=>f.name===t.dataset.name);  
 star.innerHTML = exists ? "🌟" : "⭐";  
 });  
-  
+
+updateFavoritesTitle();
 }  
   
 function removeFavorite(el){  
@@ -2791,18 +3292,6 @@ showFavorites();
 
   showRecentTools();
 }
-
-function updateRecentToolsTitle() {
-    const el = document.getElementById("recentToolsTitle");
-    if (!el) return;
-
-    const recent =
-        JSON.parse(localStorage.getItem("recentTools")) || [];
-
-    el.innerHTML =
-        `🕒 Recently Used Tools <span style="font-size:12px;color:#5f8fd8;">(${recent.length}/10)</span>`;
-}
-
 
 function showRecentTools(){
 
@@ -3084,13 +3573,15 @@ if (
 
 }
 </script>
-<script>
-window.addEventListener("load", function(){
 
-  document.body.style.visibility = "visible";
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+    document.body.style.visibility = "visible";
 
 });
 </script>
+
 <script>
 const tips = [
  "Use detailed prompts",
@@ -3606,6 +4097,12 @@ function shareApp(){
     }
 }
 
+
+  function openAILearningHub() {
+    window.location.href =
+    "https://b-ashokkumar.github.io/aitoolshub.com/learning/study.html";
+}
+
    function copyPrompt(){
 
   let text =
@@ -3730,17 +4227,55 @@ function savePrompt(){
     showToast("Prompt Saved ⭐");
 }
 
-function updateSavedPromptTitle() {
-    const el = document.getElementById("savedPromptTitle");
-    if (!el) return;
+function updateSavedPromptTitle(){
 
     const saved =
         JSON.parse(localStorage.getItem("savedPrompts")) || [];
 
-    el.innerHTML =
-        `⭐ Saved Prompts <span style="font-size:12px;color:#5f8fd8;">(${saved.length}/50)</span>`;
+    const collapsed =
+        document.getElementById("savedContent")
+        .classList.contains("hide");
+
+    const arrow = collapsed ? "▸" : "▾";
+
+    document.getElementById("savedPromptTitle").innerHTML =
+`
+<span style="white-space:nowrap;">⭐ Saved Prompts</span>
+
+<span style="font-size:28px;font-weight:bold;line-height:1;">
+${arrow}
+</span>
+
+<span style="font-size:12px;color:#5f8fd8;font-weight:600;">
+(${saved.length}/50)
+</span>
+`;
 }
 
+function updateRecentToolsTitle(){
+
+    const recent =
+        JSON.parse(localStorage.getItem("recentTools")) || [];
+
+    const collapsed =
+        document.getElementById("recentToolsContent")
+        .classList.contains("hide");
+
+    const arrow = collapsed ? "▸" : "▾";
+
+    document.getElementById("recentToolsTitle").innerHTML =
+`
+<span style="white-space:nowrap;">🕒 Recently Used Tools</span>
+
+<span style="font-size:28px;font-weight:bold;line-height:1;">
+${arrow}
+</span>
+
+<span style="font-size:12px;color:#5f8fd8;font-weight:600;">
+(${recent.length}/10)
+</span>
+`;
+}
 function showSavedPrompts(){
     
   let container =
@@ -4050,6 +4585,15 @@ const descriptions = {
 "Google Gemini":
 "Google AI assistant for search, writing, coding and research.",
 
+"Claude":
+"AI assistant developed by Anthropic for writing, coding, research, document analysis, and creative tasks.",
+
+"Microsoft Copilot":
+"AI assistant developed by Microsoft for writing, coding, research, productivity, image generation, and everyday tasks.",
+
+"Grok":
+"AI assistant developed by xAI for answering questions, writing, coding, brainstorming, research, and real-time information.",
+
 "Runway ML":
 "AI platform for video generation and editing.",
 
@@ -4171,19 +4715,394 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 </script>
+
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-    showFavorites();
-    showRecentTools();
-    showSavedPrompts();
-    showPromptHistory();
+
+function toggleHistory(){
+
+    const box = document.getElementById("historyContent");
+
+    box.classList.toggle("hide");
+
+    localStorage.setItem(
+        "historyCollapsed",
+        box.classList.contains("hide")
+    );
+
+    updateHistoryTitle();
+}
+
+function toggleSaved(){
+
+    const box = document.getElementById("savedContent");
+
+    box.classList.toggle("hide");
+
+    localStorage.setItem(
+        "savedCollapsed",
+        box.classList.contains("hide")
+    );
+
+    updateSavedPromptTitle();
+}
+
+function toggleRecentTools(){
+
+    const box =
+        document.getElementById("recentToolsContent");
+
+    box.classList.toggle("hide");
+
+    localStorage.setItem(
+        "recentCollapsed",
+        box.classList.contains("hide")
+    );
+
+    updateRecentToolsTitle();
+}
+
+function toggleFavorites(){
+
+    const box =
+        document.getElementById("favoritesContent");
+
+    box.classList.toggle("hide");
+
+    localStorage.setItem(
+        "favoritesCollapsed",
+        box.classList.contains("hide")
+    );
+
+    updateFavoritesTitle();
+}
+
+function updateFavoritesTitle(){
+
+    const favorites =
+        JSON.parse(localStorage.getItem("favorites")) || [];
+
+    const collapsed =
+        document.getElementById("favoritesContent")
+        .classList.contains("hide");
+
+    const arrow = collapsed ? "▸" : "▾";
+
+    document.getElementById("favoritesTitle").innerHTML =
+        `⭐ My Favorite Tools ${arrow}
+<span style="font-size:12px;color:#5f8fd8;font-weight:600;">
+(${favorites.length})
+</span>`;
+}
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    if(localStorage.getItem("historyCollapsed")==="true"){
+
+        document
+        .getElementById("historyContent")
+        .classList.add("hide");
+    }
+
+    if(localStorage.getItem("savedCollapsed")==="true"){
+
+        document
+        .getElementById("savedContent")
+        .classList.add("hide");
+
+    }
+
+    if(localStorage.getItem("recentCollapsed")==="true"){
+
+    document
+    .getElementById("recentToolsContent")
+    .classList.add("hide");
+}
+
+    if(localStorage.getItem("favoritesCollapsed")==="true"){
+
+    document
+    .getElementById("favoritesContent")
+    .classList.add("hide");
+}
+
+    updateHistoryTitle();
+    updateSavedPromptTitle();
+    updateRecentToolsTitle();
+    updateFavoritesTitle();
+
 });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+
+
+<div id="loader" class="loader-overlay">
+
+<div class="loader"></div>
+
+<div class="loader-text">
+AI Tools Hub
+</div>
+
+<div class="loader-sub">
+Loading...
+</div>
+
+</div>
+
+<div id="networkStatus">
+📶 Slow network • Loading may take longer
+</div>
+<div id="connectionStatus" class="connection-status">
+
+🌐 Connected
+
+</div>
+
+<div id="timeoutBox" class="timeout-box">
+
+    <div class="timeout-icon">⚠️</div>
+
+    <h3>Connection Timed Out</h3>
+
+    <p>
+        The server is taking too long to respond.
+        Please check your internet connection.
+    </p>
+
+    <button id="retryBtn">
+        🔄 Retry
+    </button>
+
+</div>
+
 <script>
-eruda.init();
+
+/* ===================================
+   REQUEST TIMEOUT
+===================================
+
+Reserved for future network requests.
+This will be connected to API/data loading
+instead of the initial page loader.
+
+=================================== */
+
+let timeoutTimer;
+
+/* ===================================
+   AUTOMATIC RETRY
+=================================== */
+
+const MAX_RETRIES = 3;
+
+let retryCount = 0;
+
+function startTimeout(){
+
+    clearTimeout(timeoutTimer);
+
+    timeoutTimer=setTimeout(()=>{
+
+        document
+        .getElementById("loader")
+        .classList.add("loader-hide");
+
+        hideSlowNetwork();
+
+        document.body.style.visibility="visible";
+        document.body.style.opacity="1";
+
+        document
+        .getElementById("timeoutBox")
+        .style.display="block";
+
+    },20000);
+
+}
+
+function stopTimeout(){
+
+    clearTimeout(timeoutTimer);
+
+    document
+    .getElementById("timeoutBox")
+    .style.display="none";
+
+}
+
+function retryRequest(task){
+
+    if(retryCount < MAX_RETRIES){
+
+        retryCount++;
+
+        console.log(
+            "Retry Attempt:",
+            retryCount
+        );
+
+        setTimeout(()=>{
+
+            task();
+
+        },retryCount*1000);
+
+    }else{
+
+        retryCount = 0;
+
+        document
+        .getElementById("timeoutBox")
+        .style.display = "block";
+
+    }
+
+}
+
+const retryBtn =
+document.getElementById("retryBtn");
+
+if(retryBtn){
+
+retryBtn.addEventListener("click",()=>{
+
+window.location.reload();
+
+});
+
+}
+
+
+/* ===================================
+   APP LOADER
+=================================== */
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    startTimeout();
+
+
+    setTimeout(()=>{
+
+        document
+        .getElementById("loader")
+        .classList.add("loader-hide");
+
+        document.body.style.visibility="visible";
+        document.body.style.opacity="1";
+
+        stopTimeout();
+
+       checkConnection();
+      
+    },500);
+
+});
+
+/* ===================================
+   SLOW INTERNET DETECTION
+=================================== */
+
+const networkBar =
+document.getElementById("networkStatus");
+
+function showSlowNetwork(){
+
+    networkBar.classList.add("show");
+
+}
+
+function hideSlowNetwork(){
+
+    networkBar.classList.remove("show");
+
+}
+
+function checkConnection(){
+
+    const connection =
+    navigator.connection ||
+    navigator.mozConnection ||
+    navigator.webkitConnection;
+
+    if(!connection) return;
+
+    const slow =
+    connection.effectiveType === "slow-2g" ||
+    connection.effectiveType === "2g";
+
+    if (slow) {
+
+    showSlowNetwork();
+
+} else {
+
+    hideSlowNetwork();
+
+}
+
+}
+
+/* TEST ONLY
+Will be replaced with
+real API requests later.
+*/
+
+checkConnection();
+
+if(navigator.connection){
+
+    navigator.connection.addEventListener(
+        "change",
+        checkConnection
+    );
+
+}
+
+/* ===================================
+   ONLINE / OFFLINE DETECTION
+=================================== */
+
+const connectionStatus =
+document.getElementById("connectionStatus");
+
+function showConnectionMessage(message,type){
+
+connectionStatus.textContent=message;
+
+connectionStatus.className=
+"connection-status show " + type;
+
+clearTimeout(connectionStatus.timer);
+
+connectionStatus.timer=setTimeout(()=>{
+
+connectionStatus.classList.remove("show");
+
+},3000);
+
+}
+
+window.addEventListener("offline",()=>{
+
+showConnectionMessage(
+"📴 No Internet Connection",
+"offline"
+);
+
+});
+
+window.addEventListener("online",()=>{
+
+showConnectionMessage(
+"🌐 Connection Restored",
+"online"
+);
+
+checkConnection();
+
+});
+
 </script>
 
-
 </body>  
-</html> 
+</html>
