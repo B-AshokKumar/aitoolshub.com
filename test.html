@@ -1677,44 +1677,66 @@ background:#dc2626;
 }
 
 /* ======================================
-   v1.18 — Prompt Action Group
+   v1.18 Prompt Action Buttons
+   Icon on top + text below
 ====================================== */
 
 .action-row{
     display:flex;
-    width:100%;
     gap:10px;
     justify-content:center;
-    align-items:center;
+    align-items:stretch;
+    width:100%;
     margin-top:12px;
+    box-sizing:border-box;
 }
 
 .action-row .prompt-btn{
     flex:1 1 0;
-    width:auto;
+    width:0;
+    min-width:0;
     max-width:none;
 
-    height:48px;
-    min-height:48px;
-    min-width:0;
+    height:68px;
+    min-height:68px;
 
-    box-sizing:border-box;
+    padding:8px 4px;
+    margin-top:0;
 
-    margin:0 !important;
-    padding:6px 4px !important;
-
-    font-size:13px !important;
-    line-height:1 !important;
-    font-weight:600;
+    border-radius:22px;
 
     display:flex;
+    flex-direction:column;
     align-items:center;
     justify-content:center;
 
-    text-align:center;
-    white-space:nowrap;
+    gap:3px;
 
-    border-radius:18px;
+    font-size:14px;
+    font-weight:600;
+    line-height:1.15;
+
+    text-align:center;
+    white-space:normal;
+
+    box-sizing:border-box;
+}
+
+  .action-icon{
+    font-size:22px;
+    line-height:1;
+    display:block;
+}
+
+@media (max-width:380px){
+    .action-icon{
+        font-size:20px;
+    }
+}
+
+/* Keep emoji/icon on top */
+.action-row .prompt-btn::first-line{
+    font-size:20px;
 }
 
 /* Smaller phones */
@@ -1725,10 +1747,10 @@ background:#dc2626;
     }
 
     .action-row .prompt-btn{
-        height:46px;
-        min-height:46px;
-        padding:5px 2px !important;
-        font-size:12px !important;
+        height:64px;
+        min-height:64px;
+        font-size:12px;
+        padding:6px 2px;
     }
 }
 
@@ -1927,20 +1949,20 @@ onclick="resetPrompt()">
 
 <div class="action-row">
 
-  <button class="prompt-btn tip-btn"
-          onclick="copyPrompt()">
-    📋 Copy Prompt
-  </button>
+    <button class="prompt-btn" onclick="copyPrompt()">
+        <span class="action-icon">📋</span>
+        <span>Copy Prompt</span>
+    </button>
 
-  <button class="prompt-btn tip-btn"
-          onclick="savePrompt()">
-    ⭐ Save Prompt
-  </button>
+    <button class="prompt-btn" onclick="savePrompt()">
+        <span class="action-icon">⭐</span>
+        <span>Save Prompt</span>
+    </button>
 
-  <button class="prompt-btn tip-btn"
-          onclick="shareApp()">
-    📢 Share App
-  </button>
+    <button class="prompt-btn" onclick="shareApp()">
+        <span class="action-icon">📣</span>
+        <span>Share App</span>
+    </button>
 
 </div>
 </div>
