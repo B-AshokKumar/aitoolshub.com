@@ -1818,11 +1818,12 @@ Dark Mode: OFF
         </p>
 
         <button
-            type="button"
-            class="dashboard-action"
-            id="dashboardTipBtn">
-            💡 Try Today's Tip
-        </button>
+    type="button"
+    class="dashboard-action"
+    id="dashboardTipBtn"
+    onclick="dashboardTryTip()">
+    💡 Try Today's Tip
+</button>
 
     </div>
 
@@ -1853,11 +1854,12 @@ Dark Mode: OFF
         </div>
 
         <button
-            type="button"
-            class="dashboard-action"
-            id="continueLearningBtn">
-            🎓 Continue Learning →
-        </button>
+    type="button"
+    class="dashboard-action"
+    id="continueLearningBtn"
+    onclick="dashboardContinueLearning()">
+    🎓 Continue Learning →
+</button>
 
     </div>
 
@@ -6003,6 +6005,125 @@ document.addEventListener(
 
     }
 );
+
+/* =========================================
+   v1.18.1 DASHBOARD BUTTON ACTIONS
+========================================= */
+
+/* 💡 TRY TODAY'S TIP */
+function dashboardTryTip(){
+
+    const tipText =
+        document.getElementById("dashboardTipText");
+
+    const promptInput =
+        document.getElementById("topic");
+
+    const promptSection =
+        document.getElementById("prompts");
+
+    if(!promptInput || !promptSection){
+
+        showToast("Generate Prompt section not found");
+        return;
+
+    }
+
+    /* Put today's dashboard tip into prompt box */
+    if(tipText){
+
+        const tip =
+            tipText.textContent.trim();
+
+        if(tip && tip !== "Loading today's AI tip..."){
+
+            promptInput.value = tip;
+
+        }
+
+    }
+
+    /* Go to Generate Prompt */
+    const headerOffset = 75;
+
+    const y =
+        promptSection.getBoundingClientRect().top +
+        window.pageYOffset -
+        headerOffset;
+
+    window.scrollTo({
+        top:y,
+        behavior:"smooth"
+    });
+
+    /* Focus input */
+    setTimeout(function(){
+
+        promptInput.focus();
+
+    },500);
+
+}
+
+
+/* 🎓 CONTINUE LEARNING */
+function dashboardContinueLearning(){
+
+    /*
+       Find the existing AI Learning Hub button.
+       This avoids depending on a particular ID.
+    */
+
+    const buttons =
+        document.querySelectorAll("button");
+
+    let learningButton = null;
+
+    buttons.forEach(function(button){
+
+        const text =
+            button.textContent.trim();
+
+        if(
+            text.includes("AI Learning Hub") ||
+            text.includes("Learning Hub")
+        ){
+
+            learningButton = button;
+
+        }
+
+    });
+
+    if(learningButton){
+
+        learningButton.click();
+        return;
+
+    }
+
+    /*
+       Fallback: look for a Learning Hub section
+    */
+
+    const learningSection =
+        document.getElementById("learningHub") ||
+        document.getElementById("aiLearningHub");
+
+    if(learningSection){
+
+        learningSection.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+
+        return;
+
+    }
+
+    showToast("AI Learning Hub is not available");
+
+}
 
 </script>
 
