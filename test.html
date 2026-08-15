@@ -5404,27 +5404,7 @@ function updateDashboardGreeting(){
 
     if(!greeting) return;
 
-    const hour = new Date().getHours();
-
-    let text = "👋 Welcome back!";
-
-    if(hour < 12){
-
-        text = "🌅 Good morning!";
-
-    }
-    else if(hour < 17){
-
-        text = "☀️ Good afternoon!";
-
-    }
-    else{
-
-        text = "🌙 Good evening!";
-
-    }
-
-    greeting.textContent = text;
+    greeting.textContent = "🙏 Welcome back!";
 
 }
 
