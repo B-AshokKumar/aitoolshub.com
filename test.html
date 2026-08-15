@@ -700,49 +700,6 @@ overflow-wrap:anywhere;
   border-radius:20px;
 }
 
-/* --------------------------------------
-   v1.18 Prompt Action Buttons
--------------------------------------- */
-
-.action-row{
-    display:flex;
-    gap:10px;
-    justify-content:center;
-    align-items:stretch;
-    margin-top:12px;
-}
-
-.action-row .prompt-btn{
-    flex:1 1 0;
-    width:0;
-    max-width:none;
-    min-height:44px;
-    height:44px;
-    margin-top:0;
-
-    padding:8px 6px;
-    font-size:14px;
-    line-height:1.15;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    white-space:normal;
-}
-
-/* Keep the buttons compact on smaller phones */
-@media (max-width:380px){
-
-    .action-row{
-        gap:7px;
-    }
-
-    .action-row .prompt-btn{
-        font-size:13px;
-        padding:7px 4px;
-    }
-}
 
 .prompt-result{
   min-height:60px;
@@ -1717,6 +1674,62 @@ background:#dc2626;
 
     opacity:1;
 
+}
+
+/* ======================================
+   v1.18 — Prompt Action Group
+====================================== */
+
+.action-row{
+    display:flex;
+    width:100%;
+    gap:10px;
+    justify-content:center;
+    align-items:center;
+    margin-top:12px;
+}
+
+.action-row .prompt-btn{
+    flex:1 1 0;
+    width:auto;
+    max-width:none;
+
+    height:48px;
+    min-height:48px;
+    min-width:0;
+
+    box-sizing:border-box;
+
+    margin:0 !important;
+    padding:6px 4px !important;
+
+    font-size:13px !important;
+    line-height:1 !important;
+    font-weight:600;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+    white-space:nowrap;
+
+    border-radius:18px;
+}
+
+/* Smaller phones */
+@media (max-width:380px){
+
+    .action-row{
+        gap:7px;
+    }
+
+    .action-row .prompt-btn{
+        height:46px;
+        min-height:46px;
+        padding:5px 2px !important;
+        font-size:12px !important;
+    }
 }
 
 </style>  
