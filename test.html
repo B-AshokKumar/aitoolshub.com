@@ -3415,19 +3415,33 @@ function deleteHistoryPrompt(index){
  /* =========================  
    PROMPT TEMPLATES
 ========================= */ 
-function setPrompt(text,type){
+function setPrompt(text, type){
 
-  // SAVE CURRENT TEMPLATE TYPE
-  currentPromptType = type;
+    // Save selected template type
+    currentPromptType = type;
 
-  document.getElementById("topic").value = text;
+    // Put template topic into input
+    document.getElementById("topic").value = text;
 
-  generatePrompt(type);
+    // Generate the prompt immediately
+    generatePrompt(type);
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+    // Go directly to the Generate Prompt section
+    const promptSection = document.getElementById("prompts");
+
+    if(promptSection){
+        const headerOffset = 75;
+
+        const y =
+            promptSection.getBoundingClientRect().top +
+            window.pageYOffset -
+            headerOffset;
+
+        window.scrollTo({
+            top: y,
+            behavior: "smooth"
+        });
+    }
 
 }
   
