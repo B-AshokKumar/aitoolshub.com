@@ -6121,113 +6121,63 @@ function updateLearningStreak(){
 }
 
 
-/* =========================================
+  /* =========================================
    💡 DASHBOARD — TRY TODAY'S TIP
 ========================================= */
 
 function dashboardTryTip(){
 
-    const tipElement =
-        document.getElementById(
-            "dashboardTipText"
+    /*
+       Open the existing Daily Tip experience.
+       Do NOT navigate to Generate Prompt.
+    */
+
+    if(typeof showDailyTip === "function"){
+
+        showDailyTip();
+
+        /*
+           GA4
+        */
+
+        trackDashboardEvent(
+            "dashboard_tip_clicked"
         );
-
-    const promptInput =
-        document.getElementById(
-            "topic"
-        );
-
-    const promptSection =
-        document.getElementById(
-            "prompts"
-        );
-
-
-    if(
-        !promptInput ||
-        !promptSection
-    ){
-
-        if(
-            typeof showToast ===
-            "function"
-        ){
-
-            showToast(
-                "Generate Prompt section not found"
-            );
-
-        }
 
         return;
 
     }
 
 
-    /* ----------------------------------
-       Get today's Dashboard tip
-    ---------------------------------- */
+    /*
+       Fallback:
+       If the existing Daily Tip function
+       is unavailable, show the Dashboard tip.
+    */
 
-    if(tipElement){
+    const tipElement =
+        document.getElementById(
+            "dashboardTipText"
+        );
+
+    if(
+        tipElement &&
+        typeof showToast === "function"
+    ){
 
         const tip =
             tipElement.textContent.trim();
 
         if(tip){
 
-            promptInput.value =
-                tip;
+            showToast(tip);
 
         }
 
     }
 
-
-    /* ----------------------------------
-       Go to Generate Prompt
-    ---------------------------------- */
-
-    const headerOffset = 75;
-
-
-    const y =
-        promptSection.getBoundingClientRect().top +
-        window.pageYOffset -
-        headerOffset;
-
-
-    window.scrollTo({
-
-        top:y,
-
-        behavior:"smooth"
-
-    });
-
-
-    /* ----------------------------------
-       Focus input
-    ---------------------------------- */
-
-    setTimeout(
-        function(){
-
-            promptInput.focus();
-
-        },
-        500
-    );
-
-
-    /* ----------------------------------
-       GA4
-    ---------------------------------- */
-
-    trackDashboardEvent(
-        "dashboard_tip_clicked"
-    );
-
 }
+
 
 
 /* =========================================
