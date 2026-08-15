@@ -124,31 +124,78 @@ margin-bottom:15px;
 }  
 
 /* ======================================
-   v1.18 Engagement Dashboard
+   📊 AI TOOLS HUB DASHBOARD
+   v1.18.2 Dashboard Container
 ====================================== */
 
 .dashboard{
     margin:20px;
+    padding:16px;
+
     display:flex;
     flex-direction:column;
     gap:16px;
+
+    background:#eef5ff;
+
+    border:2px solid #2d74d7;
+    border-radius:24px;
+
+    box-shadow:
+        0 8px 24px rgba(45,116,215,.15);
+
+    box-sizing:border-box;
 }
 
-/* v1.18 dashboard spacing refinement */
 
-#engagementDashboard {
-    margin-bottom: 0px;
+/* ======================================
+   DASHBOARD TITLE
+====================================== */
+
+.dashboard-section-title{
+    width:100%;
+
+    padding:14px 12px;
+
+    background:linear-gradient(
+        135deg,
+        #2d74d7,
+        #60a5fa
+    );
+
+    color:#fff;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    font-size:22px;
+    font-weight:700;
+
+    letter-spacing:.5px;
+
+    box-shadow:
+        0 6px 16px rgba(45,116,215,.25);
+
+    box-sizing:border-box;
 }
 
-#engagementDashboard + .section {
-    margin-top: 20px;
-}
-  
+
+/* ======================================
+   DASHBOARD CARDS
+====================================== */
+
 .dashboard-card{
     background:#fff;
+
     border-radius:18px;
+
     padding:18px;
-    box-shadow:0 4px 12px rgba(0,0,0,.08);
+
+    box-shadow:
+        0 4px 12px rgba(0,0,0,.08);
+
+    box-sizing:border-box;
 }
 
 .dashboard-card h3{
@@ -163,8 +210,18 @@ margin-bottom:15px;
     line-height:1.6;
 }
 
+
+/* ======================================
+   WELCOME CARD
+====================================== */
+
 .dashboard-welcome{
-    background:linear-gradient(135deg,#2d74d7,#60a5fa);
+    background:linear-gradient(
+        135deg,
+        #2d74d7,
+        #60a5fa
+    );
+
     color:#fff;
 }
 
@@ -178,18 +235,39 @@ margin-bottom:15px;
     margin:0;
 }
 
+
+/* ======================================
+   DASHBOARD BUTTON
+====================================== */
+
 .dashboard-action{
     display:inline-block;
+
     margin-top:12px;
+
     padding:10px 18px;
+
     border:none;
     border-radius:12px;
+
     background:#2d74d7;
     color:#fff;
+
     font-size:15px;
     font-weight:600;
+
     cursor:pointer;
     text-decoration:none;
+
+    -webkit-tap-highlight-color:transparent;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+.dashboard-action:active{
+    transform:scale(.97);
 }
 
 .dashboard-welcome .dashboard-action{
@@ -197,32 +275,53 @@ margin-bottom:15px;
     color:#2d74d7;
 }
 
+
+/* ======================================
+   LEARNING PROGRESS
+====================================== */
+
 .dashboard-progress{
     width:100%;
     height:10px;
+
     margin-top:12px;
+
     background:#e7edf7;
+
     border-radius:20px;
+
     overflow:hidden;
 }
 
 .dashboard-progress-fill{
     width:0%;
     height:100%;
+
     background:#2d74d7;
+
     border-radius:20px;
+
     transition:width .5s ease;
 }
 
 .dashboard-progress-text{
     margin-top:7px;
+
     font-size:14px;
+
     color:#666;
 }
 
+
+/* ======================================
+   LEARNING STREAK
+====================================== */
+
 .dashboard-streak{
     display:flex;
+
     align-items:center;
+
     gap:14px;
 }
 
@@ -232,9 +331,16 @@ margin-bottom:15px;
 
 .streak-number{
     font-size:24px;
+
     font-weight:700;
+
     color:#2d74d7;
 }
+
+
+/* ======================================
+   DAILY TIP
+====================================== */
 
 .dashboard-tip{
     border-left:5px solid #f59e0b;
@@ -242,83 +348,104 @@ margin-bottom:15px;
 
 .dashboard-tip-text{
     font-size:16px;
+
     font-weight:500;
+
     color:#333;
 }
 
-/* Dark mode */
+
+/* ======================================
+   DARK MODE
+====================================== */
+
+.dark .dashboard{
+
+    background:
+        linear-gradient(
+            180deg,
+            #172235 0%,
+            #151a22 100%
+        );
+
+    border-color:#2d74d7;
+
+    box-shadow:
+        0 8px 28px rgba(45,116,215,.18);
+}
+
 
 .dark .dashboard-card{
+
     background:#1f1f1f;
+
     color:#eee;
 }
+
 
 .dark .dashboard-card p,
 .dark .dashboard-progress-text{
+
     color:#ccc;
 }
 
+
 .dark .dashboard-tip-text{
+
     color:#eee;
 }
 
+
 .dark .dashboard-progress{
+
     background:#333;
 }
 
+
+.dark .dashboard-section-title{
+
+    background:
+        linear-gradient(
+            135deg,
+            #2874d7,
+            #4f9cff
+        );
+
+    color:#fff;
+}
+
+
 /* ======================================
-   v1.18.1 DASHBOARD TITLE
+   SMALL PHONES
 ====================================== */
 
-.dashboard-section-title{
-    background:linear-gradient(135deg,#2d74d7,#60a5fa);
-    color:#fff;
-
-    padding:14px 20px;
-
-    border-radius:16px;
-
-    text-align:center;
-
-    font-size:22px;
-    font-weight:700;
-
-    letter-spacing:.5px;
-
-    box-shadow:
-        0 6px 16px rgba(45,116,215,.25);
-
-    margin-bottom:2px;
-}
-
-/* Dark mode */
-.dark .dashboard-section-title{
-    background:linear-gradient(135deg,#2d74d7,#4da3ff);
-    color:#fff;
-}
-
-
-/* Dashboard buttons */
-.dashboard-action{
-    cursor:pointer;
-    -webkit-tap-highlight-color:transparent;
-}
-
-.dashboard-action:active{
-    transform:scale(.97);
-}
-
-
-/* Small phone */
 @media (max-width:380px){
 
+    .dashboard{
+
+        margin:16px;
+
+        padding:12px;
+
+        gap:14px;
+
+        border-radius:22px;
+    }
+
     .dashboard-section-title{
+
         font-size:20px;
-        padding:13px 16px;
+
+        padding:13px 12px;
+
+        border-radius:16px;
     }
 
     .dashboard-card{
+
         padding:16px;
+
+        border-radius:16px;
     }
 
 }
