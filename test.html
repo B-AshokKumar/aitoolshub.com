@@ -5447,7 +5447,7 @@ checkConnection();
 <script>
 
 /* ======================================
-   AI Tools Hub v1.18
+   AI Tools Hub v1.18.1
    Engagement Dashboard
 ====================================== */
 
@@ -5461,7 +5461,10 @@ function trackDashboardEvent(eventName){
     if(typeof gtag === "function"){
 
         gtag("event", eventName, {
-            app_section: "engagement_dashboard"
+
+            app_section:
+                "engagement_dashboard"
+
         });
 
     }
@@ -5476,37 +5479,76 @@ function trackDashboardEvent(eventName){
 function updateDashboardGreeting(){
 
     const greeting =
-        document.getElementById("dashboardGreeting");
+        document.getElementById(
+            "dashboardGreeting"
+        );
 
     if(!greeting) return;
 
-    greeting.textContent = "🙏 Welcome back!";
+    /*
+       Universal greeting.
+       We don't use morning/afternoon/evening
+       because AI Tools Hub is used worldwide.
+    */
+
+    greeting.textContent =
+        "🙏 Welcome back!";
 
 }
 
 
 /* --------------------------------------
-   v1.18 User Return & Retention
+   Local Date Key
 -------------------------------------- */
 
-function getLocalDateKey(date = new Date()) {
+function getLocalDateKey(
+    date = new Date()
+){
 
-    const year = date.getFullYear();
+    const year =
+        date.getFullYear();
 
     const month =
-        String(date.getMonth() + 1).padStart(2, "0");
+        String(
+            date.getMonth() + 1
+        ).padStart(2,"0");
 
     const day =
-        String(date.getDate()).padStart(2, "0");
+        String(
+            date.getDate()
+        ).padStart(2,"0");
 
-    return year + "-" + month + "-" + day;
+    return (
+        year +
+        "-" +
+        month +
+        "-" +
+        day
+    );
+
 }
 
 
-function getDateDifference(dateA, dateB) {
+/* --------------------------------------
+   Date Difference
+-------------------------------------- */
 
-    const a = new Date(dateA + "T00:00:00");
-    const b = new Date(dateB + "T00:00:00");
+function getDateDifference(
+    dateA,
+    dateB
+){
+
+    const a =
+        new Date(
+            dateA +
+            "T00:00:00"
+        );
+
+    const b =
+        new Date(
+            dateB +
+            "T00:00:00"
+        );
 
     return Math.round(
         (b - a) / 86400000
@@ -5515,25 +5557,29 @@ function getDateDifference(dateA, dateB) {
 }
 
 
-function updateUserReturnExperience() {
+/* --------------------------------------
+   v1.18 User Return & Retention
+-------------------------------------- */
+
+function updateUserReturnExperience(){
 
     const message =
         document.getElementById(
             "dashboardReturnMessage"
         );
 
-    if(!message) return;
-
+    /*
+       This element is optional.
+       The new Dashboard doesn't require it.
+    */
 
     const today =
         getLocalDateKey();
-
 
     const lastVisit =
         localStorage.getItem(
             "aiToolsHubLastVisit"
         );
-
 
     let visitCount =
         Number(
@@ -5543,14 +5589,18 @@ function updateUserReturnExperience() {
         );
 
 
-    /*
-       First visit
-    */
+    /* ----------------------------------
+       FIRST VISIT
+    ---------------------------------- */
 
-    if(!lastVisit) {
+    if(!lastVisit){
 
-        message.textContent =
-            "Discover, learn and improve your AI skills every day.";
+        if(message){
+
+            message.textContent =
+                "Discover, learn and improve your AI skills every day.";
+
+        }
 
         visitCount = 1;
 
@@ -5569,6 +5619,7 @@ function updateUserReturnExperience() {
         );
 
         return;
+
     }
 
 
@@ -5579,27 +5630,36 @@ function updateUserReturnExperience() {
         );
 
 
-    /*
-       Same-day return
-    */
+    /* ----------------------------------
+       SAME-DAY RETURN
+    ---------------------------------- */
 
-    if(daysAway === 0) {
+    if(daysAway === 0){
 
-        message.textContent =
-            "🙏 Welcome back! Continue exploring AI Tools Hub.";
+        if(message){
+
+            message.textContent =
+                "🙏 Welcome back! Continue exploring AI Tools Hub.";
+
+        }
 
         return;
+
     }
 
 
-    /*
-       User returned after one day
-    */
+    /* ----------------------------------
+       RETURNED NEXT DAY
+    ---------------------------------- */
 
-    if(daysAway === 1) {
+    if(daysAway === 1){
 
-        message.textContent =
-            "🔥 Welcome back! Keep your learning going today.";
+        if(message){
+
+            message.textContent =
+                "🔥 Welcome back! Keep your learning going today.";
+
+        }
 
         trackDashboardEvent(
             "return_next_day"
@@ -5608,14 +5668,21 @@ function updateUserReturnExperience() {
     }
 
 
-    /*
-       User returned after 2–6 days
-    */
+    /* ----------------------------------
+       RETURNED AFTER 2–6 DAYS
+    ---------------------------------- */
 
-    else if(daysAway >= 2 && daysAway <= 6) {
+    else if(
+        daysAway >= 2 &&
+        daysAway <= 6
+    ){
 
-        message.textContent =
-            "🙏 Welcome back! Your next AI learning step is waiting.";
+        if(message){
+
+            message.textContent =
+                "🙏 Welcome back! Your next AI learning step is waiting.";
+
+        }
 
         trackDashboardEvent(
             "return_after_break"
@@ -5624,14 +5691,18 @@ function updateUserReturnExperience() {
     }
 
 
-    /*
-       User returned after a longer break
-    */
+    /* ----------------------------------
+       RETURNED AFTER 7+ DAYS
+    ---------------------------------- */
 
-    else if(daysAway >= 7) {
+    else if(daysAway >= 7){
 
-        message.textContent =
-            "🙏 Welcome back! Let's start a fresh AI learning journey.";
+        if(message){
+
+            message.textContent =
+                "🙏 Welcome back! Let's start a fresh AI learning journey.";
+
+        }
 
         trackDashboardEvent(
             "return_after_7_days"
@@ -5640,9 +5711,9 @@ function updateUserReturnExperience() {
     }
 
 
-    /*
-       Count this as a new visit
-    */
+    /* ----------------------------------
+       COUNT NEW VISIT
+    ---------------------------------- */
 
     visitCount++;
 
@@ -5657,22 +5728,28 @@ function updateUserReturnExperience() {
     );
 
 
-    /*
-       Send useful retention data to GA4
-    */
+    /* ----------------------------------
+       GA4 RETURN EVENT
+    ---------------------------------- */
 
-    if(typeof gtag === "function") {
+    if(typeof gtag === "function"){
 
-        gtag("event", "user_return", {
+        gtag(
+            "event",
+            "user_return",
+            {
 
-            days_since_last_visit: daysAway,
+                days_since_last_visit:
+                    daysAway,
 
-            visit_count: visitCount,
+                visit_count:
+                    visitCount,
 
-            app_section:
-                "engagement_dashboard"
+                app_section:
+                    "engagement_dashboard"
 
-        });
+            }
+        );
 
     }
 
@@ -5680,15 +5757,20 @@ function updateUserReturnExperience() {
 
 
 /* --------------------------------------
-   v1.18 Return + Streak Message
+   Return + Streak Message
 -------------------------------------- */
 
-function updateReturnStreakMessage() {
+function updateReturnStreakMessage(){
 
     const message =
         document.getElementById(
             "dashboardReturnMessage"
         );
+
+    /*
+       Optional element.
+       Do nothing if it doesn't exist.
+    */
 
     if(!message) return;
 
@@ -5711,11 +5793,11 @@ function updateReturnStreakMessage() {
         new Date().toDateString();
 
 
-    /*
-       User already learned today
-    */
+    /* Learned today */
 
-    if(lastActivity === today) {
+    if(
+        lastActivity === today
+    ){
 
         message.textContent =
             "🔥 Great work! You've completed today's learning. Keep it going tomorrow.";
@@ -5725,11 +5807,12 @@ function updateReturnStreakMessage() {
     }
 
 
-    /*
-       Existing active streak
-    */
+    /* Existing streak */
 
-    if(streak > 0 && lastActivity) {
+    if(
+        streak > 0 &&
+        lastActivity
+    ){
 
         message.textContent =
             "🔥 Your " +
@@ -5741,12 +5824,11 @@ function updateReturnStreakMessage() {
     }
 
 
-    /*
-       No active streak yet
-    */
+    /* No active streak */
 
     message.textContent =
         "🙏 Your next AI learning step is waiting. Start today!";
+
 }
 
 
@@ -5756,20 +5838,26 @@ function updateReturnStreakMessage() {
 
 function updateLearningDashboard(){
 
+    /*
+       These IDs match the new
+       v1.18.1 Dashboard HTML.
+    */
+
     const progressBar =
         document.getElementById(
-            "learningDashboardProgress"
+            "learningProgressFill"
         );
 
     const progressText =
         document.getElementById(
-            "learningDashboardPercent"
+            "learningProgressPercent"
         );
 
     const learningText =
         document.getElementById(
-            "learningDashboardText"
+            "learningProgressText"
         );
+
 
     if(
         !progressBar ||
@@ -5783,7 +5871,7 @@ function updateLearningDashboard(){
 
 
     /*
-       AI Learning Hub currently contains
+       AI Learning Hub contains
        20 lessons.
     */
 
@@ -5791,7 +5879,12 @@ function updateLearningDashboard(){
 
     let completed = 0;
 
-    for(let i = 1; i <= totalLessons; i++){
+
+    for(
+        let i = 1;
+        i <= totalLessons;
+        i++
+    ){
 
         if(
             localStorage.getItem(
@@ -5808,17 +5901,27 @@ function updateLearningDashboard(){
 
     const percent =
         Math.round(
-            (completed / totalLessons) * 100
+            (
+                completed /
+                totalLessons
+            ) * 100
         );
 
+
+    /* Progress bar */
 
     progressBar.style.width =
         percent + "%";
 
 
-    progressText.textContent =
-        percent + "% completed";
+    /* Percentage */
 
+    progressText.textContent =
+        percent +
+        "% completed";
+
+
+    /* Description */
 
     if(completed === 0){
 
@@ -5826,7 +5929,10 @@ function updateLearningDashboard(){
             "Start your AI Learning journey.";
 
     }
-    else if(completed < totalLessons){
+
+    else if(
+        completed < totalLessons
+    ){
 
         learningText.textContent =
             "You've completed " +
@@ -5836,6 +5942,7 @@ function updateLearningDashboard(){
             " lessons. Keep going!";
 
     }
+
     else{
 
         learningText.textContent =
@@ -5852,58 +5959,100 @@ function updateLearningDashboard(){
 
 function updateDashboardDailyTip(){
 
+    /*
+       This matches the new Dashboard.
+    */
+
     const tipElement =
         document.getElementById(
-            "dashboardDailyTip"
+            "dashboardTipText"
         );
 
     if(!tipElement) return;
 
 
-    let today =
+    const today =
         new Date().toDateString();
 
 
     let savedDate =
-        localStorage.getItem("tipDate");
+        localStorage.getItem(
+            "tipDate"
+        );
 
 
     let savedTip =
-        localStorage.getItem("tipText");
+        localStorage.getItem(
+            "tipText"
+        );
 
 
     /*
-       Use the existing Daily Tip system.
+       Use today's existing saved tip.
     */
 
     if(
-        savedDate !== today ||
-        !savedTip
+        savedDate === today &&
+        savedTip
     ){
-
-        /*
-           Let the existing system
-           generate today's tip.
-        */
-
-        if(typeof showDailyTip === "function"){
-
-            showDailyTip();
-
-        }
-
-        savedTip =
-            localStorage.getItem("tipText");
-
-    }
-
-
-    if(savedTip){
 
         tipElement.textContent =
             savedTip;
 
+        return;
+
     }
+
+
+    /*
+       Don't automatically call showDailyTip()
+       here because that may open the
+       separate Daily Tip popup.
+
+       Instead create a Dashboard tip.
+    */
+
+    const dashboardTips = [
+
+        "Ask AI: What am I missing?",
+
+        "Ask AI to identify possible risks before making a decision.",
+
+        "Use AI to explain difficult topics in simple language.",
+
+        "Ask AI for multiple solutions instead of only one answer.",
+
+        "Use AI as a learning partner, not just an answer machine.",
+
+        "Ask AI to challenge your assumptions.",
+
+        "Before accepting an AI answer, ask: What could be wrong?"
+
+    ];
+
+
+    const randomTip =
+        dashboardTips[
+            Math.floor(
+                Math.random() *
+                dashboardTips.length
+            )
+        ];
+
+
+    localStorage.setItem(
+        "tipDate",
+        today
+    );
+
+    localStorage.setItem(
+        "tipText",
+        randomTip
+    );
+
+
+    tipElement.textContent =
+        randomTip;
 
 }
 
@@ -5914,16 +6063,16 @@ function updateDashboardDailyTip(){
 
 function updateLearningStreak(){
 
+    /*
+       This matches the new Dashboard.
+    */
+
     const streakElement =
         document.getElementById(
-            "streakNumber"
+            "dashboardStreak"
         );
 
     if(!streakElement) return;
-
-
-    const today =
-        new Date().toDateString();
 
 
     const lastActivity =
@@ -5941,7 +6090,7 @@ function updateLearningStreak(){
 
 
     /*
-       First activity
+       No learning activity yet.
     */
 
     if(!lastActivity){
@@ -5952,178 +6101,323 @@ function updateLearningStreak(){
 
 
     /*
-       Already counted today
-    */
+       IMPORTANT:
+       Opening the Dashboard does NOT
+       increase the streak.
 
-    if(lastActivity === today){
-
-        streakElement.textContent =
-            streak + " day" +
-            (streak === 1 ? "" : "s");
-
-        return;
-
-    }
-
-
-    /*
-       Don't increase the streak simply
-       because the dashboard opened.
-
-       The streak will be increased by
-       meaningful learning activity later.
+       A meaningful learning action must
+       update learningStreak separately.
     */
 
     streakElement.textContent =
-        streak + " day" +
-        (streak === 1 ? "" : "s");
+        streak +
+        " day" +
+        (
+            streak === 1
+                ? ""
+                : "s"
+        );
 
 }
 
 
-/* --------------------------------------
-   Dashboard Initialisation
--------------------------------------- */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function(){
-
-        updateDashboardGreeting();
-
-        updateUserReturnExperience();
-
-        updateLearningDashboard();
-
-        updateDashboardDailyTip();
-
-        updateLearningStreak();
-
-        updateReturnStreakMessage();
-
-        trackDashboardEvent("home_view");
-
-    }
-);
-
 /* =========================================
-   v1.18.1 DASHBOARD BUTTON ACTIONS
+   💡 DASHBOARD — TRY TODAY'S TIP
 ========================================= */
 
-/* 💡 TRY TODAY'S TIP */
 function dashboardTryTip(){
 
-    const tipText =
-        document.getElementById("dashboardTipText");
+    const tipElement =
+        document.getElementById(
+            "dashboardTipText"
+        );
 
     const promptInput =
-        document.getElementById("topic");
+        document.getElementById(
+            "topic"
+        );
 
     const promptSection =
-        document.getElementById("prompts");
+        document.getElementById(
+            "prompts"
+        );
 
-    if(!promptInput || !promptSection){
 
-        showToast("Generate Prompt section not found");
+    if(
+        !promptInput ||
+        !promptSection
+    ){
+
+        if(
+            typeof showToast ===
+            "function"
+        ){
+
+            showToast(
+                "Generate Prompt section not found"
+            );
+
+        }
+
         return;
 
     }
 
-    /* Put today's dashboard tip into prompt box */
-    if(tipText){
+
+    /* ----------------------------------
+       Get today's Dashboard tip
+    ---------------------------------- */
+
+    if(tipElement){
 
         const tip =
-            tipText.textContent.trim();
+            tipElement.textContent.trim();
 
-        if(tip && tip !== "Loading today's AI tip..."){
+        if(tip){
 
-            promptInput.value = tip;
+            promptInput.value =
+                tip;
 
         }
 
     }
 
-    /* Go to Generate Prompt */
+
+    /* ----------------------------------
+       Go to Generate Prompt
+    ---------------------------------- */
+
     const headerOffset = 75;
+
 
     const y =
         promptSection.getBoundingClientRect().top +
         window.pageYOffset -
         headerOffset;
 
+
     window.scrollTo({
+
         top:y,
+
         behavior:"smooth"
+
     });
 
-    /* Focus input */
-    setTimeout(function(){
 
-        promptInput.focus();
+    /* ----------------------------------
+       Focus input
+    ---------------------------------- */
 
-    },500);
+    setTimeout(
+        function(){
+
+            promptInput.focus();
+
+        },
+        500
+    );
+
+
+    /* ----------------------------------
+       GA4
+    ---------------------------------- */
+
+    trackDashboardEvent(
+        "dashboard_tip_clicked"
+    );
 
 }
 
 
-/* 🎓 CONTINUE LEARNING */
+/* =========================================
+   🎓 DASHBOARD — CONTINUE LEARNING
+========================================= */
+
 function dashboardContinueLearning(){
 
     /*
-       Find the existing AI Learning Hub button.
-       This avoids depending on a particular ID.
-    */
-
-    const buttons =
-        document.querySelectorAll("button");
-
-    let learningButton = null;
-
-    buttons.forEach(function(button){
-
-        const text =
-            button.textContent.trim();
-
-        if(
-            text.includes("AI Learning Hub") ||
-            text.includes("Learning Hub")
-        ){
-
-            learningButton = button;
-
-        }
-
-    });
-
-    if(learningButton){
-
-        learningButton.click();
-        return;
-
-    }
-
-    /*
-       Fallback: look for a Learning Hub section
+       First try known Learning Hub
+       section IDs.
     */
 
     const learningSection =
-        document.getElementById("learningHub") ||
-        document.getElementById("aiLearningHub");
+        document.getElementById(
+            "learningHub"
+        ) ||
+        document.getElementById(
+            "aiLearningHub"
+        );
+
 
     if(learningSection){
 
         learningSection.scrollIntoView({
+
             behavior:"smooth",
+
             block:"start"
+
         });
+
+
+        trackDashboardEvent(
+            "continue_learning_clicked"
+        );
 
         return;
 
     }
 
-    showToast("AI Learning Hub is not available");
+
+    /*
+       Look for an existing
+       AI Learning Hub button or link.
+    */
+
+    const learningElements =
+        document.querySelectorAll(
+            "button, a"
+        );
+
+
+    for(
+        const element
+        of learningElements
+    ){
+
+        const text =
+            element.textContent
+                .trim()
+                .toLowerCase();
+
+
+        if(
+            text.includes(
+                "ai learning hub"
+            ) ||
+            text.includes(
+                "learning hub"
+            )
+        ){
+
+            /*
+               Don't accidentally select
+               the Dashboard button itself.
+            */
+
+            if(
+                element.id ===
+                "continueLearningBtn"
+            ){
+
+                continue;
+
+            }
+
+
+            element.scrollIntoView({
+
+                behavior:"smooth",
+
+                block:"center"
+
+            });
+
+
+            setTimeout(
+                function(){
+
+                    if(
+                        typeof element.click ===
+                        "function"
+                    ){
+
+                        element.click();
+
+                    }
+
+                },
+                300
+            );
+
+
+            trackDashboardEvent(
+                "continue_learning_clicked"
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    /*
+       Nothing found.
+    */
+
+    if(
+        typeof showToast ===
+        "function"
+    ){
+
+        showToast(
+            "AI Learning Hub is not available"
+        );
+
+    }
 
 }
+
+
+/* =========================================
+   📊 DASHBOARD INITIALISATION
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        /* Universal welcome */
+
+        updateDashboardGreeting();
+
+
+        /* Return experience */
+
+        updateUserReturnExperience();
+
+
+        /* Learning progress */
+
+        updateLearningDashboard();
+
+
+        /* Dashboard tip */
+
+        updateDashboardDailyTip();
+
+
+        /* Learning streak */
+
+        updateLearningStreak();
+
+
+        /* Return/streak message */
+
+        updateReturnStreakMessage();
+
+
+        /* GA4 */
+
+        trackDashboardEvent(
+            "home_view"
+        );
+
+    }
+);
+
 
 </script>
 
