@@ -1773,15 +1773,15 @@ Dark Mode: OFF
 
     <div class="dashboard-card dashboard-welcome">
 
-        <h2 id="dashboardGreeting">
-            👋 Welcome back!
-        </h2>
+    <h2 id="dashboardGreeting">
+        🙏 Welcome to AI Tools Hub!
+    </h2>
 
-        <p>
-            Discover, learn and improve your AI skills every day.
-        </p>
+    <p id="dashboardReturnMessage">
+        Discover, learn and improve your AI skills every day.
+    </p>
 
-    </div>
+</div>
 
 
     <!-- Daily Tip -->
@@ -5458,6 +5458,271 @@ function updateDashboardGreeting(){
 
 
 /* --------------------------------------
+   v1.18 User Return & Retention
+-------------------------------------- */
+
+function getLocalDateKey(date = new Date()) {
+
+    const year = date.getFullYear();
+
+    const month =
+        String(date.getMonth() + 1).padStart(2, "0");
+
+    const day =
+        String(date.getDate()).padStart(2, "0");
+
+    return year + "-" + month + "-" + day;
+}
+
+
+function getDateDifference(dateA, dateB) {
+
+    const a = new Date(dateA + "T00:00:00");
+    const b = new Date(dateB + "T00:00:00");
+
+    return Math.round(
+        (b - a) / 86400000
+    );
+
+}
+
+
+function updateUserReturnExperience() {
+
+    const message =
+        document.getElementById(
+            "dashboardReturnMessage"
+        );
+
+    if(!message) return;
+
+
+    const today =
+        getLocalDateKey();
+
+
+    const lastVisit =
+        localStorage.getItem(
+            "aiToolsHubLastVisit"
+        );
+
+
+    let visitCount =
+        Number(
+            localStorage.getItem(
+                "aiToolsHubVisitCount"
+            ) || 0
+        );
+
+
+    /*
+       First visit
+    */
+
+    if(!lastVisit) {
+
+        message.textContent =
+            "Discover, learn and improve your AI skills every day.";
+
+        visitCount = 1;
+
+        localStorage.setItem(
+            "aiToolsHubVisitCount",
+            String(visitCount)
+        );
+
+        localStorage.setItem(
+            "aiToolsHubLastVisit",
+            today
+        );
+
+        trackDashboardEvent(
+            "first_home_visit"
+        );
+
+        return;
+    }
+
+
+    const daysAway =
+        getDateDifference(
+            lastVisit,
+            today
+        );
+
+
+    /*
+       Same-day return
+    */
+
+    if(daysAway === 0) {
+
+        message.textContent =
+            "🙏 Welcome back! Continue exploring AI Tools Hub.";
+
+        return;
+    }
+
+
+    /*
+       User returned after one day
+    */
+
+    if(daysAway === 1) {
+
+        message.textContent =
+            "🔥 Welcome back! Keep your learning going today.";
+
+        trackDashboardEvent(
+            "return_next_day"
+        );
+
+    }
+
+
+    /*
+       User returned after 2–6 days
+    */
+
+    else if(daysAway >= 2 && daysAway <= 6) {
+
+        message.textContent =
+            "🙏 Welcome back! Your next AI learning step is waiting.";
+
+        trackDashboardEvent(
+            "return_after_break"
+        );
+
+    }
+
+
+    /*
+       User returned after a longer break
+    */
+
+    else if(daysAway >= 7) {
+
+        message.textContent =
+            "🙏 Welcome back! Let's start a fresh AI learning journey.";
+
+        trackDashboardEvent(
+            "return_after_7_days"
+        );
+
+    }
+
+
+    /*
+       Count this as a new visit
+    */
+
+    visitCount++;
+
+    localStorage.setItem(
+        "aiToolsHubVisitCount",
+        String(visitCount)
+    );
+
+    localStorage.setItem(
+        "aiToolsHubLastVisit",
+        today
+    );
+
+
+    /*
+       Send useful retention data to GA4
+    */
+
+    if(typeof gtag === "function") {
+
+        gtag("event", "user_return", {
+
+            days_since_last_visit: daysAway,
+
+            visit_count: visitCount,
+
+            app_section:
+                "engagement_dashboard"
+
+        });
+
+    }
+
+}
+
+
+/* --------------------------------------
+   v1.18 Return + Streak Message
+-------------------------------------- */
+
+function updateReturnStreakMessage() {
+
+    const message =
+        document.getElementById(
+            "dashboardReturnMessage"
+        );
+
+    if(!message) return;
+
+
+    const streak =
+        Number(
+            localStorage.getItem(
+                "learningStreak"
+            ) || 0
+        );
+
+
+    const lastActivity =
+        localStorage.getItem(
+            "learningLastActivity"
+        );
+
+
+    const today =
+        new Date().toDateString();
+
+
+    /*
+       User already learned today
+    */
+
+    if(lastActivity === today) {
+
+        message.textContent =
+            "🔥 Great work! You've completed today's learning. Keep it going tomorrow.";
+
+        return;
+
+    }
+
+
+    /*
+       Existing active streak
+    */
+
+    if(streak > 0 && lastActivity) {
+
+        message.textContent =
+            "🔥 Your " +
+            streak +
+            "-day learning streak is waiting. Continue today!";
+
+        return;
+
+    }
+
+
+    /*
+       No active streak yet
+    */
+
+    message.textContent =
+        "🙏 Your next AI learning step is waiting. Start today!";
+}
+
+
+/* --------------------------------------
    Learning Progress
 -------------------------------------- */
 
@@ -5698,11 +5963,15 @@ document.addEventListener(
 
         updateDashboardGreeting();
 
+        updateUserReturnExperience();
+
         updateLearningDashboard();
 
         updateDashboardDailyTip();
 
         updateLearningStreak();
+
+        updateReturnStreakMessage();
 
         trackDashboardEvent("home_view");
 
