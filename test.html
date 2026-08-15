@@ -266,6 +266,64 @@ margin-bottom:15px;
     background:#333;
 }
 
+/* ======================================
+   v1.18.1 DASHBOARD TITLE
+====================================== */
+
+.dashboard-section-title{
+    background:linear-gradient(135deg,#2d74d7,#60a5fa);
+    color:#fff;
+
+    padding:14px 20px;
+
+    border-radius:16px;
+
+    text-align:center;
+
+    font-size:22px;
+    font-weight:700;
+
+    letter-spacing:.5px;
+
+    box-shadow:
+        0 6px 16px rgba(45,116,215,.25);
+
+    margin-bottom:2px;
+}
+
+/* Dark mode */
+.dark .dashboard-section-title{
+    background:linear-gradient(135deg,#2d74d7,#4da3ff);
+    color:#fff;
+}
+
+
+/* Dashboard buttons */
+.dashboard-action{
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+}
+
+.dashboard-action:active{
+    transform:scale(.97);
+}
+
+
+/* Small phone */
+@media (max-width:380px){
+
+    .dashboard-section-title{
+        font-size:20px;
+        padding:13px 16px;
+    }
+
+    .dashboard-card{
+        padding:16px;
+    }
+
+}
+
+
 /* TOOL BUTTON */  
   
 .tool{  
@@ -1720,89 +1778,91 @@ Dark Mode: OFF
 <!-- ======================================
      v1.18 ENGAGEMENT DASHBOARD
 ====================================== -->
+<!-- =========================================
+     📊 AI TOOLS HUB DASHBOARD
+     v1.18.1 Dashboard Block
+========================================= -->
 
-<div class="dashboard" id="engagementDashboard">
+<section id="engagementDashboard" class="dashboard">
 
-    <!-- Welcome -->
+    <!-- DASHBOARD TITLE -->
+    <div class="dashboard-section-title">
+        📊 DASHBOARD
+    </div>
 
+
+    <!-- WELCOME BACK -->
     <div class="dashboard-card dashboard-welcome">
 
-    <h2 id="dashboardGreeting">
-        🙏 Welcome to AI Tools Hub!
-    </h2>
+        <h2>
+            🙏 Welcome back!
+        </h2>
 
-    <p id="dashboardReturnMessage">
-        Discover, learn and improve your AI skills every day.
-    </p>
+        <p>
+            Your next AI learning step is waiting.
+            Start today!
+        </p>
 
-</div>
+    </div>
 
 
-    <!-- Daily Tip -->
-
+    <!-- AI TIP OF THE DAY -->
     <div class="dashboard-card dashboard-tip">
 
         <h3>
             💡 AI Tip of the Day
         </h3>
 
-        <p
-            id="dashboardDailyTip"
-            class="dashboard-tip-text">
-            Loading today's AI tip...
+        <p id="dashboardTipText" class="dashboard-tip-text">
+            Create innovation challenge ideas
         </p>
 
         <button
+            type="button"
             class="dashboard-action"
-            onclick="showDailyTip(); trackDashboardEvent('daily_tip_use');">
-
+            id="dashboardTipBtn">
             💡 Try Today's Tip
-
         </button>
 
     </div>
 
 
-    <!-- Continue Learning -->
-
+    <!-- CONTINUE LEARNING -->
     <div class="dashboard-card">
 
         <h3>
             🎓 Continue Learning
         </h3>
 
-        <p id="learningDashboardText">
-            Start your AI Learning journey.
+        <p id="learningProgressText">
+            You've completed 1 of 20 lessons. Keep going!
         </p>
 
         <div class="dashboard-progress">
-
             <div
-                id="learningDashboardProgress"
-                class="dashboard-progress-fill">
+                class="dashboard-progress-fill"
+                id="learningProgressFill"
+                style="width:5%;">
             </div>
-
         </div>
 
         <div
-            id="learningDashboardPercent"
-            class="dashboard-progress-text">
-            0% completed
+            class="dashboard-progress-text"
+            id="learningProgressPercent">
+            5% completed
         </div>
 
         <button
+            type="button"
             class="dashboard-action"
-            onclick="openAILearningHub(); trackDashboardEvent('learning_continue');">
-
+            id="continueLearningBtn">
             🎓 Continue Learning →
-
         </button>
 
     </div>
 
 
-    <!-- Streak -->
-
+    <!-- AI LEARNING STREAK -->
     <div class="dashboard-card">
 
         <h3>
@@ -1816,24 +1876,22 @@ Dark Mode: OFF
             </div>
 
             <div>
-
                 <div
-                    id="streakNumber"
-                    class="streak-number">
+                    class="streak-number"
+                    id="dashboardStreak">
                     0 days
                 </div>
 
-                <div>
+                <p>
                     Keep learning every day!
-                </div>
-
+                </p>
             </div>
 
         </div>
 
     </div>
 
-</div>
+</section>
 
 <!-- END v1.18 DASHBOARD -->
 
