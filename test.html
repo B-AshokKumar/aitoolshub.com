@@ -122,7 +122,140 @@ box-shadow:0 4px 12px rgba(0,0,0,0.08);
 color:#2d74d7;  
 margin-bottom:15px;  
 }  
-  
+
+/* ======================================
+   v1.18 Engagement Dashboard
+====================================== */
+
+.dashboard{
+    margin:20px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+
+.dashboard-card{
+    background:#fff;
+    border-radius:18px;
+    padding:18px;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.dashboard-card h3{
+    margin:0 0 8px;
+    color:#2d74d7;
+    font-size:19px;
+}
+
+.dashboard-card p{
+    margin:6px 0;
+    color:#555;
+    line-height:1.6;
+}
+
+.dashboard-welcome{
+    background:linear-gradient(135deg,#2d74d7,#60a5fa);
+    color:#fff;
+}
+
+.dashboard-welcome h2{
+    margin:0 0 6px;
+    font-size:23px;
+}
+
+.dashboard-welcome p{
+    color:#fff;
+    margin:0;
+}
+
+.dashboard-action{
+    display:inline-block;
+    margin-top:12px;
+    padding:10px 18px;
+    border:none;
+    border-radius:12px;
+    background:#2d74d7;
+    color:#fff;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    text-decoration:none;
+}
+
+.dashboard-welcome .dashboard-action{
+    background:#fff;
+    color:#2d74d7;
+}
+
+.dashboard-progress{
+    width:100%;
+    height:10px;
+    margin-top:12px;
+    background:#e7edf7;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.dashboard-progress-fill{
+    width:0%;
+    height:100%;
+    background:#2d74d7;
+    border-radius:20px;
+    transition:width .5s ease;
+}
+
+.dashboard-progress-text{
+    margin-top:7px;
+    font-size:14px;
+    color:#666;
+}
+
+.dashboard-streak{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.streak-icon{
+    font-size:42px;
+}
+
+.streak-number{
+    font-size:24px;
+    font-weight:700;
+    color:#2d74d7;
+}
+
+.dashboard-tip{
+    border-left:5px solid #f59e0b;
+}
+
+.dashboard-tip-text{
+    font-size:16px;
+    font-weight:500;
+    color:#333;
+}
+
+/* Dark mode */
+
+.dark .dashboard-card{
+    background:#1f1f1f;
+    color:#eee;
+}
+
+.dark .dashboard-card p,
+.dark .dashboard-progress-text{
+    color:#ccc;
+}
+
+.dark .dashboard-tip-text{
+    color:#eee;
+}
+
+.dark .dashboard-progress{
+    background:#333;
+}
+
 /* TOOL BUTTON */  
   
 .tool{  
@@ -1559,10 +1692,131 @@ Dark Mode: OFF
 </div>  
 
   
-<!-- HOME -->  
+<!-- HOME -->
 
 <div id="home" style="height:1px;"></div>
-  
+
+<!-- ======================================
+     v1.18 ENGAGEMENT DASHBOARD
+====================================== -->
+
+<div class="dashboard" id="engagementDashboard">
+
+    <!-- Welcome -->
+
+    <div class="dashboard-card dashboard-welcome">
+
+        <h2 id="dashboardGreeting">
+            👋 Welcome back!
+        </h2>
+
+        <p>
+            Discover, learn and improve your AI skills every day.
+        </p>
+
+    </div>
+
+
+    <!-- Daily Tip -->
+
+    <div class="dashboard-card dashboard-tip">
+
+        <h3>
+            💡 AI Tip of the Day
+        </h3>
+
+        <p
+            id="dashboardDailyTip"
+            class="dashboard-tip-text">
+            Loading today's AI tip...
+        </p>
+
+        <button
+            class="dashboard-action"
+            onclick="showDailyTip(); trackDashboardEvent('daily_tip_use');">
+
+            💡 Try Today's Tip
+
+        </button>
+
+    </div>
+
+
+    <!-- Continue Learning -->
+
+    <div class="dashboard-card">
+
+        <h3>
+            🎓 Continue Learning
+        </h3>
+
+        <p id="learningDashboardText">
+            Start your AI Learning journey.
+        </p>
+
+        <div class="dashboard-progress">
+
+            <div
+                id="learningDashboardProgress"
+                class="dashboard-progress-fill">
+            </div>
+
+        </div>
+
+        <div
+            id="learningDashboardPercent"
+            class="dashboard-progress-text">
+            0% completed
+        </div>
+
+        <button
+            class="dashboard-action"
+            onclick="openAILearningHub(); trackDashboardEvent('learning_continue');">
+
+            🎓 Continue Learning →
+
+        </button>
+
+    </div>
+
+
+    <!-- Streak -->
+
+    <div class="dashboard-card">
+
+        <h3>
+            🔥 Your AI Learning Streak
+        </h3>
+
+        <div class="dashboard-streak">
+
+            <div class="streak-icon">
+                🔥
+            </div>
+
+            <div>
+
+                <div
+                    id="streakNumber"
+                    class="streak-number">
+                    0 days
+                </div>
+
+                <div>
+                    Keep learning every day!
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- END v1.18 DASHBOARD -->
+
+
 <div class="section prompt-section" id="prompts">
 
   <h2 class="welcome-title">Welcome to<br> AI Tools Hub</h2>
@@ -5101,6 +5355,321 @@ showConnectionMessage(
 checkConnection();
 
 });
+
+</script>
+
+<script>
+
+/* ======================================
+   AI Tools Hub v1.18
+   Engagement Dashboard
+====================================== */
+
+
+/* --------------------------------------
+   GA4 Dashboard Event Helper
+-------------------------------------- */
+
+function trackDashboardEvent(eventName){
+
+    if(typeof gtag === "function"){
+
+        gtag("event", eventName, {
+            app_section: "engagement_dashboard"
+        });
+
+    }
+
+}
+
+
+/* --------------------------------------
+   Greeting
+-------------------------------------- */
+
+function updateDashboardGreeting(){
+
+    const greeting =
+        document.getElementById("dashboardGreeting");
+
+    if(!greeting) return;
+
+    const hour = new Date().getHours();
+
+    let text = "👋 Welcome back!";
+
+    if(hour < 12){
+
+        text = "🌅 Good morning!";
+
+    }
+    else if(hour < 17){
+
+        text = "☀️ Good afternoon!";
+
+    }
+    else{
+
+        text = "🌙 Good evening!";
+
+    }
+
+    greeting.textContent = text;
+
+}
+
+
+/* --------------------------------------
+   Learning Progress
+-------------------------------------- */
+
+function updateLearningDashboard(){
+
+    const progressBar =
+        document.getElementById(
+            "learningDashboardProgress"
+        );
+
+    const progressText =
+        document.getElementById(
+            "learningDashboardPercent"
+        );
+
+    const learningText =
+        document.getElementById(
+            "learningDashboardText"
+        );
+
+    if(
+        !progressBar ||
+        !progressText ||
+        !learningText
+    ){
+
+        return;
+
+    }
+
+
+    /*
+       AI Learning Hub currently contains
+       20 lessons.
+    */
+
+    const totalLessons = 20;
+
+    let completed = 0;
+
+    for(let i = 1; i <= totalLessons; i++){
+
+        if(
+            localStorage.getItem(
+                "quiz_passed_" + i
+            )
+        ){
+
+            completed++;
+
+        }
+
+    }
+
+
+    const percent =
+        Math.round(
+            (completed / totalLessons) * 100
+        );
+
+
+    progressBar.style.width =
+        percent + "%";
+
+
+    progressText.textContent =
+        percent + "% completed";
+
+
+    if(completed === 0){
+
+        learningText.textContent =
+            "Start your AI Learning journey.";
+
+    }
+    else if(completed < totalLessons){
+
+        learningText.textContent =
+            "You've completed " +
+            completed +
+            " of " +
+            totalLessons +
+            " lessons. Keep going!";
+
+    }
+    else{
+
+        learningText.textContent =
+            "🎉 You completed all 20 lessons!";
+
+    }
+
+}
+
+
+/* --------------------------------------
+   Daily Tip
+-------------------------------------- */
+
+function updateDashboardDailyTip(){
+
+    const tipElement =
+        document.getElementById(
+            "dashboardDailyTip"
+        );
+
+    if(!tipElement) return;
+
+
+    let today =
+        new Date().toDateString();
+
+
+    let savedDate =
+        localStorage.getItem("tipDate");
+
+
+    let savedTip =
+        localStorage.getItem("tipText");
+
+
+    /*
+       Use the existing Daily Tip system.
+    */
+
+    if(
+        savedDate !== today ||
+        !savedTip
+    ){
+
+        /*
+           Let the existing system
+           generate today's tip.
+        */
+
+        if(typeof showDailyTip === "function"){
+
+            showDailyTip();
+
+        }
+
+        savedTip =
+            localStorage.getItem("tipText");
+
+    }
+
+
+    if(savedTip){
+
+        tipElement.textContent =
+            savedTip;
+
+    }
+
+}
+
+
+/* --------------------------------------
+   Learning Streak
+-------------------------------------- */
+
+function updateLearningStreak(){
+
+    const streakElement =
+        document.getElementById(
+            "streakNumber"
+        );
+
+    if(!streakElement) return;
+
+
+    const today =
+        new Date().toDateString();
+
+
+    const lastActivity =
+        localStorage.getItem(
+            "learningLastActivity"
+        );
+
+
+    let streak =
+        Number(
+            localStorage.getItem(
+                "learningStreak"
+            ) || 0
+        );
+
+
+    /*
+       First activity
+    */
+
+    if(!lastActivity){
+
+        streak = 0;
+
+    }
+
+
+    /*
+       Already counted today
+    */
+
+    if(lastActivity === today){
+
+        streakElement.textContent =
+            streak + " day" +
+            (streak === 1 ? "" : "s");
+
+        return;
+
+    }
+
+
+    /*
+       Don't increase the streak simply
+       because the dashboard opened.
+
+       The streak will be increased by
+       meaningful learning activity later.
+    */
+
+    streakElement.textContent =
+        streak + " day" +
+        (streak === 1 ? "" : "s");
+
+}
+
+
+/* --------------------------------------
+   Dashboard Initialisation
+-------------------------------------- */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        updateDashboardGreeting();
+
+        updateLearningDashboard();
+
+        updateDashboardDailyTip();
+
+        updateLearningStreak();
+
+        trackDashboardEvent("home_view");
+
+    }
+);
 
 </script>
 
