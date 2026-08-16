@@ -892,15 +892,15 @@ color:#666;
 /* dark mode */  
  
  .badge{
-  font-size:11px;
-  padding:4px 8px;
+  font-size:12px;
+  padding:4px 10px;
   border-radius:20px;
-  margin-left:10px;
+  margin-left:8px;
   margin-right:6px;
   font-weight:600;
   white-space:nowrap;
   flex-shrink:0;
-} 
+}
 /* FREE */  
 .free{  
 background:#e8f5ff;  
@@ -1661,234 +1661,16 @@ background:#dc2626;
 }
 
 
-  /* =========================================
-   🌙 AI TOOLS HUB — GLOBAL DARK MODE
-========================================= */
-
-
-/* Main sections */
-
-body.dark .section,
-body.dark section{
-    color:#f1f5f9;
-}
-
-
-/* Cards */
-
-body.dark .card,
-body.dark .tool,
-body.dark .box,
-body.dark .container,
-body.dark .content-box{
-    background:#1b2229;
-    color:#f1f5f9;
-}
-
-
-/* Headings */
-
-body.dark h1,
-body.dark h2,
-body.dark h3,
-body.dark h4,
-body.dark h5,
-body.dark h6{
-    color:#ffffff;
-}
-
-
-/* Normal text */
-
-
-/* Inputs */
-
-body.dark input,
-body.dark textarea,
-body.dark select{
-    background:#171d23;
-    color:#ffffff;
-    border-color:#3a4652;
-}
-
-
-/* Placeholder */
-
-body.dark input::placeholder,
-body.dark textarea::placeholder{
-    color:#8f9aa6;
-}
-
-
-/* Prompt input */
-
-body.dark #topic{
-    background:#171d23;
-    color:#ffffff;
-    border-color:#465463;
-}
-
-
-/* Prompt result */
-
-body.dark #result{
-    background:#171d23;
-    color:#ffffff;
-    border-color:#465463;
-}
-
-
-/* Search */
-
-body.dark #searchInput{
-    background:#171d23;
-    color:#ffffff;
-    border-color:#465463;
-}
-
-
-/* Tool links */
-
-body.dark a{
-    color:#7db7ff;
-}
-
-
-/* Tool cards */
-
-body.dark .tool{
-    background:#1b2229;
-    border-color:#303b47;
-}
-
-
-/* Dashboard */
-
-body.dark .dashboard-card{
-    background:#1b2229;
-    color:#ffffff;
-}
-
-
-body.dark .dashboard-card p{
-    color:#cbd5e1;
-}
-
-
-body.dark .dashboard-tip-text{
-    color:#ffffff;
-}
-
-
-/* Progress */
-
-body.dark .dashboard-progress{
-    background:#303943;
-}
-
-
-/* Prompt history */
-
-body.dark .prompt-history-item{
-    background:#171d23;
-    color:#ffffff;
-}
-
-
-/* Saved prompts */
-
-body.dark #savedContent,
-body.dark #historyContent,
-body.dark #recentToolsContent,
-body.dark #favoritesContent{
-    color:#ffffff;
-}
-
-
-/* Navigation */
-
-body.dark #floatingNav{
-    background:#171d23;
-    color:#ffffff;
-}
-
-
-body.dark .bottom-nav{
-    background:#171d23;
-}
-
-
-body.dark .topShortcuts{
-    background:#171d23;
-}
-
-
-/* Navigation text */
-
-body.dark .nav-link,
-body.dark .topItem{
-    color:#ffffff;
-}
-
-
-/* Buttons */
-
-body.dark button{
-    color:#ffffff;
-}
-
-
-/* Keep primary buttons visible */
-
-body.dark .prompt-btn,
-body.dark .dashboard-action{
-    color:#ffffff;
-}
-
-
-/* Daily Tip */
-
-body.dark .tip-box{
-    background:#1b2229;
-    color:#ffffff;
-}
-
-
-/* Toast */
-
-body.dark #toast{
-    background:#ffffff;
-    color:#111827;
-}
-
-
-/* Connection status */
-
-body.dark .connection-status{
-    color:#ffffff;
-}
-
-
-/* Offline screen */
-
-body.dark #offlineScreen{
-    background:#101418;
-    color:#ffffff;
-}
-
-
-/* Loader */
-
-body.dark #loader{
-    background:#101418;
-    color:#ffffff;
-}
-
-
-  /* =========================================
-   🌙 AI TOOLS HUB — GLOBAL DARK MODE
-   v1.18 CLEAN SYSTEM
-========================================= */
+  /* =========================================================
+   🌙 AI TOOLS HUB — FINAL DARK MODE
+   Previous Published Dark UI
+   v1.18+
+========================================================= */
+
+
+/* =========================================================
+   GLOBAL PAGE
+========================================================= */
 
 body.dark{
     background:#101418;
@@ -1896,9 +1678,10 @@ body.dark{
 }
 
 
-/* =========================================
-   MAIN SECTIONS
-========================================= */
+/* =========================================================
+   MAIN OUTER SECTIONS
+   This fixes the 🔴 outer section background problem
+========================================================= */
 
 body.dark .section,
 body.dark section,
@@ -1910,28 +1693,83 @@ body.dark .category-container{
 }
 
 
-/* =========================================
-   CARDS / TOOLS
-========================================= */
+/* =========================================================
+   GENERIC CARDS
+========================================================= */
 
 body.dark .card,
-body.dark .tool,
 body.dark .box,
 body.dark .container,
-body.dark .content-box,
-body.dark .category-card{
+body.dark .content-box{
     background:#1b2229;
     color:#f1f5f9;
 }
 
+
+/* =========================================================
+   TOOL ROWS
+========================================================= */
+
 body.dark .tool{
+    background:#1b2229;
+    color:#f1f5f9;
     border-color:#303b47;
 }
 
+body.dark .tool:hover{
+    background:#252e38;
+}
 
-/* =========================================
+
+/* =========================================================
+   CATEGORY CARDS
+========================================================= */
+
+body.dark .category-card{
+    background:#1b2229;
+    color:#f1f5f9;
+    border-color:#303b47;
+}
+
+body.dark .category-card:hover{
+    background:#252e38;
+}
+
+body.dark .category-card p{
+    color:#d7dee7;
+}
+
+
+/* =========================================================
+   CATEGORY GRID / CATEGORY SECTION
+========================================================= */
+
+body.dark .category-container{
+    background:#171d23;
+}
+
+body.dark .category-title{
+    color:#66aaff;
+}
+
+
+/* =========================================================
+   OLD CATEGORY BOX
+========================================================= */
+
+body.dark .category{
+    background:#1b2229;
+    color:#f1f5f9;
+}
+
+body.dark .category:hover{
+    background:#252e38;
+}
+
+
+/* =========================================================
    HEADINGS
-========================================= */
+========================================================= */
 
 body.dark h1,
 body.dark h2,
@@ -1943,9 +1781,9 @@ body.dark h6{
 }
 
 
-/* =========================================
-   TEXT
-========================================= */
+/* =========================================================
+   NORMAL TEXT
+========================================================= */
 
 body.dark p,
 body.dark label{
@@ -1953,46 +1791,89 @@ body.dark label{
 }
 
 
-/* =========================================
+/* =========================================================
    LINKS
-========================================= */
+========================================================= */
 
 body.dark a{
     color:#7db7ff;
 }
 
 
-/* =========================================
-   INPUTS
-========================================= */
+/* =========================================================
+   TOOL LINKS
+========================================================= */
 
-body.dark input,
-body.dark textarea,
-body.dark select{
-    background:#171d23;
-    color:#ffffff;
-    border-color:#3a4652;
+body.dark .tool a{
+    color:#7db7ff;
 }
 
-body.dark input::placeholder,
-body.dark textarea::placeholder{
+
+/* =========================================================
+   INFO ICON
+========================================================= */
+
+body.dark .info-icon{
+    color:#4da3ff;
+}
+
+
+/* =========================================================
+   FREE + PRO / BADGES
+   IMPORTANT — KEEP THESE VISIBLE
+========================================================= */
+
+body.dark .badge{
+    opacity:1;
+    visibility:visible;
+    display:inline-block;
+}
+
+
+/* FREE */
+
+body.dark .badge.free{
+    background:#e8f5ff;
+    color:#1e88e5;
+}
+
+
+/* FREE + PRO */
+
+body.dark .badge.pro{
+    background:#f3f0ff;
+    color:#7b1fa2;
+}
+
+
+/* PAID */
+
+body.dark .badge.paid{
+    background:#fff1f1;
+    color:#d32f2f;
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+body.dark .search-box input,
+body.dark #searchInput{
+    background:#171d23;
+    color:#ffffff;
+    border-color:#465463;
+}
+
+body.dark .search-box input::placeholder,
+body.dark #searchInput::placeholder{
     color:#8f9aa6;
 }
 
 
-/* =========================================
-   PROMPT AREA
-========================================= */
-
-body.dark .prompt-header,
-body.dark .prompt-section{
-    background:#171d23;
-    color:#f1f5f9;
-}
-  
-/* =========================================
+/* =========================================================
    PROMPT INPUT
-========================================= */
+========================================================= */
 
 body.dark #topic,
 body.dark .prompt-input{
@@ -2001,10 +1882,24 @@ body.dark .prompt-input{
     border-color:#465463;
 }
 
+body.dark #topic::placeholder,
+body.dark .prompt-input::placeholder{
+    color:#8f9aa6;
+}
 
-/* =========================================
+
+/* =========================================================
+   RESET BUTTON
+========================================================= */
+
+body.dark #resetBtn{
+    color:#cccccc;
+}
+
+
+/* =========================================================
    PROMPT RESULT
-========================================= */
+========================================================= */
 
 body.dark #result,
 body.dark .prompt-result{
@@ -2014,40 +1909,9 @@ body.dark .prompt-result{
 }
 
 
-/* =========================================
-   SEARCH
-========================================= */
-
-body.dark #searchInput{
-    background:#171d23;
-    color:#ffffff;
-    border-color:#465463;
-}
-
-
-/* =========================================
-   RESET BUTTON
-========================================= */
-
-body.dark #resetBtn{
-    color:#ccc;
-}
-
-
-/* =========================================
-   PROMPT HISTORY
-========================================= */
-body.dark #savedContent,
-body.dark #historyContent,
-body.dark #recentToolsContent,
-body.dark #favoritesContent{
-    background:#171d23;
-    color:#ffffff;
-}
-
-/* =========================================
-   SAVED / HISTORY / RECENT / FAVORITES
-========================================= */
+/* =========================================================
+   PROMPT HISTORY / SAVED / RECENT / FAVORITES
+========================================================= */
 
 body.dark #savedContent,
 body.dark #historyContent,
@@ -2057,10 +1921,45 @@ body.dark #favoritesContent{
     color:#ffffff;
 }
 
+body.dark .prompt-history-item{
+    background:#171d23;
+    color:#ffffff;
+}
 
-/* =========================================
+
+/* =========================================================
+   NEWS
+========================================================= */
+
+body.dark .news-subtitle{
+    color:#cccccc;
+}
+
+body.dark .news-card{
+    background:#1b2229;
+    color:#f1f5f9;
+}
+
+body.dark .news-card:hover{
+    background:#252e38;
+}
+
+body.dark .news-title{
+    color:#66b2ff;
+}
+
+body.dark .news-action{
+    color:#ffffff;
+}
+
+body.dark .news-note{
+    color:#bbbbbb;
+}
+
+
+/* =========================================================
    DASHBOARD
-========================================= */
+========================================================= */
 
 body.dark .dashboard{
     background:linear-gradient(
@@ -2068,6 +1967,8 @@ body.dark .dashboard{
         #172235 0%,
         #151a22 100%
     );
+
+    border-color:#2d74d7;
 }
 
 body.dark .dashboard-card{
@@ -2093,22 +1994,42 @@ body.dark .dashboard-section-title{
         #2874d7,
         #4da3ff
     );
+
     color:#ffffff;
 }
 
 
-/* =========================================
-   DASHBOARD / INFO ICON
-========================================= */
+/* =========================================================
+   DASHBOARD BUTTONS
+========================================================= */
 
-body.dark .info-icon{
+body.dark .dashboard-action{
+    color:#ffffff;
+}
+
+
+/* =========================================================
+   PROMPT BUTTONS
+========================================================= */
+
+body.dark .prompt-btn{
+    color:#ffffff;
+}
+
+
+/* =========================================================
+   DARK MODE BUTTON
+========================================================= */
+
+body.dark .dark-btn{
+    background:#2b2b2b;
     color:#4da3ff;
 }
 
 
-/* =========================================
-   NAVIGATION
-========================================= */
+/* =========================================================
+   FLOATING NAVIGATION
+========================================================= */
 
 body.dark #floatingNav{
     background:rgba(23,29,35,.95);
@@ -2118,19 +2039,31 @@ body.dark #floatingNav{
     -webkit-backdrop-filter:blur(12px);
 }
 
+
+/* Top shortcuts */
+
 body.dark .topShortcuts{
     background:#171d23;
 }
 
-body.dark .bottom-nav{
-    background:#171d23;
+body.dark .topItem{
+    color:#ffffff;
 }
+
+
+/* Divider */
 
 body.dark .navDivider{
     background:#344a66;
 }
 
-body.dark .topItem,
+
+/* Bottom navigation */
+
+body.dark .bottom-nav{
+    background:#171d23;
+}
+
 body.dark .nav-link{
     color:#ffffff;
 }
@@ -2143,35 +2076,27 @@ body.dark .nav-link.active::after{
     background:#63a9ff;
 }
 
-
-/* =========================================
-   NEWS
-========================================= */
-
-body.dark .news-subtitle{
-    color:#ccc;
-}
-
-body.dark .news-card{
-    background:#1b2229;
-}
-
-body.dark .news-title{
-    color:#66b2ff;
-}
-
-body.dark .news-action{
-    color:#ffffff;
-}
-
-body.dark .news-note{
-    color:#bbb;
+body.dark .nav-link span{
+    color:inherit;
 }
 
 
-/* =========================================
+/* =========================================================
+   FOOTER
+========================================================= */
+
+body.dark .footer{
+    color:#aeb8c4;
+}
+
+body.dark .footer-links a{
+    color:#7b3fb3;
+}
+
+
+/* =========================================================
    DAILY TIP
-========================================= */
+========================================================= */
 
 body.dark .tip-box{
     background:#1b2229;
@@ -2179,55 +2104,9 @@ body.dark .tip-box{
 }
 
 
-/* =========================================
-   BUTTONS
-========================================= */
-
-body.dark button{
-    color:#ffffff;
-}
-
-body.dark .prompt-btn,
-body.dark .dashboard-action{
-    color:#ffffff;
-}
-
-
-/* =========================================
-   DARK MODE BUTTON
-========================================= */
-
-body.dark .dark-btn{
-    background:#2b2b2b;
-    color:#4da3ff;
-}
-
-
-/* =========================================
-   OFFLINE SCREEN
-========================================= */
-
-body.dark .offline-screen{
-    background:#101418;
-}
-
-body.dark .offline-box{
-    background:#1b2229;
-}
-
-body.dark .offline-box p{
-    color:#d7dee7;
-}
-
-body.dark #offlineScreen{
-    background:#101418;
-    color:#ffffff;
-}
-
-
-/* =========================================
+/* =========================================================
    TOAST
-========================================= */
+========================================================= */
 
 body.dark #toast{
     background:#ffffff;
@@ -2235,18 +2114,27 @@ body.dark #toast{
 }
 
 
-/* =========================================
-   CONNECTION STATUS
-========================================= */
+/* =========================================================
+   OFFLINE SCREEN
+========================================================= */
 
-body.dark .connection-status{
+body.dark .offline-screen{
+    background:#101418;
+}
+
+body.dark .offline-box{
+    background:#1b2229;
     color:#ffffff;
 }
 
+body.dark .offline-box p{
+    color:#d7dee7;
+}
 
-/* =========================================
+
+/* =========================================================
    LOADER
-========================================= */
+========================================================= */
 
 body.dark .loader-overlay,
 body.dark #loader{
@@ -2255,13 +2143,13 @@ body.dark #loader{
 }
 
 body.dark .loader-sub{
-    color:#bbb;
+    color:#bbbbbb;
 }
 
 
-/* =========================================
+/* =========================================================
    TIMEOUT
-========================================= */
+========================================================= */
 
 body.dark .timeout-box{
     background:#1b2229;
@@ -2269,25 +2157,105 @@ body.dark .timeout-box{
 }
 
 body.dark .timeout-box p{
-    color:#ccc;
+    color:#cccccc;
 }
 
 
-/* =========================================
-   CATEGORY TEXT
-========================================= */
+/* =========================================================
+   CONNECTION STATUS
+========================================================= */
+
+body.dark .connection-status{
+    color:#ffffff;
+}
+
+
+/* =========================================================
+   INPUT SELECT / TEXTAREA
+========================================================= */
+
+body.dark input,
+body.dark textarea,
+body.dark select{
+    background:#171d23;
+    color:#ffffff;
+    border-color:#3a4652;
+}
+
+body.dark input::placeholder,
+body.dark textarea::placeholder{
+    color:#8f9aa6;
+}
+
+
+/* =========================================================
+   BUTTON TEXT
+========================================================= */
+
+body.dark button{
+    color:#ffffff;
+}
+
+
+/* =========================================================
+   FINAL CATEGORY OVERRIDE
+   Prevents light #f5f6f8 / #cfd6e6 from leaking through
+========================================================= */
+
+body.dark .category-container{
+    background:#171d23 !important;
+}
+
+body.dark .category-card{
+    background:#1b2229 !important;
+    color:#f1f5f9 !important;
+}
 
 body.dark .category-card p{
-    color:#d7dee7;
+    color:#d7dee7 !important;
 }
 
 
-/* =========================================
-   TOP NAVIGATION
-========================================= */
+/* =========================================================
+   FINAL TOOL OVERRIDE
+========================================================= */
 
-body.dark .nav-link span{
-    color:inherit;
+body.dark .tool{
+    background:#1b2229 !important;
+    color:#f1f5f9 !important;
+}
+
+
+/* =========================================================
+   FINAL BADGE OVERRIDE
+   Ensures FREE + PRO can never become invisible
+========================================================= */
+
+body.dark .badge.pro{
+    display:inline-block !important;
+    visibility:visible !important;
+    opacity:1 !important;
+
+    background:#f3f0ff !important;
+    color:#7b1fa2 !important;
+}
+
+body.dark .badge.free{
+    display:inline-block !important;
+    visibility:visible !important;
+    opacity:1 !important;
+
+    background:#e8f5ff !important;
+    color:#1e88e5 !important;
+}
+
+body.dark .badge.paid{
+    display:inline-block !important;
+    visibility:visible !important;
+    opacity:1 !important;
+
+    background:#fff1f1 !important;
+    color:#d32f2f !important;
 }
 
 </style>  
