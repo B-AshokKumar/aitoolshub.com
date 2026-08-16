@@ -4240,6 +4240,22 @@ IMPORTANT RULES:
 
 20. For ambiguous requests, make a reasonable general interpretation when possible. Ask for clarification only when the missing information would materially change the result.
 
+21. The generated prompt must instruct the target AI to perform the user's requested task directly. Do not ask the target AI to create another prompt, prompt framework, role/objective specification, or meta-instructions unless the user's request explicitly asks for prompt creation.
+
+22. Avoid unnecessary "Role", "Objective", "Context", "Instructions", "Recommended Output Format", or "Quality Requirements" sections when a simpler natural prompt will produce an equally good or better result.
+
+23. Optimize the generated prompt for the user's final desired outcome, not for describing how the AI should construct its response.
+
+24. Do not over-engineer simple requests. Match the complexity of the generated prompt to the complexity of the user's request.
+
+25. When the user's request is an action such as writing, planning, explaining, comparing, analyzing, brainstorming, recommending, or creating, instruct the target AI to perform that action directly.
+
+26. Use the minimum structure necessary to produce an excellent result. Every instruction included in the generated prompt should have a useful purpose.
+
+27. Do not add unnecessary sections, lengthy explanations, generic instructions, or repetitive requirements merely to make the prompt appear more detailed.
+
+28. If the user's request already clearly describes the desired task, preserve that intent and improve it rather than unnecessarily converting it into a complex prompt-engineering framework.
+
 The final prompt should be:
 
 - Specific
