@@ -3203,204 +3203,719 @@ function toggleDark(){
     updateThemeButtons();
 }); 
   
-/* =========================  
-   PROMPT GENERATOR  
-========================= */  
-  
-  let currentPromptType = "";
-  
+/* =========================
+   PROMPT GENERATOR
+   v1.18.3 — Subject-Aware
+   Professional Prompt Engine
+========================= */
+
+let currentPromptType = "";
+
+
+/* -----------------------------------------
+   Generate Prompt
+----------------------------------------- */
+
 function generatePrompt(type){
 
-  let topic =
-    document.getElementById("topic").value;
-  
-  let promptText = "";
+    const topicElement =
+        document.getElementById("topic");
 
-// check empty input
-if(topic.trim() === ""){
-
-  document.getElementById("result").innerText =
-    "Please enter a topic";
-
-  return;
-}
+    const resultElement =
+        document.getElementById("result");
 
 
+    if(!topicElement || !resultElement){
 
-  if(type === "resume"){
+        return;
 
-    promptText =
-      "Create a modern professional resume for " +
-      topic +
-      " with skills, achievements, experience, projects, certifications, and strong summary.";
+    }
 
-  }
 
-  else if(type === "essay"){
+    const topic =
+        topicElement.value.trim();
 
-    promptText =
-      "Write a detailed essay about " +
-      topic +
-      " with introduction, main points, advantages, disadvantages, and conclusion.";
 
-  }
+    /* -------------------------------------
+       Check empty input
+    ------------------------------------- */
 
-  else if(type === "youtube"){
+    if(topic === ""){
 
-    promptText =
-      "Create an engaging YouTube script about " +
-      topic +
-      " with hook, intro, main content, and call to action.";
+        resultElement.innerText =
+            "Please enter a topic";
 
-  }
+        return;
 
-  else if(type === "coding"){
+    }
 
-    promptText =
-      "Generate clean optimized code for " +
-      topic +
-      " with explanation, comments, and best practices.";
 
-  }
+    currentPromptType = type || "default";
 
-  else if(type === "logo"){
 
-    promptText =
-      "Create a modern professional logo design for " +
-      topic +
-      " with minimal style, premium colors, clean typography, and creative branding.";
+    let promptText = "";
 
-  }
 
-  else if(type === "sql"){
+    /* =====================================
+       RESUME
+    ===================================== */
 
-    promptText =
-      "Write an optimized SQL query for " +
-      topic +
-      " with explanation, comments, joins, performance improvements, and best practices.";
+    if(type === "resume"){
 
-  }
+        promptText =
+`Act as an expert resume writer and ATS optimization specialist.
 
-  else if(type === "presentation"){
+Create a professional, ATS-friendly resume for:
 
-    promptText =
-      "Create a professional presentation about " +
-      topic +
-      " with slide titles, key points, summary, and engaging structure.";
+"${topic}"
 
-  }
-  else if(type === "email"){
+Include:
 
-  promptText =
-    "Write a professional email about " +
-    topic +
-    " with a clear subject, greeting, concise message and professional closing.";
+1. Professional summary
+2. Relevant skills
+3. Work experience
+4. Quantifiable achievements
+5. Projects
+6. Education
+7. Certifications, if relevant
+8. Important keywords for the target role
 
-}
+Use strong action verbs and measurable achievements where appropriate.
 
-  else if(type === "interview"){
+Do not invent qualifications, experience, achievements, or certifications.
 
-  promptText =
-    "Generate common interview questions and model answers for " +
-    topic +
-    " with tips and best practices.";
+Use a clean professional structure suitable for modern recruitment systems.
 
-}
+If important information is missing, identify what the user should provide before finalizing the resume.`;
 
-else if(type === "business"){
+    }
 
-  promptText =
-    "Create a detailed business plan for " +
-    topic +
-    " including target market, revenue model, marketing strategy and growth plan.";
 
-}
+    /* =====================================
+       ESSAY
+    ===================================== */
 
-else if(type === "blog"){
+    else if(type === "essay"){
 
-  promptText =
-    "Write a professional blog post about " +
-    topic +
-    " with title, headings, key points and conclusion.";
+        promptText =
+`Act as an experienced writer and subject-matter expert.
 
-}
+Write a well-structured essay about:
 
-else if(type === "social"){
+"${topic}"
 
-  promptText =
-    "Create engaging social media content about " +
-    topic +
-    " with captions, hashtags and call to action.";
+Include:
 
-}
+1. A strong introduction
+2. Clear background and context
+3. Well-developed main arguments or ideas
+4. Relevant examples or evidence
+5. Different perspectives where appropriate
+6. Advantages and disadvantages when relevant
+7. A logical conclusion
 
-else if(type === "summary"){
+Use clear, accurate, engaging language appropriate for the intended audience.
 
-  promptText =
-    "Summarize " +
-    topic +
-    " into clear and concise notes with key points, important concepts and actionable insights.";
+Do not invent facts or unsupported statistics.
 
-}
+Organize the essay with suitable headings where helpful.
 
-else if(type === "proposal"){
+End with a concise summary of the key message.`;
 
-  promptText =
-    "Create a professional project proposal for " +
-    topic +
-    " with objectives, scope, timeline and expected outcomes.";
+    }
 
-}
 
-  else if(type === "detailed"){
+    /* =====================================
+       YOUTUBE
+    ===================================== */
 
-  promptText =
-    "Explain " +
-    topic +
-    " in detail with introduction, key concepts, examples, advantages, disadvantages, real-world applications and conclusion.";
+    else if(type === "youtube"){
 
-}
+        promptText =
+`Act as an experienced YouTube content strategist and scriptwriter.
 
-  else if(type === "brief"){
+Create an engaging YouTube video script about:
 
-  promptText =
-    "Provide a brief explanation of " +
-    topic +
-    " covering the main concepts, importance and key points.";
+"${topic}"
 
-}
+Include:
 
-  else if(type === "quicksummary"){
+1. A strong attention-grabbing hook
+2. Introduction
+3. Clear explanation of the topic
+4. Engaging main sections
+5. Examples, stories, or practical insights where appropriate
+6. Natural transitions
+7. Viewer engagement elements
+8. A strong call to action
+9. Suggested video title
+10. Suggested thumbnail concept
 
-  promptText =
-    "Provide a quick summary of " +
-    topic +
-    " highlighting the most important points in a concise and easy-to-understand format.";
+Adapt the explanation to the likely audience and subject.
 
-}
+Keep the script natural, informative, engaging, and suitable for spoken delivery.
 
-  else if(type === "beginner"){
+Do not use unnecessary repetition or unsupported claims.`;
 
-  promptText =
-    "Explain " +
-    topic +
-    " in very simple beginner-friendly language with easy examples and no technical jargon.";
+    }
 
-}
 
-  else{
+    /* =====================================
+       CODING
+    ===================================== */
 
-    promptText =
-      "Create a professional AI prompt for " +
-      topic +
-      " with detailed explanation and high quality output.";
+    else if(type === "coding"){
 
-  }
+        promptText =
+`Act as an experienced software engineer.
 
-  document.getElementById("result").innerText =
-    promptText;
-  
-   savePromptHistory(promptText);
+Develop a high-quality solution for:
+
+"${topic}"
+
+Before providing the final solution:
+
+1. Clearly understand the requirements.
+2. State any important assumptions.
+3. Recommend an appropriate technology, language, framework, or approach when necessary.
+4. Provide clean, maintainable, and efficient code.
+5. Explain the important parts of the implementation.
+6. Include appropriate error handling.
+7. Mention security considerations where relevant.
+8. Explain how the solution can be tested.
+9. Suggest improvements or alternatives where useful.
+
+Do not invent unavailable requirements.
+
+If critical information is missing, clearly identify it before making assumptions.
+
+Use modern coding best practices.`;
+
+    }
+
+
+    /* =====================================
+       LOGO / DESIGN
+    ===================================== */
+
+    else if(type === "logo"){
+
+        promptText =
+`Act as a professional brand identity and logo designer.
+
+Create a professional logo concept for:
+
+"${topic}"
+
+Develop:
+
+1. Brand concept
+2. Target audience
+3. Visual direction
+4. Logo style
+5. Color palette
+6. Typography recommendations
+7. Symbol or icon concept
+8. Composition
+9. Brand personality
+10. Variations suitable for different platforms
+
+The design should be distinctive, professional, scalable, and appropriate for the subject.
+
+Avoid unnecessary visual complexity.
+
+Explain why the proposed design choices suit the subject and audience.`;
+
+    }
+
+
+    /* =====================================
+       SQL
+    ===================================== */
+
+    else if(type === "sql"){
+
+        promptText =
+`Act as an experienced database engineer.
+
+Create an efficient SQL solution for:
+
+"${topic}"
+
+First identify the likely database requirements and assumptions.
+
+Provide:
+
+1. The SQL query
+2. Explanation of the query
+3. Important joins or relationships
+4. Filtering and sorting logic
+5. Performance considerations
+6. Indexing recommendations where appropriate
+7. Potential edge cases
+8. Security considerations
+
+Clearly state which SQL dialect is being assumed if it matters.
+
+Use readable, maintainable, and optimized SQL.`;
+
+    }
+
+
+    /* =====================================
+       PRESENTATION
+    ===================================== */
+
+    else if(type === "presentation"){
+
+        promptText =
+`Act as an expert presentation designer and subject-matter specialist.
+
+Create a professional presentation about:
+
+"${topic}"
+
+Develop a logical slide-by-slide structure including:
+
+1. Title slide
+2. Introduction
+3. Background/context
+4. Main concepts or arguments
+5. Supporting examples
+6. Key insights
+7. Practical recommendations where relevant
+8. Conclusion
+9. Call to action or discussion points where appropriate
+
+For each slide provide:
+
+- Slide title
+- Key points
+- Suggested visual
+- Speaker notes when useful
+
+Adapt the structure to the subject and intended audience.
+
+Keep the presentation clear, engaging, visually appropriate, and easy to present.`;
+
+    }
+
+
+    /* =====================================
+       EMAIL
+    ===================================== */
+
+    else if(type === "email"){
+
+        promptText =
+`Act as a professional business communication specialist.
+
+Write a clear and effective email about:
+
+"${topic}"
+
+Provide:
+
+1. Appropriate subject line
+2. Professional greeting
+3. Clear purpose
+4. Concise and well-organized message
+5. Appropriate supporting details
+6. Clear call to action when necessary
+7. Professional closing
+
+Adapt the tone to the situation and intended recipient.
+
+Keep the email natural, respectful, concise, and professional.
+
+If the recipient, purpose, or tone is unclear, state reasonable assumptions or identify what information is needed.`;
+
+    }
+
+
+    /* =====================================
+       INTERVIEW
+    ===================================== */
+
+    else if(type === "interview"){
+
+        promptText =
+`Act as an experienced interviewer and career coach.
+
+Prepare the user for an interview related to:
+
+"${topic}"
+
+Provide:
+
+1. Common interview questions
+2. Role- or subject-specific questions
+3. Strong sample answers
+4. Behavioral questions where relevant
+5. Technical questions where relevant
+6. Tips for answering effectively
+7. Common mistakes to avoid
+8. Questions the candidate can ask the interviewer
+
+Adapt the questions to the likely role, experience level, and subject.
+
+Do not assume qualifications that have not been provided.`;
+
+    }
+
+
+    /* =====================================
+       BUSINESS
+    ===================================== */
+
+    else if(type === "business"){
+
+        promptText =
+`Act as an experienced business strategist and consultant.
+
+Develop a practical business plan for:
+
+"${topic}"
+
+Analyze:
+
+1. Business concept
+2. Problem being solved
+3. Target customers
+4. Value proposition
+5. Products or services
+6. Competitive landscape
+7. Revenue model
+8. Marketing strategy
+9. Operations
+10. Growth opportunities
+11. Risks and challenges
+12. Key performance indicators
+
+Clearly identify assumptions and information that should be validated.
+
+Keep the plan realistic, actionable, and suitable for decision-making.`;
+
+    }
+
+
+    /* =====================================
+       BLOG
+    ===================================== */
+
+    else if(type === "blog"){
+
+        promptText =
+`Act as an experienced content writer and subject-matter expert.
+
+Write a high-quality blog article about:
+
+"${topic}"
+
+Create:
+
+1. An engaging title
+2. A strong introduction
+3. Clear headings and subheadings
+4. Well-developed explanations
+5. Relevant examples
+6. Practical insights
+7. A concise conclusion
+8. A suitable call to action
+
+Adapt the writing style to the subject and target audience.
+
+Use natural language, accurate information, and useful explanations.
+
+Avoid unnecessary repetition and unsupported claims.`;
+
+    }
+
+
+    /* =====================================
+       SOCIAL MEDIA
+    ===================================== */
+
+    else if(type === "social"){
+
+        promptText =
+`Act as an experienced social media content strategist.
+
+Create engaging social media content about:
+
+"${topic}"
+
+Develop platform-appropriate content including:
+
+1. Attention-grabbing hook
+2. Main message
+3. Caption
+4. Suggested content format
+5. Call to action
+6. Relevant hashtags
+7. Alternative hooks or captions
+
+Adapt the content to the subject, target audience, and selected platform.
+
+Keep it authentic, engaging, concise, and appropriate for the topic.
+
+Do not use irrelevant hashtags or generic filler content.`;
+
+    }
+
+
+    /* =====================================
+       SUMMARY
+    ===================================== */
+
+    else if(type === "summary"){
+
+        promptText =
+`Act as an expert information analyst.
+
+Create a clear and accurate summary of:
+
+"${topic}"
+
+Identify:
+
+1. Main idea
+2. Important concepts
+3. Key facts or arguments
+4. Important supporting details
+5. Practical implications
+6. Actionable insights where appropriate
+
+Organize the information logically.
+
+Keep the summary concise while preserving the most important meaning.
+
+Do not add information that is not supported by the source or topic.`;
+
+    }
+
+
+    /* =====================================
+       PROPOSAL
+    ===================================== */
+
+    else if(type === "proposal"){
+
+        promptText =
+`Act as an experienced project proposal writer.
+
+Create a professional proposal for:
+
+"${topic}"
+
+Include:
+
+1. Executive summary
+2. Problem or opportunity
+3. Objectives
+4. Proposed solution
+5. Scope
+6. Deliverables
+7. Timeline
+8. Resources required
+9. Expected outcomes
+10. Risks and mitigation
+11. Success criteria
+12. Next steps
+
+Adapt the proposal to the subject and intended audience.
+
+Clearly identify assumptions and avoid inventing specific facts, costs, or commitments.`;
+
+    }
+
+
+    /* =====================================
+       DETAILED EXPLANATION
+    ===================================== */
+
+    else if(type === "detailed"){
+
+        promptText =
+`Act as an expert educator and subject-matter specialist.
+
+Explain the following topic in depth:
+
+"${topic}"
+
+Cover:
+
+1. Introduction
+2. Background
+3. Key concepts
+4. How it works
+5. Relevant examples
+6. Benefits and limitations where applicable
+7. Real-world applications
+8. Common misconceptions
+9. Practical insights
+10. Summary
+
+Use clear structure and explanations appropriate for the likely audience.
+
+Define technical terms when necessary.
+
+Prioritize accuracy, clarity, and practical understanding.`;
+
+    }
+
+
+    /* =====================================
+       BRIEF EXPLANATION
+    ===================================== */
+
+    else if(type === "brief"){
+
+        promptText =
+`Act as a clear and concise subject-matter expert.
+
+Provide a brief explanation of:
+
+"${topic}"
+
+Include:
+
+- What it is
+- Why it matters
+- The most important concepts
+- One or two useful examples where appropriate
+
+Use simple, accurate language.
+
+Focus only on the information most relevant to understanding the topic.`;
+
+    }
+
+
+    /* =====================================
+       QUICK SUMMARY
+    ===================================== */
+
+    else if(type === "quicksummary"){
+
+        promptText =
+`Create a quick, accurate, and easy-to-understand summary of:
+
+"${topic}"
+
+Highlight only the most important:
+
+- Ideas
+- Facts
+- Concepts
+- Takeaways
+
+Use concise bullet points where appropriate.
+
+Avoid unnecessary detail while preserving the essential meaning.`;
+
+    }
+
+
+    /* =====================================
+       BEGINNER FRIENDLY
+    ===================================== */
+
+    else if(type === "beginner"){
+
+        promptText =
+`Act as a patient and experienced teacher.
+
+Explain the following topic to a complete beginner:
+
+"${topic}"
+
+Use:
+
+1. Very simple language
+2. Step-by-step explanations
+3. Everyday examples
+4. Helpful analogies where appropriate
+5. Clear headings
+6. A short recap at the end
+
+Avoid unnecessary technical jargon.
+
+If a technical term is necessary, explain it in simple language.
+
+Do not assume the learner has prior knowledge of the subject.`;
+
+    }
+
+
+    /* =====================================
+       DEFAULT — SUBJECT-AWARE
+    ===================================== */
+
+    else{
+
+        promptText =
+`Act as an expert in the subject relevant to the following request.
+
+Create a high-quality, professional AI prompt for:
+
+"${topic}"
+
+First understand the subject, likely objective, audience, and type of task.
+
+Adapt the prompt to the actual topic rather than assuming it is related to business, marketing, coding, education, social media, or any other specific field.
+
+The prompt should include:
+
+1. An appropriate expert role
+2. A clear objective
+3. Relevant context
+4. Subject-specific requirements
+5. Appropriate output format
+6. Quality criteria
+7. Useful examples or considerations when appropriate
+8. Important assumptions or missing information
+
+Choose the most suitable approach for the subject. For example:
+
+- Explanation → educational structure
+- Creative writing → storytelling structure
+- Planning → actionable planning structure
+- Comparison → comparison structure
+- Technical problem → technical structure
+- Research → research structure
+- Learning → teaching structure
+- Analysis → analytical structure
+- Recommendation → recommendation structure
+- Problem solving → solution-oriented structure
+
+Do not invent personal information, facts, qualifications, or requirements.
+
+Make the final prompt clear, specific, practical, and ready to copy into an AI assistant.`;
+
+    }
+
+
+    /* -------------------------------------
+       Display Generated Prompt
+    ------------------------------------- */
+
+    resultElement.innerText =
+        promptText;
+
+
+    /* -------------------------------------
+       Save Prompt History
+    ------------------------------------- */
+
+    if(typeof savePromptHistory === "function"){
+
+        savePromptHistory(
+            promptText
+        );
+
+    }
+
 }
 
 function savePromptHistory(prompt){
