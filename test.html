@@ -7062,27 +7062,37 @@ function updateLearningStreak(){
 }
 
 
-  /* =========================================
+ /* =========================================
    💡 DASHBOARD — TRY TODAY'S TIP
+   v1.18.5 — Tip → Generate Prompt
 ========================================= */
 
 function dashboardTryTip(){
 
-    /*
-       Open the existing Daily Tip experience.
-       Do NOT navigate to Generate Prompt.
-    */
+    const tipElement =
+        document.getElementById(
+            "dashboardTipText"
+        );
 
-    if(typeof showDailyTip === "function"){
+    const promptInput =
+        document.getElementById(
+            "topic"
+        );
 
-        showDailyTip();
+    const promptSection =
+        document.getElementById(
+            "prompts"
+        );
 
-        /*
-           GA4
-        */
 
-        trackDashboardEvent(
-            "dashboard_tip_clicked"
+    /* -------------------------------------
+       Required elements
+    ------------------------------------- */
+
+    if(!tipElement){
+
+        showToast(
+            "Today's AI Tip is not available"
         );
 
         return;
@@ -7090,35 +7100,122 @@ function dashboardTryTip(){
     }
 
 
-    /*
-       Fallback:
-       If the existing Daily Tip function
-       is unavailable, show the Dashboard tip.
-    */
+    if(!promptInput || !promptSection){
 
-    const tipElement =
-        document.getElementById(
-            "dashboardTipText"
+        showToast(
+            "Generate Prompt section not found"
         );
 
-    if(
-        tipElement &&
-        typeof showToast === "function"
-    ){
-
-        const tip =
-            tipElement.textContent.trim();
-
-        if(tip){
-
-            showToast(tip);
-
-        }
+        return;
 
     }
 
-}
 
+    /* -------------------------------------
+       Get today's Dashboard tip
+    ------------------------------------- */
+
+    const tip =
+        tipElement.textContent.trim();
+
+
+    if(!tip){
+
+        showToast(
+            "Today's AI Tip is not available"
+        );
+
+        return;
+
+    }
+
+
+    /* -------------------------------------
+       Put today's tip into Prompt input
+    ------------------------------------- */
+
+    promptInput.value = tip;
+
+
+    /* -------------------------------------
+       Clear previous generated result
+       so user knows this is a new prompt
+    ------------------------------------- */
+
+    const resultElement =
+        document.getElementById(
+            "result"
+        );
+
+    if(resultElement){
+
+        resultElement.innerText = "";
+
+    }
+
+
+    /* -------------------------------------
+       Reset prompt type
+       → use SMART / DEFAULT prompt
+    ------------------------------------- */
+
+    currentPromptType = "default";
+
+
+    /* -------------------------------------
+       Scroll to Generate Prompt
+    ------------------------------------- */
+
+    const headerOffset = 75;
+
+    const y =
+        promptSection.getBoundingClientRect().top +
+        window.pageYOffset -
+        headerOffset;
+
+
+    window.scrollTo({
+
+        top: y,
+
+        behavior: "smooth"
+
+    });
+
+
+    /* -------------------------------------
+       Focus topic input
+    ------------------------------------- */
+
+    setTimeout(
+        function(){
+
+            promptInput.focus();
+
+            /*
+               Put cursor at the end
+               of the tip text.
+            */
+
+            promptInput.setSelectionRange(
+                promptInput.value.length,
+                promptInput.value.length
+            );
+
+        },
+        500
+    );
+
+
+    /* -------------------------------------
+       GA4
+    ------------------------------------- */
+
+    trackDashboardEvent(
+        "dashboard_tip_clicked"
+    );
+
+}
 
 
 /* =========================================
