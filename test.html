@@ -1921,16 +1921,15 @@ Dark Mode: OFF
     <!-- WELCOME BACK -->
     <div class="dashboard-card dashboard-welcome">
 
-        <h2>
-            🙏 Welcome back!
-        </h2>
+    <h2>
+        🙏 Welcome back!
+    </h2>
 
-        <p>
-            Your next AI learning step is waiting.
-            Start today!
-        </p>
+    <p id="dashboardReturnMessage">
+        Discover, learn and improve your AI skills every day.
+    </p>
 
-    </div>
+</div>
 
 
     <!-- AI TIP OF THE DAY -->
@@ -2000,23 +1999,25 @@ Dark Mode: OFF
 
         <div class="dashboard-streak">
 
-            <div class="streak-icon">
-                🔥
-            </div>
+    <div class="streak-icon">
+        🔥
+    </div>
 
-            <div>
-                <div
-                    class="streak-number"
-                    id="dashboardStreak">
-                    0 days
-                </div>
+    <div>
 
-                <p>
-                    Keep learning every day!
-                </p>
-            </div>
-
+        <div
+            class="streak-number"
+            id="streakNumber">
+            0 days
         </div>
+
+        <p id="dashboardStreakMessage">
+            🙏 Your next AI learning step is waiting. Start today!
+        </p>
+
+    </div>
+
+</div>
 
     </div>
 
@@ -5624,58 +5625,36 @@ function updateDashboardGreeting(){
 }
 
 
-/* --------------------------------------
-   Local Date Key
--------------------------------------- */
+/* =========================================
+   v1.18.2 USER RETURN & RETENTION SYSTEM
+========================================= */
 
-function getLocalDateKey(
-    date = new Date()
-){
 
-    const year =
-        date.getFullYear();
+/* -----------------------------------------
+   Local Date Helpers
+----------------------------------------- */
+
+function getLocalDateKey(date = new Date()) {
+
+    const year = date.getFullYear();
 
     const month =
-        String(
-            date.getMonth() + 1
-        ).padStart(2,"0");
+        String(date.getMonth() + 1).padStart(2, "0");
 
     const day =
-        String(
-            date.getDate()
-        ).padStart(2,"0");
+        String(date.getDate()).padStart(2, "0");
 
-    return (
-        year +
-        "-" +
-        month +
-        "-" +
-        day
-    );
-
+    return year + "-" + month + "-" + day;
 }
 
 
-/* --------------------------------------
-   Date Difference
--------------------------------------- */
-
-function getDateDifference(
-    dateA,
-    dateB
-){
+function getDateDifference(dateA, dateB) {
 
     const a =
-        new Date(
-            dateA +
-            "T00:00:00"
-        );
+        new Date(dateA + "T00:00:00");
 
     const b =
-        new Date(
-            dateB +
-            "T00:00:00"
-        );
+        new Date(dateB + "T00:00:00");
 
     return Math.round(
         (b - a) / 86400000
@@ -5684,29 +5663,29 @@ function getDateDifference(
 }
 
 
-/* --------------------------------------
-   v1.18 User Return & Retention
--------------------------------------- */
+/* -----------------------------------------
+   USER RETURN EXPERIENCE
+----------------------------------------- */
 
-function updateUserReturnExperience(){
+function updateUserReturnExperience() {
 
     const message =
         document.getElementById(
             "dashboardReturnMessage"
         );
 
-    /*
-       This element is optional.
-       The new Dashboard doesn't require it.
-    */
+    if(!message) return;
+
 
     const today =
         getLocalDateKey();
+
 
     const lastVisit =
         localStorage.getItem(
             "aiToolsHubLastVisit"
         );
+
 
     let visitCount =
         Number(
@@ -5716,18 +5695,14 @@ function updateUserReturnExperience(){
         );
 
 
-    /* ----------------------------------
+    /* -------------------------------------
        FIRST VISIT
-    ---------------------------------- */
+    ------------------------------------- */
 
     if(!lastVisit){
 
-        if(message){
-
-            message.textContent =
-                "Discover, learn and improve your AI skills every day.";
-
-        }
+        message.textContent =
+            "Discover, learn and improve your AI skills every day.";
 
         visitCount = 1;
 
@@ -5746,9 +5721,12 @@ function updateUserReturnExperience(){
         );
 
         return;
-
     }
 
+
+    /* -------------------------------------
+       Calculate days away
+    ------------------------------------- */
 
     const daysAway =
         getDateDifference(
@@ -5757,36 +5735,27 @@ function updateUserReturnExperience(){
         );
 
 
-    /* ----------------------------------
-       SAME-DAY RETURN
-    ---------------------------------- */
+    /* -------------------------------------
+       SAME DAY
+    ------------------------------------- */
 
     if(daysAway === 0){
 
-        if(message){
-
-            message.textContent =
-                "🙏 Welcome back! Continue exploring AI Tools Hub.";
-
-        }
+        message.textContent =
+            "🙏 Welcome back! Continue exploring AI Tools Hub.";
 
         return;
-
     }
 
 
-    /* ----------------------------------
-       RETURNED NEXT DAY
-    ---------------------------------- */
+    /* -------------------------------------
+       NEXT DAY
+    ------------------------------------- */
 
     if(daysAway === 1){
 
-        if(message){
-
-            message.textContent =
-                "🔥 Welcome back! Keep your learning going today.";
-
-        }
+        message.textContent =
+            "🔥 Welcome back! Keep your learning going today.";
 
         trackDashboardEvent(
             "return_next_day"
@@ -5795,21 +5764,17 @@ function updateUserReturnExperience(){
     }
 
 
-    /* ----------------------------------
-       RETURNED AFTER 2–6 DAYS
-    ---------------------------------- */
+    /* -------------------------------------
+       2–6 DAYS
+    ------------------------------------- */
 
     else if(
         daysAway >= 2 &&
         daysAway <= 6
     ){
 
-        if(message){
-
-            message.textContent =
-                "🙏 Welcome back! Your next AI learning step is waiting.";
-
-        }
+        message.textContent =
+            "🙏 Welcome back! Your next AI learning step is waiting.";
 
         trackDashboardEvent(
             "return_after_break"
@@ -5818,18 +5783,14 @@ function updateUserReturnExperience(){
     }
 
 
-    /* ----------------------------------
-       RETURNED AFTER 7+ DAYS
-    ---------------------------------- */
+    /* -------------------------------------
+       7+ DAYS
+    ------------------------------------- */
 
     else if(daysAway >= 7){
 
-        if(message){
-
-            message.textContent =
-                "🙏 Welcome back! Let's start a fresh AI learning journey.";
-
-        }
+        message.textContent =
+            "🙏 Welcome back! Let's start a fresh AI learning journey.";
 
         trackDashboardEvent(
             "return_after_7_days"
@@ -5838,9 +5799,9 @@ function updateUserReturnExperience(){
     }
 
 
-    /* ----------------------------------
-       COUNT NEW VISIT
-    ---------------------------------- */
+    /* -------------------------------------
+       Record this new visit
+    ------------------------------------- */
 
     visitCount++;
 
@@ -5855,49 +5816,40 @@ function updateUserReturnExperience(){
     );
 
 
-    /* ----------------------------------
-       GA4 RETURN EVENT
-    ---------------------------------- */
+    /* -------------------------------------
+       GA4 RETENTION EVENT
+    ------------------------------------- */
 
     if(typeof gtag === "function"){
 
-        gtag(
-            "event",
-            "user_return",
-            {
+        gtag("event", "user_return", {
 
-                days_since_last_visit:
-                    daysAway,
+            days_since_last_visit:
+                daysAway,
 
-                visit_count:
-                    visitCount,
+            visit_count:
+                visitCount,
 
-                app_section:
-                    "engagement_dashboard"
+            app_section:
+                "engagement_dashboard"
 
-            }
-        );
+        });
 
     }
 
 }
 
 
-/* --------------------------------------
-   Return + Streak Message
--------------------------------------- */
+/* =========================================
+   🔥 LEARNING STREAK MESSAGE
+========================================= */
 
 function updateReturnStreakMessage(){
 
     const message =
         document.getElementById(
-            "dashboardReturnMessage"
+            "dashboardStreakMessage"
         );
-
-    /*
-       Optional element.
-       Do nothing if it doesn't exist.
-    */
 
     if(!message) return;
 
@@ -5917,14 +5869,14 @@ function updateReturnStreakMessage(){
 
 
     const today =
-        new Date().toDateString();
+        getLocalDateKey();
 
 
-    /* Learned today */
+    /* -------------------------------------
+       COMPLETED TODAY
+    ------------------------------------- */
 
-    if(
-        lastActivity === today
-    ){
+    if(lastActivity === today){
 
         message.textContent =
             "🔥 Great work! You've completed today's learning. Keep it going tomorrow.";
@@ -5934,12 +5886,11 @@ function updateReturnStreakMessage(){
     }
 
 
-    /* Existing streak */
+    /* -------------------------------------
+       ACTIVE STREAK
+    ------------------------------------- */
 
-    if(
-        streak > 0 &&
-        lastActivity
-    ){
+    if(streak > 0 && lastActivity){
 
         message.textContent =
             "🔥 Your " +
@@ -5951,12 +5902,99 @@ function updateReturnStreakMessage(){
     }
 
 
-    /* No active streak */
+    /* -------------------------------------
+       NO STREAK
+    ------------------------------------- */
 
     message.textContent =
         "🙏 Your next AI learning step is waiting. Start today!";
 
 }
+
+
+/* =========================================
+   🔥 LEARNING STREAK NUMBER
+========================================= */
+
+function updateLearningStreak(){
+
+    const streakElement =
+        document.getElementById(
+            "streakNumber"
+        );
+
+    if(!streakElement) return;
+
+
+    let streak =
+        Number(
+            localStorage.getItem(
+                "learningStreak"
+            ) || 0
+        );
+
+
+    const lastActivity =
+        localStorage.getItem(
+            "learningLastActivity"
+        );
+
+
+    const today =
+        getLocalDateKey();
+
+
+    /*
+       No previous activity
+    */
+
+    if(!lastActivity){
+
+        streak = 0;
+
+    }
+
+
+    /*
+       Display only.
+       Opening Dashboard does NOT
+       increase the streak.
+    */
+
+    streakElement.textContent =
+        streak +
+        " day" +
+        (streak === 1 ? "" : "s");
+
+}
+
+
+/* =========================================
+   DASHBOARD INITIALISATION
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        updateDashboardGreeting();
+
+        updateUserReturnExperience();
+
+        updateLearningDashboard();
+
+        updateDashboardDailyTip();
+
+        updateLearningStreak();
+
+        updateReturnStreakMessage();
+
+        trackDashboardEvent(
+            "home_view"
+        );
+
+    }
+);
 
 
 /* --------------------------------------
