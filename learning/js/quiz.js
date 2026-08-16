@@ -151,6 +151,106 @@ function checkAnswer(button, correct) {
 
 }
 
+/* ======================================
+   🔥 LEARNING STREAK
+====================================== */
+
+function recordLearningStreak(){
+
+    const today = new Date();
+
+    const todayKey =
+        today.getFullYear() + "-" +
+        String(today.getMonth() + 1).padStart(2, "0") + "-" +
+        String(today.getDate()).padStart(2, "0");
+
+
+    const lastActivity =
+        localStorage.getItem("learningLastActivity");
+
+
+    let streak =
+        Number(
+            localStorage.getItem("learningStreak") || 0
+        );
+
+
+    /* ----------------------------------
+       First learning activity
+    ---------------------------------- */
+
+    if(!lastActivity){
+
+        streak = 1;
+
+    }
+
+
+    /* ----------------------------------
+       Already completed learning today
+    ---------------------------------- */
+
+    else if(lastActivity === todayKey){
+
+        // Do not increase twice on the same day.
+
+    }
+
+
+    /* ----------------------------------
+       Continued streak
+    ---------------------------------- */
+
+    else {
+
+        const lastDate =
+            new Date(lastActivity + "T00:00:00");
+
+        const todayDate =
+            new Date(todayKey + "T00:00:00");
+
+
+        const difference =
+            Math.round(
+                (todayDate - lastDate) / 86400000
+            );
+
+
+        if(difference === 1){
+
+            // Continued from yesterday
+            streak++;
+
+        }else{
+
+            // Missed one or more days
+            streak = 1;
+
+        }
+
+    }
+
+
+    localStorage.setItem(
+        "learningStreak",
+        String(streak)
+    );
+
+
+    localStorage.setItem(
+        "learningLastActivity",
+        todayKey
+    );
+
+
+    console.log(
+        "🔥 Learning streak:",
+        streak,
+        "day(s)"
+    );
+
+}
+
 function showResult() {
 
    const percentage =
@@ -227,11 +327,19 @@ const passed = percentage >= passMark;
 
    if (passed) {
 
-    localStorage.setItem(passKey, "true");
+    localStorage.setItem(
+        passKey,
+        "true"
+    );
+
+    // 🔥 Record today's learning activity
+    recordLearningStreak();
 
 } else {
 
-    localStorage.removeItem(passKey);
+    localStorage.removeItem(
+        passKey
+    );
 
 }
 
