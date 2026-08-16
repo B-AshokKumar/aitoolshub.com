@@ -1892,7 +1892,10 @@ body.dark{
 
 body.dark .section,
 body.dark section,
-body.dark .title-card{
+body.dark .title-card,
+body.dark .prompt-header,
+body.dark .category-container{
+    background:#171d23;
     color:#f1f5f9;
 }
 
@@ -1968,6 +1971,16 @@ body.dark textarea::placeholder{
 
 
 /* =========================================
+   PROMPT AREA
+========================================= */
+
+body.dark .prompt-header,
+body.dark .prompt-section{
+    background:#171d23;
+    color:#f1f5f9;
+}
+  
+/* =========================================
    PROMPT INPUT
 ========================================= */
 
@@ -2014,12 +2027,13 @@ body.dark #resetBtn{
 /* =========================================
    PROMPT HISTORY
 ========================================= */
-
-body.dark .prompt-history-item{
+body.dark #savedContent,
+body.dark #historyContent,
+body.dark #recentToolsContent,
+body.dark #favoritesContent{
     background:#171d23;
     color:#ffffff;
 }
-
 
 /* =========================================
    SAVED / HISTORY / RECENT / FAVORITES
@@ -2029,6 +2043,7 @@ body.dark #savedContent,
 body.dark #historyContent,
 body.dark #recentToolsContent,
 body.dark #favoritesContent{
+    background:#171d23;
     color:#ffffff;
 }
 
