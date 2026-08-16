@@ -3849,51 +3849,70 @@ Do not assume the learner has prior knowledge of the subject.`;
 
 
     /* =====================================
-       DEFAULT — SUBJECT-AWARE
-    ===================================== */
+   DEFAULT — ADAPTIVE SUBJECT-AWARE
+===================================== */
 
-    else{
+else{
 
-        promptText =
-`Act as an expert in the subject relevant to the following request.
+    promptText =
+`Act as an expert AI prompt designer and subject-matter specialist.
 
-Create a high-quality, professional AI prompt for:
+The user's request is:
 
 "${topic}"
 
-First understand the subject, likely objective, audience, and type of task.
+First understand what the user is actually trying to accomplish.
 
-Adapt the prompt to the actual topic rather than assuming it is related to business, marketing, coding, education, social media, or any other specific field.
+Identify the most appropriate task type, subject area, likely audience, and desired outcome from the request.
 
-The prompt should include:
+Then create a high-quality, ready-to-use AI prompt specifically designed for that request.
 
-1. An appropriate expert role
-2. A clear objective
+IMPORTANT:
+
+Do not assume that the request is related to business, marketing, coding, education, social media, writing, or any other particular field unless the request indicates it.
+
+Adapt the prompt naturally to the subject.
+
+Choose only the instructions and structure that are genuinely useful for the request.
+
+Do NOT force unnecessary sections into the prompt.
+
+For example:
+
+- Questions → provide a clear explanatory approach
+- Learning → use a teaching approach
+- Research → use a research and evidence-based approach
+- Writing → use an appropriate writing structure
+- Creative requests → use a creative approach
+- Planning → create an actionable planning framework
+- Comparison → provide balanced comparison criteria
+- Technical requests → use a technical problem-solving approach
+- Analysis → use an analytical framework
+- Recommendations → provide relevant evaluation criteria
+- Problem solving → focus on practical solutions
+- Conversation → use a natural conversational approach
+- Ambiguous requests → ask for clarification only when necessary
+
+The final prompt should normally include:
+
+1. Appropriate role or expertise
+2. Clear objective
 3. Relevant context
-4. Subject-specific requirements
+4. Subject-specific instructions
 5. Appropriate output format
-6. Quality criteria
-7. Useful examples or considerations when appropriate
-8. Important assumptions or missing information
+6. Quality requirements
 
-Choose the most suitable approach for the subject. For example:
+However, include only the elements that are useful for the specific request.
 
-- Explanation → educational structure
-- Creative writing → storytelling structure
-- Planning → actionable planning structure
-- Comparison → comparison structure
-- Technical problem → technical structure
-- Research → research structure
-- Learning → teaching structure
-- Analysis → analytical structure
-- Recommendation → recommendation structure
-- Problem solving → solution-oriented structure
+Do not invent personal information, facts, qualifications, requirements, or context.
 
-Do not invent personal information, facts, qualifications, or requirements.
+If the request is extremely simple, keep the resulting prompt simple.
 
-Make the final prompt clear, specific, practical, and ready to copy into an AI assistant.`;
+If important information is missing, make reasonable general assumptions only when safe and appropriate; otherwise instruct the AI to ask a concise clarifying question.
 
-    }
+Make the final result professional, practical, specific, and ready to copy into an AI assistant.`;
+
+}
 
 
     /* -------------------------------------
