@@ -3526,7 +3526,25 @@ App Preferences & Settings
    Professional Prompt Engine
 ========================= */
 
-let currentPromptType = "";
+let currentPromptType = "default";
+
+/* =========================================
+   PROMPT TYPE SAFETY
+   Prevent stale template types
+========================================= */
+
+const promptTopicInput =
+    document.getElementById("topic");
+
+if(promptTopicInput){
+
+    promptTopicInput.addEventListener("input", function(){
+
+        currentPromptType = "default";
+
+    });
+
+}
 
 
 /* -----------------------------------------
