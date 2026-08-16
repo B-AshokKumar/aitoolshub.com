@@ -1892,8 +1892,11 @@ background:#dc2626;
 <div class="header" id="top">
 <span style="font-size:16px;">AI Tools Hub</span>
 
-<button class="dark-btn" onclick="toggleDark()" id="themeBtn">
-Dark Mode: OFF
+<button
+    id="themeBtn"
+    class="dark-btn"
+    onclick="toggleDark()">
+    Dark Mode: OFF
 </button>
 </div>  
 
@@ -3132,8 +3135,11 @@ We are not affiliated with third-party services.
 
 <h2>⚙️ Settings</h2>
 
-<button onclick="toggleDark()" class="dark-btn" id="themeBtn2">
-Dark Mode: OFF
+<button
+    id="themeBtn2"
+    class="dark-btn"
+    onclick="toggleDark()">
+    Dark Mode: OFF
 </button>
 
 <br><br>
@@ -3164,44 +3170,78 @@ App Preferences & Settings
 </div> 
 <script>  
   
-/* =========================  
-   DARK MODE SYSTEM  
-========================= */  
+/* =========================
+   DARK MODE SYSTEM
+========================= */
 
 function updateThemeButtons(){
 
-    const text = document.body.classList.contains("dark")
-        ? "Dark Mode: ON"
-        : "Dark Mode: OFF";
+    const isDark =
+        document.body.classList.contains("dark");
 
-    document.getElementById("themeBtn").innerText = text;
+    const text =
+        isDark
+            ? "Dark Mode: ON"
+            : "Dark Mode: OFF";
 
-    document.getElementById("themeBtn2").innerText = text;
+    const themeBtn =
+        document.getElementById("themeBtn");
+
+    const themeBtn2 =
+        document.getElementById("themeBtn2");
+
+    if(themeBtn){
+        themeBtn.innerText = text;
+    }
+
+    if(themeBtn2){
+        themeBtn2.innerText = text;
+    }
 }
+
 
 function toggleDark(){
 
     document.body.classList.toggle("dark");
 
-    if(document.body.classList.contains("dark")){
-        localStorage.setItem("theme","dark");
-    }else{
-        localStorage.setItem("theme","light");
-    }
+    const isDark =
+        document.body.classList.contains("dark");
+
+    localStorage.setItem(
+        "theme",
+        isDark ? "dark" : "light"
+    );
 
     updateThemeButtons();
 }
-  
-/* LOAD SAVED THEME AFTER REFRESH */  
 
- document.addEventListener("DOMContentLoaded",function(){
 
-    if(localStorage.getItem("theme")==="dark"){
-        document.body.classList.add("dark");
+/* =========================
+   LOAD SAVED THEME
+========================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        const savedTheme =
+            localStorage.getItem("theme");
+
+        if(savedTheme === "dark"){
+
+            document.body.classList.add("dark");
+
+        }else{
+
+            document.body.classList.remove("dark");
+
+        }
+
+        updateThemeButtons();
+
     }
+);
 
-    updateThemeButtons();
-}); 
   
 /* =========================
    PROMPT GENERATOR
