@@ -2130,6 +2130,7 @@ body.dark #loader{
 <button
     type="button"
     id="themeBtn"
+    class="dark-btn"
     onclick="toggleDark()">
     🌙 Dark Mode
 </button>
@@ -3374,6 +3375,7 @@ We are not affiliated with third-party services.
 <button
     type="button"
     id="themeBtn2"
+    class="dark-btn"
     onclick="toggleDark()">
     🌙 Dark Mode
 </button>
@@ -4255,6 +4257,13 @@ Output ONLY the final ready-to-use AI prompt.`;
 
 }
 
+document.getElementById("result").innerText =
+        promptText;
+
+    savePromptHistory(promptText);
+
+}
+  
 function savePromptHistory(prompt){
 
     let history =
