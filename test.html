@@ -5786,33 +5786,95 @@ const tips = [
 "Your future starts today."
 ];
 
+ /* =========================================
+   UNIFIED DAILY TIP SYSTEM
+   One tip shared by popup + dashboard
+========================================= */
+
+function getDailyTip(){
+
+    const today =
+        new Date().toDateString();
+
+    let savedDate =
+        localStorage.getItem("tipDate");
+
+    let savedTip =
+        localStorage.getItem("tipText");
+
+
+    /* -------------------------------------
+       Use today's existing tip
+    ------------------------------------- */
+
+    if(
+        savedDate === today &&
+        savedTip
+    ){
+
+        return savedTip;
+
+    }
+
+
+    /* -------------------------------------
+       New day → choose one new tip
+    ------------------------------------- */
+
+    const randomTip =
+        tips[
+            Math.floor(
+                Math.random() * tips.length
+            )
+        ];
+
+
+    localStorage.setItem(
+        "tipDate",
+        today
+    );
+
+    localStorage.setItem(
+        "tipText",
+        randomTip
+    );
+
+
+    return randomTip;
+
+}
+
+
+/* =========================================
+   DAILY TIP POPUP
+========================================= */
+
 function showDailyTip(){
 
-  let today = new Date().toDateString();
+    const box =
+        document.getElementById("tipBox");
 
-  let savedDate = localStorage.getItem("tipDate");
-  let savedTip = localStorage.getItem("tipText");
+    if(!box) return;
 
-  // New day → new tip
-  if(savedDate !== today || !savedTip){
 
-    let randomTip = tips[Math.floor(Math.random()*tips.length)];
+    const dailyTip =
+        getDailyTip();
 
-    localStorage.setItem("tipDate", today);
-    localStorage.setItem("tipText", randomTip);
 
-    savedTip = randomTip;
-  }
+    box.innerHTML =
+        "💡 <b>Daily Tip:</b><br>" +
+        dailyTip;
 
-  let box = document.getElementById("tipBox");
-  if(!box) return;
 
-  box.innerHTML = "💡 <b>Daily Tip:</b><br>" + savedTip;
-  box.classList.add("show");
+    box.classList.add("show");
 
-  setTimeout(()=>{
-    box.classList.remove("show");
-  },4000);
+
+    setTimeout(function(){
+
+        box.classList.remove("show");
+
+    },4000);
+
 }
 
 // ✅ call after page loads
@@ -7404,106 +7466,28 @@ function updateLearningDashboard(){
 }
 
 
-/* --------------------------------------
-   Daily Tip
--------------------------------------- */
+ /* =========================================
+   DASHBOARD DAILY TIP
+   Uses the same tip as the popup
+========================================= */
 
 function updateDashboardDailyTip(){
-
-    /*
-       This matches the new Dashboard.
-    */
 
     const tipElement =
         document.getElementById(
             "dashboardTipText"
         );
 
+
     if(!tipElement) return;
 
 
-    const today =
-        new Date().toDateString();
-
-
-    let savedDate =
-        localStorage.getItem(
-            "tipDate"
-        );
-
-
-    let savedTip =
-        localStorage.getItem(
-            "tipText"
-        );
-
-
-    /*
-       Use today's existing saved tip.
-    */
-
-    if(
-        savedDate === today &&
-        savedTip
-    ){
-
-        tipElement.textContent =
-            savedTip;
-
-        return;
-
-    }
-
-
-    /*
-       Don't automatically call showDailyTip()
-       here because that may open the
-       separate Daily Tip popup.
-
-       Instead create a Dashboard tip.
-    */
-
-    const dashboardTips = [
-
-        "Ask AI: What am I missing?",
-
-        "Ask AI to identify possible risks before making a decision.",
-
-        "Use AI to explain difficult topics in simple language.",
-
-        "Ask AI for multiple solutions instead of only one answer.",
-
-        "Use AI as a learning partner, not just an answer machine.",
-
-        "Ask AI to challenge your assumptions.",
-
-        "Before accepting an AI answer, ask: What could be wrong?"
-
-    ];
-
-
-    const randomTip =
-        dashboardTips[
-            Math.floor(
-                Math.random() *
-                dashboardTips.length
-            )
-        ];
-
-
-    localStorage.setItem(
-        "tipDate",
-        today
-    );
-
-    localStorage.setItem(
-        "tipText",
-        randomTip
-    );
+    const dailyTip =
+        getDailyTip();
 
 
     tipElement.textContent =
-        randomTip;
+        dailyTip;
 
 }
 
