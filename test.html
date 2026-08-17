@@ -232,6 +232,96 @@ margin-bottom:15px;
 }
 
 
+  /* ======================================
+   DASHBOARD ACTIVITY STATS
+====================================== */
+
+.dashboard-stats-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    margin-top:12px;
+}
+
+.dashboard-stat{
+    background:#f4f7fb;
+    border-radius:14px;
+    padding:14px 8px;
+
+    text-align:center;
+
+    border:1px solid #e3e9f2;
+
+    box-sizing:border-box;
+}
+
+.dashboard-stat-icon{
+    font-size:24px;
+    line-height:1;
+    margin-bottom:7px;
+}
+
+.dashboard-stat-number{
+    font-size:22px;
+    font-weight:700;
+    color:#2d74d7;
+    line-height:1.2;
+}
+
+.dashboard-stat-label{
+    margin-top:4px;
+    font-size:12px;
+    font-weight:600;
+    color:#667085;
+}
+
+
+/* ======================================
+   DARK MODE — ACTIVITY STATS
+====================================== */
+
+body.dark .dashboard-stat{
+    background:#171d23;
+    border-color:#303b47;
+}
+
+body.dark .dashboard-stat-number{
+    color:#66aaff;
+}
+
+body.dark .dashboard-stat-label{
+    color:#b8c2ce;
+}
+
+
+/* ======================================
+   SMALL PHONES
+====================================== */
+
+@media (max-width:380px){
+
+    .dashboard-stats-grid{
+        gap:8px;
+    }
+
+    .dashboard-stat{
+        padding:12px 6px;
+    }
+
+    .dashboard-stat-icon{
+        font-size:22px;
+    }
+
+    .dashboard-stat-number{
+        font-size:20px;
+    }
+
+    .dashboard-stat-label{
+        font-size:11px;
+    }
+
+}
+
 /* ======================================
    DASHBOARD BUTTON
 ====================================== */
@@ -2316,13 +2406,88 @@ body.dark .badge.paid{
     <!-- WELCOME BACK -->
     <div class="dashboard-card dashboard-welcome">
 
-    <h2>
-        🙏 Welcome back!
-    </h2>
+    <h2 id="dashboardGreeting">
+    🙏 Welcome back!
+</h2>
 
     <p id="dashboardReturnMessage">
         Discover, learn and improve your AI skills every day.
     </p>
+
+</div>
+
+  <!-- ======================================
+     YOUR AI ACTIVITY
+====================================== -->
+
+<div class="dashboard-card dashboard-activity">
+
+    <h3>
+        📊 Your AI Activity
+    </h3>
+
+    <div class="dashboard-stats-grid">
+
+        <div class="dashboard-stat">
+            <div class="dashboard-stat-icon">⭐</div>
+
+            <div
+                class="dashboard-stat-number"
+                id="dashboardFavoritesCount">
+                0
+            </div>
+
+            <div class="dashboard-stat-label">
+                Favorites
+            </div>
+        </div>
+
+
+        <div class="dashboard-stat">
+            <div class="dashboard-stat-icon">🕒</div>
+
+            <div
+                class="dashboard-stat-number"
+                id="dashboardRecentCount">
+                0
+            </div>
+
+            <div class="dashboard-stat-label">
+                Recent Tools
+            </div>
+        </div>
+
+
+        <div class="dashboard-stat">
+            <div class="dashboard-stat-icon">✨</div>
+
+            <div
+                class="dashboard-stat-number"
+                id="dashboardSavedCount">
+                0
+            </div>
+
+            <div class="dashboard-stat-label">
+                Saved Prompts
+            </div>
+        </div>
+
+
+        <div class="dashboard-stat">
+            <div class="dashboard-stat-icon">🎓</div>
+
+            <div
+                class="dashboard-stat-number"
+                id="dashboardLearningCount">
+                0
+            </div>
+
+            <div class="dashboard-stat-label">
+                Learning
+            </div>
+        </div>
+
+    </div>
 
 </div>
 
@@ -7189,6 +7354,147 @@ function updateDashboardDailyTip(){
 }
 
 
+  /* =========================================
+   📊 DASHBOARD — ACTIVITY STATISTICS
+========================================= */
+
+function updateDashboardStats(){
+
+    /* -------------------------------------
+       Safe JSON reader
+    ------------------------------------- */
+
+    function getArray(key){
+
+        try{
+
+            const value =
+                JSON.parse(
+                    localStorage.getItem(key)
+                );
+
+            return Array.isArray(value)
+                ? value
+                : [];
+
+        }catch(error){
+
+            return [];
+
+        }
+
+    }
+
+
+    /* -------------------------------------
+       Favorites
+    ------------------------------------- */
+
+    const favorites =
+        getArray("favorites");
+
+
+    const favoritesElement =
+        document.getElementById(
+            "dashboardFavoritesCount"
+        );
+
+
+    if(favoritesElement){
+
+        favoritesElement.textContent =
+            favorites.length;
+
+    }
+
+
+    /* -------------------------------------
+       Recently Used Tools
+    ------------------------------------- */
+
+    const recentTools =
+        getArray("recentTools");
+
+
+    const recentElement =
+        document.getElementById(
+            "dashboardRecentCount"
+        );
+
+
+    if(recentElement){
+
+        recentElement.textContent =
+            recentTools.length;
+
+    }
+
+
+    /* -------------------------------------
+       Saved Prompts
+    ------------------------------------- */
+
+    const savedPrompts =
+        getArray("savedPrompts");
+
+
+    const savedElement =
+        document.getElementById(
+            "dashboardSavedCount"
+        );
+
+
+    if(savedElement){
+
+        savedElement.textContent =
+            savedPrompts.length;
+
+    }
+
+
+    /* -------------------------------------
+       Learning Progress
+    ------------------------------------- */
+
+    const totalLessons = 20;
+
+    let completed = 0;
+
+
+    for(
+        let i = 1;
+        i <= totalLessons;
+        i++
+    ){
+
+        if(
+            localStorage.getItem(
+                "quiz_passed_" + i
+            )
+        ){
+
+            completed++;
+
+        }
+
+    }
+
+
+    const learningElement =
+        document.getElementById(
+            "dashboardLearningCount"
+        );
+
+
+    if(learningElement){
+
+        learningElement.textContent =
+            completed + "/" + totalLessons;
+
+    }
+
+}
+
 /* --------------------------------------
    Learning Streak
 -------------------------------------- */
@@ -7586,6 +7892,8 @@ document.addEventListener(
         /* Return/streak message */
 
         updateReturnStreakMessage();
+
+        updateDashboardStats();
 
 
         /* GA4 */
