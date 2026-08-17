@@ -424,6 +424,101 @@ body.dark .dashboard-stat-label{
 }
 
 
+  /* ======================================
+   DASHBOARD QUICK ACTIONS
+====================================== */
+
+.dashboard-quick-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+    margin-top:12px;
+}
+
+.dashboard-quick-btn{
+    border:none;
+    background:#f4f7fb;
+
+    border:1px solid #e3e9f2;
+
+    border-radius:14px;
+
+    padding:12px 5px;
+
+    min-height:78px;
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:6px;
+
+    cursor:pointer;
+
+    color:#2d74d7;
+
+    font-family:inherit;
+
+    transition:
+        transform .2s ease,
+        background .2s ease;
+}
+
+.dashboard-quick-btn span{
+    font-size:24px;
+    line-height:1;
+}
+
+.dashboard-quick-btn small{
+    font-size:10px;
+    font-weight:600;
+    color:#475467;
+    line-height:1.2;
+}
+
+.dashboard-quick-btn:active{
+    transform:scale(.95);
+}
+
+
+/* DARK MODE */
+
+body.dark .dashboard-quick-btn{
+    background:#171d23;
+    border-color:#303b47;
+    color:#66aaff;
+}
+
+body.dark .dashboard-quick-btn small{
+    color:#d7dee7;
+}
+
+
+/* SMALL PHONES */
+
+@media (max-width:380px){
+
+    .dashboard-quick-grid{
+        gap:6px;
+    }
+
+    .dashboard-quick-btn{
+        min-height:72px;
+        padding:10px 3px;
+    }
+
+    .dashboard-quick-btn span{
+        font-size:21px;
+    }
+
+    .dashboard-quick-btn small{
+        font-size:9px;
+    }
+
+}
+
 /* ======================================
    DAILY TIP
 ====================================== */
@@ -2486,6 +2581,65 @@ body.dark .badge.paid{
                 Learning
             </div>
         </div>
+
+    </div>
+
+</div>
+
+  <!-- ======================================
+     DASHBOARD QUICK ACTIONS
+====================================== -->
+
+<div class="dashboard-card dashboard-quick-actions">
+
+    <h3>
+        ⚡ Quick Actions
+    </h3>
+
+    <div class="dashboard-quick-grid">
+
+        <button
+            type="button"
+            class="dashboard-quick-btn"
+            onclick="goTo('tools')">
+
+            <span>🤖</span>
+            <small>AI Tools</small>
+
+        </button>
+
+
+        <button
+            type="button"
+            class="dashboard-quick-btn"
+            onclick="goTo('prompts')">
+
+            <span>✨</span>
+            <small>Prompt Generator</small>
+
+        </button>
+
+
+        <button
+            type="button"
+            class="dashboard-quick-btn"
+            onclick="openAILearningHub()">
+
+            <span>🎓</span>
+            <small>Learning Hub</small>
+
+        </button>
+
+
+        <button
+            type="button"
+            class="dashboard-quick-btn"
+            onclick="goTo('news')">
+
+            <span>📰</span>
+            <small>AI News</small>
+
+        </button>
 
     </div>
 
