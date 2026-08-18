@@ -197,9 +197,42 @@ function recordLearningStreak(){
     }
 
 
-    /* ----------------------------------
-       Continued streak
-    ---------------------------------- */
+    /* ======================================
+   🔥 LEARNING STREAK
+====================================== */
+
+function recordLearningActivity(){
+
+    const today = new Date();
+
+    const todayKey =
+        today.getFullYear() + "-" +
+        String(today.getMonth() + 1).padStart(2, "0") + "-" +
+        String(today.getDate()).padStart(2, "0");
+
+
+    const lastActivity =
+        localStorage.getItem("learningLastActivity");
+
+
+    let streak =
+        Number(
+            localStorage.getItem("learningStreak") || 0
+        );
+
+
+    if(!lastActivity){
+
+        streak = 1;
+
+    }
+
+    else if(lastActivity === todayKey){
+
+        // Already recorded today.
+        // Do not increase twice.
+
+    }
 
     else {
 
@@ -209,7 +242,6 @@ function recordLearningStreak(){
         const todayDate =
             new Date(todayKey + "T00:00:00");
 
-
         const difference =
             Math.round(
                 (todayDate - lastDate) / 86400000
@@ -218,12 +250,10 @@ function recordLearningStreak(){
 
         if(difference === 1){
 
-            // Continued from yesterday
             streak++;
 
         }else{
 
-            // Missed one or more days
             streak = 1;
 
         }
@@ -325,15 +355,15 @@ const passed = percentage >= passMark;
 
     }
 
-   if (passed) {
+    if (passed) {
 
     localStorage.setItem(
         passKey,
         "true"
     );
 
-    // 🔥 Record today's learning activity
-    recordLearningStreak();
+    // 🔥 Record actual quiz completion
+    recordLearningActivity();
 
 } else {
 
