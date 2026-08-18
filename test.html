@@ -7635,22 +7635,20 @@ function updateDashboardStats(){
 
 }
 
-/* --------------------------------------
-   Learning Streak
--------------------------------------- */
+ /* =========================================
+   🔥 LEARNING STREAK ENGINE
+   AI Tools Hub
+========================================= */
 
-function updateLearningStreak(){
 
-    /*
-       This matches the new Dashboard.
-    */
+/* -----------------------------------------
+   Record meaningful learning activity
+----------------------------------------- */
 
-    const streakElement =
-    document.getElementById(
-        "streakNumber"
-    );
+function recordLearningActivity(){
 
-    if(!streakElement) return;
+    const today =
+        getLocalDateKey();
 
 
     const lastActivity =
@@ -7667,34 +7665,242 @@ function updateLearningStreak(){
         );
 
 
-    /*
-       No learning activity yet.
-    */
+    /* -------------------------------------
+       First learning activity
+    ------------------------------------- */
 
     if(!lastActivity){
 
-        streak = 0;
+        streak = 1;
 
     }
 
 
-    /*
-       IMPORTANT:
-       Opening the Dashboard does NOT
-       increase the streak.
+    /* -------------------------------------
+       Activity already recorded today
+       → Do NOT increase streak
+    ------------------------------------- */
 
-       A meaningful learning action must
-       update learningStreak separately.
-    */
+    else if(lastActivity === today){
 
-    streakElement.textContent =
-        streak +
-        " day" +
-        (
-            streak === 1
-                ? ""
-                : "s"
+        /*
+           Keep the current streak.
+           Multiple lessons on the same day
+           count as one learning day.
+        */
+
+    }
+
+
+    /* -------------------------------------
+       Activity happened yesterday
+       → Continue streak
+    ------------------------------------- */
+
+    else{
+
+        const daysSinceLastActivity =
+            getDateDifference(
+                lastActivity,
+                today
+            );
+
+
+        if(daysSinceLastActivity === 1){
+
+            streak++;
+
+        }
+
+
+        /* ---------------------------------
+           Missed one or more days
+           → Start a new streak
+        --------------------------------- */
+
+        else if(daysSinceLastActivity > 1){
+
+            streak = 1;
+
+        }
+
+
+        /*
+           Safety:
+           If the stored date is somehow
+           in the future, reset safely.
+        */
+
+        else if(daysSinceLastActivity < 0){
+
+            streak = 1;
+
+        }
+
+    }
+
+
+    /* -------------------------------------
+       Save streak data
+    ------------------------------------- */
+
+    localStorage.setItem(
+        "learningStreak",
+        String(streak)
+    );
+
+
+    localStorage.setItem(
+        "learningLastActivity",
+        today
+    );
+
+
+    /* -------------------------------------
+       Update dashboard immediately
+    ------------------------------------- */
+
+    updateLearningStreak();
+
+    updateReturnStreakMessage();
+
+
+    /* -------------------------------------
+       Analytics
+    ------------------------------------- */
+
+    trackDashboardEvent(
+        "learning_activity"
+    );
+
+
+    return streak;
+
+}
+
+
+/* -----------------------------------------
+   Display current learning streak
+----------------------------------------- */
+
+function updateLearningStreak(){
+
+    const streakElement =
+        document.getElementById(
+            "streakNumber"
         );
+
+
+    if(!streakElement) return;
+
+
+    let streak =
+        Number(
+            localStorage.getItem(
+                "learningStreak"
+            ) || 0
+        );
+
+
+    if(streak < 0){
+        streak = 0;
+    }
+
+
+    if(streak === 1){
+
+        streakElement.textContent =
+            "1 day";
+
+    }
+
+    else{
+
+        streakElement.textContent =
+            streak + " days";
+
+    }
+
+}
+
+   /* =========================================
+   🔄 SYNC LEARNING ACTIVITY
+========================================= */
+
+function syncLearningActivity(){
+
+    const totalLessons = 20;
+
+    let completedLessons = 0;
+
+    for(
+        let i = 1;
+        i <= totalLessons;
+        i++
+    ){
+
+        if(
+            localStorage.getItem(
+                "quiz_passed_" + i
+            )
+        ){
+
+            completedLessons++;
+
+        }
+
+    }
+
+    const previousCompleted =
+        Number(
+            localStorage.getItem(
+                "learningCompletedCount"
+            ) || 0
+        );
+
+    if(
+        previousCompleted === 0 &&
+        completedLessons > 0
+    ){
+
+        localStorage.setItem(
+            "learningCompletedCount",
+            String(completedLessons)
+        );
+
+        recordLearningActivity();
+
+        return;
+
+    }
+
+    if(
+        completedLessons >
+        previousCompleted
+    ){
+
+        localStorage.setItem(
+            "learningCompletedCount",
+            String(completedLessons)
+        );
+
+        recordLearningActivity();
+
+        return;
+
+    }
+
+    if(
+        completedLessons !==
+        previousCompleted
+    ){
+
+        localStorage.setItem(
+            "learningCompletedCount",
+            String(completedLessons)
+        );
+
+    }
 
 }
 
@@ -8022,6 +8228,8 @@ document.addEventListener(
         /* Dashboard tip */
 
         updateDashboardDailyTip();
+
+       syncLearningActivity();
 
 
         /* Learning streak */
