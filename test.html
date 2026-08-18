@@ -7858,21 +7858,16 @@ function syncLearningActivity(){
             ) || 0
         );
 
-    if(
-        previousCompleted === 0 &&
-        completedLessons > 0
-    ){
+     if(previousCompleted === 0){
 
-        localStorage.setItem(
-            "learningCompletedCount",
-            String(completedLessons)
-        );
+    localStorage.setItem(
+        "learningCompletedCount",
+        String(completedLessons)
+    );
 
-        recordLearningActivity();
+    return;
 
-        return;
-
-    }
+}
 
     if(
         completedLessons >
