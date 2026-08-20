@@ -1,4 +1,4 @@
-window.quizzes = [
+const quizzes = [
 
 {
     lessonId: 1,
