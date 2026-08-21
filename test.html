@@ -426,6 +426,7 @@ body.dark .dashboard-stat-label{
 
   /* ======================================
    DASHBOARD QUICK ACTIONS
+   Clearly tappable navigation buttons
 ====================================== */
 
 .dashboard-quick-grid{
@@ -435,11 +436,13 @@ body.dark .dashboard-stat-label{
     margin-top:12px;
 }
 
-.dashboard-quick-btn{
-    border:none;
-    background:#f4f7fb;
 
-    border:1px solid #e3e9f2;
+.dashboard-quick-btn{
+    position:relative;
+
+    border:none;
+    background:#2563eb;
+    color:#fff;
 
     border-radius:14px;
 
@@ -456,47 +459,105 @@ body.dark .dashboard-stat-label{
     gap:6px;
 
     cursor:pointer;
-
-    color:#2d74d7;
+    user-select:none;
+    -webkit-tap-highlight-color:transparent;
 
     font-family:inherit;
 
     transition:
-        transform .2s ease,
-        background .2s ease;
+        transform .15s ease,
+        background .15s ease,
+        box-shadow .15s ease;
 }
 
-.dashboard-quick-btn span{
+
+/* ICON */
+
+.dashboard-quick-btn span,
+.quick-btn-icon{
     font-size:24px;
     line-height:1;
 }
 
+
+/* LABEL */
+
 .dashboard-quick-btn small{
     font-size:10px;
     font-weight:600;
-    color:#475467;
+    color:#fff;
     line-height:1.2;
 }
 
-.dashboard-quick-btn:active{
-    transform:scale(.95);
+
+/* NAVIGATION ARROW */
+
+.quick-btn-arrow{
+    display:block;
+
+    margin-top:2px;
+
+    font-size:17px;
+    font-weight:600;
+
+    opacity:.85;
+
+    transition:
+        transform .15s ease,
+        opacity .15s ease;
 }
 
 
-/* DARK MODE */
+/* DESKTOP HOVER */
+
+.dashboard-quick-btn:hover{
+    background:#1d4ed8;
+    transform:translateY(-2px);
+    box-shadow:0 4px 12px rgba(0,0,0,.15);
+}
+
+
+/* MOVE ARROW */
+
+.dashboard-quick-btn:hover .quick-btn-arrow{
+    transform:translateX(4px);
+    opacity:1;
+}
+
+
+/* MOBILE TAP */
+
+.dashboard-quick-btn:active{
+    transform:scale(.96);
+}
+
+
+/* ARROW TAP */
+
+.dashboard-quick-btn:active .quick-btn-arrow{
+    transform:translateX(5px);
+    opacity:1;
+}
+
+
+/* ======================================
+   DARK MODE
+====================================== */
 
 body.dark .dashboard-quick-btn{
-    background:#171d23;
-    border-color:#303b47;
-    color:#66aaff;
+    background:#2563eb;
+    border-color:transparent;
+    color:#fff;
 }
 
 body.dark .dashboard-quick-btn small{
-    color:#d7dee7;
+    color:#fff;
 }
 
 
-/* SMALL PHONES */
+/* ======================================
+   SMALL PHONES
+====================================== */
 
 @media (max-width:380px){
 
@@ -509,7 +570,8 @@ body.dark .dashboard-quick-btn small{
         padding:10px 3px;
     }
 
-    .dashboard-quick-btn span{
+    .dashboard-quick-btn span,
+    .quick-btn-icon{
         font-size:21px;
     }
 
@@ -517,80 +579,6 @@ body.dark .dashboard-quick-btn small{
         font-size:9px;
     }
 
-}
-
-  /* =========================================
-   DASHBOARD QUICK ACTIONS
-   Clearly tappable navigation buttons
-========================================= */
-
-.dashboard-quick-btn{
-    position:relative;
-    cursor:pointer;
-    user-select:none;
-    -webkit-tap-highlight-color:transparent;
-
-    transition:
-        transform .15s ease,
-        box-shadow .15s ease,
-        background .15s ease;
-}
-
-
-/* Make the entire button feel clickable */
-
-.dashboard-quick-btn:hover{
-    transform:translateY(-2px);
-}
-
-
-/* Android / mobile tap feedback */
-
-.dashboard-quick-btn:active{
-    transform:scale(.96);
-}
-
-
-/* Icon */
-
-.quick-btn-icon{
-    display:block;
-    font-size:25px;
-    line-height:1;
-    margin-bottom:6px;
-}
-
-
-/* Navigation arrow */
-
-.quick-btn-arrow{
-    display:block;
-    margin-top:5px;
-
-    font-size:17px;
-    font-weight:600;
-
-    opacity:.65;
-
-    transition:
-        transform .15s ease,
-        opacity .15s ease;
-}
-
-
-/* Arrow moves when user touches/hover */
-
-.dashboard-quick-btn:hover .quick-btn-arrow{
-    transform:translateX(4px);
-    opacity:1;
-}
-
-
-/* Mobile tap feedback */
-
-.dashboard-quick-btn:active .quick-btn-arrow{
-    transform:translateX(5px);
-    opacity:1;
 }
 
 /* ======================================
