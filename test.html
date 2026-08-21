@@ -3883,11 +3883,15 @@ App Preferences & Settings
 <script>  
   
  /* =========================================
-   🌙 AI TOOLS HUB — DARK MODE SYSTEM
+   🌙 AI TOOLS HUB — TEST DARK MODE
    v1.18.5
+   TEST-ONLY localStorage
 ========================================= */
 
 (function(){
+
+    const TEST_THEME_KEY = "TEST_theme";
+
 
     function updateThemeButtons(){
 
@@ -3896,14 +3900,15 @@ App Preferences & Settings
 
         const text =
             isDark
-                ? "🌙 Dark Mode"
-                : "☀️ Light Mode";
+                ? "☀️ Light Mode"
+                : "🌙 Dark Mode";
 
         const themeBtn =
             document.getElementById("themeBtn");
 
         const themeBtn2 =
             document.getElementById("themeBtn2");
+
 
         if(themeBtn){
             themeBtn.innerText = text;
@@ -3912,6 +3917,7 @@ App Preferences & Settings
         if(themeBtn2){
             themeBtn2.innerText = text;
         }
+
     }
 
 
@@ -3920,67 +3926,83 @@ App Preferences & Settings
         const isDark =
             theme === "dark";
 
+
         document.body.classList.toggle(
             "dark",
             isDark
         );
 
+
         localStorage.setItem(
-            "theme",
+            TEST_THEME_KEY,
             isDark ? "dark" : "light"
         );
 
+
         updateThemeButtons();
+
     }
 
 
-    window.toggleDark = function(){
+    function toggleDark(){
 
         const isDark =
             document.body.classList.contains("dark");
 
+
         applyTheme(
-            isDark ? "light" : "dark"
+            isDark
+                ? "light"
+                : "dark"
         );
 
-    };
+    }
 
 
     function loadSavedTheme(){
 
         const savedTheme =
-            localStorage.getItem("theme");
+            localStorage.getItem(
+                TEST_THEME_KEY
+            );
 
-        /*
-         * Default to light mode when no
-         * saved preference exists.
-         */
-        const theme =
+
+        applyTheme(
             savedTheme === "dark"
                 ? "dark"
-                : "light";
-
-        applyTheme(theme);
+                : "light"
+        );
 
     }
 
 
-    /* Make functions available globally */
+    /* Make functions globally available */
 
-    window.updateThemeButtons =
-        updateThemeButtons;
+    window.toggleDark =
+        toggleDark;
 
     window.applyTheme =
         applyTheme;
 
+    window.updateThemeButtons =
+        updateThemeButtons;
 
-    /*
-     * Load the saved theme as early as
-     * safely possible.
-     */
-     /* Load theme immediately */
 
-loadSavedTheme();
+    /* Initialize */
+
+    if(document.readyState === "loading"){
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            loadSavedTheme
+        );
+
+    }else{
+
+        loadSavedTheme();
+
+    }
+
 
 })();
   
