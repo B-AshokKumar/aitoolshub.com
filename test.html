@@ -3882,54 +3882,52 @@ App Preferences & Settings
 </div> 
 <script>  
   
-/* =========================================
+ /* =========================================
    🌙 AI TOOLS HUB — DARK MODE SYSTEM
-   v1.18.4
+   v1.18.5
 ========================================= */
 
 (function(){
 
     function updateThemeButtons(){
 
-    const isDark =
-        document.body.classList.contains("dark");
+        const isDark =
+            document.body.classList.contains("dark");
 
-    const text =
-        isDark
-            ? "🌙 Dark Mode"
-            : "☀️ Light Mode";
+        const text =
+            isDark
+                ? "🌙 Dark Mode"
+                : "☀️ Light Mode";
 
-    const themeBtn =
-        document.getElementById("themeBtn");
+        const themeBtn =
+            document.getElementById("themeBtn");
 
-    const themeBtn2 =
-        document.getElementById("themeBtn2");
+        const themeBtn2 =
+            document.getElementById("themeBtn2");
 
-    if(themeBtn){
-        themeBtn.innerText = text;
+        if(themeBtn){
+            themeBtn.innerText = text;
+        }
+
+        if(themeBtn2){
+            themeBtn2.innerText = text;
+        }
     }
-
-    if(themeBtn2){
-        themeBtn2.innerText = text;
-    }
-}
 
 
     function applyTheme(theme){
 
-        if(theme === "dark"){
+        const isDark =
+            theme === "dark";
 
-            document.body.classList.add("dark");
-
-        }else{
-
-            document.body.classList.remove("dark");
-
-        }
+        document.body.classList.toggle(
+            "dark",
+            isDark
+        );
 
         localStorage.setItem(
             "theme",
-            theme
+            isDark ? "dark" : "light"
         );
 
         updateThemeButtons();
@@ -3953,17 +3951,16 @@ App Preferences & Settings
         const savedTheme =
             localStorage.getItem("theme");
 
-        if(savedTheme === "dark"){
+        /*
+         * Default to light mode when no
+         * saved preference exists.
+         */
+        const theme =
+            savedTheme === "dark"
+                ? "dark"
+                : "light";
 
-            document.body.classList.add("dark");
-
-        }else{
-
-            document.body.classList.remove("dark");
-
-        }
-
-        updateThemeButtons();
+        applyTheme(theme);
 
     }
 
@@ -3977,13 +3974,16 @@ App Preferences & Settings
         applyTheme;
 
 
-    /* Load theme */
-
+    /*
+     * Load the saved theme as early as
+     * safely possible.
+     */
     if(document.readyState === "loading"){
 
         document.addEventListener(
             "DOMContentLoaded",
-            loadSavedTheme
+            loadSavedTheme,
+            { once:true }
         );
 
     }else{
