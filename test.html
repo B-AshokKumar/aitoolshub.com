@@ -519,6 +519,80 @@ body.dark .dashboard-quick-btn small{
 
 }
 
+  /* =========================================
+   DASHBOARD QUICK ACTIONS
+   Clearly tappable navigation buttons
+========================================= */
+
+.dashboard-quick-btn{
+    position:relative;
+    cursor:pointer;
+    user-select:none;
+    -webkit-tap-highlight-color:transparent;
+
+    transition:
+        transform .15s ease,
+        box-shadow .15s ease,
+        background .15s ease;
+}
+
+
+/* Make the entire button feel clickable */
+
+.dashboard-quick-btn:hover{
+    transform:translateY(-2px);
+}
+
+
+/* Android / mobile tap feedback */
+
+.dashboard-quick-btn:active{
+    transform:scale(.96);
+}
+
+
+/* Icon */
+
+.quick-btn-icon{
+    display:block;
+    font-size:25px;
+    line-height:1;
+    margin-bottom:6px;
+}
+
+
+/* Navigation arrow */
+
+.quick-btn-arrow{
+    display:block;
+    margin-top:5px;
+
+    font-size:17px;
+    font-weight:600;
+
+    opacity:.65;
+
+    transition:
+        transform .15s ease,
+        opacity .15s ease;
+}
+
+
+/* Arrow moves when user touches/hover */
+
+.dashboard-quick-btn:hover .quick-btn-arrow{
+    transform:translateX(4px);
+    opacity:1;
+}
+
+
+/* Mobile tap feedback */
+
+.dashboard-quick-btn:active .quick-btn-arrow{
+    transform:translateX(5px);
+    opacity:1;
+}
+
 /* ======================================
    DAILY TIP
 ====================================== */
@@ -2604,8 +2678,9 @@ body.dark .badge.paid{
         class="dashboard-quick-btn"
         onclick="goTo('prompts')">
 
-        <span>✨</span>
+        <span class="quick-btn-icon">✨</span>
         <small>Prompt Generator</small>
+        <b class="quick-btn-arrow">→</b>
 
     </button>
 
@@ -2616,8 +2691,9 @@ body.dark .badge.paid{
         class="dashboard-quick-btn"
         onclick="openAILearningHub()">
 
-        <span>🎓</span>
+        <span class="quick-btn-icon">🎓</span>
         <small>Learning Hub</small>
+        <b class="quick-btn-arrow">→</b>
 
     </button>
 
@@ -2628,8 +2704,9 @@ body.dark .badge.paid{
         class="dashboard-quick-btn"
         onclick="goTo('categories')">
 
-        <span>🗂️</span>
+        <span class="quick-btn-icon">🗂️</span>
         <small>Tools Categories</small>
+        <b class="quick-btn-arrow">→</b>
 
     </button>
 
@@ -2640,8 +2717,9 @@ body.dark .badge.paid{
         class="dashboard-quick-btn"
         onclick="goTo('favorites')">
 
-        <span>⭐</span>
+        <span class="quick-btn-icon">⭐</span>
         <small>Favorites</small>
+        <b class="quick-btn-arrow">→</b>
 
     </button>
 
