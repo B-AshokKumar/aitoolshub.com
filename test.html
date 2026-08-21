@@ -4705,10 +4705,27 @@ Follow these principles:
 - For very short or simple requests, avoid adding extra topics, examples, sections, or requirements unless they are necessary to answer the request well.
 - Avoid repetition, generic instructions, unnecessary sections, and over-engineering.
 
-Output ONLY the final ready-to-use AI prompt. Do not include analysis, explanation, classification, or commentary.`;
+  Output ONLY the final ready-to-use AI prompt. Do not include analysis, explanation, classification, or commentary.`;
+    }
+
+
+    /* -----------------------------------------
+       Display generated prompt
+    ----------------------------------------- */
+
+    resultElement.innerText =
+        promptText;
+
+
+    /* -----------------------------------------
+       Save prompt history
+    ----------------------------------------- */
+
+    savePromptHistory(promptText);
 
 }
-  
+
+
 function savePromptHistory(prompt){
 
     let history =
