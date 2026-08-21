@@ -4662,108 +4662,37 @@ Do not assume the learner has prior knowledge of the subject.`;
    v1.18.4 — Adaptive Subject-Aware
 ===================================== */
 
-else{
+ else{
 
     promptText =
-`Act as an expert AI prompt designer and subject-matter specialist.
+`Act as an expert AI prompt designer.
 
 User request:
 
 "${topic}"
 
-Your task is to transform this request into ONE high-quality, ready-to-use AI prompt.
+Transform this request into ONE high-quality, ready-to-use prompt for ChatGPT, Gemini, or another AI assistant.
 
-First understand the user's actual intent, subject, task, audience, and desired outcome. Then choose the most appropriate approach automatically.
+Understand the user's actual intent, subject, task, audience, and desired outcome. Adapt the prompt to the request rather than assuming a specific field or task type.
 
-IMPORTANT RULES:
+Choose the appropriate expert perspective, instructions, context, and output format only when they genuinely improve the result.
 
-1. Do NOT assume the topic belongs to business, marketing, coding, education, social media, YouTube, writing, or any other specific field unless the request indicates it.
+Follow these principles:
 
-2. Adapt the prompt to the actual subject.
+- Perform the requested task directly; do not ask the AI to create another prompt or prompt framework.
+- Match the prompt's complexity to the user's request. Keep simple requests simple.
+- Preserve the user's intent while improving clarity, specificity, and usefulness.
+- Do not invent facts, personal information, requirements, or context.
+- If essential information is missing, instruct the AI to ask a concise clarifying question.
+- For accuracy-sensitive topics, distinguish known information from assumptions and avoid unsupported claims.
+- For recommendations or decisions, consider relevant criteria, trade-offs, limitations, and alternatives when useful.
+- For creative requests, preserve the user's creative intent without unnecessary restrictions.
+- For educational requests, adapt explanations to the appropriate knowledge level.
+- For technical requests, include relevant requirements, testing, security, error handling, and best practices when appropriate.
+- Use only the structure necessary to produce an excellent result.
+- Avoid repetition, generic instructions, unnecessary sections, and over-engineering.
 
-3. Identify the most suitable task type automatically, such as:
-   - explanation
-   - learning
-   - research
-   - analysis
-   - comparison
-   - planning
-   - problem solving
-   - recommendation
-   - creative work
-   - writing
-   - technical work
-   - conversation
-   - brainstorming
-   - decision support
-   - or another approach appropriate to the request.
-
-4. Choose an appropriate expert role based on the subject and objective.
-
-5. Give the AI a clear objective and relevant context.
-
-6. Include subject-specific instructions that improve the quality of the result.
-
-7. Choose an output format that naturally fits the request.
-
-8. Add quality requirements that are genuinely useful for the task.
-
-9. Do NOT force unnecessary sections into the prompt.
-
-10. If the request is simple, create a simple prompt.
-
-11. If the request is complex, create a more detailed prompt.
-
-12. Do not invent personal information, qualifications, facts, statistics, requirements, or context that the user did not provide.
-
-13. If important information is genuinely required to complete the task, instruct the AI to ask a concise clarifying question rather than inventing the missing information.
-
-14. For factual, technical, scientific, financial, legal, medical, or other accuracy-sensitive subjects, instruct the AI to distinguish known information from assumptions and avoid unsupported claims.
-
-15. For recommendations or decisions, instruct the AI to consider the relevant criteria, trade-offs, limitations, and alternatives when appropriate.
-
-16. For creative requests, preserve the user's creative intent and do not unnecessarily impose a rigid structure.
-
-17. For educational requests, adapt the explanation to the likely knowledge level and explain necessary terminology clearly.
-
-18. For technical requests, use appropriate technical requirements, error handling, security considerations, testing, and best practices when relevant.
-
-19. For planning requests, produce practical, actionable, logically ordered guidance.
-
-20. For ambiguous requests, make a reasonable general interpretation when possible. Ask for clarification only when the missing information would materially change the result.
-
-21. The generated prompt must instruct the target AI to perform the user's requested task directly. Do not ask the target AI to create another prompt, prompt framework, role/objective specification, or meta-instructions unless the user's request explicitly asks for prompt creation.
-
-22. Avoid unnecessary "Role", "Objective", "Context", "Instructions", "Recommended Output Format", or "Quality Requirements" sections when a simpler natural prompt will produce an equally good or better result.
-
-23. Optimize the generated prompt for the user's final desired outcome, not for describing how the AI should construct its response.
-
-24. Do not over-engineer simple requests. Match the complexity of the generated prompt to the complexity of the user's request.
-
-25. When the user's request is an action such as writing, planning, explaining, comparing, analyzing, brainstorming, recommending, or creating, instruct the target AI to perform that action directly.
-
-26. Use the minimum structure necessary to produce an excellent result. Every instruction included in the generated prompt should have a useful purpose.
-
-27. Do not add unnecessary sections, lengthy explanations, generic instructions, or repetitive requirements merely to make the prompt appear more detailed.
-
-28. If the user's request already clearly describes the desired task, preserve that intent and improve it rather than unnecessarily converting it into a complex prompt-engineering framework.
-
-29. Prefer concise, high-value prompts. Do not make the generated prompt longer than necessary to accomplish the user's goal. A detailed prompt is appropriate only when the task genuinely benefits from detailed instructions.
-
-The final prompt should be:
-
-- Specific
-- Clear
-- Practical
-- Professional
-- Natural
-- Ready to copy and paste into ChatGPT, Gemini, or another AI assistant.
-
-Use only the structure that is appropriate for this particular request.
-
-Do not output your analysis, classification, reasoning, or explanation of how you created the prompt.
-
-Output ONLY the final ready-to-use AI prompt.`;
+Output ONLY the final ready-to-use AI prompt. Do not include analysis, explanation, classification, or commentary.`;
 
 }
 
