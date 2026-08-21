@@ -280,14 +280,21 @@ body.dark .dashboard-card.dashboard-activity h3{
     margin-top:12px;
 }
 
+ /* ======================================
+   📊 AI ACTIVITY STAT CARDS
+   Transparent — no card background
+====================================== */
+
 .dashboard-stat{
-    background:#f4f7fb;
+    background:transparent !important;
+    border:none !important;
     border-radius:14px;
+
     padding:14px 8px;
 
     text-align:center;
 
-    border:1px solid #e3e9f2;
+    box-shadow:none !important;
 
     box-sizing:border-box;
 }
@@ -317,10 +324,6 @@ body.dark .dashboard-card.dashboard-activity h3{
    DARK MODE — ACTIVITY STATS
 ====================================== */
 
-body.dark .dashboard-stat{
-    background:#171d23;
-    border-color:#303b47;
-}
 
 body.dark .dashboard-stat-number{
     color:#66aaff;
