@@ -3978,19 +3978,9 @@ App Preferences & Settings
      * Load the saved theme as early as
      * safely possible.
      */
-    if(document.readyState === "loading"){
+     /* Load theme immediately */
 
-        document.addEventListener(
-            "DOMContentLoaded",
-            loadSavedTheme,
-            { once:true }
-        );
-
-    }else{
-
-        loadSavedTheme();
-
-    }
+loadSavedTheme();
 
 })();
   
