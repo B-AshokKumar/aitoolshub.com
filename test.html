@@ -4680,7 +4680,7 @@ Choose the appropriate expert perspective, instructions, context, and output for
 Follow these principles:
 
 - Perform the requested task directly; do not ask the AI to create another prompt or prompt framework.
-- Match the prompt's complexity to the user's request. Keep simple requests simple.
+- Match the prompt's complexity to the user's request. Keep simple requests concise and add only the most useful instructions.
 - Preserve the user's intent while improving clarity, specificity, and usefulness.
 - Do not invent facts, personal information, requirements, or context.
 - If essential information is missing, instruct the AI to ask a concise clarifying question.
@@ -4690,16 +4690,10 @@ Follow these principles:
 - For educational requests, adapt explanations to the appropriate knowledge level.
 - For technical requests, include relevant requirements, testing, security, error handling, and best practices when appropriate.
 - Use only the structure necessary to produce an excellent result.
+- For very short or simple requests, avoid adding extra topics, examples, sections, or requirements unless they are necessary to answer the request well.
 - Avoid repetition, generic instructions, unnecessary sections, and over-engineering.
 
 Output ONLY the final ready-to-use AI prompt. Do not include analysis, explanation, classification, or commentary.`;
-
-}
-
-document.getElementById("result").innerText =
-        promptText;
-
-    savePromptHistory(promptText);
 
 }
   
