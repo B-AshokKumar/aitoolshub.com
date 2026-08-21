@@ -2598,50 +2598,54 @@ body.dark .badge.paid{
 
     <div class="dashboard-quick-grid">
 
-        <button
-            type="button"
-            class="dashboard-quick-btn"
-            onclick="goTo('tools')">
+    <!-- PROMPT GENERATOR -->
+    <button
+        type="button"
+        class="dashboard-quick-btn"
+        onclick="goTo('prompts')">
 
-            <span>🤖</span>
-            <small>AI Tools</small>
+        <span>✨</span>
+        <small>Prompt Generator</small>
 
-        </button>
-
-
-        <button
-            type="button"
-            class="dashboard-quick-btn"
-            onclick="goTo('prompts')">
-
-            <span>✨</span>
-            <small>Prompt Generator</small>
-
-        </button>
+    </button>
 
 
-        <button
-            type="button"
-            class="dashboard-quick-btn"
-            onclick="openAILearningHub()">
+    <!-- LEARNING HUB -->
+    <button
+        type="button"
+        class="dashboard-quick-btn"
+        onclick="openAILearningHub()">
 
-            <span>🎓</span>
-            <small>Learning Hub</small>
+        <span>🎓</span>
+        <small>Learning Hub</small>
 
-        </button>
+    </button>
 
 
-        <button
-            type="button"
-            class="dashboard-quick-btn"
-            onclick="goTo('news')">
+    <!-- TOOLS CATEGORIES -->
+    <button
+        type="button"
+        class="dashboard-quick-btn"
+        onclick="goTo('categories')">
 
-            <span>📰</span>
-            <small>AI News</small>
+        <span>🗂️</span>
+        <small>Tools Categories</small>
 
-        </button>
+    </button>
 
-    </div>
+
+    <!-- FAVORITES -->
+    <button
+        type="button"
+        class="dashboard-quick-btn"
+        onclick="goTo('favorites')">
+
+        <span>⭐</span>
+        <small>Favorites</small>
+
+    </button>
+
+</div>
 
 </div>
 
@@ -3146,7 +3150,8 @@ oninput="searchToolsDebounced()">
 </div>
   
 <div id="searchResults"></div>  
-<div class="category-container">  
+  
+ <div class="category-container" id="categories">
   
 <h2 class="category-title">  
  AI Tools Categories  
