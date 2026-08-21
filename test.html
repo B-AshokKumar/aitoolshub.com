@@ -145,42 +145,40 @@ margin-bottom:15px;
 
 
  /* ======================================
-   DASHBOARD SECTION TITLE
-   Static heading — not clickable
+   📊 DASHBOARD SECTION TITLE
+   Static heading — NOT clickable
 ====================================== */
 
 .dashboard-section-title{
-    background:transparent;
-    color:#ffffff;
+    background:transparent !important;
+    color:#1f2937 !important;
 
-    border:none;
-    border-radius:0;
+    border:none !important;
+    border-radius:0 !important;
+    box-shadow:none !important;
 
-    padding:8px 12px 14px;
+    padding:8px 12px 14px !important;
 
     font-size:28px;
     font-weight:700;
 
     text-align:center;
 
-    box-shadow:none;
-
     cursor:default;
     user-select:none;
-}
 
-
-/* LIGHT MODE */
-
-body:not(.dark) .dashboard-section-title{
-    color:#1f2937;
+    margin:0;
 }
 
 
 /* DARK MODE */
 
 body.dark .dashboard-section-title{
-    color:#ffffff;
+    background:transparent !important;
+    color:#ffffff !important;
+
+    border:none !important;
+    box-shadow:none !important;
 }
 
 
