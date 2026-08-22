@@ -465,7 +465,7 @@ body.dark .dashboard-stat-label{
 
  /* ======================================
    ⚡ DASHBOARD QUICK ACTIONS
-   Centered 2 × 2 Button Grid
+   Centered 2 × 2 Horizontal Buttons
 ====================================== */
 
 .dashboard-quick-actions{
@@ -478,7 +478,7 @@ body.dark .dashboard-stat-label{
 .dashboard-quick-grid{
     display:grid;
 
-    grid-template-columns:repeat(2, 1fr);
+    grid-template-columns:repeat(2, minmax(0, 1fr));
 
     gap:10px;
 
@@ -492,14 +492,12 @@ body.dark .dashboard-stat-label{
 
 
 /* ======================================
-   HORIZONTAL QUICK ACTION BUTTON
+   QUICK ACTION BUTTON
 ====================================== */
 
 .dashboard-quick-btn{
     width:100%;
     min-height:64px;
-
-    position:relative;
 
     border:none;
     border-radius:14px;
@@ -507,7 +505,7 @@ body.dark .dashboard-stat-label{
     background:#2563eb;
     color:#fff;
 
-    padding:12px 14px;
+    padding:11px 12px;
 
     display:flex;
     align-items:center;
@@ -531,24 +529,28 @@ body.dark .dashboard-stat-label{
 }
 
 
-/* ICON */
+/* ======================================
+   ICON
+====================================== */
 
 .dashboard-quick-btn span,
 .quick-btn-icon{
-    flex-shrink:0;
+    flex:0 0 auto;
 
     font-size:24px;
     line-height:1;
 }
 
 
-/* LABEL */
+/* ======================================
+   LABEL
+====================================== */
 
 .dashboard-quick-btn small{
     flex:0 1 auto;
 
     font-size:12px;
-    font-weight:600;
+    font-weight:700;
 
     color:#fff;
 
@@ -558,10 +560,14 @@ body.dark .dashboard-stat-label{
 }
 
 
-/* ARROW */
+/* ======================================
+   ARROW
+====================================== */
 
 .quick-btn-arrow{
-    flex-shrink:0;
+    flex:0 0 auto;
+
+    margin-left:auto;
 
     font-size:17px;
     font-weight:600;
@@ -570,7 +576,9 @@ body.dark .dashboard-stat-label{
 }
 
 
-/* HOVER */
+/* ======================================
+   HOVER
+====================================== */
 
 .dashboard-quick-btn:hover{
     background:#1d4ed8;
@@ -582,7 +590,9 @@ body.dark .dashboard-stat-label{
 }
 
 
-/* TAP */
+/* ======================================
+   MOBILE TAP
+====================================== */
 
 .dashboard-quick-btn:active{
     transform:scale(.97);
@@ -610,17 +620,17 @@ body.dark .dashboard-quick-btn small{
 @media (max-width:380px){
 
     .dashboard-quick-grid{
-        grid-template-columns:repeat(2, 1fr);
+        grid-template-columns:repeat(2, minmax(0, 1fr));
 
         gap:8px;
 
-        max-width:100%;
+        width:100%;
     }
 
     .dashboard-quick-btn{
         min-height:60px;
 
-        padding:10px 9px;
+        padding:9px 10px;
 
         gap:7px;
     }
