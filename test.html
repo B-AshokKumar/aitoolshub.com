@@ -463,16 +463,31 @@ body.dark .dashboard-stat-label{
     color:#2d74d7;
 }
 
-  /* ======================================
+ /* ======================================
    ⚡ DASHBOARD QUICK ACTIONS
-   2 Rows × 2 Columns
+   Centered 2 × 2 Button Grid
 ====================================== */
+
+.dashboard-quick-actions{
+    text-align:center;
+}
+
+
+/* QUICK ACTION GRID */
 
 .dashboard-quick-grid{
     display:grid;
+
     grid-template-columns:repeat(2, 1fr);
+
     gap:10px;
-    margin-top:12px;
+
+    width:100%;
+    max-width:520px;
+
+    margin:14px auto 0;
+
+    box-sizing:border-box;
 }
 
 
@@ -481,22 +496,22 @@ body.dark .dashboard-stat-label{
 ====================================== */
 
 .dashboard-quick-btn{
+    width:100%;
+    min-height:64px;
+
     position:relative;
 
     border:none;
+    border-radius:14px;
+
     background:#2563eb;
     color:#fff;
 
-    border-radius:14px;
-
-    padding:14px 12px;
-
-    min-height:64px;
+    padding:12px 14px;
 
     display:flex;
-    flex-direction:row;
     align-items:center;
-    justify-content:flex-start;
+    justify-content:center;
 
     gap:9px;
 
@@ -506,6 +521,8 @@ body.dark .dashboard-stat-label{
     -webkit-tap-highlight-color:transparent;
 
     font-family:inherit;
+
+    box-sizing:border-box;
 
     transition:
         transform .15s ease,
@@ -528,14 +545,14 @@ body.dark .dashboard-stat-label{
 /* LABEL */
 
 .dashboard-quick-btn small{
-    flex:1;
+    flex:0 1 auto;
 
     font-size:12px;
     font-weight:600;
 
     color:#fff;
 
-    line-height:1.25;
+    line-height:1.2;
 
     text-align:left;
 }
@@ -549,7 +566,7 @@ body.dark .dashboard-stat-label{
     font-size:17px;
     font-weight:600;
 
-    opacity:.85;
+    opacity:.9;
 }
 
 
@@ -572,7 +589,9 @@ body.dark .dashboard-stat-label{
 }
 
 
-/* DARK MODE */
+/* ======================================
+   DARK MODE
+====================================== */
 
 body.dark .dashboard-quick-btn{
     background:#2563eb;
@@ -592,12 +611,17 @@ body.dark .dashboard-quick-btn small{
 
     .dashboard-quick-grid{
         grid-template-columns:repeat(2, 1fr);
+
         gap:8px;
+
+        max-width:100%;
     }
 
     .dashboard-quick-btn{
         min-height:60px;
-        padding:11px 9px;
+
+        padding:10px 9px;
+
         gap:7px;
     }
 
