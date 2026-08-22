@@ -7102,8 +7102,8 @@ function trackDashboardEvent(eventName){
 }
 
 
-/* --------------------------------------
-   Greeting
+ /* --------------------------------------
+   Dashboard Greeting
 -------------------------------------- */
 
 function updateDashboardGreeting(){
@@ -7113,16 +7113,45 @@ function updateDashboardGreeting(){
             "dashboardGreeting"
         );
 
-    if(!greeting) return;
+    const message =
+        document.getElementById(
+            "dashboardReturnMessage"
+        );
 
-    /*
-       Universal greeting.
-       We don't use morning/afternoon/evening
-       because AI Tools Hub is used worldwide.
-    */
+    if(!greeting || !message) return;
+
+
+    const lastVisit =
+        localStorage.getItem(
+            "aiToolsHubLastVisit"
+        );
+
+
+    /* -------------------------------------
+       FIRST-TIME USER
+    ------------------------------------- */
+
+    if(!lastVisit){
+
+        greeting.textContent =
+            "👋 Welcome to AI Tools Hub!";
+
+        message.textContent =
+            "Discover AI tools, learn new skills, and explore powerful prompts.";
+
+        return;
+    }
+
+
+    /* -------------------------------------
+       RETURNING USER
+    ------------------------------------- */
 
     greeting.textContent =
         "🙏 Welcome back!";
+
+    message.textContent =
+        "Continue exploring AI Tools Hub.";
 
 }
 
