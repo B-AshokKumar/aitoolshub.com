@@ -463,19 +463,22 @@ body.dark .dashboard-stat-label{
     color:#2d74d7;
 }
 
-
   /* ======================================
-   DASHBOARD QUICK ACTIONS
-   Clearly tappable navigation buttons
+   ⚡ DASHBOARD QUICK ACTIONS
+   2 Rows × 2 Columns
 ====================================== */
 
 .dashboard-quick-grid{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:8px;
+    grid-template-columns:repeat(2, 1fr);
+    gap:10px;
     margin-top:12px;
 }
 
+
+/* ======================================
+   HORIZONTAL QUICK ACTION BUTTON
+====================================== */
 
 .dashboard-quick-btn{
     position:relative;
@@ -486,20 +489,20 @@ body.dark .dashboard-stat-label{
 
     border-radius:14px;
 
-    padding:12px 5px;
+    padding:14px 12px;
 
-    min-height:78px;
+    min-height:64px;
 
     display:flex;
-    flex-direction:column;
-
+    flex-direction:row;
     align-items:center;
-    justify-content:center;
+    justify-content:flex-start;
 
-    gap:6px;
+    gap:9px;
 
     cursor:pointer;
     user-select:none;
+
     -webkit-tap-highlight-color:transparent;
 
     font-family:inherit;
@@ -515,6 +518,8 @@ body.dark .dashboard-stat-label{
 
 .dashboard-quick-btn span,
 .quick-btn-icon{
+    flex-shrink:0;
+
     font-size:24px;
     line-height:1;
 }
@@ -523,70 +528,54 @@ body.dark .dashboard-stat-label{
 /* LABEL */
 
 .dashboard-quick-btn small{
-    font-size:10px;
+    flex:1;
+
+    font-size:12px;
     font-weight:600;
+
     color:#fff;
-    line-height:1.2;
+
+    line-height:1.25;
+
+    text-align:left;
 }
 
 
-/* NAVIGATION ARROW */
+/* ARROW */
 
 .quick-btn-arrow{
-    display:block;
-
-    margin-top:2px;
+    flex-shrink:0;
 
     font-size:17px;
     font-weight:600;
 
     opacity:.85;
-
-    transition:
-        transform .15s ease,
-        opacity .15s ease;
 }
 
 
-/* DESKTOP HOVER */
+/* HOVER */
 
 .dashboard-quick-btn:hover{
     background:#1d4ed8;
+
     transform:translateY(-2px);
-    box-shadow:0 4px 12px rgba(0,0,0,.15);
+
+    box-shadow:
+        0 4px 12px rgba(0,0,0,.15);
 }
 
 
-/* MOVE ARROW */
-
-.dashboard-quick-btn:hover .quick-btn-arrow{
-    transform:translateX(4px);
-    opacity:1;
-}
-
-
-/* MOBILE TAP */
+/* TAP */
 
 .dashboard-quick-btn:active{
-    transform:scale(.96);
+    transform:scale(.97);
 }
 
 
-/* ARROW TAP */
-
-.dashboard-quick-btn:active .quick-btn-arrow{
-    transform:translateX(5px);
-    opacity:1;
-}
-
-
-/* ======================================
-   DARK MODE
-====================================== */
+/* DARK MODE */
 
 body.dark .dashboard-quick-btn{
     background:#2563eb;
-    border-color:transparent;
     color:#fff;
 }
 
@@ -602,12 +591,14 @@ body.dark .dashboard-quick-btn small{
 @media (max-width:380px){
 
     .dashboard-quick-grid{
-        gap:6px;
+        grid-template-columns:repeat(2, 1fr);
+        gap:8px;
     }
 
     .dashboard-quick-btn{
-        min-height:72px;
-        padding:10px 3px;
+        min-height:60px;
+        padding:11px 9px;
+        gap:7px;
     }
 
     .dashboard-quick-btn span,
@@ -616,7 +607,11 @@ body.dark .dashboard-quick-btn small{
     }
 
     .dashboard-quick-btn small{
-        font-size:9px;
+        font-size:10px;
+    }
+
+    .quick-btn-arrow{
+        font-size:15px;
     }
 
 }
