@@ -30,7 +30,7 @@ const params =
     new URLSearchParams(window.location.search);
 
 const lessonId =
-    Number(params.get("id")) || 1;
+    Number(params.get("id"));
 
 
 /* ======================================
