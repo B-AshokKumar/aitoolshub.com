@@ -1,43 +1,76 @@
 /* ======================================
    AI Learning Hub
-   LIVE QUIZ ENGINE
-   --------------------------------------
-   Production version converted from
-   TEST quiz engine.
-
-   Uses LIVE localStorage keys.
+   quiz.js
+   v1.18 — Reliable Quiz + Learning Streak
 ====================================== */
-
-"use strict";
 
 
 /* ======================================
-   LIVE LOCALSTORAGE KEYS
-====================================== */
-
-const LEARNING_STREAK_KEY =
-    "learningStreak";
-
-const LEARNING_LAST_ACTIVITY_KEY =
-    "learningLastActivity";
-
-
-/* ======================================
-   GET QUIZ / LESSON ID
+   READ LESSON ID
 ====================================== */
 
 const params =
     new URLSearchParams(window.location.search);
 
-const rawLessonId =
-    params.get("id");
-
 const lessonId =
-    Number(rawLessonId);
+    Number(params.get("id"));
 
 
 /* ======================================
-   PAGE ELEMENTS
+   SAFELY LOAD QUIZ DATA
+====================================== */
+
+/*
+   Supports both:
+
+   const quizzes = [...]
+
+   and:
+
+   window.quizzes = [...]
+
+   This makes the quiz page more
+   resistant to script-loading problems.
+*/
+
+let quizList = [];
+
+try {
+
+    if (typeof quizzes !== "undefined") {
+
+        quizList = quizzes;
+
+    } else if (Array.isArray(window.quizzes)) {
+
+        quizList = window.quizzes;
+
+    }
+
+} catch (error) {
+
+    console.error(
+        "❌ Quiz data error:",
+        error
+    );
+
+}
+
+
+/* ======================================
+   FIND QUIZ
+====================================== */
+
+const quiz =
+    Array.isArray(quizList)
+        ? quizList.find(
+            q => Number(q.lessonId) === lessonId
+          )
+        : null;
+
+
+/* ======================================
+   DOM ELEMENTS
 ====================================== */
 
 const quizTitle =
@@ -60,159 +93,20 @@ const nextQuestionBtn =
 
 
 /* ======================================
-   SAFETY CHECK
+   BASIC SAFETY CHECK
 ====================================== */
 
-function showQuizError(message) {
+if (
+    !quizTitle ||
+    !quizProgress ||
+    !quizProgressFill ||
+    !question ||
+    !answers ||
+    !nextQuestionBtn
+) {
 
     console.error(
-        "QUIZ ERROR:",
-        message
-    );
-
-    if (quizTitle) {
-
-        quizTitle.textContent =
-            "⚠️ Quiz Error";
-
-    }
-
-    if (quizProgress) {
-
-        quizProgress.textContent =
-            message;
-
-    }
-
-    if (quizProgressFill) {
-
-        quizProgressFill.style.width =
-            "0%";
-
-    }
-
-    if (question) {
-
-        question.innerHTML =
-            "Please check the quiz files.";
-
-    }
-
-    if (answers) {
-
-        answers.innerHTML = `
-            <p style="
-                color:#dc2626;
-                font-weight:600;
-                text-align:center;
-                padding:20px;
-            ">
-                ${message}
-            </p>
-        `;
-
-    }
-
-    if (nextQuestionBtn) {
-
-        nextQuestionBtn.style.display =
-            "none";
-
-    }
-
-}
-
-
-/* ======================================
-   VALIDATE LESSON ID
-====================================== */
-
-if (
-    !rawLessonId ||
-    !Number.isInteger(lessonId) ||
-    lessonId < 1
-) {
-
-    showQuizError(
-        "Invalid lesson ID. Please return to the Study page and select a lesson."
-    );
-
-    throw new Error(
-        "LIVE: Invalid lesson ID"
-    );
-
-}
-
-
-/* ======================================
-   VERIFY QUIZ DATA
-====================================== */
-
-if (
-    typeof quizzes === "undefined"
-) {
-
-    showQuizError(
-        "quizzes.js was not loaded."
-    );
-
-    throw new Error(
-        "LIVE: quizzes is undefined"
-    );
-
-}
-
-
-if (!Array.isArray(quizzes)) {
-
-    showQuizError(
-        "Quiz data is invalid."
-    );
-
-    throw new Error(
-        "LIVE: quizzes is not an array"
-    );
-
-}
-
-
-/* ======================================
-   FIND CURRENT QUIZ
-====================================== */
-
-const quiz =
-    quizzes.find(
-        q =>
-            Number(q.lessonId) === lessonId
-    );
-
-
-if (!quiz) {
-
-    showQuizError(
-        "No quiz found for Lesson " +
-        lessonId
-    );
-
-    throw new Error(
-        "LIVE: Quiz not found for lesson " +
-        lessonId
-    );
-
-}
-
-
-if (
-    !Array.isArray(quiz.questions) ||
-    quiz.questions.length === 0
-) {
-
-    showQuizError(
-        "This quiz has no questions."
-    );
-
-    throw new Error(
-        "LIVE: No questions"
+        "❌ Quiz page is missing required HTML elements."
     );
 
 }
@@ -228,10 +122,125 @@ let score = 0;
 
 
 /* ======================================
+   QUIZ DATA ERROR
+====================================== */
+
+if (!Array.isArray(quizList) || quizList.length === 0) {
+
+    if (quizTitle) {
+
+        quizTitle.textContent =
+            "⚠️ Quiz Data Not Loaded";
+
+    }
+
+    if (question) {
+
+        question.innerHTML = `
+            <p>
+                The quiz data could not be loaded.
+            </p>
+
+            <p>
+                Please refresh the page and try again.
+            </p>
+        `;
+
+    }
+
+    if (quizProgress) {
+
+        quizProgress.textContent =
+            "Quiz data unavailable";
+
+    }
+
+    if (nextQuestionBtn) {
+
+        nextQuestionBtn.style.display =
+            "none";
+
+    }
+
+    console.error(
+        "❌ quizzes.js was not loaded or contains no quiz data."
+    );
+
+
+} else if (!quiz) {
+
+    /* ==================================
+       QUIZ NOT FOUND
+    ================================== */
+
+    if (quizTitle) {
+
+        quizTitle.textContent =
+            "⚠️ Quiz Not Available";
+
+    }
+
+    if (question) {
+
+        question.textContent =
+            "No quiz was found for Lesson " +
+            lessonId +
+            ".";
+
+    }
+
+    if (quizProgress) {
+
+        quizProgress.textContent =
+            "Quiz unavailable";
+
+    }
+
+    if (nextQuestionBtn) {
+
+        nextQuestionBtn.style.display =
+            "none";
+
+    }
+
+    console.error(
+        "❌ No quiz found for lesson:",
+        lessonId
+    );
+
+
+} else {
+
+    /* ==================================
+       VALID QUIZ
+    ================================== */
+
+    if (quizTitle) {
+
+        quizTitle.textContent =
+            "Lesson " +
+            lessonId +
+            " Quiz";
+
+    }
+
+    console.log(
+        "✅ Quiz loaded:",
+        lessonId
+    );
+
+    showQuestion();
+
+}
+
+
+/* ======================================
    SHOW QUESTION
 ====================================== */
 
 function showQuestion() {
+
+    if (!quiz) return;
 
     const q =
         quiz.questions[currentQuestion];
@@ -239,8 +248,9 @@ function showQuestion() {
 
     if (!q) {
 
-        showQuizError(
-            "Question could not be loaded."
+        console.error(
+            "❌ Question not found:",
+            currentQuestion
         );
 
         return;
@@ -249,7 +259,7 @@ function showQuestion() {
 
 
     /* ----------------------------------
-       Progress
+       Progress text
     ---------------------------------- */
 
     quizProgress.textContent =
@@ -258,6 +268,10 @@ function showQuestion() {
         " of " +
         quiz.questions.length;
 
+
+    /* ----------------------------------
+       Progress bar
+    ---------------------------------- */
 
     const progress =
         (
@@ -278,11 +292,15 @@ function showQuestion() {
         q.question;
 
 
+    /* ----------------------------------
+       Clear answers
+    ---------------------------------- */
+
     answers.innerHTML = "";
 
 
     /* ----------------------------------
-       Create shuffled options
+       Prepare options
     ---------------------------------- */
 
     const options =
@@ -299,7 +317,7 @@ function showQuestion() {
 
 
     /* ----------------------------------
-       Fisher-Yates shuffle
+       Fisher-Yates Shuffle
     ---------------------------------- */
 
     for (
@@ -327,15 +345,13 @@ function showQuestion() {
 
 
     /* ----------------------------------
-       Render answers
+       Create answer buttons
     ---------------------------------- */
 
     options.forEach(option => {
 
         const button =
-            document.createElement(
-                "button"
-            );
+            document.createElement("button");
 
 
         button.className =
@@ -347,9 +363,7 @@ function showQuestion() {
 
 
         /*
-           Store answer status so the
-           correct answer can be shown
-           when the user selects wrongly.
+           Store correct answer state.
         */
 
         button.dataset.correct =
@@ -367,11 +381,18 @@ function showQuestion() {
             };
 
 
-        answers.appendChild(
-            button
-        );
+        answers.appendChild(button);
 
     });
+
+
+    /*
+       Make sure Next is hidden
+       until an answer is selected.
+    */
+
+    nextQuestionBtn.style.display =
+        "none";
 
 }
 
@@ -392,7 +413,7 @@ function checkAnswer(
 
 
     /* ----------------------------------
-       Prevent multiple answers
+       Disable all answers
     ---------------------------------- */
 
     buttons.forEach(btn => {
@@ -409,6 +430,7 @@ function checkAnswer(
     if (correct) {
 
         score++;
+
 
         button.style.background =
             "#16a34a";
@@ -488,7 +510,8 @@ function checkAnswer(
 
 
 /* ======================================
-   🔥 LIVE LEARNING STREAK
+   🔥 LEARNING STREAK
+   DIRECTLY CONNECTED TO QUIZ PASS
 ====================================== */
 
 function recordLearningStreak() {
@@ -511,20 +534,20 @@ function recordLearningStreak() {
 
     const lastActivity =
         localStorage.getItem(
-            LEARNING_LAST_ACTIVITY_KEY
+            "learningLastActivity"
         );
 
 
     let streak =
         Number(
             localStorage.getItem(
-                LEARNING_STREAK_KEY
+                "learningStreak"
             ) || 0
         );
 
 
     /* ----------------------------------
-       First successful quiz
+       First successful quiz completion
     ---------------------------------- */
 
     if (!lastActivity) {
@@ -535,7 +558,7 @@ function recordLearningStreak() {
 
 
     /* ----------------------------------
-       Already completed today
+       Already active today
     ---------------------------------- */
 
     else if (
@@ -543,8 +566,8 @@ function recordLearningStreak() {
     ) {
 
         /*
-           Do not increase the streak
-           twice on the same day.
+           Do not increase twice
+           on the same day.
         */
 
     }
@@ -580,7 +603,7 @@ function recordLearningStreak() {
 
 
         /* ------------------------------
-           Continue from yesterday
+           Continued from yesterday
         ------------------------------ */
 
         if (difference === 1) {
@@ -615,17 +638,17 @@ function recordLearningStreak() {
 
 
     /* ----------------------------------
-       Save LIVE learning streak data
+       Save streak
     ---------------------------------- */
 
     localStorage.setItem(
-        LEARNING_STREAK_KEY,
+        "learningStreak",
         String(streak)
     );
 
 
     localStorage.setItem(
-        LEARNING_LAST_ACTIVITY_KEY,
+        "learningLastActivity",
         todayKey
     );
 
@@ -665,7 +688,7 @@ function recordLearningStreak() {
 
 
     console.log(
-        "🔥 Learning Streak:",
+        "🔥 Learning streak:",
         streak,
         "day(s)"
     );
@@ -677,10 +700,17 @@ function recordLearningStreak() {
 
 
 /* ======================================
-   SHOW RESULT
+   SHOW QUIZ RESULT
 ====================================== */
 
 function showResult() {
+
+    if (!quiz) return;
+
+
+    /* ----------------------------------
+       Calculate score
+    ---------------------------------- */
 
     const percentage =
         (
@@ -721,6 +751,8 @@ function showResult() {
     let stars = "";
 
     let message = "";
+
+    let result = "";
 
 
     if (percentage === 100) {
@@ -778,17 +810,24 @@ function showResult() {
        Pass / Fail
     ---------------------------------- */
 
-    const result =
-        passed
-            ? "✅ PASSED"
-            : "❌ TRY AGAIN";
+    if (passed) {
+
+        result =
+            "✅ PASSED";
+
+    } else {
+
+        result =
+            "❌ TRY AGAIN";
+
+    }
 
 
     /* ==================================
-       LIVE SCORE STORAGE
+       SAVE BEST SCORE
     ================================== */
 
-    const scoreKey =
+    const key =
         "quiz_" + lessonId;
 
 
@@ -798,16 +837,14 @@ function showResult() {
 
     const bestScore =
         Number(
-            localStorage.getItem(
-                scoreKey
-            ) || 0
+            localStorage.getItem(key) || 0
         );
 
 
     if (score > bestScore) {
 
         localStorage.setItem(
-            scoreKey,
+            key,
             String(score)
         );
 
@@ -815,7 +852,7 @@ function showResult() {
 
 
     /* ==================================
-       LIVE PASS STORAGE
+       QUIZ PASS
     ================================== */
 
     if (passed) {
@@ -824,9 +861,9 @@ function showResult() {
            Check whether this lesson was
            already passed BEFORE this attempt.
 
-           This prevents a repeated pass
-           from creating another learning
-           activity.
+           This is important because the
+           same quiz should not repeatedly
+           create learning activity.
         */
 
         const wasAlreadyPassed =
@@ -863,23 +900,22 @@ function showResult() {
             " quiz passed."
         );
 
-    }
 
+    } else {
 
-    /* ----------------------------------
-       Failed attempt
-       ----------------------------------
-       IMPORTANT:
+        /*
+           Failed attempt does NOT count
+           as learning-streak completion.
+        */
 
-       Do NOT remove an existing pass.
+        /*
+           IMPORTANT:
+           Do not remove an existing pass.
 
-       If the learner passed this lesson
-       previously, that lesson remains
-       completed even if a later attempt
-       scores below 70%.
-    ---------------------------------- */
-
-    else {
+           If the user passed this lesson
+           previously and later gets a lower
+           score, the lesson remains passed.
+        */
 
         console.log(
             "❌ Lesson " +
@@ -895,7 +931,7 @@ function showResult() {
     ================================== */
 
     const storedBestScore =
-        localStorage.getItem(scoreKey);
+        localStorage.getItem(key);
 
 
     answers.innerHTML = `
@@ -935,19 +971,16 @@ function showResult() {
             ${
                 passed
                 ? `
-                <p style="
-                    color:#16a34a;
-                    font-weight:bold;
-                ">
-                    🔥 Learning streak recorded!
-                </p>
-                `
+                    <p>
+                        🔥 Learning streak updated!
+                    </p>
+                  `
                 : `
-                <p>
-                    Pass with ${passMark}% or higher
-                    to complete this lesson.
-                </p>
-                `
+                    <p>
+                        Pass with ${passMark}% or higher
+                        to complete this lesson.
+                    </p>
+                  `
             }
 
             <button
@@ -965,9 +998,9 @@ function showResult() {
             </button>
 
             <button
-                onclick="location.href='quiz.html?id=${lessonId}'">
+                onclick="location.href='study.html'">
 
-                🔄 Take Quiz Again
+                🏠 Learning Hub
 
             </button>
 
@@ -978,21 +1011,6 @@ function showResult() {
 
     nextQuestionBtn.style.display =
         "none";
-
-
-    console.log(
-        "QUIZ RESULT:",
-        {
-            lessonId: lessonId,
-            score: score,
-            percentage: percentage,
-            passed: passed,
-            learningStreak:
-                localStorage.getItem(
-                    LEARNING_STREAK_KEY
-                )
-        }
-    );
 
 }
 
@@ -1006,6 +1024,7 @@ nextQuestionBtn.onclick =
 
         currentQuestion++;
 
+
         nextQuestionBtn.style.display =
             "none";
 
@@ -1017,32 +1036,10 @@ nextQuestionBtn.onclick =
 
             showQuestion();
 
-        }
-
-        else {
+        } else {
 
             showResult();
 
         }
 
     };
-
-
-/* ======================================
-   START LIVE QUIZ
-====================================== */
-
-quizTitle.textContent =
-    "Lesson " +
-    lessonId +
-    " Quiz";
-
-
-showQuestion();
-
-
-console.log(
-    "🧠 LIVE QUIZ STARTED",
-    "Lesson:",
-    lessonId
-);
