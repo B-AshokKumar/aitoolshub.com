@@ -8030,7 +8030,7 @@ function syncLearningActivity(){
 
  /* =========================================
    💡 DASHBOARD — TRY TODAY'S TIP
-   v1.18.5 — Tip → Generate Prompt
+   v1.18.6 — Tip → Auto Generate Prompt
 ========================================= */
 
 function dashboardTryTip(){
@@ -8050,6 +8050,11 @@ function dashboardTryTip(){
             "prompts"
         );
 
+    const resultElement =
+        document.getElementById(
+            "result"
+        );
+
 
     /* -------------------------------------
        Required elements
@@ -8062,7 +8067,6 @@ function dashboardTryTip(){
         );
 
         return;
-
     }
 
 
@@ -8073,7 +8077,6 @@ function dashboardTryTip(){
         );
 
         return;
-
     }
 
 
@@ -8092,7 +8095,6 @@ function dashboardTryTip(){
         );
 
         return;
-
     }
 
 
@@ -8104,14 +8106,8 @@ function dashboardTryTip(){
 
 
     /* -------------------------------------
-       Clear previous generated result
-       so user knows this is a new prompt
+       Clear previous result
     ------------------------------------- */
-
-    const resultElement =
-        document.getElementById(
-            "result"
-        );
 
     if(resultElement){
 
@@ -8121,15 +8117,14 @@ function dashboardTryTip(){
 
 
     /* -------------------------------------
-       Reset prompt type
-       → use SMART / DEFAULT prompt
+       Use SMART / DEFAULT prompt
     ------------------------------------- */
 
     currentPromptType = "default";
 
 
     /* -------------------------------------
-       Scroll to Generate Prompt
+       Scroll to Prompt Generator
     ------------------------------------- */
 
     const headerOffset = 75;
@@ -8150,26 +8145,19 @@ function dashboardTryTip(){
 
 
     /* -------------------------------------
-       Focus topic input
+       Automatically generate prompt
     ------------------------------------- */
 
     setTimeout(
+
         function(){
 
-            promptInput.focus();
-
-            /*
-               Put cursor at the end
-               of the tip text.
-            */
-
-            promptInput.setSelectionRange(
-                promptInput.value.length,
-                promptInput.value.length
-            );
+            generatePrompt("default");
 
         },
+
         500
+
     );
 
 
