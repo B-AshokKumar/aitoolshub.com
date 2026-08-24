@@ -29,8 +29,11 @@ const LEARNING_LAST_ACTIVITY_KEY =
 const params =
     new URLSearchParams(window.location.search);
 
+const rawLessonId =
+    params.get("id");
+
 const lessonId =
-    Number(params.get("id"));
+    Number(rawLessonId);
 
 
 /* ======================================
@@ -116,6 +119,27 @@ function showQuizError(message) {
             "none";
 
     }
+
+}
+
+
+/* ======================================
+   VALIDATE LESSON ID
+====================================== */
+
+if (
+    !rawLessonId ||
+    !Number.isInteger(lessonId) ||
+    lessonId < 1
+) {
+
+    showQuizError(
+        "Invalid lesson ID. Please return to the Study page and select a lesson."
+    );
+
+    throw new Error(
+        "LIVE: Invalid lesson ID"
+    );
 
 }
 
@@ -943,7 +967,7 @@ function showResult() {
             <button
                 onclick="location.href='quiz.html?id=${lessonId}'">
 
-                🧪 Test Again
+                🔄 Take Quiz Again
 
             </button>
 
