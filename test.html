@@ -6411,6 +6411,8 @@ function deleteSavedPrompt(index){
 
     showSavedPrompts();
 
+   updateDashboardStats();
+
     showToast("Prompt Deleted");
 }
 
@@ -6475,6 +6477,8 @@ if(saved.length===0){
     currentPromptType="";
 
     showSavedPrompts();
+
+   updateDashboardStats();
 
     showToast("Saved Prompts Cleared");
 }
