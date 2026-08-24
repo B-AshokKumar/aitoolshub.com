@@ -8184,144 +8184,26 @@ function dashboardTryTip(){
 }
 
 
-/* =========================================
+ /* =========================================
    🎓 DASHBOARD — CONTINUE LEARNING
 ========================================= */
 
 function dashboardContinueLearning(){
 
-    /*
-       First try known Learning Hub
-       section IDs.
-    */
+    if(typeof openAILearningHub === "function"){
 
-    const learningSection =
-        document.getElementById(
-            "learningHub"
-        ) ||
-        document.getElementById(
-            "aiLearningHub"
-        );
-
-
-    if(learningSection){
-
-        learningSection.scrollIntoView({
-
-            behavior:"smooth",
-
-            block:"start"
-
-        });
-
+        openAILearningHub();
 
         trackDashboardEvent(
             "continue_learning_clicked"
         );
 
         return;
-
     }
 
-
-    /*
-       Look for an existing
-       AI Learning Hub button or link.
-    */
-
-    const learningElements =
-        document.querySelectorAll(
-            "button, a"
-        );
-
-
-    for(
-        const element
-        of learningElements
-    ){
-
-        const text =
-            element.textContent
-                .trim()
-                .toLowerCase();
-
-
-        if(
-            text.includes(
-                "ai learning hub"
-            ) ||
-            text.includes(
-                "learning hub"
-            )
-        ){
-
-            /*
-               Don't accidentally select
-               the Dashboard button itself.
-            */
-
-            if(
-                element.id ===
-                "continueLearningBtn"
-            ){
-
-                continue;
-
-            }
-
-
-            element.scrollIntoView({
-
-                behavior:"smooth",
-
-                block:"center"
-
-            });
-
-
-            setTimeout(
-                function(){
-
-                    if(
-                        typeof element.click ===
-                        "function"
-                    ){
-
-                        element.click();
-
-                    }
-
-                },
-                300
-            );
-
-
-            trackDashboardEvent(
-                "continue_learning_clicked"
-            );
-
-            return;
-
-        }
-
-    }
-
-
-    /*
-       Nothing found.
-    */
-
-    if(
-        typeof showToast ===
-        "function"
-    ){
-
-        showToast(
-            "AI Learning Hub is not available"
-        );
-
-    }
-
+    showToast(
+        "AI Learning Hub is not available"
+    );
 }
 
 
