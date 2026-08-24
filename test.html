@@ -5117,8 +5117,9 @@ el.innerHTML="⭐";
 favorites = favorites.filter(t=>t.name!==name);  
 localStorage.setItem("favorites",JSON.stringify(favorites));  
   
-showFavorites();  
-return;  
+showFavorites();
+updateDashboardStats();
+return;
 }  
   
 /* ADD FAVORITE */  
@@ -5129,7 +5130,8 @@ favorites.push({name,link});
 localStorage.setItem("favorites",JSON.stringify(favorites));  
 }  
   
-showFavorites();  
+ showFavorites();
+updateDashboardStats();
 }  
   
 function showFavorites(){  
@@ -5196,9 +5198,10 @@ JSON.parse(localStorage.getItem("favorites")) || [];
   
 favorites=favorites.filter(t=>t.name!==name);  
   
-localStorage.setItem("favorites",JSON.stringify(favorites));  
-  
-showFavorites();  
+ localStorage.setItem("favorites",JSON.stringify(favorites));
+
+showFavorites();
+updateDashboardStats();
 }  
   function saveRecentTool(name, link){
 
@@ -5221,9 +5224,10 @@ showFavorites();
   localStorage.setItem(
     "recentTools",
     JSON.stringify(recent)
-  );
+);
 
-  showRecentTools();
+showRecentTools();
+updateDashboardStats();
 }
 
 function showRecentTools(){
@@ -6215,13 +6219,13 @@ function savePrompt(){
     saved.unshift(prompt);
 
     localStorage.setItem(
-        "savedPrompts",
-        JSON.stringify(saved)
-    );
+    "savedPrompts",
+    JSON.stringify(saved)
+);
 
-    showSavedPrompts();
-
-    showToast("Prompt Saved ⭐");
+showSavedPrompts();
+updateDashboardStats();
+showToast("Prompt Saved ⭐");
 }
 
 function updateSavedPromptTitle(){
@@ -6513,9 +6517,10 @@ if(recent.length===0){
 
     localStorage.removeItem("recentTools");
 
-    showRecentTools();
+showRecentTools();
+updateDashboardStats();
 
-    showToast("Recent Tools Cleared");
+showToast("Recent Tools Cleared");
 }
 </script>
 
