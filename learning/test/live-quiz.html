@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Lesson Quiz | AI Learning Hub</title>
+
+<link rel="stylesheet"
+href="css/learning.css">
+
+</head>
+
+<body>
+
+<header class="header">
+
+    <div class="logo">
+        🧠 AI Learning Hub — Lesson Quiz
+    </div>
+
+    <a href="study.html" class="home-btn">
+        ← Back
+    </a>
+
+</header>
+
+
+<div class="lesson-container">
+
+    <h1 id="quizTitle">
+        Loading Quiz...
+    </h1>
+
+
+    <p
+        id="quizProgress"
+        class="lesson-progress">
+    </p>
+
+
+    <div class="quiz-progress-bar">
+
+        <div id="quizProgressFill"></div>
+
+    </div>
+
+
+    <div id="quizContainer">
+
+        <h2 id="question"></h2>
+
+
+        <div id="answers"></div>
+
+
+        <button
+            id="nextQuestionBtn"
+            style="display:none; margin-top:20px;">
+
+            Next Question ➜
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- LIVE QUIZ DATA -->
+<script src="quizzes.js"></script>
+
+<!-- LIVE QUIZ ENGINE -->
+<script src="quiz.js"></script>
+
+
+</body>
+
+</html>
