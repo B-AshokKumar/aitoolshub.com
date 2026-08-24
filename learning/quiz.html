@@ -3,22 +3,15 @@
 
 <head>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EGGSP1RHDV"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-EGGSP1RHDV');
-</script>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Lesson Quiz - AI Learning Hub</title>
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="css/learning.css">
+<title>TEST - Lesson Quiz</title>
+
+<link rel="stylesheet"
+href="../css/learning.css">
 
 </head>
 
@@ -27,17 +20,11 @@
 <header class="header">
 
     <div class="logo">
-        📝 Lesson Quiz
+        🧪 TEST — Lesson Quiz
     </div>
 
-    <a href="javascript:history.back()" class="home-btn">
-
-        <svg class="back-icon" viewBox="0 0 24 24">
-            <polyline points="15 18 9 12 15 6"></polyline>
-        </svg>
-
-        <span>Back</span>
-
+    <a href="../study.html" class="home-btn">
+        ← Back
     </a>
 
 </header>
@@ -45,16 +32,18 @@
 <div class="lesson-container">
 
     <h1 id="quizTitle">
-        Loading Quiz...
+        Loading Test Quiz...
     </h1>
 
-    <p id="quizProgress" class="lesson-progress"></p>
+    <p id="quizProgress"
+       class="lesson-progress">
+    </p>
 
     <div class="quiz-progress-bar">
 
-    <div id="quizProgressFill"></div>
+        <div id="quizProgressFill"></div>
 
-</div>
+    </div>
 
     <div id="quizContainer">
 
@@ -62,16 +51,21 @@
 
         <div id="answers"></div>
 
-<button id="nextQuestionBtn" style="display:none; margin-top:20px;">
-    Next Question ➜
-</button>
+        <button
+            id="nextQuestionBtn"
+            style="display:none; margin-top:20px;">
+
+            Next Question ➜
+
+        </button>
 
     </div>
 
 </div>
 
-<script src="data/quizzes.js"></script>
-<script src="js/quiz.js"></script>
+<script src="test-quizzes.js"></script>
+
+<script src="test-quiz.js"></script>
 
 </body>
 
