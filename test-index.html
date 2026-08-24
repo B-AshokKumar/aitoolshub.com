@@ -144,36 +144,41 @@ margin-bottom:15px;
 }
 
 
-/* ======================================
-   DASHBOARD TITLE
+ /* ======================================
+   📊 DASHBOARD SECTION TITLE
+   Static heading — NOT clickable
 ====================================== */
 
 .dashboard-section-title{
-    width:100%;
+    background:transparent !important;
+    color:#1f2937 !important;
 
-    padding:14px 12px;
+    border:none !important;
+    border-radius:0 !important;
+    box-shadow:none !important;
 
-    background:linear-gradient(
-        135deg,
-        #2d74d7,
-        #60a5fa
-    );
+    padding:8px 12px 14px !important;
 
-    color:#fff;
-
-    border-radius:18px;
+    font-size:28px;
+    font-weight:700;
 
     text-align:center;
 
-    font-size:22px;
-    font-weight:700;
+    cursor:default;
+    user-select:none;
 
-    letter-spacing:.5px;
+    margin:0;
+}
 
-    box-shadow:
-        0 6px 16px rgba(45,116,215,.25);
 
-    box-sizing:border-box;
+/* DARK MODE */
+
+body.dark .dashboard-section-title{
+    background:transparent !important;
+    color:#ffffff !important;
+
+    border:none !important;
+    box-shadow:none !important;
 }
 
 
@@ -207,6 +212,38 @@ margin-bottom:15px;
 }
 
 
+  /* ======================================
+   📊 YOUR AI ACTIVITY
+   Transparent section container
+====================================== */
+
+.dashboard-card.dashboard-activity{
+    background:transparent !important;
+    border:none !important;
+    box-shadow:none !important;
+}
+
+
+/* Activity heading */
+
+.dashboard-card.dashboard-activity h3{
+    color:#1f2937;
+}
+
+
+/* DARK MODE */
+
+body.dark .dashboard-card.dashboard-activity{
+    background:transparent !important;
+    border:none !important;
+    box-shadow:none !important;
+}
+
+body.dark .dashboard-card.dashboard-activity h3{
+    color:#ffffff;
+}
+
+  
 /* ======================================
    WELCOME CARD
 ====================================== */
@@ -243,14 +280,21 @@ margin-bottom:15px;
     margin-top:12px;
 }
 
+ /* ======================================
+   📊 AI ACTIVITY STAT CARDS
+   Transparent — no card background
+====================================== */
+
 .dashboard-stat{
-    background:#f4f7fb;
+    background:transparent !important;
+    border:none !important;
     border-radius:14px;
+
     padding:14px 8px;
 
     text-align:center;
 
-    border:1px solid #e3e9f2;
+    box-shadow:none !important;
 
     box-sizing:border-box;
 }
@@ -280,10 +324,6 @@ margin-bottom:15px;
    DARK MODE — ACTIVITY STATS
 ====================================== */
 
-body.dark .dashboard-stat{
-    background:#171d23;
-    border-color:#303b47;
-}
 
 body.dark .dashboard-stat-number{
     color:#66aaff;
@@ -423,98 +463,189 @@ body.dark .dashboard-stat-label{
     color:#2d74d7;
 }
 
-
-  /* ======================================
-   DASHBOARD QUICK ACTIONS
+ /* ======================================
+   ⚡ DASHBOARD QUICK ACTIONS
+   Centered 2 × 2 Horizontal Buttons
 ====================================== */
+
+.dashboard-quick-actions{
+    text-align:center;
+}
+
+
+/* QUICK ACTION GRID */
 
 .dashboard-quick-grid{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:8px;
-    margin-top:12px;
+
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+
+    gap:10px;
+
+    width:100%;
+    max-width:520px;
+
+    margin:14px auto 0;
+
+    box-sizing:border-box;
 }
 
+
+/* ======================================
+   QUICK ACTION BUTTON
+====================================== */
+
 .dashboard-quick-btn{
+    width:100%;
+    min-height:64px;
+
     border:none;
-    background:#f4f7fb;
-
-    border:1px solid #e3e9f2;
-
     border-radius:14px;
 
-    padding:12px 5px;
+    background:#2563eb;
+    color:#fff;
 
-    min-height:78px;
+    padding:11px 12px;
 
     display:flex;
-    flex-direction:column;
-
     align-items:center;
     justify-content:center;
 
-    gap:6px;
+    gap:9px;
 
     cursor:pointer;
+    user-select:none;
 
-    color:#2d74d7;
+    -webkit-tap-highlight-color:transparent;
 
     font-family:inherit;
 
+    box-sizing:border-box;
+
     transition:
-        transform .2s ease,
-        background .2s ease;
+        transform .15s ease,
+        background .15s ease,
+        box-shadow .15s ease;
 }
 
-.dashboard-quick-btn span{
+
+/* ======================================
+   ICON
+====================================== */
+
+.dashboard-quick-btn span,
+.quick-btn-icon{
+    flex:0 0 auto;
+
     font-size:24px;
     line-height:1;
 }
 
+
+/* ======================================
+   LABEL
+====================================== */
+
 .dashboard-quick-btn small{
-    font-size:10px;
-    font-weight:600;
-    color:#475467;
+    flex:0 1 auto;
+
+    font-size:12px;
+    font-weight:700;
+
+    color:#fff;
+
     line-height:1.2;
+
+    text-align:left;
 }
+
+
+/* ======================================
+   ARROW
+====================================== */
+
+.quick-btn-arrow{
+    flex:0 0 auto;
+
+    margin-left:auto;
+
+    font-size:17px;
+    font-weight:600;
+
+    opacity:.9;
+}
+
+
+/* ======================================
+   HOVER
+====================================== */
+
+.dashboard-quick-btn:hover{
+    background:#1d4ed8;
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 4px 12px rgba(0,0,0,.15);
+}
+
+
+/* ======================================
+   MOBILE TAP
+====================================== */
 
 .dashboard-quick-btn:active{
-    transform:scale(.95);
+    transform:scale(.97);
 }
 
 
-/* DARK MODE */
+/* ======================================
+   DARK MODE
+====================================== */
 
 body.dark .dashboard-quick-btn{
-    background:#171d23;
-    border-color:#303b47;
-    color:#66aaff;
+    background:#2563eb;
+    color:#fff;
 }
 
 body.dark .dashboard-quick-btn small{
-    color:#d7dee7;
+    color:#fff;
 }
 
 
-/* SMALL PHONES */
+/* ======================================
+   SMALL PHONES
+====================================== */
 
 @media (max-width:380px){
 
     .dashboard-quick-grid{
-        gap:6px;
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+
+        gap:8px;
+
+        width:100%;
     }
 
     .dashboard-quick-btn{
-        min-height:72px;
-        padding:10px 3px;
+        min-height:60px;
+
+        padding:9px 10px;
+
+        gap:7px;
     }
 
-    .dashboard-quick-btn span{
+    .dashboard-quick-btn span,
+    .quick-btn-icon{
         font-size:21px;
     }
 
     .dashboard-quick-btn small{
-        font-size:9px;
+        font-size:10px;
+    }
+
+    .quick-btn-arrow{
+        font-size:15px;
     }
 
 }
@@ -535,10 +666,8 @@ body.dark .dashboard-quick-btn small{
     color:#333;
 }
 
-
-
-/* ======================================
-   SMALL PHONES
+ /* ======================================
+   📱 SMALL PHONES
 ====================================== */
 
 @media (max-width:380px){
@@ -554,14 +683,20 @@ body.dark .dashboard-quick-btn small{
         border-radius:22px;
     }
 
+
+    /* Dashboard heading */
+
     .dashboard-section-title{
 
         font-size:20px;
 
-        padding:13px 12px;
+        padding:8px 12px 12px;
 
-        border-radius:16px;
+        border-radius:0;
     }
+
+
+    /* Dashboard cards */
 
     .dashboard-card{
 
@@ -2578,7 +2713,7 @@ body.dark .badge.paid{
             </div>
 
             <div class="dashboard-stat-label">
-                Learning
+                Learning Hub
             </div>
         </div>
 
@@ -2598,50 +2733,58 @@ body.dark .badge.paid{
 
     <div class="dashboard-quick-grid">
 
-        <button
-            type="button"
-            class="dashboard-quick-btn"
-            onclick="goTo('tools')">
+    <!-- PROMPT GENERATOR -->
+    <button
+        type="button"
+        class="dashboard-quick-btn"
+        onclick="goTo('prompts')">
 
-            <span>🤖</span>
-            <small>AI Tools</small>
+        <span class="quick-btn-icon">✨</span>
+        <small>Prompt Generator</small>
+        <b class="quick-btn-arrow">→</b>
 
-        </button>
-
-
-        <button
-            type="button"
-            class="dashboard-quick-btn"
-            onclick="goTo('prompts')">
-
-            <span>✨</span>
-            <small>Prompt Generator</small>
-
-        </button>
+    </button>
 
 
-        <button
-            type="button"
-            class="dashboard-quick-btn"
-            onclick="openAILearningHub()">
+    <!-- LEARNING HUB -->
+    <button
+        type="button"
+        class="dashboard-quick-btn"
+        onclick="openAILearningHub()">
 
-            <span>🎓</span>
-            <small>Learning Hub</small>
+        <span class="quick-btn-icon">🎓</span>
+        <small>AI Learning Hub</small>
+        <b class="quick-btn-arrow">→</b>
 
-        </button>
+    </button>
 
 
-        <button
-            type="button"
-            class="dashboard-quick-btn"
-            onclick="goTo('news')">
+    <!-- TOOLS CATEGORIES -->
+    <button
+        type="button"
+        class="dashboard-quick-btn"
+        onclick="goTo('categories')">
 
-            <span>📰</span>
-            <small>AI News</small>
+        <span class="quick-btn-icon">🗂️</span>
+        <small>Tools Categories</small>
+        <b class="quick-btn-arrow">→</b>
 
-        </button>
+    </button>
 
-    </div>
+
+    <!-- RECENTLY USED TOOLS -->
+<button
+    type="button"
+    class="dashboard-quick-btn"
+    onclick="goTo('recentTools')">
+
+    <span class="quick-btn-icon">🕒</span>
+    <small>Recent Tools</small>
+    <b class="quick-btn-arrow">→</b>
+
+</button>
+
+</div>
 
 </div>
 
@@ -2672,7 +2815,7 @@ body.dark .badge.paid{
     <div class="dashboard-card">
 
         <h3>
-            🎓 Continue Learning
+            🎓 AI Learning Hub
         </h3>
 
         <p id="learningProgressText">
@@ -2698,7 +2841,7 @@ body.dark .badge.paid{
     class="dashboard-action"
     id="continueLearningBtn"
     onclick="dashboardContinueLearning()">
-    🎓 Continue Learning →
+    🎓 Continue AI Learning Hub →
 </button>
 
     </div>
@@ -2739,25 +2882,27 @@ body.dark .badge.paid{
 
 <!-- END v1.18 DASHBOARD -->
 
+  <div class="section prompt-section" id="prompts">
 
-<div class="section prompt-section" id="prompts">
+    <!-- HOW TO USE -->
+    <div class="how-use-wrapper">
+        <a href="how-to-use.html" class="how-use-link">
+            <button class="prompt-btn" type="button">
+                📖 How to Use AI Tools Hub
+            </button>
+        </a>
+    </div>
 
-  <h2 class="welcome-title">Welcome to<br> AI Tools Hub</h2>
 
-  <!-- ✅ ADD HERE -->
-  <p class="welcome-desc">
-    Browse a curated collection of AI tools and resources for work, learning and creativity.
-  </p>
+    <!-- PROMPT GENERATOR -->
+    <h2 class="welcome-title">
+        ✨ Prompt Generator
+    </h2>
 
-  <p class="welcome-sub">Generate powerful AI prompts instantly</p>
+    <p class="welcome-sub">
+        Generate powerful AI prompts instantly
+    </p>
 
-<div class="how-use-wrapper">
-    <a href="how-to-use.html" class="how-use-link">
-        <button class="prompt-btn" type="button">
-            📖 How to Use AI Tools Hub
-        </button>
-    </a>
-</div>
   
 <div class="input-wrapper">
 
@@ -2800,10 +2945,6 @@ onclick="resetPrompt()">
 
 </div>
 </div>
-
-<button class="feature-btn learning-btn" onclick="openAILearningHub()">
-    🎓 AI Learning Hub
-</button>
 
 <div class="section" id="news">
 
@@ -3146,7 +3287,8 @@ oninput="searchToolsDebounced()">
 </div>
   
 <div id="searchResults"></div>  
-<div class="category-container">  
+  
+ <div class="category-container" id="categories">
   
 <h2 class="category-title">  
  AI Tools Categories  
@@ -4975,8 +5117,9 @@ el.innerHTML="⭐";
 favorites = favorites.filter(t=>t.name!==name);  
 localStorage.setItem("favorites",JSON.stringify(favorites));  
   
-showFavorites();  
-return;  
+showFavorites();
+updateDashboardStats();
+return;
 }  
   
 /* ADD FAVORITE */  
@@ -4987,7 +5130,8 @@ favorites.push({name,link});
 localStorage.setItem("favorites",JSON.stringify(favorites));  
 }  
   
-showFavorites();  
+ showFavorites();
+updateDashboardStats();
 }  
   
 function showFavorites(){  
@@ -5054,9 +5198,10 @@ JSON.parse(localStorage.getItem("favorites")) || [];
   
 favorites=favorites.filter(t=>t.name!==name);  
   
-localStorage.setItem("favorites",JSON.stringify(favorites));  
-  
-showFavorites();  
+ localStorage.setItem("favorites",JSON.stringify(favorites));
+
+showFavorites();
+updateDashboardStats();
 }  
   function saveRecentTool(name, link){
 
@@ -5079,9 +5224,10 @@ showFavorites();
   localStorage.setItem(
     "recentTools",
     JSON.stringify(recent)
-  );
+);
 
-  showRecentTools();
+showRecentTools();
+updateDashboardStats();
 }
 
 function showRecentTools(){
@@ -6073,13 +6219,13 @@ function savePrompt(){
     saved.unshift(prompt);
 
     localStorage.setItem(
-        "savedPrompts",
-        JSON.stringify(saved)
-    );
+    "savedPrompts",
+    JSON.stringify(saved)
+);
 
-    showSavedPrompts();
-
-    showToast("Prompt Saved ⭐");
+showSavedPrompts();
+updateDashboardStats();
+showToast("Prompt Saved ⭐");
 }
 
 function updateSavedPromptTitle(){
@@ -6265,6 +6411,8 @@ function deleteSavedPrompt(index){
 
     showSavedPrompts();
 
+   updateDashboardStats();
+
     showToast("Prompt Deleted");
 }
 
@@ -6330,6 +6478,8 @@ if(saved.length===0){
 
     showSavedPrompts();
 
+   updateDashboardStats();
+
     showToast("Saved Prompts Cleared");
 }
 
@@ -6371,9 +6521,10 @@ if(recent.length===0){
 
     localStorage.removeItem("recentTools");
 
-    showRecentTools();
+showRecentTools();
+updateDashboardStats();
 
-    showToast("Recent Tools Cleared");
+showToast("Recent Tools Cleared");
 }
 </script>
 
@@ -6987,8 +7138,8 @@ function trackDashboardEvent(eventName){
 }
 
 
-/* --------------------------------------
-   Greeting
+ /* --------------------------------------
+   Dashboard Greeting
 -------------------------------------- */
 
 function updateDashboardGreeting(){
@@ -6998,16 +7149,45 @@ function updateDashboardGreeting(){
             "dashboardGreeting"
         );
 
-    if(!greeting) return;
+    const message =
+        document.getElementById(
+            "dashboardReturnMessage"
+        );
 
-    /*
-       Universal greeting.
-       We don't use morning/afternoon/evening
-       because AI Tools Hub is used worldwide.
-    */
+    if(!greeting || !message) return;
+
+
+    const lastVisit =
+        localStorage.getItem(
+            "aiToolsHubLastVisit"
+        );
+
+
+    /* -------------------------------------
+       FIRST-TIME USER
+    ------------------------------------- */
+
+    if(!lastVisit){
+
+        greeting.textContent =
+            "🙏 Welcome to AI Tools Hub!";
+
+        message.textContent =
+            "Discover AI tools, learn new skills, and explore powerful prompts.";
+
+        return;
+    }
+
+
+    /* -------------------------------------
+       RETURNING USER
+    ------------------------------------- */
 
     greeting.textContent =
         "🙏 Welcome back!";
+
+    message.textContent =
+        "Continue exploring AI Tools Hub.";
 
 }
 
@@ -7854,7 +8034,7 @@ function syncLearningActivity(){
 
  /* =========================================
    💡 DASHBOARD — TRY TODAY'S TIP
-   v1.18.5 — Tip → Generate Prompt
+   v1.18.6 — Tip → Auto Generate Prompt
 ========================================= */
 
 function dashboardTryTip(){
@@ -7874,6 +8054,11 @@ function dashboardTryTip(){
             "prompts"
         );
 
+    const resultElement =
+        document.getElementById(
+            "result"
+        );
+
 
     /* -------------------------------------
        Required elements
@@ -7886,7 +8071,6 @@ function dashboardTryTip(){
         );
 
         return;
-
     }
 
 
@@ -7897,7 +8081,6 @@ function dashboardTryTip(){
         );
 
         return;
-
     }
 
 
@@ -7916,7 +8099,6 @@ function dashboardTryTip(){
         );
 
         return;
-
     }
 
 
@@ -7928,14 +8110,8 @@ function dashboardTryTip(){
 
 
     /* -------------------------------------
-       Clear previous generated result
-       so user knows this is a new prompt
+       Clear previous result
     ------------------------------------- */
-
-    const resultElement =
-        document.getElementById(
-            "result"
-        );
 
     if(resultElement){
 
@@ -7945,15 +8121,14 @@ function dashboardTryTip(){
 
 
     /* -------------------------------------
-       Reset prompt type
-       → use SMART / DEFAULT prompt
+       Use SMART / DEFAULT prompt
     ------------------------------------- */
 
     currentPromptType = "default";
 
 
     /* -------------------------------------
-       Scroll to Generate Prompt
+       Scroll to Prompt Generator
     ------------------------------------- */
 
     const headerOffset = 75;
@@ -7974,26 +8149,19 @@ function dashboardTryTip(){
 
 
     /* -------------------------------------
-       Focus topic input
+       Automatically generate prompt
     ------------------------------------- */
 
     setTimeout(
+
         function(){
 
-            promptInput.focus();
-
-            /*
-               Put cursor at the end
-               of the tip text.
-            */
-
-            promptInput.setSelectionRange(
-                promptInput.value.length,
-                promptInput.value.length
-            );
+            generatePrompt("default");
 
         },
+
         500
+
     );
 
 
@@ -8008,144 +8176,26 @@ function dashboardTryTip(){
 }
 
 
-/* =========================================
+ /* =========================================
    🎓 DASHBOARD — CONTINUE LEARNING
 ========================================= */
 
 function dashboardContinueLearning(){
 
-    /*
-       First try known Learning Hub
-       section IDs.
-    */
+    if(typeof openAILearningHub === "function"){
 
-    const learningSection =
-        document.getElementById(
-            "learningHub"
-        ) ||
-        document.getElementById(
-            "aiLearningHub"
-        );
-
-
-    if(learningSection){
-
-        learningSection.scrollIntoView({
-
-            behavior:"smooth",
-
-            block:"start"
-
-        });
-
+        openAILearningHub();
 
         trackDashboardEvent(
             "continue_learning_clicked"
         );
 
         return;
-
     }
 
-
-    /*
-       Look for an existing
-       AI Learning Hub button or link.
-    */
-
-    const learningElements =
-        document.querySelectorAll(
-            "button, a"
-        );
-
-
-    for(
-        const element
-        of learningElements
-    ){
-
-        const text =
-            element.textContent
-                .trim()
-                .toLowerCase();
-
-
-        if(
-            text.includes(
-                "ai learning hub"
-            ) ||
-            text.includes(
-                "learning hub"
-            )
-        ){
-
-            /*
-               Don't accidentally select
-               the Dashboard button itself.
-            */
-
-            if(
-                element.id ===
-                "continueLearningBtn"
-            ){
-
-                continue;
-
-            }
-
-
-            element.scrollIntoView({
-
-                behavior:"smooth",
-
-                block:"center"
-
-            });
-
-
-            setTimeout(
-                function(){
-
-                    if(
-                        typeof element.click ===
-                        "function"
-                    ){
-
-                        element.click();
-
-                    }
-
-                },
-                300
-            );
-
-
-            trackDashboardEvent(
-                "continue_learning_clicked"
-            );
-
-            return;
-
-        }
-
-    }
-
-
-    /*
-       Nothing found.
-    */
-
-    if(
-        typeof showToast ===
-        "function"
-    ){
-
-        showToast(
-            "AI Learning Hub is not available"
-        );
-
-    }
-
+    showToast(
+        "AI Learning Hub is not available"
+    );
 }
 
 
