@@ -4025,14 +4025,13 @@ App Preferences & Settings
 <script>  
   
  /* =========================================
-   🌙 AI TOOLS HUB — TEST DARK MODE
-   v1.18.5
-   TEST-ONLY localStorage
+   🌙 AI TOOLS HUB — DARK MODE SYSTEM
+   Production Theme Storage
 ========================================= */
 
 (function(){
 
-    const TEST_THEME_KEY = "TEST_theme";
+    const THEME_KEY = "aiToolsHubTheme";
 
 
     function updateThemeButtons(){
@@ -4076,7 +4075,7 @@ App Preferences & Settings
 
 
         localStorage.setItem(
-            TEST_THEME_KEY,
+            THEME_KEY,
             isDark ? "dark" : "light"
         );
 
@@ -4105,7 +4104,7 @@ App Preferences & Settings
 
         const savedTheme =
             localStorage.getItem(
-                TEST_THEME_KEY
+                THEME_KEY
             );
 
 
@@ -4118,8 +4117,6 @@ App Preferences & Settings
     }
 
 
-    /* Make functions globally available */
-
     window.toggleDark =
         toggleDark;
 
@@ -4129,8 +4126,6 @@ App Preferences & Settings
     window.updateThemeButtons =
         updateThemeButtons;
 
-
-    /* Initialize */
 
     if(document.readyState === "loading"){
 
