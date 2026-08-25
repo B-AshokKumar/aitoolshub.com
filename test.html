@@ -4025,13 +4025,14 @@ App Preferences & Settings
 <script>  
   
  /* =========================================
-   🌙 AI TOOLS HUB — DARK MODE SYSTEM
-   Production Theme Storage
+   🌙 AI TOOLS HUB — TEST DARK MODE
+   v1.18.5
+   TEST-ONLY localStorage
 ========================================= */
 
 (function(){
 
-    const THEME_KEY = "aiToolsHubTheme";
+    const TEST_THEME_KEY = "TEST_theme";
 
 
     function updateThemeButtons(){
@@ -4075,7 +4076,7 @@ App Preferences & Settings
 
 
         localStorage.setItem(
-            THEME_KEY,
+            TEST_THEME_KEY,
             isDark ? "dark" : "light"
         );
 
@@ -4104,7 +4105,7 @@ App Preferences & Settings
 
         const savedTheme =
             localStorage.getItem(
-                THEME_KEY
+                TEST_THEME_KEY
             );
 
 
@@ -4117,6 +4118,8 @@ App Preferences & Settings
     }
 
 
+    /* Make functions globally available */
+
     window.toggleDark =
         toggleDark;
 
@@ -4126,6 +4129,8 @@ App Preferences & Settings
     window.updateThemeButtons =
         updateThemeButtons;
 
+
+    /* Initialize */
 
     if(document.readyState === "loading"){
 
@@ -6095,8 +6100,14 @@ function shareApp(){
 
 
   function openAILearningHub() {
+    /*
+       Keep the Dashboard and AI Learning Hub on the
+       SAME origin so learning progress stored in
+       localStorage is shared between both pages.
+    */
     window.location.href =
-    "https://b-ashokkumar.github.io/aitoolshub.com/learning/study.html";
+        window.location.origin +
+        "/learning/study.html";
 }
 
    function copyPrompt(){
@@ -8028,6 +8039,91 @@ function syncLearningActivity(){
 
 
  /* =========================================
+   🔄 LIVE DASHBOARD LEARNING SYNC
+   v1.18.7
+   -----------------------------------------
+   Refresh when learning progress changes,
+   including browser back/forward cache.
+========================================= */
+
+function refreshDashboardLearningState(){
+
+    updateLearningDashboard();
+
+    updateDashboardStats();
+
+    updateLearningStreak();
+
+    updateReturnStreakMessage();
+
+}
+
+
+/* Return to Dashboard after a quiz. */
+window.addEventListener(
+    "pageshow",
+    function(){
+
+        refreshDashboardLearningState();
+        syncLearningActivity();
+        refreshDashboardLearningState();
+
+    }
+);
+
+
+/* Dashboard becomes visible again. */
+document.addEventListener(
+    "visibilitychange",
+    function(){
+
+        if(
+            document.visibilityState ===
+            "visible"
+        ){
+
+            refreshDashboardLearningState();
+            syncLearningActivity();
+            refreshDashboardLearningState();
+
+        }
+
+    }
+);
+
+
+/* Learning progress changed in another tab. */
+window.addEventListener(
+    "storage",
+    function(event){
+
+        if(
+            event.key &&
+            (
+                event.key.indexOf(
+                    "quiz_passed_"
+                ) === 0 ||
+                event.key.indexOf(
+                    "quiz_"
+                ) === 0 ||
+                event.key ===
+                    "learningStreak" ||
+                event.key ===
+                    "learningLastActivity" ||
+                event.key ===
+                    "learningCompletedCount"
+            )
+        ){
+
+            refreshDashboardLearningState();
+
+        }
+
+    }
+);
+
+
+/* =========================================
    💡 DASHBOARD — TRY TODAY'S TIP
    v1.18.6 — Tip → Auto Generate Prompt
 ========================================= */
@@ -8215,6 +8311,12 @@ document.addEventListener(
         /* Learning progress */
 
         updateLearningDashboard();
+
+        syncLearningActivity();
+
+        updateLearningDashboard();
+
+        updateDashboardStats();
 
 
         /* Dashboard tip */
