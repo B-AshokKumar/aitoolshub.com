@@ -7960,6 +7960,11 @@ function syncLearningActivity(){
 
     let completedLessons = 0;
 
+
+    /* -------------------------------------
+       Count completed lessons
+    ------------------------------------- */
+
     for(
         let i = 1;
         i <= totalLessons;
@@ -7969,7 +7974,7 @@ function syncLearningActivity(){
         if(
             localStorage.getItem(
                 "quiz_passed_" + i
-            )
+            ) === "true"
         ){
 
             completedLessons++;
@@ -7978,6 +7983,11 @@ function syncLearningActivity(){
 
     }
 
+
+    /* -------------------------------------
+       Previous count
+    ------------------------------------- */
+
     const previousCompleted =
         Number(
             localStorage.getItem(
@@ -7985,44 +7995,48 @@ function syncLearningActivity(){
             ) || 0
         );
 
-     if(previousCompleted === 0){
+
+    /* -------------------------------------
+       Save current count
+    ------------------------------------- */
 
     localStorage.setItem(
         "learningCompletedCount",
         String(completedLessons)
     );
 
-    return;
 
-}
+    /* -------------------------------------
+       Update Dashboard immediately
+    ------------------------------------- */
+
+    updateLearningDashboard();
+
+    updateDashboardStats();
+
+
+    /* -------------------------------------
+       New lesson completed
+       → record learning activity
+    ------------------------------------- */
 
     if(
         completedLessons >
         previousCompleted
     ){
 
-        localStorage.setItem(
-            "learningCompletedCount",
-            String(completedLessons)
-        );
-
         recordLearningActivity();
 
-        return;
-
     }
 
-    if(
-        completedLessons !==
-        previousCompleted
-    ){
 
-        localStorage.setItem(
-            "learningCompletedCount",
-            String(completedLessons)
-        );
+    /* -------------------------------------
+       Refresh streak display
+    ------------------------------------- */
 
-    }
+    updateLearningStreak();
+
+    updateReturnStreakMessage();
 
 }
 
@@ -8248,5 +8262,125 @@ document.addEventListener(
 
 </script>
 
+  <script>
+  /* =========================================
+   🔄 LIVE LEARNING HUB DASHBOARD SYNC
+   =========================================
+   Refresh Dashboard immediately when the
+   user returns from a lesson/quiz.
+========================================= */
+
+function refreshLearningHubDashboard() {
+
+    /* Update main Learning Hub progress */
+    if (
+        typeof updateLearningDashboard === "function"
+    ) {
+        updateLearningDashboard();
+    }
+
+
+    /* Update Dashboard activity statistics */
+    if (
+        typeof updateDashboardStats === "function"
+    ) {
+        updateDashboardStats();
+    }
+
+
+    /* Synchronize completed lesson count
+       and learning activity */
+    if (
+        typeof syncLearningActivity === "function"
+    ) {
+        syncLearningActivity();
+    }
+
+
+    /* Refresh streak display */
+    if (
+        typeof updateLearningStreak === "function"
+    ) {
+        updateLearningStreak();
+    }
+
+
+    /* Refresh streak message */
+    if (
+        typeof updateReturnStreakMessage === "function"
+    ) {
+        updateReturnStreakMessage();
+    }
+
+}
+
+
+/* =========================================
+   BROWSER BACK / FORWARD
+========================================= */
+
+window.addEventListener(
+    "pageshow",
+    function () {
+
+        refreshLearningHubDashboard();
+
+    }
+);
+
+
+/* =========================================
+   PAGE BECOMES VISIBLE AGAIN
+========================================= */
+
+document.addEventListener(
+    "visibilitychange",
+    function () {
+
+        if (
+            document.visibilityState === "visible"
+        ) {
+
+            refreshLearningHubDashboard();
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   STORAGE SYNC
+   Useful if another tab/window changes
+   learning progress.
+========================================= */
+
+window.addEventListener(
+    "storage",
+    function (event) {
+
+        if (
+            event.key &&
+            (
+                event.key.startsWith(
+                    "quiz_passed_"
+                ) ||
+                event.key ===
+                    "learningCompletedCount" ||
+                event.key ===
+                    "learningStreak" ||
+                event.key ===
+                    "learningLastActivity"
+            )
+        ) {
+
+            refreshLearningHubDashboard();
+
+        }
+
+    }
+);
+
+  </script>
 </body>  
 </html> 
