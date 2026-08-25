@@ -1,5 +1,5 @@
 <!DOCTYPE html>  
-<!-- Version 1.17 -->
+<!-- Version 1.18 -->
 <html lang="en">  
 <head>  
 
@@ -88,11 +88,7 @@ transition:0.3s;
   padding:10px 18px;
   font-size:14px;
 } 
-.dark .dark-btn{  
-background:#2b2b2b;  
-color:#4da3ff;  
-font-weight:600;  
-}  
+
 /* TITLE */  
   
 .title-card{  
@@ -122,7 +118,596 @@ box-shadow:0 4px 12px rgba(0,0,0,0.08);
 color:#2d74d7;  
 margin-bottom:15px;  
 }  
+
+/* ======================================
+   📊 AI TOOLS HUB DASHBOARD
+   v1.18.2 Dashboard Container
+====================================== */
+
+.dashboard{
+    margin:20px;
+    padding:16px;
+
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+
+    background:#eef5ff;
+
+    border:2px solid #2d74d7;
+    border-radius:24px;
+
+    box-shadow:
+        0 8px 24px rgba(45,116,215,.15);
+
+    box-sizing:border-box;
+}
+
+
+ /* ======================================
+   📊 DASHBOARD SECTION TITLE
+   Static heading — NOT clickable
+====================================== */
+
+.dashboard-section-title{
+    background:transparent !important;
+    color:#1f2937 !important;
+
+    border:none !important;
+    border-radius:0 !important;
+    box-shadow:none !important;
+
+    padding:8px 12px 14px !important;
+
+    font-size:28px;
+    font-weight:700;
+
+    text-align:center;
+
+    cursor:default;
+    user-select:none;
+
+    margin:0;
+}
+
+
+/* DARK MODE */
+
+body.dark .dashboard-section-title{
+    background:transparent !important;
+    color:#ffffff !important;
+
+    border:none !important;
+    box-shadow:none !important;
+}
+
+
+/* ======================================
+   DASHBOARD CARDS
+====================================== */
+
+.dashboard-card{
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    box-shadow:
+        0 4px 12px rgba(0,0,0,.08);
+
+    box-sizing:border-box;
+}
+
+.dashboard-card h3{
+    margin:0 0 8px;
+    color:#2d74d7;
+    font-size:19px;
+}
+
+.dashboard-card p{
+    margin:6px 0;
+    color:#555;
+    line-height:1.6;
+}
+
+
+  /* ======================================
+   📊 YOUR AI ACTIVITY
+   Transparent section container
+====================================== */
+
+.dashboard-card.dashboard-activity{
+    background:transparent !important;
+    border:none !important;
+    box-shadow:none !important;
+}
+
+
+/* Activity heading */
+
+.dashboard-card.dashboard-activity h3{
+    color:#1f2937;
+}
+
+
+/* DARK MODE */
+
+body.dark .dashboard-card.dashboard-activity{
+    background:transparent !important;
+    border:none !important;
+    box-shadow:none !important;
+}
+
+body.dark .dashboard-card.dashboard-activity h3{
+    color:#ffffff;
+}
+
   
+/* ======================================
+   WELCOME CARD
+====================================== */
+
+.dashboard-welcome{
+    background:linear-gradient(
+        135deg,
+        #2d74d7,
+        #60a5fa
+    );
+
+    color:#fff;
+}
+
+.dashboard-welcome h2{
+    margin:0 0 6px;
+    font-size:23px;
+}
+
+.dashboard-welcome p{
+    color:#fff;
+    margin:0;
+}
+
+
+  /* ======================================
+   DASHBOARD ACTIVITY STATS
+====================================== */
+
+.dashboard-stats-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    margin-top:12px;
+}
+
+ /* ======================================
+   📊 AI ACTIVITY STAT CARDS
+   Transparent — no card background
+====================================== */
+
+.dashboard-stat{
+    background:transparent !important;
+    border:none !important;
+    border-radius:14px;
+
+    padding:14px 8px;
+
+    text-align:center;
+
+    box-shadow:none !important;
+
+    box-sizing:border-box;
+}
+
+.dashboard-stat-icon{
+    font-size:24px;
+    line-height:1;
+    margin-bottom:7px;
+}
+
+.dashboard-stat-number{
+    font-size:22px;
+    font-weight:700;
+    color:#2d74d7;
+    line-height:1.2;
+}
+
+.dashboard-stat-label{
+    margin-top:4px;
+    font-size:12px;
+    font-weight:600;
+    color:#667085;
+}
+
+
+/* ======================================
+   DARK MODE — ACTIVITY STATS
+====================================== */
+
+
+body.dark .dashboard-stat-number{
+    color:#66aaff;
+}
+
+body.dark .dashboard-stat-label{
+    color:#b8c2ce;
+}
+
+
+/* ======================================
+   SMALL PHONES
+====================================== */
+
+@media (max-width:380px){
+
+    .dashboard-stats-grid{
+        gap:8px;
+    }
+
+    .dashboard-stat{
+        padding:12px 6px;
+    }
+
+    .dashboard-stat-icon{
+        font-size:22px;
+    }
+
+    .dashboard-stat-number{
+        font-size:20px;
+    }
+
+    .dashboard-stat-label{
+        font-size:11px;
+    }
+
+}
+
+/* ======================================
+   DASHBOARD BUTTON
+====================================== */
+
+.dashboard-action{
+    display:inline-block;
+
+    margin-top:12px;
+
+    padding:10px 18px;
+
+    border:none;
+    border-radius:12px;
+
+    background:#2d74d7;
+    color:#fff;
+
+    font-size:15px;
+    font-weight:600;
+
+    cursor:pointer;
+    text-decoration:none;
+
+    -webkit-tap-highlight-color:transparent;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+.dashboard-action:active{
+    transform:scale(.97);
+}
+
+.dashboard-welcome .dashboard-action{
+    background:#fff;
+    color:#2d74d7;
+}
+
+
+/* ======================================
+   LEARNING PROGRESS
+====================================== */
+
+.dashboard-progress{
+    width:100%;
+    height:10px;
+
+    margin-top:12px;
+
+    background:#e7edf7;
+
+    border-radius:20px;
+
+    overflow:hidden;
+}
+
+.dashboard-progress-fill{
+    width:0%;
+    height:100%;
+
+    background:#2d74d7;
+
+    border-radius:20px;
+
+    transition:width .5s ease;
+}
+
+.dashboard-progress-text{
+    margin-top:7px;
+
+    font-size:14px;
+
+    color:#666;
+}
+
+
+/* ======================================
+   LEARNING STREAK
+====================================== */
+
+.dashboard-streak{
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+}
+
+.streak-icon{
+    font-size:42px;
+}
+
+.streak-number{
+    font-size:24px;
+
+    font-weight:700;
+
+    color:#2d74d7;
+}
+
+ /* ======================================
+   ⚡ DASHBOARD QUICK ACTIONS
+   Centered 2 × 2 Horizontal Buttons
+====================================== */
+
+.dashboard-quick-actions{
+    text-align:center;
+}
+
+
+/* QUICK ACTION GRID */
+
+.dashboard-quick-grid{
+    display:grid;
+
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+
+    gap:10px;
+
+    width:100%;
+    max-width:520px;
+
+    margin:14px auto 0;
+
+    box-sizing:border-box;
+}
+
+
+/* ======================================
+   QUICK ACTION BUTTON
+====================================== */
+
+.dashboard-quick-btn{
+    width:100%;
+    min-height:64px;
+
+    border:none;
+    border-radius:14px;
+
+    background:#2563eb;
+    color:#fff;
+
+    padding:11px 12px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:9px;
+
+    cursor:pointer;
+    user-select:none;
+
+    -webkit-tap-highlight-color:transparent;
+
+    font-family:inherit;
+
+    box-sizing:border-box;
+
+    transition:
+        transform .15s ease,
+        background .15s ease,
+        box-shadow .15s ease;
+}
+
+
+/* ======================================
+   ICON
+====================================== */
+
+.dashboard-quick-btn span,
+.quick-btn-icon{
+    flex:0 0 auto;
+
+    font-size:24px;
+    line-height:1;
+}
+
+
+/* ======================================
+   LABEL
+====================================== */
+
+.dashboard-quick-btn small{
+    flex:0 1 auto;
+
+    font-size:12px;
+    font-weight:700;
+
+    color:#fff;
+
+    line-height:1.2;
+
+    text-align:left;
+}
+
+
+/* ======================================
+   ARROW
+====================================== */
+
+.quick-btn-arrow{
+    flex:0 0 auto;
+
+    margin-left:auto;
+
+    font-size:17px;
+    font-weight:600;
+
+    opacity:.9;
+}
+
+
+/* ======================================
+   HOVER
+====================================== */
+
+.dashboard-quick-btn:hover{
+    background:#1d4ed8;
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 4px 12px rgba(0,0,0,.15);
+}
+
+
+/* ======================================
+   MOBILE TAP
+====================================== */
+
+.dashboard-quick-btn:active{
+    transform:scale(.97);
+}
+
+
+/* ======================================
+   DARK MODE
+====================================== */
+
+body.dark .dashboard-quick-btn{
+    background:#2563eb;
+    color:#fff;
+}
+
+body.dark .dashboard-quick-btn small{
+    color:#fff;
+}
+
+
+/* ======================================
+   SMALL PHONES
+====================================== */
+
+@media (max-width:380px){
+
+    .dashboard-quick-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+
+        gap:8px;
+
+        width:100%;
+    }
+
+    .dashboard-quick-btn{
+        min-height:60px;
+
+        padding:9px 10px;
+
+        gap:7px;
+    }
+
+    .dashboard-quick-btn span,
+    .quick-btn-icon{
+        font-size:21px;
+    }
+
+    .dashboard-quick-btn small{
+        font-size:10px;
+    }
+
+    .quick-btn-arrow{
+        font-size:15px;
+    }
+
+}
+
+/* ======================================
+   DAILY TIP
+====================================== */
+
+.dashboard-tip{
+    border-left:5px solid #f59e0b;
+}
+
+.dashboard-tip-text{
+    font-size:16px;
+
+    font-weight:500;
+
+    color:#333;
+}
+
+ /* ======================================
+   📱 SMALL PHONES
+====================================== */
+
+@media (max-width:380px){
+
+    .dashboard{
+
+        margin:16px;
+
+        padding:12px;
+
+        gap:14px;
+
+        border-radius:22px;
+    }
+
+
+    /* Dashboard heading */
+
+    .dashboard-section-title{
+
+        font-size:20px;
+
+        padding:8px 12px 12px;
+
+        border-radius:0;
+    }
+
+
+    /* Dashboard cards */
+
+    .dashboard-card{
+
+        padding:16px;
+
+        border-radius:16px;
+    }
+
+}
+
+
 /* TOOL BUTTON */  
   
 .tool{  
@@ -157,9 +742,6 @@ box-sizing:border-box;
   font-weight:bold;
 }
 
-.dark .info-icon{
-  color:#4da3ff;
-} 
 .tool:hover{  
 transform:scale(1.02);  
 background:#d9e5f9;  
@@ -256,19 +838,7 @@ font-size:18px;
 color:#666;  
 }  
   
-/* DARK MODE */  
-.dark{  
-background:#121212;  
-color:white;  
-}  
-.dark .section,  
-.dark .title-card{  
-background:#1e1e1e;  
-}  
-  
-.dark .tool{  
-background:#2b2b2b;  
-}  
+
 /* ---------- CATEGORY GRID ---------- */  
   
 /* ---------- AI TOOLS CATEGORIES ---------- */  
@@ -454,9 +1024,6 @@ margin-top:10px;
     color:#d9534f;
 }
 
-.dark #resetBtn{
-    color:#ccc;
-}
 .prompt-section{
   text-align:center;
 }
@@ -494,18 +1061,6 @@ margin-top:10px;
   margin-top:20px;
 }
 
-.action-row{
-  display:flex;
-  gap:12px;
-  justify-content:center;
-  margin-top:15px;
-}
-
-.action-row .prompt-btn{
-  flex:1;
-  margin-top:0;
-  max-width:180px;
-}
  
 /* focus effect */  
 .prompt-input:focus{  
@@ -514,27 +1069,6 @@ box-shadow:0 0 8px rgba(45,116,215,0.3);
 }  
   
 /* dark mode support */  
-.dark .prompt-input{  
-background:#2b2b2b;  
-color:white;  
-border:2px solid #444;  
-}  
-
-  .dark .category-card{
-  background:#2b2b2b;
-}
-
-.dark .nav-link{
-  color:#e0e0e0;
-}
-
-.dark .nav-link.active{
-  color:#4da3ff;
-}
-
-.dark .category-card p{
-  color:#e0e0e0;
-}
 /* PROMPT RESULT CARD */  
   
 .prompt-result{  
@@ -547,7 +1081,7 @@ font-size:16px;
 line-height:1.6;  
 color:#333;  
 box-shadow:0 4px 10px rgba(0,0,0,0.08);  
-min-height:40px;  
+min-height:60px;  
 word-wrap:break-word;  
 overflow-wrap:anywhere;
 }  
@@ -557,16 +1091,10 @@ overflow-wrap:anywhere;
   border-radius:20px;
 }
 
-.prompt-result{
-  min-height:60px;
-}
 .prompt-history-item{
   font-size:12px;
   line-height:1.4;
   color:#666;
-}
-.dark .prompt-history-item{
-  color:#ddd;
 }
 
 .news-subtitle{
@@ -585,11 +1113,6 @@ margin-bottom:20px;
 
 }
 
-.dark .news-subtitle{
-
-color:#ccc;
-
-}
 
 .news-grid{
 
@@ -675,24 +1198,6 @@ color:#666;
 
 }
 
-.dark .news-card{
-
-background:#2b2b2b;
-
-}
-
-.dark .news-title{
-
-color:#66b2ff;
-
-}
-
-.dark .news-action{
-
-color:#ccc;
-
-}
-
 .news-note{
     width:100%;
     max-width:320px;
@@ -704,27 +1209,18 @@ color:#ccc;
     text-align:center;
 }
 
-.dark .news-note{
-    color:#bbb;
-}
-
 /* dark mode */  
-.dark .prompt-result{  
-background:#1f1f1f;  
-color:#fff;  
-border-left:5px solid #4da3ff;  
-}  
  
  .badge{
-  font-size:11px;
-  padding:4px 8px;
+  font-size:12px;
+  padding:4px 10px;
   border-radius:20px;
-  margin-left:10px;
+  margin-left:8px;
   margin-right:6px;
   font-weight:600;
   white-space:nowrap;
   flex-shrink:0;
-} 
+}
 /* FREE */  
 .free{  
 background:#e8f5ff;  
@@ -742,6 +1238,22 @@ color:#7b1fa2;   /* change FREE+PRO text color here */
 background:#fff1f1;  
 color:#d32f2f;   /* change PAID text color here */  
 }  
+
+
+body.dark .badge.free{
+    background:#e8f5ff;
+    color:#1e88e5;
+}
+
+body.dark .badge.pro{
+    background:#f3f0ff;
+    color:#7b1fa2;
+}
+
+body.dark .badge.paid{
+    background:#fff1f1;
+    color:#d32f2f;
+}
 
   .footer-links{
 display:flex;
@@ -863,26 +1375,6 @@ background:rgba(0,0,0,.08);
 
 }
 
-/* Dark mode */
-
-.dark .topShortcuts{
-
-background:transparent;
-
-}
-
-.dark .navDivider{
-
-background:rgba(255,255,255,.10);
-
-}
-
-.dark .topItem{
-
-color:#63a9ff;
-
-}
-
 
 /* ---------- BOTTOM ROW ---------- */
 
@@ -910,11 +1402,11 @@ text-decoration:none;
 
 color:#6a1b9a;
 
-font-size:12px;
+font-size:14px;
 
 font-weight:600;
 
-transition:.25s;
+transition:0.3s;
 
 }
 
@@ -955,95 +1447,6 @@ border-radius:50%;
 }
 
 /* ---------- DARK MODE ---------- */
-
-.dark #floatingNav{
-
-background:rgba(30,30,30,0.85);
-
-backdrop-filter:blur(12px);
--webkit-backdrop-filter:blur(12px);
-
-}
-
-.dark .topShortcuts{
-
-background:#252f3d;
-
-}
-
-.dark .bottom-nav{
-
-background:#1e1e1e;
-
-}
-
-.dark .navDivider{
-
-background:#344a66;
-
-}
-
-.dark .topItem{
-
-color:#63a9ff;
-
-}
-
-.dark .nav-link{
-
-color:#ddd;
-
-}
-
-.dark .nav-link.active{
-
-color:#63a9ff;
-
-}
-
-.dark .nav-link.active::after{
-
-background:#63a9ff;
-
-}
-
-
-@supports(padding:max(0px)){
-  .bottom-nav{
-    bottom:max(20px, env(safe-area-inset-bottom));
-  }
-}
-.bottom-nav a{
-  text-decoration:none;
-  color:#6a1b9a;
-  font-size:14px;
-  font-weight:600;
-}
-
-.nav-link{
-  text-decoration:none;
-  color:#6a1b9a;
-  font-size:14px;
-  font-weight:600;
-  transition:0.3s;
-}
-
-/* 🔥 Active tab */
-.nav-link.active{
-  color:#2d74d7;
-  transform:scale(1.1);
-}
-
-/* Optional glow effect */
-.nav-link.active::after{
-  content:"";
-  display:block;
-  width:6px;
-  height:6px;
-  background:#2d74d7;
-  border-radius:50%;
-  margin:4px auto 0;
-}
 
 .tip-box{
   position:fixed;
@@ -1130,17 +1533,6 @@ background:#63a9ff;
   cursor:pointer;
 }
 
-.dark .offline-screen{
-  background:#121212;
-}
-
-.dark .offline-box{
-  background:#1e1e1e;
-}
-
-.dark .offline-box p{
-  color:#ddd;
-}
 
 #toast{
 position:fixed;
@@ -1274,9 +1666,6 @@ transform:translateX(-50%) translateY(0);
     transition:.35s;
 }
 
-.dark .loader-overlay{
-    background:#121212;
-}
 
 .loader{
     width:48px;
@@ -1300,9 +1689,6 @@ transform:translateX(-50%) translateY(0);
     color:#777;
 }
 
-.dark .loader-sub{
-    color:#bbb;
-}
 
 .loader-hide{
     opacity:0;
@@ -1351,13 +1737,6 @@ z-index:999999;
 
 }
 
-.dark .timeout-box{
-
-background:#1e1e1e;
-
-color:#ffffff;
-
-}
 
 .timeout-icon{
 
@@ -1382,12 +1761,6 @@ color:#666;
 line-height:1.6;
 
 margin-bottom:20px;
-
-}
-
-.dark .timeout-box p{
-
-color:#cccccc;
 
 }
 
@@ -1532,6 +1905,682 @@ background:#dc2626;
 
 }
 
+/* ======================================
+   v1.18 Prompt Action Buttons
+   Icon on top + text below
+====================================== */
+
+.action-row{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    align-items:stretch;
+    width:100%;
+    margin-top:12px;
+    box-sizing:border-box;
+}
+
+.action-row .prompt-btn{
+    flex:1 1 0;
+    width:0;
+    min-width:0;
+    max-width:none;
+
+    height:68px;
+    min-height:68px;
+
+    padding:8px 4px;
+    margin-top:0;
+
+    border-radius:22px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    gap:3px;
+
+    font-size:14px;
+    font-weight:600;
+    line-height:1.15;
+
+    text-align:center;
+    white-space:normal;
+
+    box-sizing:border-box;
+}
+
+  .action-icon{
+    font-size:22px;
+    line-height:1;
+    display:block;
+}
+
+@media (max-width:380px){
+    .action-icon{
+        font-size:20px;
+    }
+}
+
+/* Keep emoji/icon on top */
+
+/* Smaller phones */
+@media (max-width:380px){
+
+    .action-row{
+        gap:7px;
+    }
+
+    .action-row .prompt-btn{
+        height:64px;
+        min-height:64px;
+        font-size:12px;
+        padding:6px 2px;
+    }
+}
+
+
+  /* =========================================================
+   🌙 AI TOOLS HUB — FINAL DARK MODE
+   Previous Published Dark UI
+   v1.18+
+========================================================= */
+
+
+/* =========================================================
+   GLOBAL PAGE
+========================================================= */
+
+body.dark{
+    background:#101418;
+    color:#f1f5f9;
+}
+
+
+/* =========================================================
+   MAIN OUTER SECTIONS
+   This fixes the 🔴 outer section background problem
+========================================================= */
+
+body.dark .section,
+body.dark section,
+body.dark .title-card,
+body.dark .prompt-header,
+body.dark .category-container{
+    background:#171d23;
+    color:#f1f5f9;
+}
+
+
+/* =========================================================
+   GENERIC CARDS
+========================================================= */
+
+body.dark .card,
+body.dark .box,
+body.dark .container,
+body.dark .content-box{
+    background:#1b2229;
+    color:#f1f5f9;
+}
+
+
+/* =========================================================
+   TOOL ROWS
+========================================================= */
+
+body.dark .tool{
+    background:#1b2229;
+    color:#f1f5f9;
+    border-color:#303b47;
+}
+
+body.dark .tool:hover{
+    background:#252e38;
+}
+
+
+/* =========================================================
+   CATEGORY CARDS
+========================================================= */
+
+body.dark .category-card{
+    background:#1b2229;
+    color:#f1f5f9;
+    border-color:#303b47;
+}
+
+body.dark .category-card:hover{
+    background:#252e38;
+}
+
+body.dark .category-card p{
+    color:#d7dee7;
+}
+
+
+/* =========================================================
+   CATEGORY GRID / CATEGORY SECTION
+========================================================= */
+
+body.dark .category-container{
+    background:#171d23;
+}
+
+body.dark .category-title{
+    color:#66aaff;
+}
+
+
+/* =========================================================
+   OLD CATEGORY BOX
+========================================================= */
+
+body.dark .category{
+    background:#1b2229;
+    color:#f1f5f9;
+}
+
+body.dark .category:hover{
+    background:#252e38;
+}
+
+
+/* =========================================================
+   HEADINGS
+========================================================= */
+
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark h5,
+body.dark h6{
+    color:#ffffff;
+}
+
+
+/* =========================================================
+   NORMAL TEXT
+========================================================= */
+
+body.dark p,
+body.dark label{
+    color:#d7dee7;
+}
+
+
+/* =========================================================
+   LINKS
+========================================================= */
+
+body.dark a{
+    color:#7db7ff;
+}
+
+
+/* =========================================================
+   TOOL LINKS
+========================================================= */
+
+body.dark .tool a{
+    color:#7db7ff;
+}
+
+
+/* =========================================================
+   INFO ICON
+========================================================= */
+
+body.dark .info-icon{
+    color:#4da3ff;
+}
+
+
+/* =========================================================
+   FREE + PRO / BADGES
+   IMPORTANT — KEEP THESE VISIBLE
+========================================================= */
+
+body.dark .badge{
+    opacity:1;
+    visibility:visible;
+    display:inline-block;
+}
+
+
+/* FREE */
+
+body.dark .badge.free{
+    background:#e8f5ff;
+    color:#1e88e5;
+}
+
+
+/* FREE + PRO */
+
+body.dark .badge.pro{
+    background:#f3f0ff;
+    color:#7b1fa2;
+}
+
+
+/* PAID */
+
+body.dark .badge.paid{
+    background:#fff1f1;
+    color:#d32f2f;
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+body.dark .search-box input,
+body.dark #searchInput{
+    background:#171d23;
+    color:#ffffff;
+    border-color:#465463;
+}
+
+body.dark .search-box input::placeholder,
+body.dark #searchInput::placeholder{
+    color:#8f9aa6;
+}
+
+
+/* =========================================================
+   PROMPT INPUT
+========================================================= */
+
+body.dark #topic,
+body.dark .prompt-input{
+    background:#171d23;
+    color:#ffffff;
+    border-color:#465463;
+}
+
+body.dark #topic::placeholder,
+body.dark .prompt-input::placeholder{
+    color:#8f9aa6;
+}
+
+
+/* =========================================================
+   RESET BUTTON
+========================================================= */
+
+body.dark #resetBtn{
+    color:#cccccc;
+}
+
+
+/* =========================================================
+   PROMPT RESULT
+========================================================= */
+
+body.dark #result,
+body.dark .prompt-result{
+    background:#1b2229;
+    color:#ffffff;
+    border-left:5px solid #4da3ff;
+    box-shadow:0 4px 12px rgba(0,0,0,.18);
+}
+
+
+/* =========================================================
+   PROMPT HISTORY / SAVED / RECENT / FAVORITES
+========================================================= */
+
+body.dark #savedContent,
+body.dark #historyContent,
+body.dark #recentToolsContent,
+body.dark #favoritesContent{
+    background:#171d23;
+    color:#ffffff;
+}
+
+body.dark .prompt-history-item{
+    background:#171d23;
+    color:#ffffff;
+}
+
+
+/* =========================================================
+   NEWS
+========================================================= */
+
+body.dark .news-subtitle{
+    color:#cccccc;
+}
+
+body.dark .news-card{
+    background:#1b2229;
+    color:#f1f5f9;
+}
+
+body.dark .news-card:hover{
+    background:#252e38;
+}
+
+body.dark .news-title{
+    color:#66b2ff;
+}
+
+body.dark .news-action{
+    color:#ffffff;
+}
+
+body.dark .news-note{
+    color:#bbbbbb;
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+body.dark .dashboard{
+    background:linear-gradient(
+        180deg,
+        #172235 0%,
+        #151a22 100%
+    );
+
+    border-color:#2d74d7;
+}
+
+body.dark .dashboard-card{
+    background:#1b2229;
+    color:#ffffff;
+}
+
+body.dark .dashboard-card p{
+    color:#cbd5e1;
+}
+
+body.dark .dashboard-tip-text{
+    color:#ffffff;
+}
+
+body.dark .dashboard-progress{
+    background:#303943;
+}
+
+body.dark .dashboard-section-title{
+    background:linear-gradient(
+        135deg,
+        #2874d7,
+        #4da3ff
+    );
+
+    color:#ffffff;
+}
+
+
+/* =========================================================
+   DASHBOARD BUTTONS
+========================================================= */
+
+body.dark .dashboard-action{
+    color:#ffffff;
+}
+
+
+/* =========================================================
+   PROMPT BUTTONS
+========================================================= */
+
+body.dark .prompt-btn{
+    color:#ffffff;
+}
+
+
+/* =========================================================
+   DARK MODE BUTTON
+========================================================= */
+
+body.dark .dark-btn{
+    background:#2b2b2b;
+    color:#4da3ff;
+}
+
+
+/* =========================================================
+   FLOATING NAVIGATION
+========================================================= */
+
+body.dark #floatingNav{
+    background:rgba(23,29,35,.95);
+    color:#ffffff;
+
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+}
+
+
+/* Top shortcuts */
+
+body.dark .topShortcuts{
+    background:#171d23;
+}
+
+body.dark .topItem{
+    color:#ffffff;
+}
+
+
+/* Divider */
+
+body.dark .navDivider{
+    background:#344a66;
+}
+
+
+/* Bottom navigation */
+
+body.dark .bottom-nav{
+    background:#171d23;
+}
+
+body.dark .nav-link{
+    color:#ffffff;
+}
+
+body.dark .nav-link.active{
+    color:#63a9ff;
+}
+
+body.dark .nav-link.active::after{
+    background:#63a9ff;
+}
+
+body.dark .nav-link span{
+    color:inherit;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+body.dark .footer{
+    color:#aeb8c4;
+}
+
+body.dark .footer-links a{
+    color:#7db7ff;
+}
+
+
+/* =========================================================
+   DAILY TIP
+========================================================= */
+
+body.dark .tip-box{
+    background:#1b2229;
+    color:#ffffff;
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+body.dark #toast{
+    background:#ffffff;
+    color:#111827;
+}
+
+
+/* =========================================================
+   OFFLINE SCREEN
+========================================================= */
+
+body.dark .offline-screen{
+    background:#101418;
+}
+
+body.dark .offline-box{
+    background:#1b2229;
+    color:#ffffff;
+}
+
+body.dark .offline-box p{
+    color:#d7dee7;
+}
+
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+body.dark .loader-overlay,
+body.dark #loader{
+    background:#101418;
+    color:#ffffff;
+}
+
+body.dark .loader-sub{
+    color:#bbbbbb;
+}
+
+
+/* =========================================================
+   TIMEOUT
+========================================================= */
+
+body.dark .timeout-box{
+    background:#1b2229;
+    color:#ffffff;
+}
+
+body.dark .timeout-box p{
+    color:#cccccc;
+}
+
+
+/* =========================================================
+   CONNECTION STATUS
+========================================================= */
+
+body.dark .connection-status{
+    color:#ffffff;
+}
+
+
+/* =========================================================
+   INPUT SELECT / TEXTAREA
+========================================================= */
+
+body.dark input,
+body.dark textarea,
+body.dark select{
+    background:#171d23;
+    color:#ffffff;
+    border-color:#3a4652;
+}
+
+body.dark input::placeholder,
+body.dark textarea::placeholder{
+    color:#8f9aa6;
+}
+
+
+/* =========================================================
+   BUTTON TEXT
+========================================================= */
+
+body.dark button{
+    color:#ffffff;
+}
+
+
+/* =========================================================
+   FINAL CATEGORY OVERRIDE
+   Prevents light #f5f6f8 / #cfd6e6 from leaking through
+========================================================= */
+
+body.dark .category-container{
+    background:#171d23 !important;
+}
+
+body.dark .category-card{
+    background:#1b2229 !important;
+    color:#f1f5f9 !important;
+    border:1px solid #252e38;
+    box-shadow:0 4px 12px rgba(0,0,0,.18);
+}
+
+body.dark .category-card p{
+    color:#d7dee7 !important;
+}
+
+
+/* =========================================================
+   FINAL TOOL OVERRIDE
+========================================================= */
+
+body.dark .tool{
+    background:#1b2229 !important;
+    color:#f1f5f9 !important;
+}
+
+
+/* =========================================================
+   FINAL BADGE OVERRIDE
+   Ensures FREE + PRO can never become invisible
+========================================================= */
+
+body.dark .badge.pro{
+    display:inline-block !important;
+    visibility:visible !important;
+    opacity:1 !important;
+
+    background:#f3f0ff !important;
+    color:#7b1fa2 !important;
+}
+
+body.dark .badge.free{
+    display:inline-block !important;
+    visibility:visible !important;
+    opacity:1 !important;
+
+    background:#e8f5ff !important;
+    color:#1e88e5 !important;
+}
+
+body.dark .badge.paid{
+    display:inline-block !important;
+    visibility:visible !important;
+    opacity:1 !important;
+
+    background:#fff1f1 !important;
+    color:#d32f2f !important;
+}
+
 </style>  
   
 </head> 
@@ -1553,34 +2602,307 @@ background:#dc2626;
 <div class="header" id="top">
 <span style="font-size:16px;">AI Tools Hub</span>
 
-<button class="dark-btn" onclick="toggleDark()" id="themeBtn">
-Dark Mode: OFF
+<button
+    type="button"
+    id="themeBtn"
+    class="dark-btn"
+    onclick="toggleDark()">
+    🌙 Dark Mode
 </button>
+
 </div>  
 
   
-<!-- HOME -->  
+<!-- HOME -->
 
 <div id="home" style="height:1px;"></div>
-  
-<div class="section prompt-section" id="prompts">
 
-  <h2 class="welcome-title">Welcome to<br> AI Tools Hub</h2>
+<!-- ======================================
+     v1.18 ENGAGEMENT DASHBOARD
+====================================== -->
+<!-- =========================================
+     📊 AI TOOLS HUB DASHBOARD
+     v1.18.1 Dashboard Block
+========================================= -->
 
-  <!-- ✅ ADD HERE -->
-  <p class="welcome-desc">
-    Browse a curated collection of AI tools and resources for work, learning and creativity.
-  </p>
+<section id="engagementDashboard" class="dashboard">
 
-  <p class="welcome-sub">Generate powerful AI prompts instantly</p>
+    <!-- DASHBOARD TITLE -->
+    <div class="dashboard-section-title">
+        📊 DASHBOARD
+    </div>
 
-<div class="how-use-wrapper">
-    <a href="how-to-use.html" class="how-use-link">
-        <button class="prompt-btn" type="button">
-            📖 How to Use AI Tools Hub
-        </button>
-    </a>
+
+    <!-- WELCOME BACK -->
+    <div class="dashboard-card dashboard-welcome">
+
+    <h2 id="dashboardGreeting">
+    🙏 Welcome back!
+</h2>
+
+    <p id="dashboardReturnMessage">
+        Discover, learn and improve your AI skills every day.
+    </p>
+
 </div>
+
+  <!-- ======================================
+     YOUR AI ACTIVITY
+====================================== -->
+
+<div class="dashboard-card dashboard-activity">
+
+    <h3>
+        📊 Your AI Activity
+    </h3>
+
+    <div class="dashboard-stats-grid">
+
+        <div class="dashboard-stat">
+            <div class="dashboard-stat-icon">⭐</div>
+
+            <div
+                class="dashboard-stat-number"
+                id="dashboardFavoritesCount">
+                0
+            </div>
+
+            <div class="dashboard-stat-label">
+                Favorites
+            </div>
+        </div>
+
+
+        <div class="dashboard-stat">
+            <div class="dashboard-stat-icon">🕒</div>
+
+            <div
+                class="dashboard-stat-number"
+                id="dashboardRecentCount">
+                0
+            </div>
+
+            <div class="dashboard-stat-label">
+                Recent Tools
+            </div>
+        </div>
+
+
+        <div class="dashboard-stat">
+            <div class="dashboard-stat-icon">✨</div>
+
+            <div
+                class="dashboard-stat-number"
+                id="dashboardSavedCount">
+                0
+            </div>
+
+            <div class="dashboard-stat-label">
+                Saved Prompts
+            </div>
+        </div>
+
+
+        <div class="dashboard-stat">
+            <div class="dashboard-stat-icon">🎓</div>
+
+            <div
+                class="dashboard-stat-number"
+                id="dashboardLearningCount">
+                0
+            </div>
+
+            <div class="dashboard-stat-label">
+                Learning Hub
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+  <!-- ======================================
+     DASHBOARD QUICK ACTIONS
+====================================== -->
+
+<div class="dashboard-card dashboard-quick-actions">
+
+    <h3>
+        ⚡ Quick Actions
+    </h3>
+
+    <div class="dashboard-quick-grid">
+
+    <!-- PROMPT GENERATOR -->
+    <button
+        type="button"
+        class="dashboard-quick-btn"
+        onclick="goTo('prompts')">
+
+        <span class="quick-btn-icon">✨</span>
+        <small>Prompt Generator</small>
+        <b class="quick-btn-arrow">→</b>
+
+    </button>
+
+
+    <!-- LEARNING HUB -->
+    <button
+        type="button"
+        class="dashboard-quick-btn"
+        onclick="openAILearningHub()">
+
+        <span class="quick-btn-icon">🎓</span>
+        <small>AI Learning Hub</small>
+        <b class="quick-btn-arrow">→</b>
+
+    </button>
+
+
+    <!-- TOOLS CATEGORIES -->
+    <button
+        type="button"
+        class="dashboard-quick-btn"
+        onclick="goTo('categories')">
+
+        <span class="quick-btn-icon">🗂️</span>
+        <small>Tools Categories</small>
+        <b class="quick-btn-arrow">→</b>
+
+    </button>
+
+
+    <!-- RECENTLY USED TOOLS -->
+<button
+    type="button"
+    class="dashboard-quick-btn"
+    onclick="goTo('recentTools')">
+
+    <span class="quick-btn-icon">🕒</span>
+    <small>Recent Tools</small>
+    <b class="quick-btn-arrow">→</b>
+
+</button>
+
+</div>
+
+</div>
+
+
+    <!-- AI TIP OF THE DAY -->
+    <div class="dashboard-card dashboard-tip">
+
+        <h3>
+            💡 AI Tip of the Day
+        </h3>
+
+        <p id="dashboardTipText" class="dashboard-tip-text">
+            Create innovation challenge ideas
+        </p>
+
+        <button
+    type="button"
+    class="dashboard-action"
+    id="dashboardTipBtn"
+    onclick="dashboardTryTip()">
+    💡 Try Today's Tip
+</button>
+
+    </div>
+
+
+    <!-- CONTINUE LEARNING -->
+    <div class="dashboard-card">
+
+        <h3>
+            🎓 AI Learning Hub
+        </h3>
+
+        <p id="learningProgressText">
+            You've completed 1 of 20 lessons. Keep going!
+        </p>
+
+        <div class="dashboard-progress">
+            <div
+                class="dashboard-progress-fill"
+                id="learningProgressFill"
+                style="width:5%;">
+            </div>
+        </div>
+
+        <div
+            class="dashboard-progress-text"
+            id="learningProgressPercent">
+            5% completed
+        </div>
+
+        <button
+    type="button"
+    class="dashboard-action"
+    id="continueLearningBtn"
+    onclick="dashboardContinueLearning()">
+    🎓 Continue AI Learning Hub →
+</button>
+
+    </div>
+
+
+    <!-- AI LEARNING STREAK -->
+    <div class="dashboard-card">
+
+        <h3>
+            🔥 Your AI Learning Streak
+        </h3>
+
+        <div class="dashboard-streak">
+
+    <div class="streak-icon">
+        🔥
+    </div>
+
+    <div>
+
+        <div
+            class="streak-number"
+            id="streakNumber">
+            0 days
+        </div>
+
+        <p id="dashboardStreakMessage">
+            🙏 Your next AI learning step is waiting. Start today!
+        </p>
+
+    </div>
+
+</div>
+
+    </div>
+
+</section>
+
+<!-- END v1.18 DASHBOARD -->
+
+  <div class="section prompt-section" id="prompts">
+
+    <!-- HOW TO USE -->
+    <div class="how-use-wrapper">
+        <a href="how-to-use.html" class="how-use-link">
+            <button class="prompt-btn" type="button">
+                📖 How to Use AI Tools Hub
+            </button>
+        </a>
+    </div>
+
+
+    <!-- PROMPT GENERATOR -->
+    <h2 class="welcome-title">
+        ✨ Prompt Generator
+    </h2>
+
+    <p class="welcome-sub">
+        Generate powerful AI prompts instantly
+    </p>
+
   
 <div class="input-wrapper">
 
@@ -1606,36 +2928,23 @@ onclick="resetPrompt()">
 
 <div class="action-row">
 
-  <button class="prompt-btn tip-btn"
-          onclick="copyPrompt()">
-    📋 Copy Prompt
-  </button>
+    <button class="prompt-btn" onclick="copyPrompt()">
+        <span class="action-icon">📋</span>
+        <span>Copy Prompt</span>
+    </button>
 
-  <button class="prompt-btn tip-btn"
-          onclick="savePrompt()">
-    ⭐ Save Prompt
-  </button>
+    <button class="prompt-btn" onclick="savePrompt()">
+        <span class="action-icon">⭐</span>
+        <span>Save Prompt</span>
+    </button>
 
-</div>
-
-<div class="action-row">
-
-  <button class="prompt-btn tip-btn"
-          onclick="showDailyTip()">
-    💡 Daily Tip
-  </button>
-
-  <button class="prompt-btn tip-btn"
-          onclick="shareApp()">
-    📢 Share App
-  </button>
+    <button class="prompt-btn" onclick="shareApp()">
+        <span class="action-icon">📣</span>
+        <span>Share App</span>
+    </button>
 
 </div>
 </div>
-
-<button class="feature-btn learning-btn" onclick="openAILearningHub()">
-    🎓 AI Learning Hub
-</button>
 
 <div class="section" id="news">
 
@@ -1978,7 +3287,8 @@ oninput="searchToolsDebounced()">
 </div>
   
 <div id="searchResults"></div>  
-<div class="category-container">  
+  
+ <div class="category-container" id="categories">
   
 <h2 class="category-title">  
  AI Tools Categories  
@@ -2678,8 +3988,12 @@ We are not affiliated with third-party services.
 
 <h2>⚙️ Settings</h2>
 
-<button onclick="toggleDark()" class="dark-btn" id="themeBtn2">
-Dark Mode: OFF
+<button
+    type="button"
+    id="themeBtn2"
+    class="dark-btn"
+    onclick="toggleDark()">
+    🌙 Dark Mode
 </button>
 
 <br><br>
@@ -2705,249 +4019,849 @@ App Preferences & Settings
  <div class="footer">
   <div>AI Tools Hub © 2026 Curated AI tools Directory</div>
   <div style="font-size:12px;color:#999;margin-top:4px;">
-    Version 1.17 (11700)
+    Version 1.18 (11800)
   </div>
 </div> 
 <script>  
   
-/* =========================  
-   DARK MODE SYSTEM  
-========================= */  
+ /* =========================================
+   🌙 AI TOOLS HUB — DARK MODE SYSTEM
+   Production Theme Storage
+========================================= */
 
-function updateThemeButtons(){
+(function(){
 
-    const text = document.body.classList.contains("dark")
-        ? "Dark Mode: ON"
-        : "Dark Mode: OFF";
+    const THEME_KEY = "aiToolsHubTheme";
 
-    document.getElementById("themeBtn").innerText = text;
 
-    document.getElementById("themeBtn2").innerText = text;
-}
+    function updateThemeButtons(){
 
-function toggleDark(){
+        const isDark =
+            document.body.classList.contains("dark");
 
-    document.body.classList.toggle("dark");
+        const text =
+            isDark
+                ? "☀️ Light Mode"
+                : "🌙 Dark Mode";
 
-    if(document.body.classList.contains("dark")){
-        localStorage.setItem("theme","dark");
+        const themeBtn =
+            document.getElementById("themeBtn");
+
+        const themeBtn2 =
+            document.getElementById("themeBtn2");
+
+
+        if(themeBtn){
+            themeBtn.innerText = text;
+        }
+
+        if(themeBtn2){
+            themeBtn2.innerText = text;
+        }
+
+    }
+
+
+    function applyTheme(theme){
+
+        const isDark =
+            theme === "dark";
+
+
+        document.body.classList.toggle(
+            "dark",
+            isDark
+        );
+
+
+        localStorage.setItem(
+            THEME_KEY,
+            isDark ? "dark" : "light"
+        );
+
+
+        updateThemeButtons();
+
+    }
+
+
+    function toggleDark(){
+
+        const isDark =
+            document.body.classList.contains("dark");
+
+
+        applyTheme(
+            isDark
+                ? "light"
+                : "dark"
+        );
+
+    }
+
+
+    function loadSavedTheme(){
+
+        const savedTheme =
+            localStorage.getItem(
+                THEME_KEY
+            );
+
+
+        applyTheme(
+            savedTheme === "dark"
+                ? "dark"
+                : "light"
+        );
+
+    }
+
+
+    window.toggleDark =
+        toggleDark;
+
+    window.applyTheme =
+        applyTheme;
+
+    window.updateThemeButtons =
+        updateThemeButtons;
+
+
+    if(document.readyState === "loading"){
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            loadSavedTheme
+        );
+
     }else{
-        localStorage.setItem("theme","light");
+
+        loadSavedTheme();
+
     }
 
-    updateThemeButtons();
+
+})();
+  
+/* =========================
+   PROMPT GENERATOR
+   v1.18.3 — Subject-Aware
+   Professional Prompt Engine
+========================= */
+
+let currentPromptType = "default";
+
+/* =========================================
+   PROMPT TYPE SAFETY
+   Prevent stale template types
+========================================= */
+
+const promptTopicInput =
+    document.getElementById("topic");
+
+if(promptTopicInput){
+
+    promptTopicInput.addEventListener("input", function(){
+
+        currentPromptType = "default";
+
+    });
+
 }
-  
-/* LOAD SAVED THEME AFTER REFRESH */  
 
- document.addEventListener("DOMContentLoaded",function(){
 
-    if(localStorage.getItem("theme")==="dark"){
-        document.body.classList.add("dark");
-    }
+/* -----------------------------------------
+   Generate Prompt
+----------------------------------------- */
 
-    updateThemeButtons();
-}); 
-  
-/* =========================  
-   PROMPT GENERATOR  
-========================= */  
-  
-  let currentPromptType = "";
-  
 function generatePrompt(type){
 
-  let topic =
-    document.getElementById("topic").value;
-  
-  let promptText = "";
+    const topicElement =
+        document.getElementById("topic");
 
-// check empty input
-if(topic.trim() === ""){
-
-  document.getElementById("result").innerText =
-    "Please enter a topic";
-
-  return;
-}
+    const resultElement =
+        document.getElementById("result");
 
 
+    if(!topicElement || !resultElement){
 
-  if(type === "resume"){
+        return;
+
+    }
+
+
+    const topic =
+        topicElement.value.trim();
+
+
+    /* -------------------------------------
+       Check empty input
+    ------------------------------------- */
+
+    if(topic === ""){
+
+        resultElement.innerText =
+            "Please enter a topic";
+
+        return;
+
+    }
+
+
+    currentPromptType = type || "default";
+
+
+    let promptText = "";
+
+
+    /* =====================================
+       RESUME
+    ===================================== */
+
+    if(type === "resume"){
+
+        promptText =
+`Act as an expert resume writer and ATS optimization specialist.
+
+Create a professional, ATS-friendly resume for:
+
+"${topic}"
+
+Include:
+
+1. Professional summary
+2. Relevant skills
+3. Work experience
+4. Quantifiable achievements
+5. Projects
+6. Education
+7. Certifications, if relevant
+8. Important keywords for the target role
+
+Use strong action verbs and measurable achievements where appropriate.
+
+Do not invent qualifications, experience, achievements, or certifications.
+
+Use a clean professional structure suitable for modern recruitment systems.
+
+If important information is missing, identify what the user should provide before finalizing the resume.`;
+
+    }
+
+
+    /* =====================================
+       ESSAY
+    ===================================== */
+
+    else if(type === "essay"){
+
+        promptText =
+`Act as an experienced writer and subject-matter expert.
+
+Write a well-structured essay about:
+
+"${topic}"
+
+Include:
+
+1. A strong introduction
+2. Clear background and context
+3. Well-developed main arguments or ideas
+4. Relevant examples or evidence
+5. Different perspectives where appropriate
+6. Advantages and disadvantages when relevant
+7. A logical conclusion
+
+Use clear, accurate, engaging language appropriate for the intended audience.
+
+Do not invent facts or unsupported statistics.
+
+Organize the essay with suitable headings where helpful.
+
+End with a concise summary of the key message.`;
+
+    }
+
+
+    /* =====================================
+       YOUTUBE
+    ===================================== */
+
+    else if(type === "youtube"){
+
+        promptText =
+`Act as an experienced YouTube content strategist and scriptwriter.
+
+Create an engaging YouTube video script about:
+
+"${topic}"
+
+Include:
+
+1. A strong attention-grabbing hook
+2. Introduction
+3. Clear explanation of the topic
+4. Engaging main sections
+5. Examples, stories, or practical insights where appropriate
+6. Natural transitions
+7. Viewer engagement elements
+8. A strong call to action
+9. Suggested video title
+10. Suggested thumbnail concept
+
+Adapt the explanation to the likely audience and subject.
+
+Keep the script natural, informative, engaging, and suitable for spoken delivery.
+
+Do not use unnecessary repetition or unsupported claims.`;
+
+    }
+
+
+    /* =====================================
+       CODING
+    ===================================== */
+
+    else if(type === "coding"){
+
+        promptText =
+`Act as an experienced software engineer.
+
+Develop a high-quality solution for:
+
+"${topic}"
+
+Before providing the final solution:
+
+1. Clearly understand the requirements.
+2. State any important assumptions.
+3. Recommend an appropriate technology, language, framework, or approach when necessary.
+4. Provide clean, maintainable, and efficient code.
+5. Explain the important parts of the implementation.
+6. Include appropriate error handling.
+7. Mention security considerations where relevant.
+8. Explain how the solution can be tested.
+9. Suggest improvements or alternatives where useful.
+
+Do not invent unavailable requirements.
+
+If critical information is missing, clearly identify it before making assumptions.
+
+Use modern coding best practices.`;
+
+    }
+
+
+    /* =====================================
+       LOGO / DESIGN
+    ===================================== */
+
+    else if(type === "logo"){
+
+        promptText =
+`Act as a professional brand identity and logo designer.
+
+Create a professional logo concept for:
+
+"${topic}"
+
+Develop:
+
+1. Brand concept
+2. Target audience
+3. Visual direction
+4. Logo style
+5. Color palette
+6. Typography recommendations
+7. Symbol or icon concept
+8. Composition
+9. Brand personality
+10. Variations suitable for different platforms
+
+The design should be distinctive, professional, scalable, and appropriate for the subject.
+
+Avoid unnecessary visual complexity.
+
+Explain why the proposed design choices suit the subject and audience.`;
+
+    }
+
+
+    /* =====================================
+       SQL
+    ===================================== */
+
+    else if(type === "sql"){
+
+        promptText =
+`Act as an experienced database engineer.
+
+Create an efficient SQL solution for:
+
+"${topic}"
+
+First identify the likely database requirements and assumptions.
+
+Provide:
+
+1. The SQL query
+2. Explanation of the query
+3. Important joins or relationships
+4. Filtering and sorting logic
+5. Performance considerations
+6. Indexing recommendations where appropriate
+7. Potential edge cases
+8. Security considerations
+
+Clearly state which SQL dialect is being assumed if it matters.
+
+Use readable, maintainable, and optimized SQL.`;
+
+    }
+
+
+    /* =====================================
+       PRESENTATION
+    ===================================== */
+
+    else if(type === "presentation"){
+
+        promptText =
+`Act as an expert presentation designer and subject-matter specialist.
+
+Create a professional presentation about:
+
+"${topic}"
+
+Develop a logical slide-by-slide structure including:
+
+1. Title slide
+2. Introduction
+3. Background/context
+4. Main concepts or arguments
+5. Supporting examples
+6. Key insights
+7. Practical recommendations where relevant
+8. Conclusion
+9. Call to action or discussion points where appropriate
+
+For each slide provide:
+
+- Slide title
+- Key points
+- Suggested visual
+- Speaker notes when useful
+
+Adapt the structure to the subject and intended audience.
+
+Keep the presentation clear, engaging, visually appropriate, and easy to present.`;
+
+    }
+
+
+    /* =====================================
+       EMAIL
+    ===================================== */
+
+    else if(type === "email"){
+
+        promptText =
+`Act as a professional business communication specialist.
+
+Write a clear and effective email about:
+
+"${topic}"
+
+Provide:
+
+1. Appropriate subject line
+2. Professional greeting
+3. Clear purpose
+4. Concise and well-organized message
+5. Appropriate supporting details
+6. Clear call to action when necessary
+7. Professional closing
+
+Adapt the tone to the situation and intended recipient.
+
+Keep the email natural, respectful, concise, and professional.
+
+If the recipient, purpose, or tone is unclear, state reasonable assumptions or identify what information is needed.`;
+
+    }
+
+
+    /* =====================================
+       INTERVIEW
+    ===================================== */
+
+    else if(type === "interview"){
+
+        promptText =
+`Act as an experienced interviewer and career coach.
+
+Prepare the user for an interview related to:
+
+"${topic}"
+
+Provide:
+
+1. Common interview questions
+2. Role- or subject-specific questions
+3. Strong sample answers
+4. Behavioral questions where relevant
+5. Technical questions where relevant
+6. Tips for answering effectively
+7. Common mistakes to avoid
+8. Questions the candidate can ask the interviewer
+
+Adapt the questions to the likely role, experience level, and subject.
+
+Do not assume qualifications that have not been provided.`;
+
+    }
+
+
+    /* =====================================
+       BUSINESS
+    ===================================== */
+
+    else if(type === "business"){
+
+        promptText =
+`Act as an experienced business strategist and consultant.
+
+Develop a practical business plan for:
+
+"${topic}"
+
+Analyze:
+
+1. Business concept
+2. Problem being solved
+3. Target customers
+4. Value proposition
+5. Products or services
+6. Competitive landscape
+7. Revenue model
+8. Marketing strategy
+9. Operations
+10. Growth opportunities
+11. Risks and challenges
+12. Key performance indicators
+
+Clearly identify assumptions and information that should be validated.
+
+Keep the plan realistic, actionable, and suitable for decision-making.`;
+
+    }
+
+
+    /* =====================================
+       BLOG
+    ===================================== */
+
+    else if(type === "blog"){
+
+        promptText =
+`Act as an experienced content writer and subject-matter expert.
+
+Write a high-quality blog article about:
+
+"${topic}"
+
+Create:
+
+1. An engaging title
+2. A strong introduction
+3. Clear headings and subheadings
+4. Well-developed explanations
+5. Relevant examples
+6. Practical insights
+7. A concise conclusion
+8. A suitable call to action
+
+Adapt the writing style to the subject and target audience.
+
+Use natural language, accurate information, and useful explanations.
+
+Avoid unnecessary repetition and unsupported claims.`;
+
+    }
+
+
+    /* =====================================
+       SOCIAL MEDIA
+    ===================================== */
+
+    else if(type === "social"){
+
+        promptText =
+`Act as an experienced social media content strategist.
+
+Create engaging social media content about:
+
+"${topic}"
+
+Develop platform-appropriate content including:
+
+1. Attention-grabbing hook
+2. Main message
+3. Caption
+4. Suggested content format
+5. Call to action
+6. Relevant hashtags
+7. Alternative hooks or captions
+
+Adapt the content to the subject, target audience, and selected platform.
+
+Keep it authentic, engaging, concise, and appropriate for the topic.
+
+Do not use irrelevant hashtags or generic filler content.`;
+
+    }
+
+
+    /* =====================================
+       SUMMARY
+    ===================================== */
+
+    else if(type === "summary"){
+
+        promptText =
+`Act as an expert information analyst.
+
+Create a clear and accurate summary of:
+
+"${topic}"
+
+Identify:
+
+1. Main idea
+2. Important concepts
+3. Key facts or arguments
+4. Important supporting details
+5. Practical implications
+6. Actionable insights where appropriate
+
+Organize the information logically.
+
+Keep the summary concise while preserving the most important meaning.
+
+Do not add information that is not supported by the source or topic.`;
+
+    }
+
+
+    /* =====================================
+       PROPOSAL
+    ===================================== */
+
+    else if(type === "proposal"){
+
+        promptText =
+`Act as an experienced project proposal writer.
+
+Create a professional proposal for:
+
+"${topic}"
+
+Include:
+
+1. Executive summary
+2. Problem or opportunity
+3. Objectives
+4. Proposed solution
+5. Scope
+6. Deliverables
+7. Timeline
+8. Resources required
+9. Expected outcomes
+10. Risks and mitigation
+11. Success criteria
+12. Next steps
+
+Adapt the proposal to the subject and intended audience.
+
+Clearly identify assumptions and avoid inventing specific facts, costs, or commitments.`;
+
+    }
+
+
+    /* =====================================
+       DETAILED EXPLANATION
+    ===================================== */
+
+    else if(type === "detailed"){
+
+        promptText =
+`Act as an expert educator and subject-matter specialist.
+
+Explain the following topic in depth:
+
+"${topic}"
+
+Cover:
+
+1. Introduction
+2. Background
+3. Key concepts
+4. How it works
+5. Relevant examples
+6. Benefits and limitations where applicable
+7. Real-world applications
+8. Common misconceptions
+9. Practical insights
+10. Summary
+
+Use clear structure and explanations appropriate for the likely audience.
+
+Define technical terms when necessary.
+
+Prioritize accuracy, clarity, and practical understanding.`;
+
+    }
+
+
+    /* =====================================
+       BRIEF EXPLANATION
+    ===================================== */
+
+    else if(type === "brief"){
+
+        promptText =
+`Act as a clear and concise subject-matter expert.
+
+Provide a brief explanation of:
+
+"${topic}"
+
+Include:
+
+- What it is
+- Why it matters
+- The most important concepts
+- One or two useful examples where appropriate
+
+Use simple, accurate language.
+
+Focus only on the information most relevant to understanding the topic.`;
+
+    }
+
+
+    /* =====================================
+       QUICK SUMMARY
+    ===================================== */
+
+    else if(type === "quicksummary"){
+
+        promptText =
+`Create a quick, accurate, and easy-to-understand summary of:
+
+"${topic}"
+
+Highlight only the most important:
+
+- Ideas
+- Facts
+- Concepts
+- Takeaways
+
+Use concise bullet points where appropriate.
+
+Avoid unnecessary detail while preserving the essential meaning.`;
+
+    }
+
+
+    /* =====================================
+       BEGINNER FRIENDLY
+    ===================================== */
+
+    else if(type === "beginner"){
+
+        promptText =
+`Act as a patient and experienced teacher.
+
+Explain the following topic to a complete beginner:
+
+"${topic}"
+
+Use:
+
+1. Very simple language
+2. Step-by-step explanations
+3. Everyday examples
+4. Helpful analogies where appropriate
+5. Clear headings
+6. A short recap at the end
+
+Avoid unnecessary technical jargon.
+
+If a technical term is necessary, explain it in simple language.
+
+Do not assume the learner has prior knowledge of the subject.`;
+
+    }
+
+
+    /* =====================================
+   🧠 SMART / DEFAULT PROMPT
+   v1.18.4 — Adaptive Subject-Aware
+===================================== */
+
+ else{
 
     promptText =
-      "Create a modern professional resume for " +
-      topic +
-      " with skills, achievements, experience, projects, certifications, and strong summary.";
+`Act as an expert AI prompt designer.
 
-  }
+User request:
 
-  else if(type === "essay"){
+"${topic}"
 
-    promptText =
-      "Write a detailed essay about " +
-      topic +
-      " with introduction, main points, advantages, disadvantages, and conclusion.";
+Transform this request into ONE high-quality, ready-to-use prompt for ChatGPT, Gemini, or another AI assistant.
 
-  }
+Understand the user's actual intent, subject, task, audience, and desired outcome. Adapt the prompt to the request rather than assuming a specific field or task type.
 
-  else if(type === "youtube"){
+Choose the appropriate expert perspective, instructions, context, and output format only when they genuinely improve the result.
 
-    promptText =
-      "Create an engaging YouTube script about " +
-      topic +
-      " with hook, intro, main content, and call to action.";
+Follow these principles:
 
-  }
+- Perform the requested task directly; do not ask the AI to create another prompt or prompt framework.
+- Match the prompt's complexity to the user's request. Keep simple requests concise and add only the most useful instructions.
+- Preserve the user's intent while improving clarity, specificity, and usefulness.
+- Do not invent facts, personal information, requirements, or context.
+- If essential information is missing, instruct the AI to ask a concise clarifying question.
+- For accuracy-sensitive topics, distinguish known information from assumptions and avoid unsupported claims.
+- For recommendations or decisions, consider relevant criteria, trade-offs, limitations, and alternatives when useful.
+- For creative requests, preserve the user's creative intent without unnecessary restrictions.
+- For educational requests, adapt explanations to the appropriate knowledge level.
+- For technical requests, include relevant requirements, testing, security, error handling, and best practices when appropriate.
+- Use only the structure necessary to produce an excellent result.
+- For very short or simple requests, avoid adding extra topics, examples, sections, or requirements unless they are necessary to answer the request well.
+- Avoid repetition, generic instructions, unnecessary sections, and over-engineering.
 
-  else if(type === "coding"){
+  Output ONLY the final ready-to-use AI prompt. Do not include analysis, explanation, classification, or commentary.`;
+    }
 
-    promptText =
-      "Generate clean optimized code for " +
-      topic +
-      " with explanation, comments, and best practices.";
 
-  }
+    /* -----------------------------------------
+       Display generated prompt
+    ----------------------------------------- */
 
-  else if(type === "logo"){
+    resultElement.innerText =
+        promptText;
 
-    promptText =
-      "Create a modern professional logo design for " +
-      topic +
-      " with minimal style, premium colors, clean typography, and creative branding.";
 
-  }
+    /* -----------------------------------------
+       Save prompt history
+    ----------------------------------------- */
 
-  else if(type === "sql"){
-
-    promptText =
-      "Write an optimized SQL query for " +
-      topic +
-      " with explanation, comments, joins, performance improvements, and best practices.";
-
-  }
-
-  else if(type === "presentation"){
-
-    promptText =
-      "Create a professional presentation about " +
-      topic +
-      " with slide titles, key points, summary, and engaging structure.";
-
-  }
-  else if(type === "email"){
-
-  promptText =
-    "Write a professional email about " +
-    topic +
-    " with a clear subject, greeting, concise message and professional closing.";
+    savePromptHistory(promptText);
 
 }
 
-  else if(type === "interview"){
-
-  promptText =
-    "Generate common interview questions and model answers for " +
-    topic +
-    " with tips and best practices.";
-
-}
-
-else if(type === "business"){
-
-  promptText =
-    "Create a detailed business plan for " +
-    topic +
-    " including target market, revenue model, marketing strategy and growth plan.";
-
-}
-
-else if(type === "blog"){
-
-  promptText =
-    "Write a professional blog post about " +
-    topic +
-    " with title, headings, key points and conclusion.";
-
-}
-
-else if(type === "social"){
-
-  promptText =
-    "Create engaging social media content about " +
-    topic +
-    " with captions, hashtags and call to action.";
-
-}
-
-else if(type === "summary"){
-
-  promptText =
-    "Summarize " +
-    topic +
-    " into clear and concise notes with key points, important concepts and actionable insights.";
-
-}
-
-else if(type === "proposal"){
-
-  promptText =
-    "Create a professional project proposal for " +
-    topic +
-    " with objectives, scope, timeline and expected outcomes.";
-
-}
-
-  else if(type === "detailed"){
-
-  promptText =
-    "Explain " +
-    topic +
-    " in detail with introduction, key concepts, examples, advantages, disadvantages, real-world applications and conclusion.";
-
-}
-
-  else if(type === "brief"){
-
-  promptText =
-    "Provide a brief explanation of " +
-    topic +
-    " covering the main concepts, importance and key points.";
-
-}
-
-  else if(type === "quicksummary"){
-
-  promptText =
-    "Provide a quick summary of " +
-    topic +
-    " highlighting the most important points in a concise and easy-to-understand format.";
-
-}
-
-  else if(type === "beginner"){
-
-  promptText =
-    "Explain " +
-    topic +
-    " in very simple beginner-friendly language with easy examples and no technical jargon.";
-
-}
-
-  else{
-
-    promptText =
-      "Create a professional AI prompt for " +
-      topic +
-      " with detailed explanation and high quality output.";
-
-  }
-
-  document.getElementById("result").innerText =
-    promptText;
-  
-   savePromptHistory(promptText);
-}
 
 function savePromptHistory(prompt){
 
@@ -3149,19 +5063,33 @@ function deleteHistoryPrompt(index){
  /* =========================  
    PROMPT TEMPLATES
 ========================= */ 
-function setPrompt(text,type){
+function setPrompt(text, type){
 
-  // SAVE CURRENT TEMPLATE TYPE
-  currentPromptType = type;
+    // Save selected template type
+    currentPromptType = type;
 
-  document.getElementById("topic").value = text;
+    // Put template topic into input
+    document.getElementById("topic").value = text;
 
-  generatePrompt(type);
+    // Generate the prompt immediately
+    generatePrompt(type);
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+    // Go directly to the Generate Prompt section
+    const promptSection = document.getElementById("prompts");
+
+    if(promptSection){
+        const headerOffset = 75;
+
+        const y =
+            promptSection.getBoundingClientRect().top +
+            window.pageYOffset -
+            headerOffset;
+
+        window.scrollTo({
+            top: y,
+            behavior: "smooth"
+        });
+    }
 
 }
   
@@ -3184,8 +5112,9 @@ el.innerHTML="⭐";
 favorites = favorites.filter(t=>t.name!==name);  
 localStorage.setItem("favorites",JSON.stringify(favorites));  
   
-showFavorites();  
-return;  
+showFavorites();
+updateDashboardStats();
+return;
 }  
   
 /* ADD FAVORITE */  
@@ -3196,7 +5125,8 @@ favorites.push({name,link});
 localStorage.setItem("favorites",JSON.stringify(favorites));  
 }  
   
-showFavorites();  
+ showFavorites();
+updateDashboardStats();
 }  
   
 function showFavorites(){  
@@ -3263,9 +5193,10 @@ JSON.parse(localStorage.getItem("favorites")) || [];
   
 favorites=favorites.filter(t=>t.name!==name);  
   
-localStorage.setItem("favorites",JSON.stringify(favorites));  
-  
-showFavorites();  
+ localStorage.setItem("favorites",JSON.stringify(favorites));
+
+showFavorites();
+updateDashboardStats();
 }  
   function saveRecentTool(name, link){
 
@@ -3288,9 +5219,10 @@ showFavorites();
   localStorage.setItem(
     "recentTools",
     JSON.stringify(recent)
-  );
+);
 
-  showRecentTools();
+showRecentTools();
+updateDashboardStats();
 }
 
 function showRecentTools(){
@@ -3947,33 +5879,95 @@ const tips = [
 "Your future starts today."
 ];
 
+ /* =========================================
+   UNIFIED DAILY TIP SYSTEM
+   One tip shared by popup + dashboard
+========================================= */
+
+function getDailyTip(){
+
+    const today =
+        new Date().toDateString();
+
+    let savedDate =
+        localStorage.getItem("tipDate");
+
+    let savedTip =
+        localStorage.getItem("tipText");
+
+
+    /* -------------------------------------
+       Use today's existing tip
+    ------------------------------------- */
+
+    if(
+        savedDate === today &&
+        savedTip
+    ){
+
+        return savedTip;
+
+    }
+
+
+    /* -------------------------------------
+       New day → choose one new tip
+    ------------------------------------- */
+
+    const randomTip =
+        tips[
+            Math.floor(
+                Math.random() * tips.length
+            )
+        ];
+
+
+    localStorage.setItem(
+        "tipDate",
+        today
+    );
+
+    localStorage.setItem(
+        "tipText",
+        randomTip
+    );
+
+
+    return randomTip;
+
+}
+
+
+/* =========================================
+   DAILY TIP POPUP
+========================================= */
+
 function showDailyTip(){
 
-  let today = new Date().toDateString();
+    const box =
+        document.getElementById("tipBox");
 
-  let savedDate = localStorage.getItem("tipDate");
-  let savedTip = localStorage.getItem("tipText");
+    if(!box) return;
 
-  // New day → new tip
-  if(savedDate !== today || !savedTip){
 
-    let randomTip = tips[Math.floor(Math.random()*tips.length)];
+    const dailyTip =
+        getDailyTip();
 
-    localStorage.setItem("tipDate", today);
-    localStorage.setItem("tipText", randomTip);
 
-    savedTip = randomTip;
-  }
+    box.innerHTML =
+        "💡 <b>Daily Tip:</b><br>" +
+        dailyTip;
 
-  let box = document.getElementById("tipBox");
-  if(!box) return;
 
-  box.innerHTML = "💡 <b>Daily Tip:</b><br>" + savedTip;
-  box.classList.add("show");
+    box.classList.add("show");
 
-  setTimeout(()=>{
-    box.classList.remove("show");
-  },4000);
+
+    setTimeout(function(){
+
+        box.classList.remove("show");
+
+    },4000);
+
 }
 
 // ✅ call after page loads
@@ -4079,6 +6073,8 @@ window.addEventListener("unhandledrejection", function(e){
 
 function shareApp(){
 
+   gtag('event', 'share_app');
+  
     const shareText =
     "🚀 AI Tools Hub\n\n" +
     "Curated collection of popular AI tools for productivity, coding, learning and design.\n\n" +
@@ -4218,13 +6214,13 @@ function savePrompt(){
     saved.unshift(prompt);
 
     localStorage.setItem(
-        "savedPrompts",
-        JSON.stringify(saved)
-    );
+    "savedPrompts",
+    JSON.stringify(saved)
+);
 
-    showSavedPrompts();
-
-    showToast("Prompt Saved ⭐");
+showSavedPrompts();
+updateDashboardStats();
+showToast("Prompt Saved ⭐");
 }
 
 function updateSavedPromptTitle(){
@@ -4410,6 +6406,8 @@ function deleteSavedPrompt(index){
 
     showSavedPrompts();
 
+   updateDashboardStats();
+
     showToast("Prompt Deleted");
 }
 
@@ -4475,6 +6473,8 @@ if(saved.length===0){
 
     showSavedPrompts();
 
+   updateDashboardStats();
+
     showToast("Saved Prompts Cleared");
 }
 
@@ -4516,9 +6516,10 @@ if(recent.length===0){
 
     localStorage.removeItem("recentTools");
 
-    showRecentTools();
+showRecentTools();
+updateDashboardStats();
 
-    showToast("Recent Tools Cleared");
+showToast("Recent Tools Cleared");
 }
 </script>
 
@@ -5104,5 +7105,1282 @@ checkConnection();
 
 </script>
 
+<script>
+
+/* ======================================
+   AI Tools Hub v1.18.1
+   Engagement Dashboard
+====================================== */
+
+
+/* --------------------------------------
+   GA4 Dashboard Event Helper
+-------------------------------------- */
+
+function trackDashboardEvent(eventName){
+
+    if(typeof gtag === "function"){
+
+        gtag("event", eventName, {
+
+            app_section:
+                "engagement_dashboard"
+
+        });
+
+    }
+
+}
+
+
+ /* --------------------------------------
+   Dashboard Greeting
+-------------------------------------- */
+
+function updateDashboardGreeting(){
+
+    const greeting =
+        document.getElementById(
+            "dashboardGreeting"
+        );
+
+    const message =
+        document.getElementById(
+            "dashboardReturnMessage"
+        );
+
+    if(!greeting || !message) return;
+
+
+    const lastVisit =
+        localStorage.getItem(
+            "aiToolsHubLastVisit"
+        );
+
+
+    /* -------------------------------------
+       FIRST-TIME USER
+    ------------------------------------- */
+
+    if(!lastVisit){
+
+        greeting.textContent =
+            "🙏 Welcome to AI Tools Hub!";
+
+        message.textContent =
+            "Discover AI tools, learn new skills, and explore powerful prompts.";
+
+        return;
+    }
+
+
+    /* -------------------------------------
+       RETURNING USER
+    ------------------------------------- */
+
+    greeting.textContent =
+        "🙏 Welcome back!";
+
+    message.textContent =
+        "Continue exploring AI Tools Hub.";
+
+}
+
+
+/* =========================================
+   v1.18.2 USER RETURN & RETENTION SYSTEM
+========================================= */
+
+
+/* -----------------------------------------
+   Local Date Helpers
+----------------------------------------- */
+
+function getLocalDateKey(date = new Date()) {
+
+    const year = date.getFullYear();
+
+    const month =
+        String(date.getMonth() + 1).padStart(2, "0");
+
+    const day =
+        String(date.getDate()).padStart(2, "0");
+
+    return year + "-" + month + "-" + day;
+}
+
+
+function getDateDifference(dateA, dateB) {
+
+    const a =
+        new Date(dateA + "T00:00:00");
+
+    const b =
+        new Date(dateB + "T00:00:00");
+
+    return Math.round(
+        (b - a) / 86400000
+    );
+
+}
+
+
+/* -----------------------------------------
+   USER RETURN EXPERIENCE
+----------------------------------------- */
+
+function updateUserReturnExperience() {
+
+    const message =
+        document.getElementById(
+            "dashboardReturnMessage"
+        );
+
+    if(!message) return;
+
+
+    const today =
+        getLocalDateKey();
+
+
+    const lastVisit =
+        localStorage.getItem(
+            "aiToolsHubLastVisit"
+        );
+
+
+    let visitCount =
+        Number(
+            localStorage.getItem(
+                "aiToolsHubVisitCount"
+            ) || 0
+        );
+
+
+    /* -------------------------------------
+       FIRST VISIT
+    ------------------------------------- */
+
+    if(!lastVisit){
+
+        message.textContent =
+            "Discover, learn and improve your AI skills every day.";
+
+        visitCount = 1;
+
+        localStorage.setItem(
+            "aiToolsHubVisitCount",
+            String(visitCount)
+        );
+
+        localStorage.setItem(
+            "aiToolsHubLastVisit",
+            today
+        );
+
+        trackDashboardEvent(
+            "first_home_visit"
+        );
+
+        return;
+    }
+
+
+    /* -------------------------------------
+       Calculate days away
+    ------------------------------------- */
+
+    const daysAway =
+        getDateDifference(
+            lastVisit,
+            today
+        );
+
+
+    /* -------------------------------------
+       SAME DAY
+    ------------------------------------- */
+
+    if(daysAway === 0){
+
+        message.textContent =
+            "🙏 Welcome back! Continue exploring AI Tools Hub.";
+
+        return;
+    }
+
+
+    /* -------------------------------------
+       NEXT DAY
+    ------------------------------------- */
+
+    if(daysAway === 1){
+
+        message.textContent =
+            "🔥 Welcome back! Keep your learning going today.";
+
+        trackDashboardEvent(
+            "return_next_day"
+        );
+
+    }
+
+
+    /* -------------------------------------
+       2–6 DAYS
+    ------------------------------------- */
+
+    else if(
+        daysAway >= 2 &&
+        daysAway <= 6
+    ){
+
+        message.textContent =
+            "🙏 Welcome back! Your next AI learning step is waiting.";
+
+        trackDashboardEvent(
+            "return_after_break"
+        );
+
+    }
+
+
+    /* -------------------------------------
+       7+ DAYS
+    ------------------------------------- */
+
+    else if(daysAway >= 7){
+
+        message.textContent =
+            "🙏 Welcome back! Let's start a fresh AI learning journey.";
+
+        trackDashboardEvent(
+            "return_after_7_days"
+        );
+
+    }
+
+
+    /* -------------------------------------
+       Record this new visit
+    ------------------------------------- */
+
+    visitCount++;
+
+    localStorage.setItem(
+        "aiToolsHubVisitCount",
+        String(visitCount)
+    );
+
+    localStorage.setItem(
+        "aiToolsHubLastVisit",
+        today
+    );
+
+
+    /* -------------------------------------
+       GA4 RETENTION EVENT
+    ------------------------------------- */
+
+    if(typeof gtag === "function"){
+
+        gtag("event", "user_return", {
+
+            days_since_last_visit:
+                daysAway,
+
+            visit_count:
+                visitCount,
+
+            app_section:
+                "engagement_dashboard"
+
+        });
+
+    }
+
+}
+
+
+/* =========================================
+   🔥 LEARNING STREAK MESSAGE
+========================================= */
+
+function updateReturnStreakMessage(){
+
+    const message =
+        document.getElementById(
+            "dashboardStreakMessage"
+        );
+
+    if(!message) return;
+
+
+    const streak =
+        Number(
+            localStorage.getItem(
+                "learningStreak"
+            ) || 0
+        );
+
+
+    const lastActivity =
+        localStorage.getItem(
+            "learningLastActivity"
+        );
+
+
+    const today =
+        getLocalDateKey();
+
+
+    /* -------------------------------------
+       COMPLETED TODAY
+    ------------------------------------- */
+
+    if(lastActivity === today){
+
+        message.textContent =
+            "🔥 Great work! You've completed today's learning. Keep it going tomorrow.";
+
+        return;
+
+    }
+
+
+    /* -------------------------------------
+       ACTIVE STREAK
+    ------------------------------------- */
+
+    if(streak > 0 && lastActivity){
+
+        message.textContent =
+            "🔥 Your " +
+            streak +
+            "-day learning streak is waiting. Continue today!";
+
+        return;
+
+    }
+
+
+    /* -------------------------------------
+       NO STREAK
+    ------------------------------------- */
+
+    message.textContent =
+        "🙏 Your next AI learning step is waiting. Start today!";
+
+}
+
+
+/* --------------------------------------
+   Learning Progress
+-------------------------------------- */
+
+function updateLearningDashboard(){
+
+    /*
+       These IDs match the new
+       v1.18.1 Dashboard HTML.
+    */
+
+    const progressBar =
+        document.getElementById(
+            "learningProgressFill"
+        );
+
+    const progressText =
+        document.getElementById(
+            "learningProgressPercent"
+        );
+
+    const learningText =
+        document.getElementById(
+            "learningProgressText"
+        );
+
+
+    if(
+        !progressBar ||
+        !progressText ||
+        !learningText
+    ){
+
+        return;
+
+    }
+
+
+    /*
+       AI Learning Hub contains
+       20 lessons.
+    */
+
+    const totalLessons = 20;
+
+    let completed = 0;
+
+
+    for(
+        let i = 1;
+        i <= totalLessons;
+        i++
+    ){
+
+        if(
+            localStorage.getItem(
+                "quiz_passed_" + i
+            )
+        ){
+
+            completed++;
+
+        }
+
+    }
+
+
+    const percent =
+        Math.round(
+            (
+                completed /
+                totalLessons
+            ) * 100
+        );
+
+
+    /* Progress bar */
+
+    progressBar.style.width =
+        percent + "%";
+
+
+    /* Percentage */
+
+    progressText.textContent =
+        percent +
+        "% completed";
+
+
+    /* Description */
+
+    if(completed === 0){
+
+        learningText.textContent =
+            "Start your AI Learning journey.";
+
+    }
+
+    else if(
+        completed < totalLessons
+    ){
+
+        learningText.textContent =
+            "You've completed " +
+            completed +
+            " of " +
+            totalLessons +
+            " lessons. Keep going!";
+
+    }
+
+    else{
+
+        learningText.textContent =
+            "🎉 You completed all 20 lessons!";
+
+    }
+
+}
+
+
+ /* =========================================
+   DASHBOARD DAILY TIP
+   Uses the same tip as the popup
+========================================= */
+
+function updateDashboardDailyTip(){
+
+    const tipElement =
+        document.getElementById(
+            "dashboardTipText"
+        );
+
+
+    if(!tipElement) return;
+
+
+    const dailyTip =
+        getDailyTip();
+
+
+    tipElement.textContent =
+        dailyTip;
+
+}
+
+
+  /* =========================================
+   📊 DASHBOARD — ACTIVITY STATISTICS
+========================================= */
+
+function updateDashboardStats(){
+
+    /* -------------------------------------
+       Safe JSON reader
+    ------------------------------------- */
+
+    function getArray(key){
+
+        try{
+
+            const value =
+                JSON.parse(
+                    localStorage.getItem(key)
+                );
+
+            return Array.isArray(value)
+                ? value
+                : [];
+
+        }catch(error){
+
+            return [];
+
+        }
+
+    }
+
+
+    /* -------------------------------------
+       Favorites
+    ------------------------------------- */
+
+    const favorites =
+        getArray("favorites");
+
+
+    const favoritesElement =
+        document.getElementById(
+            "dashboardFavoritesCount"
+        );
+
+
+    if(favoritesElement){
+
+        favoritesElement.textContent =
+            favorites.length;
+
+    }
+
+
+    /* -------------------------------------
+       Recently Used Tools
+    ------------------------------------- */
+
+    const recentTools =
+        getArray("recentTools");
+
+
+    const recentElement =
+        document.getElementById(
+            "dashboardRecentCount"
+        );
+
+
+    if(recentElement){
+
+        recentElement.textContent =
+            recentTools.length;
+
+    }
+
+
+    /* -------------------------------------
+       Saved Prompts
+    ------------------------------------- */
+
+    const savedPrompts =
+        getArray("savedPrompts");
+
+
+    const savedElement =
+        document.getElementById(
+            "dashboardSavedCount"
+        );
+
+
+    if(savedElement){
+
+        savedElement.textContent =
+            savedPrompts.length;
+
+    }
+
+
+    /* -------------------------------------
+       Learning Progress
+    ------------------------------------- */
+
+    const totalLessons = 20;
+
+    let completed = 0;
+
+
+    for(
+        let i = 1;
+        i <= totalLessons;
+        i++
+    ){
+
+        if(
+            localStorage.getItem(
+                "quiz_passed_" + i
+            )
+        ){
+
+            completed++;
+
+        }
+
+    }
+
+
+    const learningElement =
+        document.getElementById(
+            "dashboardLearningCount"
+        );
+
+
+    if(learningElement){
+
+        learningElement.textContent =
+            completed + "/" + totalLessons;
+
+    }
+
+}
+
+ /* =========================================
+   🔥 LEARNING STREAK ENGINE
+   AI Tools Hub
+========================================= */
+
+
+/* -----------------------------------------
+   Record meaningful learning activity
+----------------------------------------- */
+
+function recordLearningActivity(){
+
+    const today =
+        getLocalDateKey();
+
+
+    const lastActivity =
+        localStorage.getItem(
+            "learningLastActivity"
+        );
+
+
+    let streak =
+        Number(
+            localStorage.getItem(
+                "learningStreak"
+            ) || 0
+        );
+
+
+    /* -------------------------------------
+       First learning activity
+    ------------------------------------- */
+
+    if(!lastActivity){
+
+        streak = 1;
+
+    }
+
+
+    /* -------------------------------------
+       Activity already recorded today
+       → Do NOT increase streak
+    ------------------------------------- */
+
+    else if(lastActivity === today){
+
+        /*
+           Keep the current streak.
+           Multiple lessons on the same day
+           count as one learning day.
+        */
+
+    }
+
+
+    /* -------------------------------------
+       Activity happened yesterday
+       → Continue streak
+    ------------------------------------- */
+
+    else{
+
+        const daysSinceLastActivity =
+            getDateDifference(
+                lastActivity,
+                today
+            );
+
+
+        if(daysSinceLastActivity === 1){
+
+            streak++;
+
+        }
+
+
+        /* ---------------------------------
+           Missed one or more days
+           → Start a new streak
+        --------------------------------- */
+
+        else if(daysSinceLastActivity > 1){
+
+            streak = 1;
+
+        }
+
+
+        /*
+           Safety:
+           If the stored date is somehow
+           in the future, reset safely.
+        */
+
+        else if(daysSinceLastActivity < 0){
+
+            streak = 1;
+
+        }
+
+    }
+
+
+    /* -------------------------------------
+       Save streak data
+    ------------------------------------- */
+
+    localStorage.setItem(
+        "learningStreak",
+        String(streak)
+    );
+
+
+    localStorage.setItem(
+        "learningLastActivity",
+        today
+    );
+
+
+    /* -------------------------------------
+       Update dashboard immediately
+    ------------------------------------- */
+
+    updateLearningStreak();
+
+    updateReturnStreakMessage();
+
+
+    /* -------------------------------------
+       Analytics
+    ------------------------------------- */
+
+    trackDashboardEvent(
+        "learning_activity"
+    );
+
+
+    return streak;
+
+}
+
+
+/* -----------------------------------------
+   Display current learning streak
+----------------------------------------- */
+
+function updateLearningStreak(){
+
+    const streakElement =
+        document.getElementById(
+            "streakNumber"
+        );
+
+
+    if(!streakElement) return;
+
+
+    let streak =
+        Number(
+            localStorage.getItem(
+                "learningStreak"
+            ) || 0
+        );
+
+
+    if(streak < 0){
+        streak = 0;
+    }
+
+
+    if(streak === 1){
+
+        streakElement.textContent =
+            "1 day";
+
+    }
+
+    else{
+
+        streakElement.textContent =
+            streak + " days";
+
+    }
+
+}
+
+   /* =========================================
+   🔄 SYNC LEARNING ACTIVITY
+========================================= */
+
+function syncLearningActivity(){
+
+    const totalLessons = 20;
+
+    let completedLessons = 0;
+
+
+    /* -------------------------------------
+       Count completed lessons
+    ------------------------------------- */
+
+    for(
+        let i = 1;
+        i <= totalLessons;
+        i++
+    ){
+
+        if(
+            localStorage.getItem(
+                "quiz_passed_" + i
+            ) === "true"
+        ){
+
+            completedLessons++;
+
+        }
+
+    }
+
+
+    /* -------------------------------------
+       Previous count
+    ------------------------------------- */
+
+    const previousCompleted =
+        Number(
+            localStorage.getItem(
+                "learningCompletedCount"
+            ) || 0
+        );
+
+
+    /* -------------------------------------
+       Save current count
+    ------------------------------------- */
+
+    localStorage.setItem(
+        "learningCompletedCount",
+        String(completedLessons)
+    );
+
+
+    /* -------------------------------------
+       Update Dashboard immediately
+    ------------------------------------- */
+
+    updateLearningDashboard();
+
+    updateDashboardStats();
+
+
+    /* -------------------------------------
+       New lesson completed
+       → record learning activity
+    ------------------------------------- */
+
+    if(
+        completedLessons >
+        previousCompleted
+    ){
+
+        recordLearningActivity();
+
+    }
+
+
+    /* -------------------------------------
+       Refresh streak display
+    ------------------------------------- */
+
+    updateLearningStreak();
+
+    updateReturnStreakMessage();
+
+}
+
+
+ /* =========================================
+   💡 DASHBOARD — TRY TODAY'S TIP
+   v1.18.6 — Tip → Auto Generate Prompt
+========================================= */
+
+function dashboardTryTip(){
+
+    const tipElement =
+        document.getElementById(
+            "dashboardTipText"
+        );
+
+    const promptInput =
+        document.getElementById(
+            "topic"
+        );
+
+    const promptSection =
+        document.getElementById(
+            "prompts"
+        );
+
+    const resultElement =
+        document.getElementById(
+            "result"
+        );
+
+
+    /* -------------------------------------
+       Required elements
+    ------------------------------------- */
+
+    if(!tipElement){
+
+        showToast(
+            "Today's AI Tip is not available"
+        );
+
+        return;
+    }
+
+
+    if(!promptInput || !promptSection){
+
+        showToast(
+            "Generate Prompt section not found"
+        );
+
+        return;
+    }
+
+
+    /* -------------------------------------
+       Get today's Dashboard tip
+    ------------------------------------- */
+
+    const tip =
+        tipElement.textContent.trim();
+
+
+    if(!tip){
+
+        showToast(
+            "Today's AI Tip is not available"
+        );
+
+        return;
+    }
+
+
+    /* -------------------------------------
+       Put today's tip into Prompt input
+    ------------------------------------- */
+
+    promptInput.value = tip;
+
+
+    /* -------------------------------------
+       Clear previous result
+    ------------------------------------- */
+
+    if(resultElement){
+
+        resultElement.innerText = "";
+
+    }
+
+
+    /* -------------------------------------
+       Use SMART / DEFAULT prompt
+    ------------------------------------- */
+
+    currentPromptType = "default";
+
+
+    /* -------------------------------------
+       Scroll to Prompt Generator
+    ------------------------------------- */
+
+    const headerOffset = 75;
+
+    const y =
+        promptSection.getBoundingClientRect().top +
+        window.pageYOffset -
+        headerOffset;
+
+
+    window.scrollTo({
+
+        top: y,
+
+        behavior: "smooth"
+
+    });
+
+
+    /* -------------------------------------
+       Automatically generate prompt
+    ------------------------------------- */
+
+    setTimeout(
+
+        function(){
+
+            generatePrompt("default");
+
+        },
+
+        500
+
+    );
+
+
+    /* -------------------------------------
+       GA4
+    ------------------------------------- */
+
+    trackDashboardEvent(
+        "dashboard_tip_clicked"
+    );
+
+}
+
+
+ /* =========================================
+   🎓 DASHBOARD — CONTINUE LEARNING
+========================================= */
+
+function dashboardContinueLearning(){
+
+    if(typeof openAILearningHub === "function"){
+
+        openAILearningHub();
+
+        trackDashboardEvent(
+            "continue_learning_clicked"
+        );
+
+        return;
+    }
+
+    showToast(
+        "AI Learning Hub is not available"
+    );
+}
+
+
+/* =========================================
+   📊 DASHBOARD INITIALISATION
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        /* Universal welcome */
+
+        updateDashboardGreeting();
+
+
+        /* Return experience */
+
+        updateUserReturnExperience();
+
+
+        /* Learning progress */
+
+        updateLearningDashboard();
+
+
+        /* Dashboard tip */
+
+        updateDashboardDailyTip();
+
+       syncLearningActivity();
+
+
+        /* Learning streak */
+
+        updateLearningStreak();
+
+
+        /* Return/streak message */
+
+        updateReturnStreakMessage();
+
+        updateDashboardStats();
+
+
+        /* GA4 */
+
+        trackDashboardEvent(
+            "home_view"
+        );
+
+    }
+);
+
+
+</script>
+
+  <script>
+  /* =========================================
+   🔄 LIVE LEARNING HUB DASHBOARD SYNC
+   =========================================
+   Refresh Dashboard immediately when the
+   user returns from a lesson/quiz.
+========================================= */
+
+function refreshLearningHubDashboard() {
+
+    /* Update main Learning Hub progress */
+    if (
+        typeof updateLearningDashboard === "function"
+    ) {
+        updateLearningDashboard();
+    }
+
+
+    /* Update Dashboard activity statistics */
+    if (
+        typeof updateDashboardStats === "function"
+    ) {
+        updateDashboardStats();
+    }
+
+
+    /* Synchronize completed lesson count
+       and learning activity */
+    if (
+        typeof syncLearningActivity === "function"
+    ) {
+        syncLearningActivity();
+    }
+
+
+    /* Refresh streak display */
+    if (
+        typeof updateLearningStreak === "function"
+    ) {
+        updateLearningStreak();
+    }
+
+
+    /* Refresh streak message */
+    if (
+        typeof updateReturnStreakMessage === "function"
+    ) {
+        updateReturnStreakMessage();
+    }
+
+}
+
+
+/* =========================================
+   BROWSER BACK / FORWARD
+========================================= */
+
+window.addEventListener(
+    "pageshow",
+    function () {
+
+        refreshLearningHubDashboard();
+
+    }
+);
+
+
+/* =========================================
+   PAGE BECOMES VISIBLE AGAIN
+========================================= */
+
+document.addEventListener(
+    "visibilitychange",
+    function () {
+
+        if (
+            document.visibilityState === "visible"
+        ) {
+
+            refreshLearningHubDashboard();
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   STORAGE SYNC
+   Useful if another tab/window changes
+   learning progress.
+========================================= */
+
+window.addEventListener(
+    "storage",
+    function (event) {
+
+        if (
+            event.key &&
+            (
+                event.key.startsWith(
+                    "quiz_passed_"
+                ) ||
+                event.key ===
+                    "learningCompletedCount" ||
+                event.key ===
+                    "learningStreak" ||
+                event.key ===
+                    "learningLastActivity"
+            )
+        ) {
+
+            refreshLearningHubDashboard();
+
+        }
+
+    }
+);
+
+  </script>
 </body>  
-</html>
+</html> 
