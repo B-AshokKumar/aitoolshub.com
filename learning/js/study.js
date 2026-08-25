@@ -1,13 +1,17 @@
 /* ======================================
    AI Learning Hub
-   study.js 
+   study.js
 ====================================== */
 
-const cardContainer = document.querySelector(".card-container");
-const searchBox = document.getElementById("searchBox");
+const cardContainer =
+    document.querySelector(".card-container");
+
+const searchBox =
+    document.getElementById("searchBox");
+
 
 /* ======================================
-   Render Topics 
+   Render Topics
 ====================================== */
 
 function renderTopics(list) {
@@ -16,63 +20,104 @@ function renderTopics(list) {
 
     list.forEach(topic => {
 
-        const card = document.createElement("div");
+        const card =
+            document.createElement("div");
 
-        card.className = "card";
+        card.className =
+            "card";
+
 
         const passed =
-            localStorage.getItem("quiz_passed_" + topic.id);
+            localStorage.getItem(
+                "quiz_passed_" + topic.id
+            );
+
 
         const attempted =
-            localStorage.getItem("quiz_" + topic.id);
+            localStorage.getItem(
+                "quiz_" + topic.id
+            );
+
 
         let status = "";
+
         let statusClass = "";
+
 
         if (passed) {
 
-            status = "🟢 Passed";
-            statusClass = "status-passed";
+            status =
+                "🟢 Passed";
 
-        } else if (attempted) {
-
-            status = "🔴 Try Again";
-            statusClass = "status-failed";
-
-        } else {
-
-            status = "⚪ Not Attempted";
-            statusClass = "status-not";
+            statusClass =
+                "status-passed";
 
         }
 
+        else if (attempted) {
+
+            status =
+                "🔴 Try Again";
+
+            statusClass =
+                "status-failed";
+
+        }
+
+        else {
+
+            status =
+                "⚪ Not Attempted";
+
+            statusClass =
+                "status-not";
+
+        }
+
+
         card.innerHTML = `
-            <div class="lesson-icon">📘</div>
+
+            <div class="lesson-icon">
+                📘
+            </div>
 
             <div class="lesson-number">
                 Lesson ${topic.id}
             </div>
 
-            <h3>${topic.title}</h3>
+            <h3>
+                ${topic.title}
+            </h3>
 
-            <p>${topic.description}</p>
+            <p>
+                ${topic.description}
+            </p>
 
             <div class="${statusClass}">
                 ${status}
             </div>
+
         `;
 
-        card.onclick = () => {
 
-            location.href = "lesson.html?id=" + topic.id;
+        card.onclick =
+            () => {
 
-        };
+                location.href =
+                    "lesson.html?id=" +
+                    topic.id;
 
-        cardContainer.appendChild(card);
+            };
+
+
+        cardContainer.appendChild(
+            card
+        );
 
     });
 
 }
+
 
 /* ======================================
    Search
@@ -80,33 +125,58 @@ function renderTopics(list) {
 
 if (searchBox) {
 
-    searchBox.addEventListener("input", function () {
+    searchBox.addEventListener(
+        "input",
+        function () {
 
-        const keyword = this.value.toLowerCase();
+            const keyword =
+                this.value
+                    .toLowerCase();
 
-        const filtered = topics.filter(topic =>
 
-            topic.title.toLowerCase().includes(keyword) ||
+            const filtered =
+                topics.filter(
+                    topic =>
 
-            topic.description.toLowerCase().includes(keyword) ||
+                        topic.title
+                            .toLowerCase()
+                            .includes(keyword)
 
-            topic.category.toLowerCase().includes(keyword)
+                        ||
 
-        );
+                        topic.description
+                            .toLowerCase()
+                            .includes(keyword)
 
-        renderTopics(filtered);
+                        ||
 
-    });
+                        topic.category
+                            .toLowerCase()
+                            .includes(keyword)
+
+                );
+
+
+            renderTopics(
+                filtered
+            );
+
+        }
+    );
 
 }
+
 
 /* ======================================
    Initial Load
 ====================================== */
 
-renderTopics(topics);
+renderTopics(
+    topics
+);
 
 updateProgress();
+
 
 /* ======================================
    Learning Progress
@@ -116,42 +186,75 @@ function updateProgress() {
 
     let completed = 0;
 
-    topics.forEach(topic => {
 
-        if (localStorage.getItem("quiz_passed_" + topic.id)) {
+    topics.forEach(
+        topic => {
 
-            completed++;
+            if (
+                localStorage.getItem(
+                    "quiz_passed_" +
+                    topic.id
+                )
+            ) {
+
+                completed++;
+
+            }
 
         }
+    );
 
-    });
 
-    document.getElementById("completedLessons").textContent =
+    document.getElementById(
+        "completedLessons"
+    ).textContent =
         "Lessons Passed: " +
         completed +
         " / " +
         topics.length;
 
-    document.getElementById("completedQuizzes").textContent =
+
+    document.getElementById(
+        "completedQuizzes"
+    ).textContent =
         "Quizzes Passed: " +
         completed +
         " / " +
         topics.length;
 
-    const percent =
-        Math.round((completed / topics.length) * 100);
 
-    document.getElementById("progressFill").style.width =
+    const percent =
+        Math.round(
+            (
+                completed /
+                topics.length
+            ) * 100
+        );
+
+
+    document.getElementById(
+        "progressFill"
+    ).style.width =
         percent + "%";
 
-    document.getElementById("progressPercent").textContent =
-        percent + "% Completed";
 
-    // Course Completed (Show Only Once)
+    document.getElementById(
+        "progressPercent"
+    ).textContent =
+        percent +
+        "% Completed";
+
+
+    /* ----------------------------------
+       Course Completed
+       Show Only Once
+    ---------------------------------- */
 
     if (
         completed === topics.length &&
-        !localStorage.getItem("course_completed")
+        !localStorage.getItem(
+            "course_completed"
+        )
     ) {
 
         localStorage.setItem(
@@ -159,70 +262,160 @@ function updateProgress() {
             "true"
         );
 
-        setTimeout(function () {
 
-            location.href = "course-complete.html";
+        setTimeout(
+            function () {
 
-        }, 500);
+                location.href =
+                    "course-complete.html";
+
+            },
+            500
+        );
 
     }
 
 }
+
+
+/* ======================================
+   🔄 LIVE STUDY PAGE SYNC
+
+   Refresh after returning from a quiz.
+====================================== */
+
+function refreshStudyProgress() {
+
+    renderTopics(
+        topics
+    );
+
+    updateProgress();
+
+}
+
+
+/* --------------------------------------
+   Browser Back / Forward
+-------------------------------------- */
+
+window.addEventListener(
+    "pageshow",
+    refreshStudyProgress
+);
+
+
+/* --------------------------------------
+   Tab / Page Visibility
+-------------------------------------- */
+
+document.addEventListener(
+    "visibilitychange",
+    function () {
+
+        if (
+            document.visibilityState ===
+            "visible"
+        ) {
+
+            refreshStudyProgress();
+
+        }
+
+    }
+);
+
 
 /* ======================================
    View Certificate
 ====================================== */
 
 const viewCertificateBtn =
-document.getElementById("viewCertificateBtn");
+    document.getElementById(
+        "viewCertificateBtn"
+    );
+
 
 if (viewCertificateBtn) {
 
-    viewCertificateBtn.addEventListener("click", () => {
+    viewCertificateBtn.addEventListener(
+        "click",
+        () => {
 
-        if (
-            localStorage.getItem("course_completed") !== "true"
-        ) {
+            if (
+                localStorage.getItem(
+                    "course_completed"
+                ) !== "true"
+            ) {
 
-            showToast(`
-<strong>Certificate Not Yet Available</strong>
+                showToast(`
 
-Complete all <strong>20 lessons</strong> and pass all
-<strong>20 quizzes</strong> to unlock your
+<strong>
+Certificate Not Yet Available
+</strong>
+
+Complete all
+<strong>20 lessons</strong>
+and pass all
+<strong>20 quizzes</strong>
+to unlock your
 <strong>AI Learning Hub Certificate</strong>
+
 `);
 
-            return;
+                return;
+
+            }
+
+
+            location.href =
+                "certificate.html";
 
         }
-
-        location.href = "certificate.html";
-
-    });
+    );
 
 }
+
 
 /* ======================================
    Toast Message
 ====================================== */
 
-function showToast(message){
+function showToast(message) {
 
-    const toast = document.getElementById("toast");
+    const toast =
+        document.getElementById(
+            "toast"
+        );
 
-    if(!toast) return;
 
-    toast.innerHTML = message;
+    if (!toast) return;
 
-    toast.classList.add("show");
 
-    clearTimeout(toast.timer);
+    toast.innerHTML =
+        message;
 
-    toast.timer = setTimeout(() => {
 
-        toast.classList.remove("show");
+    toast.classList.add(
+        "show"
+    );
 
-    }, 4500);
+
+    clearTimeout(
+        toast.timer
+    );
+
+
+    toast.timer =
+        setTimeout(
+            () => {
+
+                toast.classList.remove(
+                    "show"
+                );
+
+            },
+            4500
+        );
 
 }
-
