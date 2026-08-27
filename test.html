@@ -4151,30 +4151,15 @@ App Preferences & Settings
 
 let currentPromptType = "default";
 
-/* =========================================
-   PROMPT TYPE SAFETY
-   Prevent stale template types
-========================================= */
-
-const promptTopicInput =
-    document.getElementById("topic");
-
-if(promptTopicInput){
-
-    promptTopicInput.addEventListener("input", function(){
-
-        currentPromptType = "default";
-
-    });
-
-}
 
 
 /* -----------------------------------------
    Generate Prompt
 ----------------------------------------- */
 
-function generatePrompt(type){
+  function generatePrompt(type){
+
+    type = type || currentPromptType || "default";
 
     const topicElement =
         document.getElementById("topic");
