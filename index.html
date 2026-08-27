@@ -4142,8 +4142,8 @@ App Preferences & Settings
 
 
 })();
-  
-/* =========================
+
+  /* =========================
    PROMPT GENERATOR
    v1.18.3 — Subject-Aware
    Professional Prompt Engine
@@ -4151,30 +4151,14 @@ App Preferences & Settings
 
 let currentPromptType = "default";
 
-/* =========================================
-   PROMPT TYPE SAFETY
-   Prevent stale template types
-========================================= */
-
-const promptTopicInput =
-    document.getElementById("topic");
-
-if(promptTopicInput){
-
-    promptTopicInput.addEventListener("input", function(){
-
-        currentPromptType = "default";
-
-    });
-
-}
-
 
 /* -----------------------------------------
    Generate Prompt
 ----------------------------------------- */
 
 function generatePrompt(type){
+
+    type = type || currentPromptType || "default";
 
     const topicElement =
         document.getElementById("topic");
@@ -4208,11 +4192,10 @@ function generatePrompt(type){
     }
 
 
-    currentPromptType = type || "default";
+    currentPromptType = type;
 
 
     let promptText = "";
-
 
     /* =====================================
        RESUME
