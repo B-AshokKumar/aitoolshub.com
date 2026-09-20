@@ -256,60 +256,133 @@ footer{
    DARK MODE
 ========================== */
 
-@media (prefers-color-scheme: dark){
 
-body{
+/* ==========================
+   DARK MODE — AI TOOLS HUB
+========================== */
 
-background:#121212;
-
-color:#ffffff;
-
+body.dark{
+    background:#121212;
+    color:#ffffff;
 }
 
-.hero p{
-
-color:#cccccc;
-
+body.dark .hero p{
+    color:#cccccc;
 }
 
-#searchBox{
-
-background:#1f1f1f;
-
-color:#ffffff;
-
-border-color:#333;
-
+body.dark #searchBox{
+    background:#1f1f1f;
+    color:#ffffff;
+    border-color:#333333;
 }
 
-.card{
-
-background:#1d1d1d;
-
+body.dark .card{
+    background:#1d1d1d;
+    color:#ffffff;
 }
 
-.card p{
-
-color:#cccccc;
-
+body.dark .card h3{
+    color:#ffffff;
 }
 
-footer{
-
-background:#1a1a1a;
-
-color:#cccccc;
-
-border-top:1px solid #333;
-
+body.dark .card p{
+    color:#cccccc;
 }
 
-.home-btn{
-
-background:#ffffff;
-
+body.dark .progress-card{
+    background:#1d1d1d;
+    color:#ffffff;
 }
 
+body.dark .lesson-container{
+    color:#ffffff;
+}
+
+body.dark .lesson-content{
+    background:#1d1d1d;
+    color:#ffffff;
+}
+
+body.dark .lesson-category{
+    color:#cccccc;
+}
+
+body.dark .lesson-progress{
+    color:#cccccc;
+}
+
+body.dark .quiz-option{
+    background:#1d1d1d;
+    color:#ffffff;
+    border-color:#444444;
+}
+
+body.dark .quiz-option:hover{
+    background:#292929;
+}
+
+body.dark .quiz-result{
+    background:#1d1d1d;
+    color:#ffffff;
+}
+
+body.dark .quiz-result h2{
+    color:#ffffff;
+}
+
+body.dark .quiz-result p{
+    color:#cccccc;
+}
+
+body.dark .quiz-status{
+    color:#ffffff;
+}
+
+body.dark .status-passed{
+    color:#16a34a;
+}
+
+body.dark .status-failed{
+    color:#dc2626;
+}
+
+body.dark .status-not{
+    color:#cccccc;
+}
+
+body.dark footer{
+    background:#1a1a1a;
+    color:#cccccc;
+    border-top:1px solid #333333;
+}
+
+body.dark .home-btn{
+    background:#ffffff;
+    color:#0D6EFD;
+}
+
+body.dark .quick-actions{
+    background:#121212;
+}
+
+body.dark .action-btn{
+    background:#1d1d1d;
+    color:#ffffff;
+    border-color:#444444;
+}
+
+body.dark .toast{
+    background:#1d1d1d;
+    color:#ffffff;
+}
+
+body.dark .status-not{
+    background:#2a2a2a;
+    color:#dddddd;
+}
+
+body.dark .legal-btn{
+    color:#60a5fa;
 }
 
 /* ==========================
