@@ -2791,6 +2791,55 @@ body.dark .smart-builder .builder-status {
 
 /* END CORRECT DARK MODE FIX */
 
+ 
+/* =========================================
+   SMART PROMPT BUILDER - ACTION BUTTONS
+   ========================================= */
+
+#spbEditButton,
+#spbCopyButton {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 14px auto 0;
+    padding: 15px 18px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+#spbEditButton:hover,
+#spbCopyButton:hover {
+    background: linear-gradient(135deg, #1d4ed8, #2563eb);
+}
+
+#spbEditButton:active,
+#spbCopyButton:active {
+    transform: scale(0.98);
+}
+
+/* Dark Mode */
+
+body.dark #spbEditButton,
+body.dark #spbCopyButton {
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    color: #ffffff;
+}
+
+body.dark #spbEditButton:hover,
+body.dark #spbCopyButton:hover {
+    background: linear-gradient(135deg, #1d4ed8, #2563eb);
+}
+
+/* END SMART PROMPT BUILDER BUTTON STYLES */
+
 </style>  
   
 </head> 
