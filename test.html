@@ -8900,58 +8900,67 @@ document.getElementById("spbCopyButton").style.display = "block";
     };
 
 
-    window.copySmartPrompt = async function () {
+   
+window.copySmartPrompt = async function () {
 
-        const status =
-            document.getElementById("spbStatus");
+    const status =
+        document.getElementById("spbStatus");
 
-        if (!generatedSmartPrompt) {
-            status.textContent =
-                "Please build a prompt first.";
-            return;
-        }
+    const result =
+        document.getElementById("spbResult");
 
-        try {
+    // Always read the latest text, including user edits
+    const promptToCopy = result.innerText.trim();
 
-            if (navigator.clipboard &&
-                window.isSecureContext) {
+    if (!promptToCopy) {
+        status.textContent =
+            "Please build a prompt first.";
+        return;
+    }
 
-                await navigator.clipboard.writeText(
-                    generatedSmartPrompt
-                );
+    try {
 
-            } else {
+        if (navigator.clipboard &&
+            window.isSecureContext) {
 
-                const temp = document.createElement("textarea");
+            await navigator.clipboard.writeText(
+                promptToCopy
+            );
 
-                temp.value = generatedSmartPrompt;
-                temp.style.position = "fixed";
-                temp.style.opacity = "0";
+        } else {
 
-                document.body.appendChild(temp);
-                temp.select();
+            const temp = document.createElement("textarea");
 
-                const copied =
-                    document.execCommand("copy");
+            temp.value = promptToCopy;
+            temp.style.position = "fixed";
+            temp.style.opacity = "0";
 
-                document.body.removeChild(temp);
+            document.body.appendChild(temp);
+            temp.select();
 
-                if (!copied) {
-                    throw new Error("Copy failed");
-                }
+            const copied =
+                document.execCommand("copy");
+
+            document.body.removeChild(temp);
+
+            if (!copied) {
+                throw new Error("Copy failed");
             }
-
-            status.style.color = "#15803d";
-            status.textContent =
-                "Smart Prompt copied successfully!";
-
-        } catch (error) {
-
-            status.style.color = "#dc2626";
-            status.textContent =
-                "Unable to copy. Please select and copy the prompt manually.";
         }
-    };
+
+        status.style.color = "#15803d";
+        status.textContent =
+            "Latest Smart Prompt copied successfully!";
+
+    } catch (error) {
+
+        status.style.color = "#dc2626";
+        status.textContent =
+            "Unable to copy. Please select and copy manually.";
+
+    }
+};
+
 
 })();
 
