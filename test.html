@@ -3166,6 +3166,83 @@ body.dark .badge.paid{
         </a>
     </div>
 
+ 
+<!-- SMART PROMPT BUILDER HTML -->
+
+<div class="smart-builder" id="smartPromptBuilder">
+
+    <h2>✨ Smart Prompt Builder</h2>
+
+    <p class="builder-subtitle">
+        Create clear, customized AI prompts for your needs.
+    </p>
+
+    <label for="spbCategory">1. Select Category</label>
+    <select id="spbCategory">
+        <option value="Study and Education">📚 Study & Education</option>
+        <option value="Professional Work">💼 Professional Work</option>
+        <option value="Daily Life">🏠 Daily Life</option>
+        <option value="Business">📈 Business</option>
+        <option value="Creativity">🎨 Creativity</option>
+        <option value="Technology">💻 Technology</option>
+    </select>
+
+    <label for="spbAudience">2. Who is this for?</label>
+    <select id="spbAudience">
+        <option value="A beginner">Beginner</option>
+        <option value="A student">Student</option>
+        <option value="A working professional">Professional</option>
+        <option value="An expert">Expert</option>
+        <option value="A general audience">General Audience</option>
+    </select>
+
+    <label for="spbTone">3. Choose the Tone</label>
+    <select id="spbTone">
+        <option value="Simple and easy to understand">Simple</option>
+        <option value="Professional and clear">Professional</option>
+        <option value="Friendly and conversational">Friendly</option>
+        <option value="Creative and engaging">Creative</option>
+        <option value="Formal and informative">Formal</option>
+    </select>
+
+    <label for="spbFormat">4. Preferred Output Format</label>
+    <select id="spbFormat">
+        <option value="Clear bullet points">Bullet Points</option>
+        <option value="A well-organized table">Table</option>
+        <option value="Numbered step-by-step instructions">Step-by-Step</option>
+        <option value="A detailed explanation with headings">Detailed Explanation</option>
+        <option value="A short summary">Short Summary</option>
+    </select>
+
+    <label for="spbRequirements">
+        5. What do you want AI to do?
+    </label>
+
+    <textarea
+        id="spbRequirements"
+        placeholder="Example: Create a 5-slide presentation about the benefits of AI in daily life."
+    ></textarea>
+
+    <button type="button" onclick="buildSmartPrompt()">
+        ✨ Build My Smart Prompt
+    </button>
+
+    <div id="spbResult" class="builder-result"></div>
+
+    <button
+        type="button"
+        id="spbCopyButton"
+        style="display:none;"
+        onclick="copySmartPrompt()">
+        📋 Copy Smart Prompt
+    </button>
+
+    <div id="spbStatus" class="builder-status"></div>
+
+</div>
+
+<!-- END SMART PROMPT BUILDER HTML -->
+
 
     <!-- PROMPT GENERATOR -->
     <h2 class="welcome-title">
