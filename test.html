@@ -8841,7 +8841,8 @@ Please complete the task according to these instructions.`;
 
         document.getElementById("spbCopyButton").style.display =
             "block";
-
+        document.getElementById("spbEditButton").style.display = "block";
+     
         status.style.color = "#15803d";
         status.textContent = "Your Smart Prompt is ready!";
     };
@@ -8903,6 +8904,43 @@ Please complete the task according to these instructions.`;
 })();
 
 /* END SMART PROMPT BUILDER JAVASCRIPT */
+
+ 
+/* =========================================
+   SMART PROMPT BUILDER - EDIT AND SAVE
+   ========================================= */
+
+function toggleSmartPromptEdit() {
+    const result = document.getElementById("spbResult");
+    const editButton = document.getElementById("spbEditButton");
+
+    if (!result || !editButton) return;
+
+    // Enter edit mode
+    if (result.contentEditable !== "true") {
+        result.contentEditable = "true";
+        result.focus();
+
+        editButton.textContent = "💾 Save Changes";
+
+        result.style.outline = "2px solid #3b82f6";
+        result.style.cursor = "text";
+
+    } else {
+        // Save edited prompt as plain text
+        const updatedPrompt = result.innerText.trim();
+
+        result.textContent = updatedPrompt;
+        result.contentEditable = "false";
+
+        editButton.textContent = "✏️ Edit Prompt";
+
+        result.style.outline = "none";
+        result.style.cursor = "default";
+    }
+}
+
+/* END EDIT AND SAVE FUNCTION */
 
   </script>
 </body>  
