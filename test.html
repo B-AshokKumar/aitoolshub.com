@@ -8755,6 +8755,143 @@ window.addEventListener(
     }
 );
 
+ 
+/* =========================================
+   SMART PROMPT BUILDER - JAVASCRIPT
+   ========================================= */
+
+(function () {
+
+    let generatedSmartPrompt = "";
+
+    window.buildSmartPrompt = function () {
+
+        const category =
+            document.getElementById("spbCategory").value;
+
+        const audience =
+            document.getElementById("spbAudience").value;
+
+        const tone =
+            document.getElementById("spbTone").value;
+
+        const format =
+            document.getElementById("spbFormat").value;
+
+        const requirements =
+            document.getElementById("spbRequirements").value.trim();
+
+        const result =
+            document.getElementById("spbResult");
+
+        const status =
+            document.getElementById("spbStatus");
+
+        if (!requirements) {
+            status.style.color = "#dc2626";
+            status.textContent =
+                "Please enter what you want AI to do.";
+
+            document.getElementById("spbRequirements").focus();
+            return;
+        }
+
+        generatedSmartPrompt =
+`Act as a knowledgeable and helpful assistant.
+
+CATEGORY:
+${category}
+
+TASK:
+${requirements}
+
+TARGET AUDIENCE:
+Prepare the response for ${audience}.
+
+TONE:
+Use a ${tone} tone.
+
+OUTPUT FORMAT:
+Present the answer using ${format}.
+
+INSTRUCTIONS:
+1. Understand the requirements carefully.
+2. Provide accurate and relevant information.
+3. Organize the response clearly.
+4. Use practical examples wherever helpful.
+5. Avoid unnecessary or repetitive information.
+6. If important details are missing, ask for clarification instead of inventing facts.
+
+Please complete the task according to these instructions.`;
+
+        result.textContent = generatedSmartPrompt;
+        result.style.display = "block";
+
+        document.getElementById("spbCopyButton").style.display =
+            "block";
+
+        status.style.color = "#15803d";
+        status.textContent = "Your Smart Prompt is ready!";
+    };
+
+
+    window.copySmartPrompt = async function () {
+
+        const status =
+            document.getElementById("spbStatus");
+
+        if (!generatedSmartPrompt) {
+            status.textContent =
+                "Please build a prompt first.";
+            return;
+        }
+
+        try {
+
+            if (navigator.clipboard &&
+                window.isSecureContext) {
+
+                await navigator.clipboard.writeText(
+                    generatedSmartPrompt
+                );
+
+            } else {
+
+                const temp = document.createElement("textarea");
+
+                temp.value = generatedSmartPrompt;
+                temp.style.position = "fixed";
+                temp.style.opacity = "0";
+
+                document.body.appendChild(temp);
+                temp.select();
+
+                const copied =
+                    document.execCommand("copy");
+
+                document.body.removeChild(temp);
+
+                if (!copied) {
+                    throw new Error("Copy failed");
+                }
+            }
+
+            status.style.color = "#15803d";
+            status.textContent =
+                "Smart Prompt copied successfully!";
+
+        } catch (error) {
+
+            status.style.color = "#dc2626";
+            status.textContent =
+                "Unable to copy. Please select and copy the prompt manually.";
+        }
+    };
+
+})();
+
+/* END SMART PROMPT BUILDER JAVASCRIPT */
+
   </script>
 </body>  
 </html> 
