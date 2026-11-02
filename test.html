@@ -3269,15 +3269,27 @@ body.dark .smart-builder .builder-status {
         ✨ Build My Smart Prompt
     </button>
 
-    <div id="spbResult" class="builder-result"></div>
+    
+<div id="spbResult" class="builder-result"></div>
 
-    <button
-        type="button"
-        id="spbCopyButton"
-        style="display:none;"
-        onclick="copySmartPrompt()">
-        📋 Copy Smart Prompt
-    </button>
+<!-- EDIT SMART PROMPT BUTTON -->
+<button
+    type="button"
+    id="spbEditButton"
+    style="display:none;"
+    onclick="toggleSmartPromptEdit()">
+    ✏️ Edit Prompt
+</button>
+
+<!-- COPY SMART PROMPT BUTTON -->
+<button
+    type="button"
+    id="spbCopyButton"
+    style="display:none;"
+    onclick="copySmartPrompt()">
+    📋 Copy Smart Prompt
+</button>
+
 
     <div id="spbStatus" class="builder-status"></div>
 
