@@ -3596,17 +3596,21 @@ body.dark .spb-empty-message {
 <!-- SMART PROMPT HISTORY -->
 <div id="spbHistorySection" style="display:none;">
 
-    <button type="button"
-        class="spb-collapse-button"
-        onclick="toggleSPBSection('spbHistoryContent', 'spbHistoryArrow')">
+    
+<button type="button"
+    class="spb-collapse-button"
+    onclick="toggleSPBSection('spbHistoryContent', 'spbHistoryArrow')">
 
-       <span>🕘 Recent Smart Prompt History</span>
+    <span class="spb-heading-text">
+        🕘 Recent Smart Prompt History
+    </span>
 
-<span class="spb-count" id="spbHistoryCount">0/10</span>
+    <span class="spb-count" id="spbHistoryCount">0/10</span>
 
-<span id="spbHistoryArrow">▼</span>
+    <span class="spb-arrow" id="spbHistoryArrow">▼</span>
 
-    </button>
+</button>
+
 
     <div id="spbHistoryContent" style="display:none;">
 
@@ -3624,17 +3628,21 @@ body.dark .spb-empty-message {
 <!-- SAVED SMART PROMPTS -->
 <div id="spbSavedSection" style="display:none;">
 
-    <button type="button"
-        class="spb-collapse-button"
-        onclick="toggleSPBSection('spbSavedContent', 'spbSavedArrow')">
+    
+<button type="button"
+    class="spb-collapse-button"
+    onclick="toggleSPBSection('spbSavedContent', 'spbSavedArrow')">
 
-      <span>⭐ My Saved Smart Prompts</span>
+    <span class="spb-heading-text">
+        ⭐ My Saved Smart Prompts
+    </span>
 
-<span class="spb-count" id="spbSavedCount">0/50</span>
+    <span class="spb-count" id="spbSavedCount">0/50</span>
 
-<span id="spbSavedArrow">▼</span>
+    <span class="spb-arrow" id="spbSavedArrow">▼</span>
 
-    </button>
+</button>
+
 
     <div id="spbSavedContent" style="display:none;">
 
