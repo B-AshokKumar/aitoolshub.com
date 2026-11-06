@@ -2744,42 +2744,55 @@ body.dark .badge.paid{
     min-height: 18px;
 }
 
- 
+
+  
 /* SMART PROMPT COLLAPSIBLE HEADINGS */
 
+/* LIGHT MODE */
 .spb-collapse-button {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 10px;
+
     padding: 14px 16px;
     margin-top: 12px;
-    border: 1px solid #d1d5db;
+
+    border: 1px solid #cbd5e1 !important;
     border-radius: 10px;
-    background: #f3f4f6;
-    color: #1f2937;
+
+    background: #e2e8f0 !important;
+    color: #1e293b !important;
+
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 700;
     text-align: left;
     cursor: pointer;
 }
 
 .spb-collapse-button:hover {
-    background: #e5e7eb;
+    background: #cbd5e1 !important;
 }
 
 /* DARK MODE */
-
 body.dark .spb-collapse-button {
-    background: #263449;
-    border-color: #475569;
-    color: #f1f5f9;
+    background: #263449 !important;
+    border-color: #475569 !important;
+    color: #f8fafc !important;
 }
 
 body.dark .spb-collapse-button:hover {
-    background: #334155;
+    background: #334155 !important;
 }
+
+/* ARROW */
+.spb-collapse-button span {
+    color: inherit !important;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
 
 
 /* END SMART PROMPT BUILDER CSS */
