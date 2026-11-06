@@ -9049,12 +9049,10 @@ Please complete the task according to these instructions.`;
  // Add newly generated prompt to Smart Prompt History
 window.addSmartPromptToHistory(generatedSmartPrompt);
 
-        document.getElementById("spbEditButton").style.display = "block";
+       // Show Smart Prompt action buttons
+document.getElementById("spbEditButton").style.display = "block";
 document.getElementById("spbCopyButton").style.display = "block";
-     
-        document.getElementById("spbCopyButton").style.display =
-            "block";
-        document.getElementById("spbEditButton").style.display = "block";
+document.getElementById("spbSaveButton").style.display = "block";
      
         status.style.color = "#15803d";
         status.textContent = "Your Smart Prompt is ready!";
