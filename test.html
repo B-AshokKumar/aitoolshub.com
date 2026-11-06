@@ -9371,25 +9371,39 @@ window.useSmartPromptHistory = function (id) {
 
 // DELETE ONE HISTORY ENTRY
 
+ 
 window.deleteSmartPromptHistory = function (id) {
 
-    const updated = spbReadStorage(SPB_HISTORY_KEY).filter(
-        item => item.id !== id
-    );
+    showSmartPromptDeleteConfirmation(function () {
 
-    try {
-        localStorage.setItem(SPB_HISTORY_KEY, JSON.stringify(updated));
+        const updated = spbReadStorage(SPB_HISTORY_KEY).filter(
+            item => item.id !== id
+        );
 
-        if (spbCurrentHistoryId === id) {
-            spbCurrentHistoryId = null;
+        try {
+            localStorage.setItem(
+                SPB_HISTORY_KEY,
+                JSON.stringify(updated)
+            );
+
+            if (spbCurrentHistoryId === id) {
+                spbCurrentHistoryId = null;
+            }
+
+            renderSmartPromptHistory();
+
+            const status = document.getElementById("spbStatus");
+            status.style.color = "#15803d";
+            status.textContent = "Smart Prompt removed from history.";
+
+        } catch (error) {
+            document.getElementById("spbStatus").textContent =
+                "Unable to delete this history entry.";
         }
 
-        renderSmartPromptHistory();
-
-    } catch (error) {
-        console.error("Unable to delete history entry:", error);
-    }
+    });
 };
+
 
 
 // SAVE CURRENT OR EDITED PROMPT
@@ -9559,28 +9573,35 @@ window.useSavedSmartPrompt = function (id) {
 
 // DELETE ONE SAVED PROMPT
 
+ 
 window.deleteSavedSmartPrompt = function (id) {
 
-    if (!confirm("Are you sure you want to delete this saved Smart Prompt?")) {
-        return;
-    }
+    showSmartPromptDeleteConfirmation(function () {
 
-    const updated = spbReadStorage(SPB_STORAGE_KEY).filter(
-        item => item.id !== id
-    );
+        const updated = spbReadStorage(SPB_STORAGE_KEY).filter(
+            item => item.id !== id
+        );
 
-    try {
-        localStorage.setItem(SPB_STORAGE_KEY, JSON.stringify(updated));
+        try {
+            localStorage.setItem(
+                SPB_STORAGE_KEY,
+                JSON.stringify(updated)
+            );
 
-        document.getElementById("spbStatus").textContent =
-            "Saved Smart Prompt deleted.";
+            renderSavedSmartPrompts();
 
-        renderSavedSmartPrompts();
+            const status = document.getElementById("spbStatus");
+            status.style.color = "#15803d";
+            status.textContent = "Saved Smart Prompt deleted.";
 
-    } catch (error) {
-        console.error("Unable to delete saved Smart Prompt:", error);
-    }
+        } catch (error) {
+            document.getElementById("spbStatus").textContent =
+                "Unable to delete this saved prompt.";
+        }
+
+    });
 };
+
 
 
 // COPY A HISTORY OR SAVED PROMPT
