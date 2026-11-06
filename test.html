@@ -2793,6 +2793,24 @@ body.dark .spb-collapse-button:hover {
     flex-shrink: 0;
 }
 
+ 
+/* SMART PROMPT COUNT BADGES */
+
+.spb-count {
+    display: inline-block;
+    padding: 4px 9px;
+    border-radius: 20px;
+    background: #dbeafe;
+    color: #1d4ed8;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+body.dark .spb-count {
+    background: #1e40af;
+    color: #ffffff;
+}
 
 
 /* END SMART PROMPT BUILDER CSS */
@@ -3532,8 +3550,11 @@ body.dark .spb-empty-message {
         class="spb-collapse-button"
         onclick="toggleSPBSection('spbHistoryContent', 'spbHistoryArrow')">
 
-        🕘 Recent Smart Prompt History
-        <span id="spbHistoryArrow">▼</span>
+       <span>🕘 Recent Smart Prompt History</span>
+
+<span class="spb-count" id="spbHistoryCount">0/10</span>
+
+<span id="spbHistoryArrow">▼</span>
 
     </button>
 
@@ -3557,8 +3578,11 @@ body.dark .spb-empty-message {
         class="spb-collapse-button"
         onclick="toggleSPBSection('spbSavedContent', 'spbSavedArrow')">
 
-        ⭐ My Saved Smart Prompts
-        <span id="spbSavedArrow">▼</span>
+      <span>⭐ My Saved Smart Prompts</span>
+
+<span class="spb-count" id="spbSavedCount">0/50</span>
+
+<span id="spbSavedArrow">▼</span>
 
     </button>
 
