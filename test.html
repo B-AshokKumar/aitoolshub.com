@@ -9375,6 +9375,10 @@ window.renderSmartPromptHistory = function () {
 
     const history = spbReadStorage(SPB_HISTORY_KEY);
 
+    // Update History count
+document.getElementById("spbHistoryCount").textContent =
+    history.length + "/10";
+ 
     section.style.display = "block";
     list.replaceChildren();
 
@@ -9576,6 +9580,10 @@ window.renderSavedSmartPrompts = function () {
 
     const savedPrompts = spbReadStorage(SPB_STORAGE_KEY);
 
+   // Update Saved Prompts count
+document.getElementById("spbSavedCount").textContent =
+    savedPrompts.length + "/50";
+ 
     section.style.display = "block";
     list.replaceChildren();
 
