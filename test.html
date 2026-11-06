@@ -2744,6 +2744,44 @@ body.dark .badge.paid{
     min-height: 18px;
 }
 
+ 
+/* SMART PROMPT COLLAPSIBLE HEADINGS */
+
+.spb-collapse-button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    margin-top: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    background: #f3f4f6;
+    color: #1f2937;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+}
+
+.spb-collapse-button:hover {
+    background: #e5e7eb;
+}
+
+/* DARK MODE */
+
+body.dark .spb-collapse-button {
+    background: #263449;
+    border-color: #475569;
+    color: #f1f5f9;
+}
+
+body.dark .spb-collapse-button:hover {
+    background: #334155;
+}
+
+
 /* END SMART PROMPT BUILDER CSS */
 
  
@@ -9719,6 +9757,25 @@ window.showSmartPromptDeleteConfirmation = function (onConfirm) {
 /* END DELETE CONFIRMATION TOAST */
 
  
+/* =========================================
+   SMART PROMPT COLLAPSIBLE SECTIONS
+   ========================================= */
+
+window.toggleSPBSection = function (contentId, arrowId) {
+
+    const content = document.getElementById(contentId);
+    const arrow = document.getElementById(arrowId);
+
+    if (!content || !arrow) return;
+
+    const isOpen = content.style.display === "block";
+
+    content.style.display = isOpen ? "none" : "block";
+    arrow.textContent = isOpen ? "▼" : "▲";
+};
+
+/* END COLLAPSIBLE SECTIONS */
+
 // COPY A HISTORY OR SAVED PROMPT
 
 window.copySmartPromptEntry = async function (promptText) {
