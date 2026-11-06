@@ -9001,6 +9001,9 @@ Please complete the task according to these instructions.`;
 
         result.textContent = generatedSmartPrompt;
         result.style.display = "block";
+     
+ // Add newly generated prompt to Smart Prompt History
+window.addSmartPromptToHistory(generatedSmartPrompt);
 
         document.getElementById("spbEditButton").style.display = "block";
 document.getElementById("spbCopyButton").style.display = "block";
@@ -9084,36 +9087,48 @@ window.copySmartPrompt = async function () {
 /* =========================================
    SMART PROMPT BUILDER - EDIT AND SAVE
    ========================================= */
+  
+window.toggleSmartPromptEdit = function () {
 
-function toggleSmartPromptEdit() {
     const result = document.getElementById("spbResult");
     const editButton = document.getElementById("spbEditButton");
 
     if (!result || !editButton) return;
 
-    // Enter edit mode
     if (result.contentEditable !== "true") {
+
         result.contentEditable = "true";
         result.focus();
 
         editButton.textContent = "💾 Save Changes";
-
         result.style.outline = "2px solid #3b82f6";
         result.style.cursor = "text";
 
     } else {
-        // Save edited prompt as plain text
+
         const updatedPrompt = result.innerText.trim();
+
+        if (!updatedPrompt) {
+            document.getElementById("spbStatus").textContent =
+                "The prompt cannot be empty.";
+            return;
+        }
 
         result.textContent = updatedPrompt;
         result.contentEditable = "false";
 
         editButton.textContent = "✏️ Edit Prompt";
-
         result.style.outline = "none";
         result.style.cursor = "default";
+
+        // Update the corresponding History entry, if available
+        window.updateSmartPromptHistory(updatedPrompt);
+
+        document.getElementById("spbStatus").textContent =
+            "Your changes have been saved!";
     }
-}
+};
+
 
 /* END EDIT AND SAVE FUNCTION */
 
