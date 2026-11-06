@@ -3473,10 +3473,20 @@ body.dark .spb-empty-message {
 
     <div id="spbStatus" class="builder-status"></div>
 
-    <!-- SMART PROMPT HISTORY -->
-    <div id="spbHistorySection" style="display:none;">
+    
+<!-- SMART PROMPT HISTORY -->
+<div id="spbHistorySection" style="display:none;">
 
-        <h3>🕘 Recent Smart Prompt History</h3>
+    <button type="button"
+        class="spb-collapse-button"
+        onclick="toggleSPBSection('spbHistoryContent', 'spbHistoryArrow')">
+
+        🕘 Recent Smart Prompt History
+        <span id="spbHistoryArrow">▼</span>
+
+    </button>
+
+    <div id="spbHistoryContent" style="display:none;">
 
         <div id="spbHistoryEmpty" class="spb-empty-message">
             No Smart Prompt history yet.
@@ -3486,10 +3496,22 @@ body.dark .spb-empty-message {
 
     </div>
 
-    <!-- SAVED SMART PROMPTS -->
-    <div id="spbSavedSection" style="display:none;">
+</div>
 
-        <h3>⭐ My Saved Smart Prompts</h3>
+ 
+<!-- SAVED SMART PROMPTS -->
+<div id="spbSavedSection" style="display:none;">
+
+    <button type="button"
+        class="spb-collapse-button"
+        onclick="toggleSPBSection('spbSavedContent', 'spbSavedArrow')">
+
+        ⭐ My Saved Smart Prompts
+        <span id="spbSavedArrow">▼</span>
+
+    </button>
+
+    <div id="spbSavedContent" style="display:none;">
 
         <div id="spbSavedEmpty" class="spb-empty-message">
             No Smart Prompts saved yet.
@@ -3500,6 +3522,7 @@ body.dark .spb-empty-message {
     </div>
 
 </div>
+
 
 
 <!-- END SMART PROMPT BUILDER HTML -->
