@@ -3374,89 +3374,133 @@ body.dark .spb-empty-message {
  
 <!-- SMART PROMPT BUILDER HTML -->
 
+  
 <div class="smart-builder" id="smartPromptBuilder">
 
     <h2>✨ Smart Prompt Builder</h2>
 
-    <p class="builder-subtitle">
-        Create clear, customized AI prompts for your needs.
+    <p>
+        Create a clear, customized AI prompt based on your
+        requirements.
     </p>
 
-    <label for="spbCategory">1. Select Category</label>
-    <select id="spbCategory">
-        <option value="Study and Education">📚 Study & Education</option>
-        <option value="Professional Work">💼 Professional Work</option>
-        <option value="Daily Life">🏠 Daily Life</option>
-        <option value="Business">📈 Business</option>
-        <option value="Creativity">🎨 Creativity</option>
-        <option value="Technology">💻 Technology</option>
-    </select>
+    <div class="spb-field">
+        <label for="spbCategory">Choose Category</label>
+        <select id="spbCategory">
+            <option value="Study & Education">Study & Education</option>
+            <option value="Professional Work">Professional Work</option>
+            <option value="Daily Life">Daily Life</option>
+            <option value="Business">Business</option>
+            <option value="Creativity">Creativity</option>
+            <option value="Technology">Technology</option>
+        </select>
+    </div>
 
-    <label for="spbAudience">2. Who is this for?</label>
-    <select id="spbAudience">
-        <option value="A beginner">Beginner</option>
-        <option value="A student">Student</option>
-        <option value="A working professional">Professional</option>
-        <option value="An expert">Expert</option>
-        <option value="A general audience">General Audience</option>
-    </select>
+    <div class="spb-field">
+        <label for="spbAudience">Target Audience</label>
+        <select id="spbAudience">
+            <option value="Beginner">Beginner</option>
+            <option value="Student">Student</option>
+            <option value="Professional">Professional</option>
+            <option value="Expert">Expert</option>
+            <option value="General Audience">General Audience</option>
+        </select>
+    </div>
 
-    <label for="spbTone">3. Choose the Tone</label>
-    <select id="spbTone">
-        <option value="Simple and easy to understand">Simple</option>
-        <option value="Professional and clear">Professional</option>
-        <option value="Friendly and conversational">Friendly</option>
-        <option value="Creative and engaging">Creative</option>
-        <option value="Formal and informative">Formal</option>
-    </select>
+    <div class="spb-field">
+        <label for="spbTone">Preferred Tone</label>
+        <select id="spbTone">
+            <option value="Simple">Simple</option>
+            <option value="Professional">Professional</option>
+            <option value="Friendly">Friendly</option>
+            <option value="Creative">Creative</option>
+            <option value="Formal">Formal</option>
+        </select>
+    </div>
 
-    <label for="spbFormat">4. Preferred Output Format</label>
-    <select id="spbFormat">
-        <option value="Clear bullet points">Bullet Points</option>
-        <option value="A well-organized table">Table</option>
-        <option value="Numbered step-by-step instructions">Step-by-Step</option>
-        <option value="A detailed explanation with headings">Detailed Explanation</option>
-        <option value="A short summary">Short Summary</option>
-    </select>
+    <div class="spb-field">
+        <label for="spbFormat">Output Format</label>
+        <select id="spbFormat">
+            <option value="Bullet Points">Bullet Points</option>
+            <option value="Table">Table</option>
+            <option value="Step-by-Step">Step-by-Step</option>
+            <option value="Detailed Explanation">Detailed Explanation</option>
+            <option value="Short Summary">Short Summary</option>
+        </select>
+    </div>
 
-    <label for="spbRequirements">
-        5. What do you want AI to do?
-    </label>
-
-    <textarea
-        id="spbRequirements"
-        placeholder="Example: Create a 5-slide presentation about the benefits of AI in daily life."
-    ></textarea>
+    <div class="spb-field">
+        <label for="spbRequirements">What do you want AI to do?</label>
+        <textarea
+            id="spbRequirements"
+            rows="4"
+            placeholder="Describe your task or requirements..."
+        ></textarea>
+    </div>
 
     <button type="button" onclick="buildSmartPrompt()">
         ✨ Build My Smart Prompt
     </button>
 
-    
-<div id="spbResult" class="builder-result"></div>
+    <div id="spbResult" class="builder-result"></div>
 
-<!-- EDIT SMART PROMPT BUTTON -->
-<button
-    type="button"
-    id="spbEditButton"
-    style="display:none;"
-    onclick="toggleSmartPromptEdit()">
-    ✏️ Edit Prompt
-</button>
+    <button
+        type="button"
+        id="spbEditButton"
+        style="display:none;"
+        onclick="toggleSmartPromptEdit()"
+    >
+        ✏️ Edit Prompt
+    </button>
 
-<!-- COPY SMART PROMPT BUTTON -->
-<button
-    type="button"
-    id="spbCopyButton"
-    style="display:none;"
-    onclick="copySmartPrompt()">
-    📋 Copy Smart Prompt
-</button>
+    <button
+        type="button"
+        id="spbCopyButton"
+        style="display:none;"
+        onclick="copySmartPrompt()"
+    >
+        📋 Copy Smart Prompt
+    </button>
 
+    <button
+        type="button"
+        id="spbSaveButton"
+        style="display:none;"
+        onclick="saveSmartPrompt()"
+    >
+        ⭐ Save Smart Prompt
+    </button>
 
     <div id="spbStatus" class="builder-status"></div>
 
+    <!-- SMART PROMPT HISTORY -->
+    <div id="spbHistorySection" style="display:none;">
+
+        <h3>🕘 Recent Smart Prompt History</h3>
+
+        <div id="spbHistoryEmpty" class="spb-empty-message">
+            No Smart Prompt history yet.
+        </div>
+
+        <div id="spbHistoryList"></div>
+
+    </div>
+
+    <!-- SAVED SMART PROMPTS -->
+    <div id="spbSavedSection" style="display:none;">
+
+        <h3>⭐ My Saved Smart Prompts</h3>
+
+        <div id="spbSavedEmpty" class="spb-empty-message">
+            No Smart Prompts saved yet.
+        </div>
+
+        <div id="spbSavedList"></div>
+
+    </div>
+
 </div>
+
 
 <!-- END SMART PROMPT BUILDER HTML -->
 
