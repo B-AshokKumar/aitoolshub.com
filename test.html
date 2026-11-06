@@ -9117,6 +9117,462 @@ function toggleSmartPromptEdit() {
 
 /* END EDIT AND SAVE FUNCTION */
 
+ 
+/* =========================================
+   SMART PROMPT HISTORY & SAVED PROMPTS
+   History limit: 10
+   Saved limit: 50
+   ========================================= */
+
+const SPB_HISTORY_KEY = "aitoolshub_smart_prompt_history";
+const SPB_STORAGE_KEY = "aitoolshub_saved_smart_prompts";
+
+let spbCurrentHistoryId = null;
+
+
+// SAFE STORAGE READER
+
+function spbReadStorage(key) {
+    try {
+        const data = JSON.parse(localStorage.getItem(key) || "[]");
+        return Array.isArray(data) ? data : [];
+    } catch (error) {
+        console.error("Smart Prompt storage error:", error);
+        return [];
+    }
+}
+
+
+// SAVE A NEW GENERATED PROMPT TO HISTORY
+
+window.addSmartPromptToHistory = function (promptText) {
+
+    if (!promptText || !promptText.trim()) return;
+
+    const history = spbReadStorage(SPB_HISTORY_KEY);
+
+    const item = {
+        id: Date.now(),
+        title: "Smart Prompt",
+        prompt: promptText.trim(),
+        savedAt: new Date().toISOString()
+    };
+
+    history.unshift(item);
+
+    // Keep only the latest 10
+    history.splice(10);
+
+    try {
+        localStorage.setItem(
+            SPB_HISTORY_KEY,
+            JSON.stringify(history)
+        );
+
+        spbCurrentHistoryId = item.id;
+        renderSmartPromptHistory();
+
+    } catch (error) {
+        console.error("Unable to save Smart Prompt history:", error);
+    }
+};
+
+
+// UPDATE THE CURRENT HISTORY ENTRY AFTER EDITING
+
+window.updateSmartPromptHistory = function (promptText) {
+
+    if (!spbCurrentHistoryId || !promptText.trim()) return;
+
+    const history = spbReadStorage(SPB_HISTORY_KEY);
+
+    const item = history.find(
+        entry => entry.id === spbCurrentHistoryId
+    );
+
+    if (item) {
+        item.prompt = promptText.trim();
+
+        try {
+            localStorage.setItem(
+                SPB_HISTORY_KEY,
+                JSON.stringify(history)
+            );
+
+            renderSmartPromptHistory();
+
+        } catch (error) {
+            console.error("Unable to update Smart Prompt history:", error);
+        }
+    }
+};
+
+
+// RENDER HISTORY
+
+window.renderSmartPromptHistory = function () {
+
+    const section = document.getElementById("spbHistorySection");
+    const list = document.getElementById("spbHistoryList");
+    const empty = document.getElementById("spbHistoryEmpty");
+
+    if (!section || !list || !empty) return;
+
+    const history = spbReadStorage(SPB_HISTORY_KEY);
+
+    section.style.display = "block";
+    list.replaceChildren();
+
+    empty.style.display =
+        history.length === 0 ? "block" : "none";
+
+    history.forEach(function (item) {
+
+        const card = document.createElement("div");
+        card.className = "spb-entry-card";
+
+        const title = document.createElement("div");
+        title.className = "spb-entry-title";
+        title.textContent = item.title;
+
+        const preview = document.createElement("div");
+        preview.className = "spb-entry-preview";
+        preview.textContent = item.prompt;
+
+        const date = document.createElement("div");
+        date.className = "spb-entry-date";
+        date.textContent = item.savedAt
+            ? new Date(item.savedAt).toLocaleString()
+            : "";
+
+        const actions = document.createElement("div");
+        actions.className = "spb-entry-actions";
+
+        const useButton = document.createElement("button");
+        useButton.type = "button";
+        useButton.textContent = "✏️ Use Prompt";
+        useButton.addEventListener("click", function () {
+            useSmartPromptHistory(item.id);
+        });
+
+        const copyButton = document.createElement("button");
+        copyButton.type = "button";
+        copyButton.textContent = "📋 Copy";
+        copyButton.addEventListener("click", function () {
+            copySmartPromptEntry(item.prompt);
+        });
+
+        const deleteButton = document.createElement("button");
+        deleteButton.type = "button";
+        deleteButton.className = "spb-delete-button";
+        deleteButton.textContent = "🗑️ Delete";
+        deleteButton.addEventListener("click", function () {
+            deleteSmartPromptHistory(item.id);
+        });
+
+        actions.appendChild(useButton);
+        actions.appendChild(copyButton);
+        actions.appendChild(deleteButton);
+
+        card.appendChild(title);
+        card.appendChild(preview);
+        card.appendChild(date);
+        card.appendChild(actions);
+
+        list.appendChild(card);
+    });
+};
+
+
+// REUSE A HISTORY PROMPT IN THE RESULT AREA
+
+window.useSmartPromptHistory = function (id) {
+
+    const history = spbReadStorage(SPB_HISTORY_KEY);
+
+    const item = history.find(entry => entry.id === id);
+
+    if (!item) return;
+
+    const result = document.getElementById("spbResult");
+
+    result.textContent = item.prompt;
+    result.style.display = "block";
+    result.contentEditable = "false";
+
+    spbCurrentHistoryId = item.id;
+
+    document.getElementById("spbEditButton").style.display = "block";
+    document.getElementById("spbEditButton").textContent = "✏️ Edit Prompt";
+    document.getElementById("spbCopyButton").style.display = "block";
+    document.getElementById("spbSaveButton").style.display = "block";
+
+    document.getElementById("spbStatus").textContent =
+        "Previous Smart Prompt loaded. You can edit or copy it.";
+};
+
+
+// DELETE ONE HISTORY ENTRY
+
+window.deleteSmartPromptHistory = function (id) {
+
+    const updated = spbReadStorage(SPB_HISTORY_KEY).filter(
+        item => item.id !== id
+    );
+
+    try {
+        localStorage.setItem(SPB_HISTORY_KEY, JSON.stringify(updated));
+
+        if (spbCurrentHistoryId === id) {
+            spbCurrentHistoryId = null;
+        }
+
+        renderSmartPromptHistory();
+
+    } catch (error) {
+        console.error("Unable to delete history entry:", error);
+    }
+};
+
+
+// SAVE CURRENT OR EDITED PROMPT
+
+window.saveSmartPrompt = function () {
+
+    const result = document.getElementById("spbResult");
+    const status = document.getElementById("spbStatus");
+
+    const promptText = result ? result.innerText.trim() : "";
+
+    if (!promptText) {
+        status.textContent = "Please generate a Smart Prompt first.";
+        return;
+    }
+
+    const savedPrompts = spbReadStorage(SPB_STORAGE_KEY);
+
+    // Prevent exact duplicate prompts
+    const alreadySaved = savedPrompts.some(
+        item => item.prompt === promptText
+    );
+
+    if (alreadySaved) {
+        status.textContent = "This Smart Prompt is already saved.";
+        return;
+    }
+
+    if (savedPrompts.length >= 50) {
+        status.textContent =
+            "You have reached the maximum of 50 saved prompts. Please delete one before saving another.";
+        return;
+    }
+
+    const newItem = {
+        id: Date.now(),
+        title: "Smart Prompt",
+        prompt: promptText,
+        savedAt: new Date().toISOString()
+    };
+
+    savedPrompts.unshift(newItem);
+
+    try {
+        localStorage.setItem(
+            SPB_STORAGE_KEY,
+            JSON.stringify(savedPrompts)
+        );
+
+        status.style.color = "#15803d";
+        status.textContent = "Smart Prompt saved successfully!";
+
+        renderSavedSmartPrompts();
+
+    } catch (error) {
+        status.style.color = "#dc2626";
+        status.textContent =
+            "Unable to save. Please check your device storage.";
+    }
+};
+
+
+// RENDER SAVED SMART PROMPTS
+
+window.renderSavedSmartPrompts = function () {
+
+    const section = document.getElementById("spbSavedSection");
+    const list = document.getElementById("spbSavedList");
+    const empty = document.getElementById("spbSavedEmpty");
+
+    if (!section || !list || !empty) return;
+
+    const savedPrompts = spbReadStorage(SPB_STORAGE_KEY);
+
+    section.style.display = "block";
+    list.replaceChildren();
+
+    empty.style.display =
+        savedPrompts.length === 0 ? "block" : "none";
+
+    savedPrompts.forEach(function (item) {
+
+        const card = document.createElement("div");
+        card.className = "spb-entry-card";
+
+        const title = document.createElement("div");
+        title.className = "spb-entry-title";
+        title.textContent = item.title;
+
+        const preview = document.createElement("div");
+        preview.className = "spb-entry-preview";
+        preview.textContent = item.prompt;
+
+        const date = document.createElement("div");
+        date.className = "spb-entry-date";
+        date.textContent = item.savedAt
+            ? new Date(item.savedAt).toLocaleString()
+            : "";
+
+        const actions = document.createElement("div");
+        actions.className = "spb-entry-actions";
+
+        const useButton = document.createElement("button");
+        useButton.type = "button";
+        useButton.textContent = "✏️ Use Prompt";
+        useButton.addEventListener("click", function () {
+            useSavedSmartPrompt(item.id);
+        });
+
+        const copyButton = document.createElement("button");
+        copyButton.type = "button";
+        copyButton.textContent = "📋 Copy";
+        copyButton.addEventListener("click", function () {
+            copySmartPromptEntry(item.prompt);
+        });
+
+        const deleteButton = document.createElement("button");
+        deleteButton.type = "button";
+        deleteButton.className = "spb-delete-button";
+        deleteButton.textContent = "🗑️ Delete";
+        deleteButton.addEventListener("click", function () {
+            deleteSavedSmartPrompt(item.id);
+        });
+
+        actions.appendChild(useButton);
+        actions.appendChild(copyButton);
+        actions.appendChild(deleteButton);
+
+        card.appendChild(title);
+        card.appendChild(preview);
+        card.appendChild(date);
+        card.appendChild(actions);
+
+        list.appendChild(card);
+    });
+};
+
+
+// REUSE A SAVED SMART PROMPT
+
+window.useSavedSmartPrompt = function (id) {
+
+    const saved = spbReadStorage(SPB_STORAGE_KEY);
+
+    const item = saved.find(entry => entry.id === id);
+
+    if (!item) return;
+
+    const result = document.getElementById("spbResult");
+
+    result.textContent = item.prompt;
+    result.style.display = "block";
+    result.contentEditable = "false";
+
+    // A saved prompt is not a new history entry until edited/generated
+    spbCurrentHistoryId = null;
+
+    document.getElementById("spbEditButton").style.display = "block";
+    document.getElementById("spbEditButton").textContent = "✏️ Edit Prompt";
+    document.getElementById("spbCopyButton").style.display = "block";
+    document.getElementById("spbSaveButton").style.display = "block";
+
+    document.getElementById("spbStatus").textContent =
+        "Saved Smart Prompt loaded.";
+};
+
+
+// DELETE ONE SAVED PROMPT
+
+window.deleteSavedSmartPrompt = function (id) {
+
+    if (!confirm("Are you sure you want to delete this saved Smart Prompt?")) {
+        return;
+    }
+
+    const updated = spbReadStorage(SPB_STORAGE_KEY).filter(
+        item => item.id !== id
+    );
+
+    try {
+        localStorage.setItem(SPB_STORAGE_KEY, JSON.stringify(updated));
+
+        document.getElementById("spbStatus").textContent =
+            "Saved Smart Prompt deleted.";
+
+        renderSavedSmartPrompts();
+
+    } catch (error) {
+        console.error("Unable to delete saved Smart Prompt:", error);
+    }
+};
+
+
+// COPY A HISTORY OR SAVED PROMPT
+
+window.copySmartPromptEntry = async function (promptText) {
+
+    const status = document.getElementById("spbStatus");
+
+    try {
+
+        if (navigator.clipboard && window.isSecureContext) {
+
+            await navigator.clipboard.writeText(promptText);
+
+        } else {
+
+            const temp = document.createElement("textarea");
+            temp.value = promptText;
+            temp.style.position = "fixed";
+            temp.style.opacity = "0";
+
+            document.body.appendChild(temp);
+            temp.select();
+
+            const copied = document.execCommand("copy");
+
+            document.body.removeChild(temp);
+
+            if (!copied) throw new Error("Copy failed");
+        }
+
+        status.style.color = "#15803d";
+        status.textContent = "Smart Prompt copied successfully!";
+
+    } catch (error) {
+
+        status.style.color = "#dc2626";
+        status.textContent = "Unable to copy this Smart Prompt.";
+    }
+};
+
+
+// INITIAL DISPLAY
+
+renderSmartPromptHistory();
+renderSavedSmartPrompts();
+
+/* END SMART PROMPT HISTORY & SAVED PROMPTS */
+
   </script>
 </body>  
 </html> 
