@@ -2744,6 +2744,28 @@ body.dark .badge.paid{
     min-height: 18px;
 }
 
+ /* PREVENT SMART BUILDER FROM AFFECTING OTHER SECTIONS */
+
+.smart-builder {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.smart-builder *,
+.smart-builder *::before,
+.smart-builder *::after {
+    box-sizing: border-box;
+}
+
+.smart-builder .spb-collapse-button {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.smart-builder .spb-heading-text {
+    overflow-wrap: anywhere;
+}
  
 /* =========================================
    SMART PROMPT COLLAPSIBLE BUTTONS
@@ -3656,7 +3678,7 @@ body.dark .spb-empty-message {
 
 </div>
 
-
+ </div>
 
 <!-- END SMART PROMPT BUILDER HTML -->
 
