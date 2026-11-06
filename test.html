@@ -2840,6 +2840,120 @@ body.dark #spbCopyButton:hover {
 
 /* END SMART PROMPT BUILDER BUTTON STYLES */
 
+ 
+/* =========================================
+   SMART PROMPT HISTORY & SAVED PROMPTS
+   ========================================= */
+
+#spbHistorySection,
+#spbSavedSection {
+    display: none;
+    margin-top: 22px;
+    padding: 15px;
+    border: 1px solid #cbdcf5;
+    border-radius: 12px;
+    background: #f4f8ff;
+    color: #1e293b;
+}
+
+#spbHistorySection h3,
+#spbSavedSection h3 {
+    margin: 0 0 14px;
+    color: #174ea6;
+    font-size: 19px;
+}
+
+.spb-entry-card {
+    margin-top: 12px;
+    padding: 13px;
+    border: 1px solid #cbd5e1;
+    border-radius: 9px;
+    background: #ffffff;
+    color: #1e293b;
+}
+
+.spb-entry-title {
+    font-weight: 700;
+    margin-bottom: 8px;
+    overflow-wrap: anywhere;
+}
+
+.spb-entry-preview {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #526174;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.spb-entry-date {
+    margin-top: 7px;
+    font-size: 11px;
+    color: #64748b;
+}
+
+.spb-entry-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.spb-entry-actions button {
+    flex: 1;
+    min-width: 85px;
+    width: auto;
+    margin: 0;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.spb-entry-actions .spb-delete-button {
+    background: #dc2626;
+}
+
+.spb-empty-message {
+    color: #64748b;
+    font-size: 14px;
+}
+
+/* Dark Mode */
+
+body.dark #spbHistorySection,
+body.dark #spbSavedSection {
+    background: #1c2533;
+    border-color: #475569;
+    color: #f1f5f9;
+}
+
+body.dark #spbHistorySection h3,
+body.dark #spbSavedSection h3 {
+    color: #60a5fa;
+}
+
+body.dark .spb-entry-card {
+    background: #111827;
+    border-color: #475569;
+    color: #f1f5f9;
+}
+
+body.dark .spb-entry-preview {
+    color: #cbd5e1;
+}
+
+body.dark .spb-entry-date,
+body.dark .spb-empty-message {
+    color: #cbd5e1;
+}
+
+/* END SMART PROMPT HISTORY & SAVED PROMPTS CSS */
+
 </style>  
   
 </head> 
