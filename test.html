@@ -2744,23 +2744,30 @@ body.dark .badge.paid{
     min-height: 18px;
 }
 
+ 
+/* =========================================
+   SMART PROMPT COLLAPSIBLE BUTTONS
+   ========================================= */
 
-  
-/* SMART PROMPT COLLAPSIBLE HEADINGS */
+/* MAIN BUTTON */
+.smart-builder button.spb-collapse-button {
+    width: 100% !important;
+    max-width: 100%;
+    min-height: 58px;
 
-/* LIGHT MODE */
-.spb-collapse-button {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
 
-    padding: 14px 16px;
-    margin-top: 12px;
+    gap: 8px;
+    box-sizing: border-box;
+
+    margin: 12px 0 0;
+    padding: 12px 14px;
 
     border: 1px solid #cbd5e1 !important;
-    border-radius: 10px;
+    border-radius: 10px !important;
 
     background: #e2e8f0 !important;
     color: #1e293b !important;
@@ -2771,27 +2778,70 @@ body.dark .badge.paid{
     cursor: pointer;
 }
 
-.spb-collapse-button:hover {
+/* HEADING TEXT */
+.smart-builder .spb-heading-text {
+    flex: 1 1 auto;
+    min-width: 0;
+    text-align: left;
+}
+
+/* COUNT BADGE */
+.smart-builder button.spb-collapse-button .spb-count {
+    display: inline-block;
+    flex: 0 0 auto;
+
+    padding: 5px 9px;
+    margin: 0;
+
+    border-radius: 20px;
+    background: #dbeafe !important;
+    color: #1d4ed8 !important;
+
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* DROPDOWN ARROW */
+.smart-builder button.spb-collapse-button .spb-arrow {
+    flex: 0 0 auto;
+    width: auto;
+    margin: 0;
+    padding: 0;
+
+    background: transparent !important;
+    color: #1e293b !important;
+
+    font-size: 17px;
+}
+
+/* LIGHT MODE HOVER */
+.smart-builder button.spb-collapse-button:hover {
     background: #cbd5e1 !important;
 }
 
 /* DARK MODE */
-body.dark .spb-collapse-button {
+body.dark .smart-builder button.spb-collapse-button {
     background: #263449 !important;
     border-color: #475569 !important;
     color: #f8fafc !important;
 }
 
-body.dark .spb-collapse-button:hover {
+body.dark .smart-builder button.spb-collapse-button .spb-count {
+    background: #1e40af !important;
+    color: #ffffff !important;
+}
+
+body.dark .smart-builder button.spb-collapse-button .spb-arrow {
+    color: #ffffff !important;
+}
+
+body.dark .smart-builder button.spb-collapse-button:hover {
     background: #334155 !important;
 }
 
-/* ARROW */
-.spb-collapse-button span {
-    color: inherit !important;
-    font-size: 18px;
-    flex-shrink: 0;
-}
+/* END SMART PROMPT COLLAPSIBLE BUTTONS */
+
 
  
 /* SMART PROMPT COUNT BADGES */
